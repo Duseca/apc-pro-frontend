@@ -86,102 +86,88 @@ class _CustomDropDownState extends State<CustomDropDown> {
                   SwitchButton(scale: 0.6, isActive: true),
               ],
             ),
-          Container(
-            decoration: BoxDecoration(
-              boxShadow: widget.hasShadow == true
-                  ? [
-                      BoxShadow(
-                        color: kgrey.withOpacity(0.08),
-                        spreadRadius: 0.5,
-                        blurRadius: 4,
-                        offset: Offset(0, 2),
+          DropdownButtonHideUnderline(
+            child: DropdownButton2(
+              items: widget.items
+                  .map(
+                    (item) => DropdownMenuItem<dynamic>(
+                      value: item,
+                      child: MyText(
+                        text: item,
+                        size: 12,
+                        color: kheading,
                       ),
-                    ]
-                  : [],
-            ),
-            child: DropdownButtonHideUnderline(
-              child: DropdownButton2(
-                items: widget.items
-                    .map(
-                      (item) => DropdownMenuItem<dynamic>(
-                        value: item,
-                        child: MyText(
-                          text: item,
-                          size: 12,
-                          color: kheading,
-                        ),
-                      ),
-                    )
-                    .toList(),
-                value: _selected,
-                onChanged: (val) {
-                  setState(() {
-                    _selected = val;
-                    widget.onChanged(val);
-                  });
-                },
-                onMenuStateChange: (open) {
-                  setState(() {
-                    isOpen = open;
-                  });
-                },
-                iconStyleData: const IconStyleData(iconSize: 6),
-                isDense: true,
-                isExpanded: false,
-                customButton: Container(
-                  padding: EdgeInsets.symmetric(
-                    horizontal: widget.hpad ?? 12,
-                    vertical: widget.vpad ?? 9,
-                  ),
-                  decoration: BoxDecoration(
-                    color: widget.bgColor ?? kwhite,
-                    border: Border.all(
-                      color: _selected == widget.hint
-                          ? widget.bordercolor ?? kborder
-                          : widget.borderColor2 ?? ksecondary,
-                      width: 1,
                     ),
-                    borderRadius: widget.borderRadius ??
-                        BorderRadius.circular(widget.radius ?? 8),
+                  )
+                  .toList(),
+              value: _selected,
+              onChanged: (val) {
+                setState(() {
+                  _selected = val;
+                  widget.onChanged(val);
+                });
+              },
+              onMenuStateChange: (open) {
+                setState(() {
+                  isOpen = open;
+                });
+              },
+              iconStyleData: const IconStyleData(iconSize: 6),
+              isDense: true,
+              isExpanded: false,
+              customButton: Container(
+                padding: EdgeInsets.symmetric(
+                  horizontal: widget.hpad ?? 12,
+                  vertical: widget.vpad ?? 9,
+                ),
+                decoration: BoxDecoration(
+                  color: widget.bgColor ?? kbackground,
+                  border: Border.all(
+                    color: _selected == widget.hint
+                        ? widget.bordercolor ?? kblueBorder
+                        : widget.borderColor2 ?? kblueBorder,
+                  
                   ),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      MyText(
-                        paddingLeft: 1,
-                        text:
-                            _selected == widget.hint ? widget.hint : _selected!,
-                        size: widget.hintsize ?? 11,
-                        weight: widget.hintWeigth ?? FontWeight.w500,
-                        color: _selected == widget.hint
-                            ? widget.hintColor ?? kgrey
-                            : ksecondary,
-                      ),
-                      Padding(
-                        padding: EdgeInsets.only(bottom: widget.iconPad ?? 2),
-                        child: AnimatedRotation(
-                          duration: const Duration(milliseconds: 200),
-                          turns: isOpen ? 0.5 : 0.0, // ⬆️ when open
-                          child: Icon(
-                            Icons.keyboard_arrow_down_rounded,
-                            size: widget.iconSize ?? 26,
-                            color: widget.iconColor ?? kheading,
-                          ),
+                  borderRadius: widget.borderRadius ??
+                      BorderRadius.circular(widget.radius ?? 8),
+                ),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    MyText(
+                      paddingLeft: 1,
+                      text:
+                          _selected == widget.hint ? widget.hint : _selected!,
+                      size: widget.hintsize ?? 11,
+                      weight: widget.hintWeigth ?? FontWeight.w500,
+                      color: _selected == widget.hint
+                          ? widget.hintColor ?? kwhite
+                          : kwhite,
+                    ),
+                    Padding(
+                      padding: EdgeInsets.only(bottom: widget.iconPad ?? 2),
+                      child: AnimatedRotation(
+                        duration: const Duration(milliseconds: 200),
+                        turns: isOpen ? 0.5 : 0.0, // ⬆️ when open
+                        child: Icon(
+                          Icons.keyboard_arrow_down_rounded,
+                          size: widget.iconSize ?? 26,
+                          color: widget.iconColor ?? kwhite,
                         ),
                       ),
-                    ],
-                  ),
+                    ),
+                  ],
                 ),
-                menuItemStyleData: const MenuItemStyleData(height: 30),
-                dropdownStyleData: DropdownStyleData(
-                  elevation: 0,
-                  maxHeight: 300,
-                  offset: const Offset(0, -5),
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(8),
-                    color: kwhite,
-                    border: Border.all(color: kborder.withOpacity(0.3)),
-                  ),
+              ),
+              menuItemStyleData: const MenuItemStyleData(height: 30),
+              dropdownStyleData: DropdownStyleData(
+                elevation: 0,
+                maxHeight: 300,
+                offset: const Offset(0, -5),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(8),
+                  color: kwhite,
+                  border: Border.all(color: kborder.withOpacity(0.3)),
                 ),
               ),
             ),

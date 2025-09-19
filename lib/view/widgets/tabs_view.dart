@@ -13,6 +13,7 @@ class TabsWidget extends StatefulWidget {
     required this.items,
     this.isexpanded,
     this.height,
+    this.textSize
   });
 
   final int currentindex;
@@ -20,7 +21,7 @@ class TabsWidget extends StatefulWidget {
   final List<String> items;
   final bool? isexpanded;
   final double? height;
-
+final double? textSize;
   @override
   State<TabsWidget> createState() => _TabsWidgetState();
 }
@@ -59,7 +60,7 @@ class _TabsWidgetState extends State<TabsWidget> {
                         return GestureDetector(
                           onTap: () => _onTap(index),
                           child: AnimatedContainer(
-                            padding: EdgeInsets.all(4),
+                            padding: EdgeInsets.all(0.5),
                             margin: EdgeInsets.all(4),
                             duration: const Duration(milliseconds: 300),
                             height: Get.height,
@@ -77,9 +78,10 @@ class _TabsWidgetState extends State<TabsWidget> {
                             child: Center(
                               child: MyText(
                                 text: widget.items[index],
-                                paddingLeft: 7,
-                                paddingRight: 7,
-                                size: 13,
+                                // paddingLeft: 7,
+                                // paddingRight: 7,
+                                textAlign: TextAlign.center,
+                                size:widget.textSize?? 13,
                                 fontFamily: AppFonts.gilroyMedium,
                                 color: widget.currentindex == index
                                     ? kwhite
@@ -114,7 +116,7 @@ class _TabsWidgetState extends State<TabsWidget> {
                               child: GestureDetector(
                             onTap: () => _onTap(index),
                             child: AnimatedContainer(
-                              padding: EdgeInsets.all(2),
+                              padding: EdgeInsets.all(1),
                               margin: EdgeInsets.all(4),
                               duration: const Duration(milliseconds: 300),
                               height: Get.height,
@@ -135,7 +137,7 @@ class _TabsWidgetState extends State<TabsWidget> {
                                   textAlign: TextAlign.center,
                                   // paddingLeft: 7,
                                   // paddingRight: 7,
-                                  size: 11.5,
+                                  size:widget.textSize?? 11.5,
                                   fontFamily: AppFonts.gilroyRegular,
                                   color: widget.currentindex == index
                                       ? kwhite

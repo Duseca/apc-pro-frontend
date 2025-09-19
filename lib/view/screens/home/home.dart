@@ -6,6 +6,7 @@ import 'package:apc_pro/view/screens/home/apc_diary.dart';
 import 'package:apc_pro/view/screens/home/case_study/case_study.dart';
 import 'package:apc_pro/view/screens/home/daily_update_dialog.dart';
 import 'package:apc_pro/view/screens/home/summary_experience/summary_experience.dart';
+import 'package:apc_pro/view/screens/home/test_quiz/test_quiz.dart';
 import 'package:apc_pro/view/screens/survey/competency.dart';
 import 'package:apc_pro/view/widgets/appbar.dart';
 import 'package:apc_pro/view/widgets/button_container.dart';
@@ -47,7 +48,7 @@ class Home extends StatelessWidget {
         "icon": Assets.imagesTest,
         "text": "Test & Quiz",
         "onTap": () {
-          Get.to(() => ApcDiary());
+          Get.to(() => TestQuiz());
         },
       },
       {

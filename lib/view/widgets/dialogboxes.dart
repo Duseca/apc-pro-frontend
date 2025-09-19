@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:apc_pro/consts/app_fonts.dart';
 import 'package:flutter/material.dart';
 import 'package:apc_pro/consts/app_colors.dart';
@@ -29,7 +31,7 @@ class SuccessDialog {
       double? titleSize,
       double? imgSize,
       double? descSize,
-      bool? isSvg=false,
+      bool? isSvg = false,
       bool? hasTextButton = false}) {
     Get.dialog(
       AlertDialog(
@@ -50,8 +52,8 @@ class SuccessDialog {
               //     fit: BoxFit.contain,
               // ),
               CommonImageView(
-              imagePath:isSvg==false?   image:null,
-              svgPath: isSvg==true?image:null,
+                imagePath: isSvg == false ? image : null,
+                svgPath: isSvg == true ? image : null,
                 width: imgSize ?? 100,
                 height: imgSize ?? 100,
                 fit: BoxFit.contain,
@@ -301,48 +303,72 @@ class SuccessDialog {
 // }
 
 // //
+
 class dialogBoxBody extends StatelessWidget {
   final Widget? child;
   final double? lpad, rpad, bpad, tpad;
   final Color? barrier;
   final Alignment? alignment;
-  const dialogBoxBody(
-      {super.key,
-      this.child,
-      this.lpad,
-      this.rpad,
-      this.bpad,
-      this.tpad,
-      this.alignment, this.barrier});
+
+  const dialogBoxBody({
+    super.key,
+    this.child,
+    this.lpad,
+    this.rpad,
+    this.bpad,
+    this.tpad,
+    this.alignment,
+    this.barrier,
+  });
 
   @override
   Widget build(BuildContext context) {
     return Material(
-        color: Colors.transparent,
-        child: GestureDetector(
-            onTap: () {
-              Get.back();
-            },
-            child: Stack(children: [
-              Container(color:barrier?? kblack.withOpacity(0.02)),
-              Align(
-                  alignment: alignment ?? Alignment.center,
-                  child: Stack(clipBehavior: Clip.none, children: [
-                    Container(
-                        width: Get.width,
-                        margin: EdgeInsets.only(
-                            left: lpad ?? 20,
-                            top: tpad ?? 20,
-                            bottom: bpad ?? 20,
-                            right: rpad ?? 20),
-                        decoration: BoxDecoration(
-                          border: Border.all(color: kblueBorder2),
-                            borderRadius: BorderRadius.circular(10),
-                            color: kbackground),
-                        padding: const EdgeInsets.only(
-                            top: 20, bottom: 20, left: 17, right: 17),
-                        child: child)
-                  ]))
-            ])));
+      color: Colors.transparent,
+      child: GestureDetector(
+        onTap: () {
+          Get.back();
+        },
+        child: Stack(
+          children: [
+            BackdropFilter(
+              filter: ImageFilter.blur(
+                sigmaX: 5,
+                sigmaY: 5,
+              ),
+              child: Container(
+                width: double.infinity,
+                height: double.infinity,
+                color: (barrier ?? kblack).withOpacity(0.2),
+              ),
+            ),
+
+            /// Dialog Box
+            Align(
+              alignment: alignment ?? Alignment.center,
+              child: Container(
+                width: Get.width,
+                margin: EdgeInsets.only(
+                  left: lpad ?? 20,
+                  top: tpad ?? 20,
+                  bottom: bpad ?? 20,
+                  right: rpad ?? 20,
+                ),
+                decoration: BoxDecoration(
+                  border: Border.all(color: kblueBorder2),
+                  borderRadius: BorderRadius.circular(10),
+                  color: kbackground,
+                ),
+                padding: const EdgeInsets.symmetric(
+                  vertical: 20,
+                  horizontal: 17,
+                ),
+                child: child,
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
   }
 }

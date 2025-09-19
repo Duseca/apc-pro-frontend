@@ -46,6 +46,14 @@ class Assets {
   /// assets/images/apple.png
   static const String imagesApple = "assets/images/apple.png";
 
+  /// Assets for imagesArrowdown
+  /// assets/images/arrowdown.png
+  static const String imagesArrowdown = "assets/images/arrowdown.png";
+
+  /// Assets for imagesArrowup
+  /// assets/images/arrowup.png
+  static const String imagesArrowup = "assets/images/arrowup.png";
+
   /// Assets for imagesBackIcon
   /// assets/images/backIcon.png
   static const String imagesBackIcon = "assets/images/backIcon.png";
@@ -93,6 +101,10 @@ class Assets {
   /// Assets for imagesCross
   /// assets/images/cross.png
   static const String imagesCross = "assets/images/cross.png";
+
+  /// Assets for imagesDanger
+  /// assets/images/danger.png
+  static const String imagesDanger = "assets/images/danger.png";
 
   /// Assets for imagesDiary
   /// assets/images/diary.png
@@ -145,6 +157,10 @@ class Assets {
   /// Assets for imagesMagicpen
   /// assets/images/magicpen.png
   static const String imagesMagicpen = "assets/images/magicpen.png";
+
+  /// Assets for imagesMessg
+  /// assets/images/messg.png
+  static const String imagesMessg = "assets/images/messg.png";
 
   /// Assets for imagesMinus
   /// assets/images/minus.png
@@ -221,6 +237,10 @@ class Assets {
   /// Assets for imagesUpload
   /// assets/images/upload.png
   static const String imagesUpload = "assets/images/upload.png";
+
+  /// Assets for imagesUsers
+  /// assets/images/users.png
+  static const String imagesUsers = "assets/images/users.png";
 
   /// Assets for imagesVerifymail
   /// assets/images/verifymail.png

@@ -1,15 +1,19 @@
 import 'package:apc_pro/consts/app_colors.dart';
 import 'package:apc_pro/consts/app_fonts.dart';
 import 'package:apc_pro/generated/assets.dart';
+import 'package:apc_pro/view/screens/home/case_study/edit_casestudy.dart';
+import 'package:apc_pro/view/screens/home/case_study/project_information.dart';
 import 'package:apc_pro/view/widgets/appbar.dart';
 import 'package:apc_pro/view/widgets/custom_row.dart';
 import 'package:apc_pro/view/widgets/custome_comtainer.dart';
 import 'package:apc_pro/view/widgets/expanded_row.dart';
+import 'package:apc_pro/view/widgets/home_widgets/apc_diary_widgets.dart';
 import 'package:apc_pro/view/widgets/my_button.dart';
 import 'package:apc_pro/view/widgets/my_text_widget.dart';
 import 'package:apc_pro/view/widgets/progress_indicator.dart';
 import 'package:bounce/bounce.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class CaseStudy extends StatelessWidget {
   const CaseStudy({super.key});
@@ -90,6 +94,9 @@ class CaseStudy extends StatelessWidget {
                           alignment: ColumnAlignment.center,
                         ),
                         MyButton(
+                          onTap: () {
+                            Get.to(()=>ProjectInformation());
+                          },
                           mTop: 30,
                           mhoriz: 20,
                           buttonText: '+ Add Project Details',
@@ -128,34 +135,86 @@ class CaseStudy extends StatelessWidget {
                     mbott: 20,
                   ),
                   CustomeContainer(
-                      radius: 10,
-                      vpad: 17,
-                      hpad: 17,
+                    radius: 10,
+                    vpad: 17,
+                    hpad: 17,
+                    color: kblackfill,
+                    widget: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          MyText(
+                            text: 'Case Study Sections',
+                            size: 16,
+                            fontFamily: AppFonts.gilroyBold,
+                            paddingBottom: 10,
+                          ),
+                          ListView.builder(
+                            padding: EdgeInsets.all(0),
+                            shrinkWrap: true,
+                            physics: const NeverScrollableScrollPhysics(),
+                            itemCount: caseStudySections.length,
+                            itemBuilder: (context, index) {
+                              final item = caseStudySections[index];
+                              return Padding(
+                                padding: const EdgeInsets.only(bottom: 25),
+                                child: _caseStudy_section_widget(
+                                  text1: item["text1"]!,
+                                  text2: item["text2"]!,
+                                ),
+                              );
+                            },
+                          ),
+                        ]),
+                    mbott: 20,
+                  ),
+                  newEntry_container(
+                    title: 'Competency Table',
+                    desc: '0 Competencies demonstrated',
+                    icon: Assets.imagesAchievement,
+                  ),
+                  newEntry_container(
+                    title: 'Appendices',
+                    desc: '0 attachments uploaded',
+                    icon: Assets.imagesNewbook,
+                  ),
+                  newEntry_container(
+                    title: 'AI Assistance',
+                    desc: 'Get writing help and suggestions',
+                    icon: Assets.imagesMagicpen,
+                  ),
+                  CustomeContainer(
+                      mbott: 20,
+                      hpad: 15,
                       color: kblackfill,
+                      radius: 8,
+                      borderColor: kblueBorder3,
                       widget: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            MyText(
-                              text: 'Case Study Sections',
-                              size: 16,
-                              fontFamily: AppFonts.gilroyBold,
-                              paddingBottom: 10,
-                            ),
-                            ListView.builder(
-                              padding: EdgeInsets.all(0),
-                              shrinkWrap: true,
-                              physics: const NeverScrollableScrollPhysics(),
-                              itemCount: caseStudySections.length,
-                              itemBuilder: (context, index) {
-                                final item = caseStudySections[index];
-                                return Padding(
-                                  padding: const EdgeInsets.only(bottom: 25),
-                                  child: _caseStudy_section_widget(
-                                    text1: item["text1"]!,
-                                    text2: item["text2"]!,
+                            Row(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Image.asset(
+                                  Assets.imagesMagicpen,
+                                  width: 24,
+                                  height: 24,
+                                ),
+                                SizedBox(
+                                  width: 18,
+                                ),
+                                Expanded(
+                                  child: TwoTextedColumn(
+                                    text1:
+                                        'Getting Started with your case study',
+                                    text2:
+                                        'Choose a project completed within the last 24 months that demonstrates your technical competencies\n\nAim for approximately 3,000 words total across all sections\n\nFocus on demonstrating Level 3 (reasoned advice) competencies where possible\n\nUse the AI assistant to help structure your content and ensure RICS compliance',
+                                    size1: 14,
+                                    size2: 11,
+                                    fontFamily: AppFonts.gilroyBold,
+                                    fontFamily2: AppFonts.gilroyMedium,
                                   ),
-                                );
-                              },
+                                ),
+                              ],
                             ),
                           ]))
                 ],
@@ -209,7 +268,9 @@ class _caseStudy_section_widget extends StatelessWidget {
               ),
             ),
             Bounce(
-                onTap: ontap,
+                onTap: ontap??(){
+                  Get.to(()=>EditCasestudy());
+                },
                 child: Image.asset(
                   Assets.imagesEdit,
                   width: 18,

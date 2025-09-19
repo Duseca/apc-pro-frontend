@@ -124,154 +124,151 @@ class _MyTextFieldState extends State<MyTextField> {
 
   @override
   Widget build(BuildContext context) {
-    return Animate(
-      effects: [MoveEffect()],
-      child: Padding(
-        padding: EdgeInsets.only(bottom: widget.marginBottom!),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            // if (widget.label != null)
-            //   ValueListenableBuilder(
-            //     valueListenable: _focusNotifier,
-            //     builder: (_, isFocused, child) {
-            //       return Row(
-            //         children: [
-            //           MyText(
-            //               text: widget.label ?? '',
-            //               size: widget.labelSize ?? 16,
-            //               paddingBottom: 8,
-            //               weight: widget.labelWeight ?? FontWeight.w500,
-            //               color: isFocused
-            //                   ? widget.focusedLabelColor ?? kheading
-            //                   : widget.labelColor ?? kheading),
-            //           if (widget.isoptional == false)
-            //             MyText(
-            //               text: '*',
-            //               size: widget.labelSize,
-            //               color: ksecondary,
-            //               paddingBottom: 8,
-            //               paddingLeft: 1,
-            //             )
-            //         ],
-            //       );
-            //     },
-            //   ),
-            ValueListenableBuilder(
-              valueListenable: _focusNotifier,
-              builder: (_, isFocused, child) {
-                return TextFormField(
-                  onTapOutside: (event) {
-                    _focusNode.unfocus();
-                  },
-                  cursorColor: widget.cursorColor ?? kwhite,
-                  keyboardType: widget.keyboardType,
-                  maxLines: widget.maxLines ?? 1,
-                  controller: widget.controller,
-                  onChanged: widget.onChanged,
-                  onTap: widget.ontapp,
-                  readOnly: widget.readOnly ?? false,
-                  textInputAction: TextInputAction.next,
-                  obscureText: widget.isObSecure!,
-                  obscuringCharacter: '*',
-                  style: TextStyle(
+    return Padding(
+      padding: EdgeInsets.only(bottom: widget.marginBottom!),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          // if (widget.label != null)
+          //   ValueListenableBuilder(
+          //     valueListenable: _focusNotifier,
+          //     builder: (_, isFocused, child) {
+          //       return Row(
+          //         children: [
+          //           MyText(
+          //               text: widget.label ?? '',
+          //               size: widget.labelSize ?? 16,
+          //               paddingBottom: 8,
+          //               weight: widget.labelWeight ?? FontWeight.w500,
+          //               color: isFocused
+          //                   ? widget.focusedLabelColor ?? kheading
+          //                   : widget.labelColor ?? kheading),
+          //           if (widget.isoptional == false)
+          //             MyText(
+          //               text: '*',
+          //               size: widget.labelSize,
+          //               color: ksecondary,
+          //               paddingBottom: 8,
+          //               paddingLeft: 1,
+          //             )
+          //         ],
+          //       );
+          //     },
+          //   ),
+          ValueListenableBuilder(
+            valueListenable: _focusNotifier,
+            builder: (_, isFocused, child) {
+              return TextFormField(
+                onTapOutside: (event) {
+                  _focusNode.unfocus();
+                },
+                cursorColor: widget.cursorColor ?? kwhite,
+                keyboardType: widget.keyboardType,
+                maxLines: widget.maxLines ?? 1,
+                controller: widget.controller,
+                onChanged: widget.onChanged,
+                onTap: widget.ontapp,
+                readOnly: widget.readOnly ?? false,
+                textInputAction: TextInputAction.next,
+                obscureText: widget.isObSecure!,
+                obscuringCharacter: '*',
+                style: TextStyle(
+                  fontFamily: AppFonts.gilroyRegular,
+                  fontSize: 15,
+                  color: widget.textColor ?? kwhite,
+                  fontWeight: FontWeight.w400,
+                ),
+                validator: widget.validator,
+                textAlign: widget.textAlign ?? TextAlign.left,
+                focusNode: _focusNode,
+                decoration: InputDecoration(
+                  prefixIcon: widget.prefixIcon != null
+                      ? Padding(
+                          padding: const EdgeInsets.only(left: 10, right: 5),
+                          child: widget.prefixIcon,
+                        )
+                      : null,
+                  hintText: widget
+                      .hint, // 👈 stays as hint (inside the box when empty)
+                  hintStyle: TextStyle(
                     fontFamily: AppFonts.gilroyRegular,
-                    fontSize: 15,
-                    color: widget.textColor ?? kwhite,
-                    fontWeight: FontWeight.w400,
+                    fontSize: widget.hintSize ?? 12,
+                    color: widget.hintColor ?? kwhite.withOpacity(0.6),
+                    fontWeight: widget.hintWeight ?? FontWeight.w400,
                   ),
-                  validator: widget.validator,
-                  textAlign: widget.textAlign ?? TextAlign.left,
-                  focusNode: _focusNode,
-                  decoration: InputDecoration(
-                    prefixIcon: widget.prefixIcon != null
-                        ? Padding(
-                            padding: const EdgeInsets.only(left: 10, right: 5),
-                            child: widget.prefixIcon,
-                          )
-                        : null,
-                    hintText: widget
-                        .hint, // 👈 stays as hint (inside the box when empty)
-                    hintStyle: TextStyle(
-                      fontFamily: AppFonts.gilroyRegular,
-                      fontSize: widget.hintSize ?? 12,
-                      color: widget.hintColor ?? kwhite.withOpacity(0.6),
-                      fontWeight: widget.hintWeight ?? FontWeight.w400,
-                    ),
-                    labelText:
-                        widget.label, // 👈 separate label, always floating
-                    floatingLabelBehavior: FloatingLabelBehavior.always,
-                    floatingLabelStyle: TextStyle(
-                      fontFamily: AppFonts.gilroyRegular,
-                      fontSize: widget.labelSize ?? 18,
-                      color: widget.focusedLabelColor ?? kwhite,
-                      fontWeight: widget.labelWeight ?? FontWeight.w500,
-                    ),
-                    contentPadding: EdgeInsets.symmetric(
-                      horizontal: widget.hpad ?? 15,
-                      vertical: widget.vpad ?? 5,
-                    ),
-                    isCollapsed: widget.isCollapsed ?? false,
-                    suffixIcon: widget.suffixIcon != null
-                        ? Padding(
-                            padding: const EdgeInsets.only(right: 10),
-                            child: GestureDetector(
-                              onTap: widget.suffixTap,
-                              child: widget.suffixIcon,
-                            ),
-                          )
-                        : null,
-                    suffixText: widget.suffixtext,
-                    suffixStyle: TextStyle(
-                      fontFamily: AppFonts.gilroyRegular,
-                      fontSize: 16,
-                      color: isFocused
-                          ? widget.fhintColor ?? kwhite
-                          : widget.hintColor ?? kwhite,
-                    ),
-                    filled: true,
-                    fillColor: isFocused
-                        ? widget.focusedFilledColor ?? ktransparent
-                        : widget.filledColor ?? ktransparent,
-                    enabledBorder: widget.useOutlinedBorder == true
-                        ? OutlineInputBorder(
-                            borderSide: BorderSide(
-                                color: widget.bordercolor ??
-                                    const Color(0xff263238),
-                                width: 1),
-                            borderRadius: widget.borderRadius ??
-                                BorderRadius.circular(widget.radius ?? 8),
-                          )
-                        : UnderlineInputBorder(
-                            borderSide: BorderSide(
-                                color: widget.bordercolor ??
-                                    const Color(0xff263238),
-                                width: 1),
-                          ),
-                    focusedBorder: widget.useOutlinedBorder == true
-                        ? OutlineInputBorder(
-                            borderSide: BorderSide(
-                                color: widget.fbordercolor ??
-                                    const Color(0xff263238),
-                                width: 1),
-                            borderRadius: widget.borderRadius ??
-                                BorderRadius.circular(widget.radius ?? 8),
-                          )
-                        : UnderlineInputBorder(
-                            borderSide: BorderSide(
-                                color: widget.bordercolor ??
-                                    const Color(0xff263238),
-                                width: 1),
-                          ),
-                           prefixIconConstraints: BoxConstraints.tightFor(),
-                        suffixIconConstraints: BoxConstraints.tightFor()
+                  labelText:
+                      widget.label, // 👈 separate label, always floating
+                  floatingLabelBehavior: FloatingLabelBehavior.always,
+                  floatingLabelStyle: TextStyle(
+                    fontFamily: AppFonts.gilroyRegular,
+                    fontSize: widget.labelSize ?? 18,
+                    color: widget.focusedLabelColor ?? kwhite,
+                    fontWeight: widget.labelWeight ?? FontWeight.w500,
                   ),
-                  
-                );
-              },
-            ),
-          ],
-        ),
+                  contentPadding: EdgeInsets.symmetric(
+                    horizontal: widget.hpad ?? 15,
+                    vertical: widget.vpad ?? 5,
+                  ),
+                  isCollapsed: widget.isCollapsed ?? false,
+                  suffixIcon: widget.suffixIcon != null
+                      ? Padding(
+                          padding: const EdgeInsets.only(right: 10),
+                          child: GestureDetector(
+                            onTap: widget.suffixTap,
+                            child: widget.suffixIcon,
+                          ),
+                        )
+                      : null,
+                  suffixText: widget.suffixtext,
+                  suffixStyle: TextStyle(
+                    fontFamily: AppFonts.gilroyRegular,
+                    fontSize: 16,
+                    color: isFocused
+                        ? widget.fhintColor ?? kwhite
+                        : widget.hintColor ?? kwhite,
+                  ),
+                  filled: true,
+                  fillColor: isFocused
+                      ? widget.focusedFilledColor ?? ktransparent
+                      : widget.filledColor ?? ktransparent,
+                  enabledBorder: widget.useOutlinedBorder == true
+                      ? OutlineInputBorder(
+                          borderSide: BorderSide(
+                              color: widget.bordercolor ??
+                                  const Color(0xff263238),
+                              width: 1),
+                          borderRadius: widget.borderRadius ??
+                              BorderRadius.circular(widget.radius ?? 8),
+                        )
+                      : UnderlineInputBorder(
+                          borderSide: BorderSide(
+                              color: widget.bordercolor ??
+                                  const Color(0xff263238),
+                              width: 1),
+                        ),
+                  focusedBorder: widget.useOutlinedBorder == true
+                      ? OutlineInputBorder(
+                          borderSide: BorderSide(
+                              color: widget.fbordercolor ??
+                                  const Color(0xff263238),
+                              width: 1),
+                          borderRadius: widget.borderRadius ??
+                              BorderRadius.circular(widget.radius ?? 8),
+                        )
+                      : UnderlineInputBorder(
+                          borderSide: BorderSide(
+                              color: widget.bordercolor ??
+                                  const Color(0xff263238),
+                              width: 1),
+                        ),
+                         prefixIconConstraints: BoxConstraints.tightFor(),
+                      suffixIconConstraints: BoxConstraints.tightFor()
+                ),
+                
+              );
+            },
+          ),
+        ],
       ),
     );
   }
