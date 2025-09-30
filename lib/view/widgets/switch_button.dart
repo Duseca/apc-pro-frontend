@@ -8,6 +8,7 @@ import 'package:apc_pro/consts/app_colors.dart';
 class SwitchButton extends StatelessWidget {
   final bool? isActive;
   final double? scale;
+
   const SwitchButton({super.key, this.isActive, this.scale});
 
   @override
@@ -18,11 +19,12 @@ scale:scale?? 0.9,
         value: isActive ?? false,
         
         onChanged: (w) {},
-        inactiveTrackColor: kgrey,
+        inactiveTrackColor: Color(0xff5D5D5D),
         trackOutlineColor: WidgetStateColor.transparent,
-        inactiveThumbColor: kwhite,
-        activeColor: kwhite,
-        activeTrackColor: ksecondary,
+        inactiveThumbColor: Color(0xff2A2A2A),
+        activeTrackColor:Color(0xff94BFFF) ,
+        activeColor: kblueBorder4,
+
         thumbIcon: MaterialStateProperty.all(const Icon(null)),
 
       ),
@@ -121,71 +123,35 @@ class SwitchButton2 extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () => onChanged(!isActive),
-      child: Transform.scale(
-        scale: 0.8,
-        child: Stack(
-          alignment: Alignment.center,
-          children: [
-            // Gradient background for the track
-            Container(
+      child: AnimatedContainer(
+        duration: const Duration(milliseconds: 250),
+        curve: Curves.easeInOut,
+        width: 25,
+        height: 21,
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(30),
+          border: Border.all(color: klighblue, width: 2),
+          color: Colors.transparent, // transparent fill like your image
+        ),
+        child: AnimatedAlign(
+          duration: const Duration(milliseconds: 250),
+          curve: Curves.easeInOut,
+          alignment: isActive ? Alignment.centerRight : Alignment.centerLeft,
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 2),
+            child: Container(
+              width: 12,
+              height: 12,
               decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(35),
-                boxShadow: [
-                  BoxShadow(
-                    color: kborder.withOpacity(0.2),
-                    spreadRadius: 2,
-                    blurRadius: 4,
-                    offset: Offset(0, 3), // changes position of shadow
-                  ),
-                ],
-              ),
-              child: ShaderMask(
-                shaderCallback: (Rect bounds) {
-                  return LinearGradient(
-                    begin: Alignment.topCenter,
-                    end: Alignment.bottomCenter,
-                    colors: isActive
-                        ? [
-                            Color.fromARGB(255, 96, 102, 102),
-                            Color.fromARGB(255, 233, 232, 232)
-                          ]
-                        : [
-                            Color.fromARGB(255, 219, 225, 225),
-                            Color.fromARGB(255, 255, 255, 255)
-                          ],
-                  ).createShader(bounds);
-                },
-                child: Container(
-                  height: 28, // Approximate track height
-                  width: 49, // Approximate track width
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(35),
-                    color: Colors.white,
-                  ),
-                ),
+                shape: BoxShape.circle,
+                border: Border.all(color: klighblue, width: 2),
+                color: Colors.transparent, // inner knob is transparent
               ),
             ),
-            // Actual Switch to display thumb without border color
-            Theme(
-              data: Theme.of(context).copyWith(
-                switchTheme: SwitchThemeData(
-                  trackOutlineColor:
-                      MaterialStateProperty.all(Colors.transparent),
-                  overlayColor: MaterialStateProperty.all(Colors.transparent),
-                ),
-              ),
-              child: Switch(
-                value: isActive,
-                onChanged: onChanged,
-                activeColor: ksecondary, // Thumb color when active
-                inactiveThumbColor: kwhite,
-                activeTrackColor: Colors.transparent,
-                inactiveTrackColor: Colors.transparent,
-              ),
-            ),
-          ],
+          ),
         ),
       ),
     );
   }
 }
+

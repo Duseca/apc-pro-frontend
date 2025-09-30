@@ -1,3 +1,4 @@
+import 'package:apc_pro/generated/assets.dart';
 import 'package:flutter/material.dart';
 import 'package:apc_pro/consts/app_colors.dart';
 import 'package:apc_pro/view/widgets/my_text_widget.dart';
@@ -23,8 +24,8 @@ class _CustomAccordionState extends State<CustomAccordion> {
         // border: Border(
         //     bottom: BorderSide(color: ktransparent),
         //     top: BorderSide(color: ktransparent)),
-        // borderRadius: BorderRadius.circular(12),
-        color: _isOpen ? kwhite : kwhite,
+        borderRadius: BorderRadius.circular(11),
+        color: _isOpen ? kblackfill : kblackfill,
         //  border: Border.all(color: kbluewithopacity.withOpacity(0.5))
       ),
       child: Theme(
@@ -36,13 +37,22 @@ class _CustomAccordionState extends State<CustomAccordion> {
             text: widget.title ?? "How do I book a service?",
             size: 16,
             weight: FontWeight.w400,
-            color: kheading,
+            color: kwhite,
           ),
           backgroundColor: ktransparent,
-          trailing: Icon(
-            _isOpen ? Icons.remove : Icons.add,
-            color: kheading,
-          ),
+          trailing: _isOpen
+              ? Image.asset(
+                  Assets.imagesRoundedplus,
+                  width: 20,
+                )
+              : Image.asset(
+                  Assets.imagesRoundedminus,
+                  width: 20,
+                ),
+          // Icon(
+          //   _isOpen ? Icons.remove : Icons.add,
+          //   color: kwhite,
+          // ),
           childrenPadding: EdgeInsets.all(0),
           children: <Widget>[
             Container(
@@ -55,9 +65,9 @@ class _CustomAccordionState extends State<CustomAccordion> {
                         const EdgeInsets.symmetric(horizontal: 16, vertical: 0),
                     child: MyText(
                         text: widget.desc ??
-                            'Go to the provider’s profile, check their availability, and tap the “Book Service” button to confirm your appointment.',
-                        size: 14,
-                        weight: FontWeight.w300,
+                            'FieldNote supports various audio file formats including MP3, WAV, and M4A, ensuring versatility for users.',
+                        size: 12,
+                        weight: FontWeight.w400,
                         color: kgrey),
                   )
                 ],

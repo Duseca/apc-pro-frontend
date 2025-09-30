@@ -27,7 +27,9 @@ class TrainingExperience extends StatelessWidget {
             TooltipIcon()
           ],
         ),
-        SizedBox(height: 24,),
+        SizedBox(
+          height: 24,
+        ),
         MyTextField(
           hint: 'Enter the name of your employer',
           label: 'Current Employer',
@@ -38,14 +40,19 @@ class TrainingExperience extends StatelessWidget {
           label: 'Job Title',
           marginBottom: 26,
         ),
-        CustomDropdown2(
+        SimpleDropDown(
           hasInfo: false,
           label: "Years of experience",
           hint: "Select Years of experience",
-          items: ["0-1 years", "1-2 years", "2-3 years", "3-5 years"],
-          value: null,
+          items: [
+            "0-1 years",
+            "1-2 years",
+            "2-3 years",
+            "3-5 years",
+            'Select Years of experience'
+          ],
+          value: 'Select Years of experience',
           onChanged: (val) {},
-          onInfoTap: () {},
         ),
         SizedBox(
           height: 25,

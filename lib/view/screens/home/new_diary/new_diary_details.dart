@@ -34,26 +34,26 @@ class NewDiaryDetails extends StatelessWidget {
                   SizedBox(
                     height: 20,
                   ),
-                  CustomDropdown2(
+                  SimpleDropDown(
                     label: "Competency *",
                     hint: "Select competency",
-                    items: ["competency 1", "competency 2", "competency 3"],
-                    value: null,
+                    items: ["competency 1", "competency 2", "competency 3",'Select competency'],
+                value: 'Select competency',
+                  
                     onChanged: (val) {},
-                    onInfoTap: () {},
-                    hasInfo: false,
+                    // onInfoTap: () {},
+                    // hasInfo: false,
                   ),
                   SizedBox(
                     height: 26,
                   ),
-                  CustomDropdown2(
+                  SimpleDropDown(
                     label: "Competency Level *",
                     hint: "Level 1",
                     items: ["Level 1", "Level 2", "Level 3"],
-                    value: null,
+                    value: 'Level 1',
                     onChanged: (val) {},
-                    onInfoTap: () {},
-                    hasInfo: false,
+                
                   ),
                   SizedBox(
                     height: 26,
@@ -102,7 +102,7 @@ class NewDiaryDetails extends StatelessWidget {
                   MyTextField(
                     label: 'Reflection & Learning',
                     hint:
-                        '\nWhat did you learn from this experience? How did it contribute to your professional development? What would you do differently?',
+                        'What did you learn from this experience? How did it contribute to your professional development? What would you do differently?',
                     maxLines: 4,
                     marginBottom: 20,
                   ),

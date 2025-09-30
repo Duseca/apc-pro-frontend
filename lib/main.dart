@@ -1,8 +1,5 @@
 import 'package:apc_pro/core/bindings.dart';
-import 'package:apc_pro/view/screens/Navbar/bottom_navbar.dart';
-import 'package:apc_pro/view/screens/auth/login/login.dart';
 import 'package:apc_pro/view/screens/onboarding/splash.dart';
-import 'package:apc_pro/view/screens/survey/survey_main.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -21,9 +18,10 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
-      home:BottomNavBar(),
+      home:Splash(),
       debugShowCheckedModeBanner: false,
       initialBinding: InitialBindings(),
+
     );
   }
 }

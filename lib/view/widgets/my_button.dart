@@ -77,14 +77,15 @@ final String? fontFamily;
             decoration: hasgrad == true
                 ? BoxDecoration(
                    // gradient: kbuttongrad,
+                   color: ksecondary,
                     border: Border.all(color: outlineColor),
                     borderRadius: BorderRadius.circular(radius),
                     boxShadow: [
                       BoxShadow(
-                        color: ksecondary.withOpacity(0.05),
-                        spreadRadius: 0,
-                        blurRadius: 20,
-                        offset: Offset(0, -1),
+                        color: ksecondary.withOpacity(0.4),
+                        spreadRadius: 1,
+                        blurRadius: 10,
+                        offset: Offset(0, 02),
                       ),
                     ],
                   )
@@ -118,7 +119,7 @@ final String? fontFamily;
                       padding: EdgeInsets.only(
                           left: cornerIcon == true
                               ? 10.0
-                              : 8.0), // ✅ Adjust for corners
+                              : 8.0), 
                       child: Icon(icon, color: fontColor, size: iconSize),
                     ),
                   if (image != null && iconPosition == IconPosition.left)
@@ -126,7 +127,7 @@ final String? fontFamily;
                       padding:
                           EdgeInsets.only(left: cornerIcon == true ? 10.0 : 8.0),
                       child:
-                          Image.asset(image!, height: iconSize, width: iconSize),
+                          Image.asset(image!, height: iconSize, width: iconSize,color: imgColor,),
                     ),
                   if (buttonText != null)
                     MyText(
@@ -150,7 +151,7 @@ final String? fontFamily;
                       padding:
                           EdgeInsets.only(right: cornerIcon == true ? 10.0 : 8.0),
                       child:
-                          Image.asset(image!, height: iconSize, width: iconSize),
+                          Image.asset(image!, height: iconSize, width: iconSize,color: imgColor,),
                     ),
                 ],
               ),

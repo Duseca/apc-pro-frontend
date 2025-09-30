@@ -147,7 +147,9 @@ class TwoTextedColumn extends StatelessWidget {
           paddingBottom: mBottom ?? 3,
           textAlign: align,
           fontFamily: fontFamily,
+          maxLines: maxLines,
           decoration: decoration1 ?? TextDecoration.none,
+          textOverflow: TextOverflow.ellipsis,
         ),
         MyText(
           text: text2,

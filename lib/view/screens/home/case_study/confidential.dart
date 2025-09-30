@@ -27,7 +27,7 @@ class Confidential extends StatelessWidget {
           fontFamily: AppFonts.gilroyBold,
           paddingBottom: 15,
         ),
-        CustomDropdown2(
+        SimpleDropDown(
           label: 'Confidentiality level',
           hint: 'Confidential- Contains sensitive information',
           items: ['Confidential- Contains sensitive information', 'others'],
@@ -41,13 +41,22 @@ class Confidential extends StatelessWidget {
         MyTextField(
           label: 'Reason for confidentiality (optional)',
           hint: 'Explain why this project requires confidential treatment....',
-          marginBottom: 20,
+          marginBottom: 0,
           maxLines: 2,
           hintSize: 10,
         ),
         Row(
+          //crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            SwitchButton()
+            SwitchButton(
+              scale: 0.6,
+            ),
+            Expanded(
+                child: MyText(
+              text: 'Client consent obtained for APC use *',
+              size: 12,
+              paddingLeft: 4,
+            ))
           ],
         ),
         CustomeContainer(

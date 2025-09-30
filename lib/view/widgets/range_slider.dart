@@ -1,101 +1,126 @@
-import 'package:apc_pro/consts/app_fonts.dart';
-import 'package:flutter/material.dart';
 import 'package:apc_pro/consts/app_colors.dart';
+import 'package:apc_pro/consts/app_fonts.dart';
 import 'package:apc_pro/view/widgets/my_text_widget.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class PriceRangeSlider extends StatefulWidget {
+class QuestionSilder extends StatefulWidget {
   final String? label; // Label for the range (e.g., "$" or "km")
   final double? min;
   final double? max;
   final String? unit; // "\$" or "km"
-
-  const PriceRangeSlider({
+final String? i1,i2,i3;
+  const QuestionSilder({
     super.key,
     this.label,
-  this.min,
-     this.max,
-    this.unit,
+    this.min,
+    this.max,
+    this.unit, this.i1, this.i2, this.i3,
   });
 
   @override
-  _PriceRangeSliderState createState() => _PriceRangeSliderState();
+  _QuestionSilderState createState() => _QuestionSilderState();
 }
 
-class _PriceRangeSliderState extends State<PriceRangeSlider> {
-   double? _lowerValue;
-  double? _upperValue;
+class _QuestionSilderState extends State<QuestionSilder> {
+  double _value = 0;
 
   @override
   void initState() {
     super.initState();
-    _lowerValue = widget.min??0;
-    _upperValue = widget.max??200;
+    _value = widget.min ?? 0;
   }
 
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 20),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: <Widget>[
-              // Adjust alignment based on unit (\$ or km)
-              MyText(
-                text: widget.unit == "\$"
-                    ? "\$${_lowerValue?.toStringAsFixed(0)}"
-                    : "${_lowerValue?.toStringAsFixed(0)} ${widget.label}",
-                color: ksecondary,
-                size: 11,
-                fontFamily: AppFonts.gilroyMedium,
-                textAlign: widget.unit == "\$" ? TextAlign.left : TextAlign.right, // Left for \$, right for km
-              ),
-              MyText(
-                text: widget.unit == "\$"
-                    ? "\$${_upperValue?.toStringAsFixed(0)}"
-                    : "${_upperValue?.toStringAsFixed(0)} ${widget.label}",
-                color: ksecondary,
-                size: 11,
-                fontFamily: AppFonts.gilroyMedium,
-                textAlign: widget.unit == "\$" ? TextAlign.left : TextAlign.right, // Left for \$, right for km
-              ),
-            ],
-          ),
-        ),
         SizedBox(
           width: Get.width,
-          height: 30, // Thicker slider height
+          height: 20,
           child: SliderTheme(
             data: SliderTheme.of(context).copyWith(
-              thumbColor: ksecondary,
-              trackHeight: 8.0, // Thicker track
-              thumbShape: RoundSliderThumbShape(
-                enabledThumbRadius: 15.0, // Make the thumb bigger
-                elevation: 4, // Add shadow to the thumb
-                disabledThumbRadius: 12.0,
-                pressedElevation: 8,
-              ),
-              overlayShape: RoundSliderOverlayShape(overlayRadius: 24.0), // Thumb overlay size
-              activeTrackColor: ksecondary, // Active track color
-              inactiveTrackColor: ksecondary.withOpacity(0.2), // Inactive track color
+              trackHeight: 12.0,
+              activeTrackColor: kblueBorder4,
+              inactiveTrackColor:Color(0xff5576A7),
+              thumbShape: _CustomThumbShape(),
             ),
-            child: RangeSlider(
-              min: widget.min??0.0,
-              max: widget.max??200.0,
+            child: Slider(
+              min: widget.min ?? 0.0,
+              max: widget.max ?? 200.0,
               divisions: 200,
-              values: RangeValues(_lowerValue!, _upperValue!),
-              onChanged: (RangeValues values) {
+              value: _value,
+              onChanged: (val) {
                 setState(() {
-                  _lowerValue = values.start;
-                  _upperValue = values.end;
+                  _value = val;
                 });
               },
             ),
           ),
         ),
+        Padding(
+          padding:  EdgeInsets.symmetric(horizontal: 20),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              MyText(
+                text:widget.i1?? '5',
+                size: 12,
+                fontFamily: AppFonts.gilroyMedium,
+                paddingBottom: 9,
+              ),
+              MyText(
+                text:widget.i2?? '50',
+                size: 12,
+                fontFamily: AppFonts.gilroyMedium,
+                paddingBottom: 9,
+              ),
+              MyText(
+                text:widget.i3?? '100',
+                size: 12,
+                fontFamily: AppFonts.gilroyMedium,
+                paddingBottom: 9,
+              ),
+            ],
+          ),
+        ),
       ],
     );
+  }
+}
+
+/// Custom Thumb with border + fill
+class _CustomThumbShape extends RoundSliderThumbShape {
+  @override
+  void paint(
+    PaintingContext context,
+    Offset center, {
+    required Animation<double> activationAnimation,
+    required Animation<double> enableAnimation,
+    required bool isDiscrete,
+    required TextPainter labelPainter,
+    required RenderBox parentBox,
+    required SliderThemeData sliderTheme,
+    required TextDirection textDirection,
+    required double value,
+    required double textScaleFactor,
+    required Size sizeWithOverflow,
+  }) {
+    final Canvas canvas = context.canvas;
+
+    final Paint paint = Paint()
+      ..color =kblueBorder4
+// thumb fill
+      ..style = PaintingStyle.fill;
+
+    final Paint border = Paint()
+      ..color = Colors.white // border color
+      ..strokeWidth = 1
+      ..style = PaintingStyle.stroke;
+
+    final double radius =7.0;
+
+    canvas.drawCircle(center, radius, paint);
+    canvas.drawCircle(center, radius, border);
   }
 }

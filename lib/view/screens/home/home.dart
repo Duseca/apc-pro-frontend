@@ -4,10 +4,13 @@ import 'package:apc_pro/generated/assets.dart';
 import 'package:apc_pro/main.dart';
 import 'package:apc_pro/view/screens/home/apc_diary.dart';
 import 'package:apc_pro/view/screens/home/case_study/case_study.dart';
+import 'package:apc_pro/view/screens/home/cpd_tracker/cpd_tracker.dart';
 import 'package:apc_pro/view/screens/home/daily_update_dialog.dart';
+import 'package:apc_pro/view/screens/home/submittion_planner/submittion_planner.dart';
 import 'package:apc_pro/view/screens/home/summary_experience/summary_experience.dart';
 import 'package:apc_pro/view/screens/home/test_quiz/test_quiz.dart';
 import 'package:apc_pro/view/screens/survey/competency.dart';
+import 'package:apc_pro/view/screens/survey/cpd_studyPref.dart';
 import 'package:apc_pro/view/widgets/appbar.dart';
 import 'package:apc_pro/view/widgets/button_container.dart';
 import 'package:apc_pro/view/widgets/common_image_view_widget.dart';
@@ -55,14 +58,14 @@ class Home extends StatelessWidget {
         "icon": Assets.imagesCpdtracker,
         "text": "CPD Tracker",
         "onTap": () {
-          Get.to(() => ApcDiary());
+          Get.to(() => CpdTracker());
         },
       },
       {
         "icon": Assets.imagesSubmission,
         "text": "Submission Planner",
         "onTap": () {
-          Get.to(() => ApcDiary());
+          Get.to(() => SubmittionPlanner());
         },
       },
     ];

@@ -35,7 +35,7 @@ class AddMemeberDialog extends StatelessWidget {
             marginBottom: 20,
             maxLines: 2,
           ),
-          CustomDropdown2(
+          SimpleDropDown(
             label: 'Reporting Relationship',
             hint: 'Peer/ Colleague',
             items: ['Peer/ Colleague', 'outsiders'],

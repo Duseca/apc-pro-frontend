@@ -78,7 +78,7 @@ class apc_competency_widget extends StatelessWidget {
 class newEntry_container extends StatelessWidget {
   final String? title, desc, icon;
   final VoidCallback? ontap;
-  final Color? borderColor;
+  final Color? borderColor,iconColor;
   final String? suffixIcon;
   final bool? hasPrefix;
   final double? mbott;
@@ -87,7 +87,7 @@ class newEntry_container extends StatelessWidget {
     this.title,
     this.desc,
     this.icon,
-    this.ontap, this.borderColor, this.suffixIcon, this.hasPrefix=true, this.mbott,
+    this.ontap, this.borderColor, this.suffixIcon, this.hasPrefix=true, this.mbott, this.iconColor,
   });
 
   @override
@@ -109,6 +109,7 @@ class newEntry_container extends StatelessWidget {
                   icon ?? Assets.imagesNewentry,
                   width: 24,
                   height: 24,
+                  color: iconColor,
                 ),
                 SizedBox(
                   width: 18,

@@ -2,6 +2,7 @@ import 'package:apc_pro/consts/app_colors.dart';
 import 'package:apc_pro/controllers/survey_controller.dart';
 import 'package:apc_pro/generated/assets.dart';
 import 'package:apc_pro/view/widgets/bullet_points.dart';
+import 'package:apc_pro/view/widgets/button_container.dart';
 import 'package:apc_pro/view/widgets/custom_check_box.dart';
 import 'package:apc_pro/view/widgets/my_button.dart';
 import 'package:apc_pro/view/widgets/my_text_widget.dart';
@@ -177,33 +178,55 @@ class Competency extends StatelessWidget {
 
 class checkbox_row extends StatelessWidget {
   final String? title;
-  final bool? isActive;
+  final bool? isActive, hasContainer;
+  final Color? cBorder, cbg;
+  final double? radius;
+final double? tSize;
   const checkbox_row({
     super.key,
     this.title,
     this.isActive,
+    this.hasContainer = false,
+    this.cBorder,
+    this.cbg,
+    this.radius, this.tSize,
   });
 
   @override
   Widget build(BuildContext context) {
     return Row(
       crossAxisAlignment: CrossAxisAlignment.start,
+      mainAxisSize: MainAxisSize.min, // important in nested Row
       children: [
         CustomCheckBox(
           isActive: isActive ?? false,
           onTap: () {},
-          radius: 2,
-          selectedColor: kbackground,
-          bordercolor2: kborder,
-          borderColor: kborder,
+          radius: radius ?? 2.5,
+          selectedColor: cbg ?? kbackground,
+          bordercolor2: cBorder ?? kborder,
+          borderColor: cBorder ?? kborder,
           size: 15,
-          circleIconsize: 14,
+          circleIconsize: 12,
         ),
-        Expanded(
-            child: MyText(
-          text: title ?? '',
-          paddingLeft: 6,
-        ))
+        Flexible(
+          fit: FlexFit.loose,
+          child: MyText(
+            text: title ?? '',
+            paddingLeft: 6,
+            paddingRight: hasContainer == true ? 10 : 0,
+            size: tSize,
+          ),
+        ),
+        if (hasContainer == true)
+          buttonContainer(
+            radius: 4,
+            vPadding: 5,
+            hPadding: 6,
+            text: '25 Questions',
+            bgColor: kblackfill,
+            borderColor: ksecondary,
+            textsize: 10,
+          )
       ],
     );
   }

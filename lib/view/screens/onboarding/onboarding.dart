@@ -94,55 +94,63 @@ class _OnboardingState extends State<Onboarding> {
                     padding: const EdgeInsets.only(
                         left: 20, top: 10, right: 20, bottom: 40),
                     child: Column(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Image.asset(
                           data["image"]!,
                           height: 250,
                         ),
                         if (index == 1)
-                          Column(
-                            children: [
-                              MyText(
-                                text: 'Key Features of APC Pro',
-                                size: 30,
-                                weight: FontWeight.bold,
-                                paddingBottom: 10,
-                                textAlign: TextAlign.center,
+                          Expanded(
+                            child: SingleChildScrollView(
+                              physics: BouncingScrollPhysics(),
+                              child: Column(
+                                children: [
+                                  MyText(
+                                    text: 'Key Features of APC Pro',
+                                    size: 30,
+                                    weight: FontWeight.bold,
+                                    paddingBottom: 8,
+                                    textAlign: TextAlign.center,
+                                  ),
+                                  TwoTextedColumn(
+                                    text1: 'AI Coach',
+                                    text2:
+                                        'Smart guidance tailored to your pathway and progress.',
+                                    size1: 14,
+                                    size2: 14,
+                                    align: TextAlign.center,
+                                    alignment: ColumnAlignment.center,
+                                    weight1: FontWeight.bold,
+                                  ),
+                                  const SizedBox(height: 4),
+                                  TwoTextedColumn(
+                                    text1: 'Progress Rings',
+                                    text2:
+                                        'Track diary, CPD, and case study completion at a glance.',
+                                    size1: 14,
+                                    size2: 14,
+                                    align: TextAlign.center,
+                                    alignment: ColumnAlignment.center,
+                                    weight1: FontWeight.bold,
+                                  ),
+                                  const SizedBox(height: 4),
+                                  TwoTextedColumn(
+                                    text1: 'Submission Planner',
+                                    text2:
+                                        'Organise milestones and never miss a deadline.',
+                                    size1: 14,
+                                    size2: 14,
+                                    align: TextAlign.center,
+                                    alignment: ColumnAlignment.center,
+                                    weight1: FontWeight.bold,
+                                  ),
+                                  SizedBox(
+                                    height: 100,
+                                  )
+                                ],
                               ),
-                              TwoTextedColumn(
-                                text1: 'AI Coach',
-                                text2:
-                                    'Smart guidance tailored to your pathway and progress.',
-                                size1: 14,
-                                size2: 14,
-                                align: TextAlign.center,
-                                alignment: ColumnAlignment.center,
-                                weight1: FontWeight.bold,
-                              ),
-                              const SizedBox(height: 8),
-                              TwoTextedColumn(
-                                text1: 'Progress Rings',
-                                text2:
-                                    'Track diary, CPD, and case study completion at a glance.',
-                                size1: 14,
-                                size2: 14,
-                                align: TextAlign.center,
-                                alignment: ColumnAlignment.center,
-                                weight1: FontWeight.bold,
-                              ),
-                              const SizedBox(height: 8),
-                              TwoTextedColumn(
-                                text1: 'Submission Planner',
-                                text2:
-                                    'Organise milestones and never miss a deadline.',
-                                size1: 14,
-                                size2: 14,
-                                align: TextAlign.center,
-                                alignment: ColumnAlignment.center,
-                                weight1: FontWeight.bold,
-                              ),
-                            ],
+                            ),
                           )
                         else
                           TwoTextedColumn(
@@ -154,38 +162,6 @@ class _OnboardingState extends State<Onboarding> {
                             alignment: ColumnAlignment.center,
                             weight1: FontWeight.bold,
                           ),
-                        Column(
-                          children: [
-                            SmoothPageIndicator(
-                              controller: controller,
-                              count: onboardingData.length,
-                              effect: const ExpandingDotsEffect(
-                                activeDotColor: Colors.white,
-                                dotColor: Colors.grey,
-                                dotHeight: 8,
-                                dotWidth: 8,
-                              ),
-                            ),
-                            const SizedBox(height: 20),
-                            Bounce(
-                              onTap: () {
-                                if (index == onboardingData.length - 1) {
-                                  Get.to(() => const Login());
-                                } else {
-                                  controller.nextPage(
-                                    duration: const Duration(milliseconds: 300),
-                                    curve: Curves.easeInOut,
-                                  );
-                                }
-                              },
-                              child: Image.asset(
-                                Assets.imagesOnboardingButton,
-                                width: 64,
-                                height: 64,
-                              ),
-                            ),
-                          ],
-                        ),
                       ],
                     ),
                   );
@@ -194,6 +170,43 @@ class _OnboardingState extends State<Onboarding> {
             ),
           ],
         ),
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+      floatingActionButton: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          SmoothPageIndicator(
+            controller: controller,
+            count: onboardingData.length,
+            effect: const ExpandingDotsEffect(
+              activeDotColor: Colors.white,
+              dotColor: Colors.grey,
+              dotHeight: 8,
+              dotWidth: 8,
+            ),
+          ),
+          const SizedBox(height: 20),
+          Bounce(
+            onTap: () {
+              if (currentIndex == onboardingData.length - 1) {
+                Get.to(() => const Login());
+              } else {
+                controller.nextPage(
+                  duration: const Duration(milliseconds: 300),
+                  curve: Curves.easeInOut,
+                );
+              }
+            },
+            child: Image.asset(
+              Assets.imagesOnboardingButton,
+              width: 64,
+              height: 64,
+            ),
+          ),
+          SizedBox(
+            height: 20,
+          )
+        ],
       ),
     );
   }

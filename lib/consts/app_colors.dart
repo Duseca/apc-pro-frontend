@@ -13,6 +13,7 @@ const klighblue=Color(0xff94BFFF);
 const ksecondary=Color(0xff0042A4);
 const kblueBorder3=Color(0xff002152);
 const kblueBorder2=Color(0xff123A74);
+const kblueBorder4=Color(0xff0659D5);
 const kdarkSecondary=Color(0xff138FF3);
 const kblueBorder=Color(0xff263238);
 const kbluefilled2=Color(0xff051D40);

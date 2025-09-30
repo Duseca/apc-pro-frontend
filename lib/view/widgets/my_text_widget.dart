@@ -74,7 +74,7 @@ final Color? bgColor;
             fontWeight: weight,
             decoration: decoration,
             decorationColor:color??kwhite,
-            decorationThickness: 2,
+            decorationThickness: 1,
             fontFamily: fontFamily ??AppFonts.gilroyRegular,
             height: lineHeight,
             fontStyle: fontStyle,

@@ -3,7 +3,7 @@ import 'package:apc_pro/consts/app_colors.dart';
 import 'package:apc_pro/consts/app_fonts.dart';
 import 'package:apc_pro/view/widgets/my_text_widget.dart';
 import 'package:get/get.dart';
-import 'package:get/get_connect/http/src/utils/utils.dart';
+
 
 class TabsWidget extends StatefulWidget {
   const TabsWidget({
@@ -13,15 +13,29 @@ class TabsWidget extends StatefulWidget {
     required this.items,
     this.isexpanded,
     this.height,
-    this.textSize
+    this.textSize,
+    this.bgColor,
+    this.margin,
+
+    /// 🔹 New fields for icon-only tabs
+    this.useIcons = false,
+    this.iconItems,
+    this.iconSize = 22,
   });
 
   final int currentindex;
-  final void Function(int)? ontap; // Allow ontap to receive the index
+  final void Function(int)? ontap;
   final List<String> items;
   final bool? isexpanded;
-  final double? height;
-final double? textSize;
+  final double? height, margin;
+  final Color? bgColor;
+  final double? textSize;
+
+  /// 🔹 New for icons
+  final bool useIcons;
+  final List<String>? iconItems; // expects list of asset paths
+  final double iconSize;
+
   @override
   State<TabsWidget> createState() => _TabsWidgetState();
 }
@@ -31,7 +45,7 @@ int current = 0;
 class _TabsWidgetState extends State<TabsWidget> {
   void _onTap(int index) {
     if (widget.ontap != null) {
-      widget.ontap!(index); // Pass index to ontap callback
+      widget.ontap!(index);
     } else {
       setState(() {
         current = index;
@@ -43,68 +57,72 @@ class _TabsWidgetState extends State<TabsWidget> {
   Widget build(BuildContext context) {
     return widget.isexpanded == false
         ? Container(
-            height: widget.height ?? 40,
-            margin: EdgeInsets.only(bottom: 4),
+            height: widget.height ?? 46,
+            margin: const EdgeInsets.only(bottom: 4),
             decoration: BoxDecoration(
-                color: kblueBorder2.withOpacity(0.4), border: Border.all(color: ktransparent)),
+              borderRadius: BorderRadius.circular(15),
+              color: widget.bgColor ?? kblueBorder2.withOpacity(0.4),
+              border: Border.all(color: ktransparent),
+            ),
             child: SingleChildScrollView(
               scrollDirection: Axis.horizontal,
-              physics: BouncingScrollPhysics(),
+              physics: const BouncingScrollPhysics(),
               child: Row(
-                children: [
-                  Row(
-                    //   mainAxisAlignment: MainAxisAlignment.center,
-                    children: List.generate(
-                      widget.items.length,
-                      (index) {
-                        return GestureDetector(
-                          onTap: () => _onTap(index),
-                          child: AnimatedContainer(
-                            padding: EdgeInsets.all(0.5),
-                            margin: EdgeInsets.all(4),
-                            duration: const Duration(milliseconds: 300),
-                            height: Get.height,
-                            decoration: BoxDecoration(
-                                color: widget.currentindex == index
-                                    ? ksecondary
-                                    : ktransparent,
-                                borderRadius: BorderRadius.circular(7),
-                                border: Border.all(
-                                    color: widget.currentindex == index
-                                        ? ktransparent
-                                        : ktransparent)
-                                // color: ktransparent,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: List.generate(
+                  widget.items.length,
+                  (index) {
+                    return GestureDetector(
+                      onTap: () => _onTap(index),
+                      child: AnimatedContainer(
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 6, vertical: 6),
+                        margin: EdgeInsets.symmetric(
+                            horizontal: widget.margin ?? 6, vertical: 4),
+                        duration: const Duration(milliseconds: 300),
+                        decoration: BoxDecoration(
+                          color: widget.currentindex == index
+                              ? ksecondary
+                              : ktransparent,
+                          borderRadius: BorderRadius.circular(7),
+                        ),
+                        child: Center(
+                          child: widget.useIcons
+                              ? Image.asset(
+                                  widget.iconItems![index],
+                                  width: widget.iconSize,
+                                  height: widget.iconSize,
+                                  color: widget.currentindex == index
+                                      ? kwhite
+                                      : kwhite.withOpacity(0.6),
+                                      
+                                )
+                              : MyText(
+                                  text: widget.items[index],
+                                  textAlign: TextAlign.center,
+                                  size: widget.textSize ?? 11,
+                                  fontFamily: AppFonts.gilroyMedium,
+                                  color: kwhite,
                                 ),
-                            child: Center(
-                              child: MyText(
-                                text: widget.items[index],
-                                // paddingLeft: 7,
-                                // paddingRight: 7,
-                                textAlign: TextAlign.center,
-                                size:widget.textSize?? 13,
-                                fontFamily: AppFonts.gilroyMedium,
-                                color: widget.currentindex == index
-                                    ? kwhite
-                                    : kblack,
-                              ),
-                            ),
-                          ),
-                        );
-                      },
-                    ),
-                  ),
-                ],
+                        ),
+                      ),
+                    );
+                  },
+                ),
               ),
             ),
           )
         : Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 0.0, vertical: 10),
+            padding:
+                const EdgeInsets.symmetric(horizontal: 0.0, vertical: 10),
             child: Container(
               height: widget.height ?? 52,
-              margin: EdgeInsets.only(bottom: 4),
+              margin: const EdgeInsets.only(bottom: 4),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(15),
-                  color: kblueBorder2.withOpacity(0.4), border: Border.all(color: ktransparent)),
+                color: widget.bgColor ?? kblueBorder2.withOpacity(0.4),
+                border: Border.all(color: ktransparent),
+              ),
               child: Row(
                 children: [
                   Expanded(
@@ -113,39 +131,42 @@ class _TabsWidgetState extends State<TabsWidget> {
                         widget.items.length,
                         (index) {
                           return Expanded(
-                              child: GestureDetector(
-                            onTap: () => _onTap(index),
-                            child: AnimatedContainer(
-                              padding: EdgeInsets.all(1),
-                              margin: EdgeInsets.all(4),
-                              duration: const Duration(milliseconds: 300),
-                              height: Get.height,
-                              decoration: BoxDecoration(
+                            child: GestureDetector(
+                              onTap: () => _onTap(index),
+                              child: AnimatedContainer(
+                                padding: EdgeInsets.all(1),
+                                margin: EdgeInsets.all(widget.margin ?? 3),
+                                duration:
+                                    const Duration(milliseconds: 300),
+                                decoration: BoxDecoration(
                                   color: widget.currentindex == index
                                       ? kblueBorder2
                                       : ktransparent,
                                   borderRadius: BorderRadius.circular(10),
-                                  border: Border.all(
-                                      color: widget.currentindex == index
-                                          ? ktransparent
-                                          : ktransparent)
-                                  // color: ktransparent,
-                                  ),
-                              child: Center(
-                                child: MyText(
-                                  text: widget.items[index],
-                                  textAlign: TextAlign.center,
-                                  // paddingLeft: 7,
-                                  // paddingRight: 7,
-                                  size:widget.textSize?? 11.5,
-                                  fontFamily: AppFonts.gilroyRegular,
-                                  color: widget.currentindex == index
-                                      ? kwhite
-                                      : kwhite,
+                                ),
+                                child: Center(
+                                  child: widget.useIcons
+                                      ? Image.asset(
+                                          widget.iconItems![index],
+                                          width: widget.iconSize,
+                                          height: widget.iconSize,
+                                          color: widget.currentindex ==
+                                                  index
+                                              ? kwhite
+                                              : kwhite.withOpacity(0.6),
+                                        )
+                                      : MyText(
+                                          text: widget.items[index],
+                                          textAlign: TextAlign.center,
+                                          size: widget.textSize ?? 11.5,
+                                          fontFamily:
+                                              AppFonts.gilroyRegular,
+                                          color: kwhite,
+                                        ),
                                 ),
                               ),
                             ),
-                          ));
+                          );
                         },
                       ),
                     ),
@@ -156,6 +177,7 @@ class _TabsWidgetState extends State<TabsWidget> {
           );
   }
 }
+
 /////
 
 class MyTabbar extends StatelessWidget {
@@ -163,7 +185,7 @@ class MyTabbar extends StatelessWidget {
   final bool? hasborder;
   final double? indicatorpadd;
   final Color? dividerColor;
-  final Color? sLabel,label2;
+  final Color? sLabel, label2;
   final FontWeight? labelWeight;
   final TabBarIndicatorSize? indicator;
   const MyTabbar(
@@ -171,7 +193,12 @@ class MyTabbar extends StatelessWidget {
       required this.items,
       this.controller,
       this.hasborder = false,
-      this.indicatorpadd, this.dividerColor, this.sLabel, this.label2, this.indicator, this.labelWeight});
+      this.indicatorpadd,
+      this.dividerColor,
+      this.sLabel,
+      this.label2,
+      this.indicator,
+      this.labelWeight});
   final List<String> items;
   @override
   Widget build(BuildContext context) {
@@ -184,36 +211,36 @@ class MyTabbar extends StatelessWidget {
         isScrollable: hasborder == true ? true : false,
         tabAlignment: hasborder == true ? TabAlignment.start : null,
         automaticIndicatorColorAdjustment: false,
-        dividerColor:dividerColor?? ktransparent,
+        dividerColor: dividerColor ?? ktransparent,
         dividerHeight: 4,
         labelStyle: TextStyle(
           fontSize: 14,
-          fontWeight:labelWeight?? FontWeight.w400,
-          fontFamily:AppFonts.gilroyBold,
-          color:sLabel?? kheading,
+          fontWeight: labelWeight ?? FontWeight.w400,
+          fontFamily: AppFonts.gilroyBold,
+          color: sLabel ?? kheading,
         ),
         unselectedLabelStyle: TextStyle(
-          fontSize:14,
-          fontWeight:labelWeight?? FontWeight.w400,
-          fontFamily:AppFonts.gilroyBold,
-          color:label2?? kgrey,
+          fontSize: 14,
+          fontWeight: labelWeight ?? FontWeight.w400,
+          fontFamily: AppFonts.gilroyBold,
+          color: label2 ?? kgrey,
         ),
         //isScrollable: true,
         // tabAlignment: TabAlignment.start,
         physics: BouncingScrollPhysics(),
         padding: EdgeInsets.all(0),
         indicatorPadding: EdgeInsets.symmetric(
-            horizontal: hasborder == true ? 0: indicatorpadd ?? 0),
+            horizontal: hasborder == true ? 0 : indicatorpadd ?? 0),
         labelPadding:
             EdgeInsets.symmetric(horizontal: hasborder == true ? 10 : 0),
         controller: controller,
         indicatorWeight: 4,
-      
-   splashBorderRadius: BorderRadius.circular(10),
-   
+
+        splashBorderRadius: BorderRadius.circular(10),
+
         //labelPadding: EdgeInsets.all(),
         indicatorColor: ksecondary,
-        indicatorSize:indicator?? TabBarIndicatorSize.label,
+        indicatorSize: indicator ?? TabBarIndicatorSize.label,
         //      labelPadding: EdgeInsets.symmetric(horizontal: 3),
         tabs: List.generate(
           items.length,

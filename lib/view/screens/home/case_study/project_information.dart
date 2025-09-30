@@ -20,7 +20,7 @@ class ProjectInformation extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final List<String> _tabs = [
+    final List<String> tabs = [
       "Basic Info",
       'Project Details',
       'Team & Client',
@@ -101,7 +101,7 @@ class ProjectInformation extends StatelessWidget {
                   ),
                   Obx(
                     () => TabsWidget(
-                      items: _tabs,
+                      items: tabs,
                       currentindex: currentIndex.value,
                       ontap: (p0) {
                         currentIndex.value = p0;

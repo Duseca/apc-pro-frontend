@@ -65,116 +65,112 @@ class _CustomDropDownState extends State<CustomDropDown> {
 
   @override
   Widget build(BuildContext context) {
-    return Animate(
-      effects: [MoveEffect()],
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: [
-          if (widget.label != null)
-            Row(
-              children: [
-                Expanded(
-                  child: MyText(
-                    text: widget.label ?? '',
-                    size: widget.labelSize ?? 12,
-                    color: kheading,
-                    fontFamily: AppFonts.gilroyMedium,
-                    paddingBottom: widget.hasSwitch == true ? 0 : 8,
-                  ),
-                ),
-                if (widget.hasSwitch == true)
-                  SwitchButton(scale: 0.6, isActive: true),
-              ],
-            ),
-          DropdownButtonHideUnderline(
-            child: DropdownButton2(
-              items: widget.items
-                  .map(
-                    (item) => DropdownMenuItem<dynamic>(
-                      value: item,
-                      child: MyText(
-                        text: item,
-                        size: 12,
-                        color: kheading,
-                      ),
-                    ),
-                  )
-                  .toList(),
-              value: _selected,
-              onChanged: (val) {
-                setState(() {
-                  _selected = val;
-                  widget.onChanged(val);
-                });
-              },
-              onMenuStateChange: (open) {
-                setState(() {
-                  isOpen = open;
-                });
-              },
-              iconStyleData: const IconStyleData(iconSize: 6),
-              isDense: true,
-              isExpanded: false,
-              customButton: Container(
-                padding: EdgeInsets.symmetric(
-                  horizontal: widget.hpad ?? 12,
-                  vertical: widget.vpad ?? 9,
-                ),
-                decoration: BoxDecoration(
-                  color: widget.bgColor ?? kbackground,
-                  border: Border.all(
-                    color: _selected == widget.hint
-                        ? widget.bordercolor ?? kblueBorder
-                        : widget.borderColor2 ?? kblueBorder,
-                  
-                  ),
-                  borderRadius: widget.borderRadius ??
-                      BorderRadius.circular(widget.radius ?? 8),
-                ),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    MyText(
-                      paddingLeft: 1,
-                      text:
-                          _selected == widget.hint ? widget.hint : _selected!,
-                      size: widget.hintsize ?? 11,
-                      weight: widget.hintWeigth ?? FontWeight.w500,
-                      color: _selected == widget.hint
-                          ? widget.hintColor ?? kwhite
-                          : kwhite,
-                    ),
-                    Padding(
-                      padding: EdgeInsets.only(bottom: widget.iconPad ?? 2),
-                      child: AnimatedRotation(
-                        duration: const Duration(milliseconds: 200),
-                        turns: isOpen ? 0.5 : 0.0, // ⬆️ when open
-                        child: Icon(
-                          Icons.keyboard_arrow_down_rounded,
-                          size: widget.iconSize ?? 26,
-                          color: widget.iconColor ?? kwhite,
-                        ),
-                      ),
-                    ),
-                  ],
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: [
+        if (widget.label != null)
+          Row(
+            children: [
+              Expanded(
+                child: MyText(
+                  text: widget.label ?? '',
+                  size: widget.labelSize ?? 14,
+                  color: kwhite,
+                  fontFamily: AppFonts.gilroyBold,
+                  paddingBottom: widget.hasSwitch == true ? 0 : 8,
                 ),
               ),
-              menuItemStyleData: const MenuItemStyleData(height: 30),
-              dropdownStyleData: DropdownStyleData(
-                elevation: 0,
-                maxHeight: 300,
-                offset: const Offset(0, -5),
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(8),
-                  color: kwhite,
-                  border: Border.all(color: kborder.withOpacity(0.3)),
+              if (widget.hasSwitch == true)
+                SwitchButton(scale: 0.6, isActive: true),
+            ],
+          ),
+        DropdownButtonHideUnderline(
+          child: DropdownButton2(
+            items: widget.items
+                .map(
+                  (item) => DropdownMenuItem<dynamic>(
+                    value: item,
+                    child: MyText(
+                      text: item,
+                      size: 12,
+                      color: kwhite,
+                    ),
+                  ),
+                )
+                .toList(),
+            value: _selected,
+            onChanged: (val) {
+              setState(() {
+                _selected = val;
+                widget.onChanged(val);
+              });
+            },
+            onMenuStateChange: (open) {
+              setState(() {
+                isOpen = open;
+              });
+            },
+            iconStyleData: const IconStyleData(iconSize: 6),
+            isDense: true,
+            isExpanded: false,
+            customButton: Container(
+              padding: EdgeInsets.symmetric(
+                horizontal: widget.hpad ?? 12,
+                vertical: widget.vpad ?? 9,
+              ),
+              decoration: BoxDecoration(
+                color: widget.bgColor ?? kbackground,
+                border: Border.all(
+                  width: 1,
+                  color: _selected == widget.hint
+                      ? widget.bordercolor ?? kblueBorder
+                      : widget.bordercolor ?? kblueBorder,
                 ),
+                borderRadius: widget.borderRadius ??
+                    BorderRadius.circular(widget.radius ?? 8),
+              ),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  MyText(
+                    paddingLeft: 1,
+                    text: _selected == widget.hint ? widget.hint : _selected!,
+                    size: widget.hintsize ?? 11,
+                    weight: widget.hintWeigth ?? FontWeight.w500,
+                    color: _selected == widget.hint
+                        ? widget.hintColor ?? kwhite
+                        : kwhite,
+                  ),
+                  Padding(
+                    padding: EdgeInsets.only(bottom: widget.iconPad ?? 2),
+                    child: AnimatedRotation(
+                      duration: const Duration(milliseconds: 200),
+                      turns: isOpen ? 0.5 : 0.0, // ⬆️ when open
+                      child: Icon(
+                        Icons.keyboard_arrow_down_rounded,
+                        size: widget.iconSize ?? 26,
+                        color: widget.iconColor ?? kwhite,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            menuItemStyleData: const MenuItemStyleData(height: 30),
+            dropdownStyleData: DropdownStyleData(
+              elevation: 0,
+              maxHeight: 300,
+              offset: const Offset(0, -5),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(8),
+                color: kbackground,
+                border: Border.all(color: ksecondary.withOpacity(0.5)),
               ),
             ),
           ),
-          SizedBox(height: widget.mBottom ?? 15),
-        ],
-      ),
+        ),
+        SizedBox(height: widget.mBottom ?? 15),
+      ],
     );
   }
 }
@@ -190,7 +186,8 @@ class CustomDropdown2 extends StatelessWidget {
   final String? value;
   final ValueChanged<String?> onChanged;
   final VoidCallback? onInfoTap;
-final bool? hasInfo;
+  final bool? hasInfo;
+  final Color? hintColor, borderColor, iconColor;
   const CustomDropdown2({
     super.key,
     required this.label,
@@ -198,14 +195,17 @@ final bool? hasInfo;
     required this.items,
     required this.value,
     required this.onChanged,
-    this.onInfoTap, this.hasInfo=true,
+    this.onInfoTap,
+    this.hasInfo = true,
+    this.hintColor,
+    this.borderColor,
+    this.iconColor,
   });
 
   @override
   Widget build(BuildContext context) {
     return InputDecorator(
       decoration: InputDecoration(
-        
         labelText: label,
         labelStyle: TextStyle(
           color: Colors.white,
@@ -215,11 +215,11 @@ final bool? hasInfo;
         ),
         enabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(8),
-          borderSide: const BorderSide(color: kblueBorder),
+          borderSide: BorderSide(color: borderColor ?? kblueBorder),
         ),
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(8),
-          borderSide: const BorderSide(color: ksecondary),
+          borderSide: BorderSide(color: borderColor ?? ksecondary),
         ),
         contentPadding: const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
       ),
@@ -228,47 +228,47 @@ final bool? hasInfo;
           Expanded(
             child: DropdownButtonHideUnderline(
               child: DropdownButton<String>(
-         
                 isExpanded: true,
                 hint: Text(
                   hint,
                   style: TextStyle(
-                    color: kgrey,
+                    color: hintColor ?? kgrey,
                     fontSize: 12,
                     fontFamily: AppFonts.gilroyRegular,
                     fontWeight: FontWeight.w400,
                   ),
                 ),
                 value: value,
-                 dropdownColor: kbackground,
+                dropdownColor: kblackfill,
+                borderRadius: BorderRadius.circular(8),
                 items: items
-                
-                
                     .map(
                       (e) => DropdownMenuItem(
-                        
                         value: e,
                         child: Text(
                           e,
-                          style:  TextStyle(color: kgrey,fontSize: 12,fontFamily: AppFonts.gilroyBold),
+                          style: TextStyle(
+                              color: hintColor ?? kgrey,
+                              fontSize: 12,
+                              fontFamily: AppFonts.gilroyMedium),
                         ),
                       ),
                     )
                     .toList(),
                 onChanged: onChanged,
                 icon: Icon(
-                  size: 20,
-                  Icons.keyboard_arrow_down_rounded,
-                  color: kwhite.withOpacity(0.8)
-                ),
-                
+                    size: 20,
+                    Icons.keyboard_arrow_down_rounded,
+                    color: iconColor ?? kwhite.withOpacity(0.8)),
               ),
-              
             ),
           ),
-          if(hasInfo==true)...{
-          SizedBox(width: 2,),
-          TooltipIcon()}
+          if (hasInfo == true) ...{
+            SizedBox(
+              width: 2,
+            ),
+            TooltipIcon()
+          }
           // GestureDetector(
           //   onTap: onInfoTap,
           //   child:  Padding(
@@ -277,6 +277,214 @@ final bool? hasInfo;
           //   ),
           // ),
         ],
+      ),
+    );
+  }
+}
+
+//
+
+class SimpleDropDown extends StatefulWidget {
+  const SimpleDropDown({
+    Key? key,
+    required this.label,
+    required this.hint,
+    required this.items,
+    this.value,
+    this.onChanged,
+    this.marginBottom = 0,
+    this.labelSize = 14.0,
+    this.hintSize = 14.0,
+    this.labelColor,
+    this.hintColor,
+    this.backgroundColor,
+    this.borderColor,
+    this.borderRadius = 8,
+    this.isOptional = false,
+    this.padding = const EdgeInsets.symmetric(horizontal: 7, vertical: 16),
+
+    // 🔹 Added params similar to SimpleDropDown
+    this.textColor,
+    this.textSize = 12,
+    this.iconColor,
+    this.iconSize = 20,
+    this.hpad,
+    this.vpad,
+    this.hasInfo,
+  }) : super(key: key);
+
+  final String label;
+  final String hint;
+  final List<String> items;
+  final String? value;
+  final ValueChanged<String?>? onChanged;
+
+  final double marginBottom;
+  final double labelSize;
+  final double hintSize;
+  final double? hpad, vpad;
+
+  final Color? labelColor;
+  final Color? hintColor;
+  final Color? backgroundColor;
+  final Color? borderColor;
+  final double borderRadius;
+  final bool? isOptional, hasInfo;
+  final EdgeInsets padding;
+
+  final Color? textColor;
+  final double textSize;
+  final Color? iconColor;
+  final double iconSize;
+
+  @override
+  _SimpleDropDownState createState() => _SimpleDropDownState();
+}
+
+class _SimpleDropDownState extends State<SimpleDropDown> {
+  late FocusNode _focusNode;
+  bool _isFocused = false;
+
+  @override
+  void initState() {
+    super.initState();
+    _focusNode = FocusNode();
+    _focusNode.addListener(_onFocusChange);
+  }
+
+  @override
+  void dispose() {
+    _focusNode.removeListener(_onFocusChange);
+    _focusNode.dispose();
+    super.dispose();
+  }
+
+  void _onFocusChange() {
+    setState(() {
+      _isFocused = _focusNode.hasFocus;
+    });
+  }
+
+  bool get _shouldFloatLabel {
+    return _isFocused || widget.value != null;
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: EdgeInsets.only(bottom: widget.marginBottom),
+      child: Container(
+        // padding: EdgeInsets.symmetric(    horizontal: widget.hpad ?? 12,
+        //         vertical: widget.vpad ?? 9,),
+        decoration: BoxDecoration(
+          color: widget.backgroundColor ?? kbackground,
+          border: Border.all(
+            color: _isFocused ? kblueBorder : widget.borderColor ?? kblueBorder,
+            width: _isFocused ? 1.5 : 1,
+          ),
+          borderRadius: BorderRadius.circular(widget.borderRadius),
+        ),
+        child: Stack(
+          clipBehavior: Clip.none,
+          children: [
+            // Floating Label
+            AnimatedPositioned(
+              duration: Duration(milliseconds: 200),
+              left: 12,
+              top: _shouldFloatLabel ? -8 : 18,
+              child: AnimatedContainer(
+                duration: Duration(milliseconds: 200),
+                padding: EdgeInsets.symmetric(horizontal: 4),
+                decoration: BoxDecoration(
+                  color: _shouldFloatLabel
+                      ? widget.backgroundColor ?? kbackground
+                      : Colors.transparent,
+                ),
+                child: Text(
+                  widget.label,
+                  style: TextStyle(
+                    fontSize: _shouldFloatLabel ? 14 : widget.labelSize,
+                    fontWeight: FontWeight.w500,
+                    fontFamily: AppFonts.gilroyRegular,
+                    color: _isFocused ? kwhite : widget.labelColor ?? kwhite,
+                  ),
+                ),
+              ),
+            ),
+
+            // Dropdown
+            Padding(
+              padding: EdgeInsets.only(top: _shouldFloatLabel ? 0 : 0),
+              child: DropdownButtonHideUnderline(
+                child: DropdownButton2<String>(
+                  isExpanded: true,
+                  hint: Text(widget.hint,
+                      style: TextStyle(
+                          color: widget.hintColor ?? kgrey,
+                          fontSize: 12,
+                          fontFamily: AppFonts.gilroyMedium)),
+                  items: widget.items.map((String item) {
+                    return DropdownMenuItem<String>(
+                      value: item,
+                      child: Text(item,
+                          style: TextStyle(
+                              color: widget.hintColor ?? kgrey,
+                              fontSize: 12,
+                              fontFamily: AppFonts.gilroyMedium)),
+                    );
+                  }).toList(),
+                  value: widget.value,
+                  onChanged: widget.onChanged,
+                  onMenuStateChange: (isOpen) {
+                    setState(() {
+                      _isFocused = isOpen;
+                    });
+                  },
+                  buttonStyleData: ButtonStyleData(
+                    height: 50,
+                    padding: widget.padding,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(widget.borderRadius),
+                      color: Colors.transparent,
+                    ),
+                  ),
+                  iconStyleData: IconStyleData(
+                    icon: Row(
+                      children: [
+                        Icon(
+                          Icons.keyboard_arrow_down_rounded,
+                          color: widget.iconColor ?? kwhite.withOpacity(0.8),
+                          size: widget.iconSize,
+                        ),
+                        if (widget.hasInfo == true) ...{
+                          SizedBox(
+                            width: 2,
+                          ),
+                          TooltipIcon()
+                        }
+                      ],
+                    ),
+                  ),
+                  dropdownStyleData: DropdownStyleData(
+                    maxHeight: 300,
+                    elevation: 8,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(12),
+                      color: kbackground,
+                      border: Border.all(
+                        color: kblueBorder2.withOpacity(0.5),
+                      ),
+                    ),
+                  ),
+                  menuItemStyleData: MenuItemStyleData(
+                    height: 48,
+                    padding: EdgeInsets.symmetric(horizontal: 6),
+                  ),
+                ),
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

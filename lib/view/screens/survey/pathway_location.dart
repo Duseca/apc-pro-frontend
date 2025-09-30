@@ -16,31 +16,32 @@ class PathwayLocation extends StatelessWidget {
 
     return Column(
       children: [
-        CustomDropdown2(
+        SimpleDropDown(
           label: "RICS Pathway",
           hint: "Select your RICS pathway",
-          items: ["Pathway 1", "Pathway 2", "Pathway 3"],
-          value: null,
+          items: ["Pathway 1", "Pathway 2", "Pathway 3","Select your RICS pathway"],
+          value: 'Select your RICS pathway',
           onChanged: (val) {},
-          onInfoTap: () {},
+          hasInfo: true,
+      
         ),
         SizedBox(height: 24,),
-              CustomDropdown2(
+              SimpleDropDown(
           label: "Region",
           hint: "Select your region",
-          items: ["Region 1", "Region 2", "Region 3"],
-          value: null,
+          items: ["Region 1", "Region 2", "Region 3","Select your region"],
+          value: 'Select your region',
           onChanged: (val) {},
-          onInfoTap: () {},
+       
         ),
          SizedBox(height: 24,),
-              CustomDropdown2(
+              SimpleDropDown(
           label: "Country",
           hint: "Select your country",
-          items: ["Country 1", "Country 2", "Country 3"],
-          value: null,
+          items: ["Country 1", "Country 2", "Country 3","Select your country"],
+          value: "Select your country",
           onChanged: (val) {},
-          onInfoTap: () {},
+           hasInfo: true,
         ),
         SizedBox(
           height: 25,

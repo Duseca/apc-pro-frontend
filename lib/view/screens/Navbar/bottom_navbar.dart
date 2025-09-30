@@ -1,8 +1,13 @@
 import 'dart:developer';
 import 'dart:io';
 
+import 'package:apc_pro/view/screens/apc_ai/apc_AI.dart';
+import 'package:apc_pro/view/screens/community/community.dart';
 import 'package:apc_pro/view/screens/home/home.dart';
+import 'package:apc_pro/view/screens/notifications/notifications.dart';
+import 'package:apc_pro/view/screens/profile/profile.dart';
 import 'package:apc_pro/view/widgets/my_text_widget.dart';
+import 'package:bounce/bounce.dart';
 import 'package:flutter/material.dart';
 import 'package:apc_pro/consts/app_colors.dart';
 import 'package:apc_pro/consts/app_fonts.dart';
@@ -40,7 +45,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
         'image': currentIndex == 1
             ? Assets.imagesCommunityfilled
             : Assets.imagesCommunityunfilled,
-        'label': 'Earnings'.tr,
+        'label': 'Community'.tr,
       },
       {
         // Placeholder for FAB notch
@@ -48,13 +53,13 @@ class _BottomNavBarState extends State<BottomNavBar> {
         'label': '',
       },
       {
-        'image': currentIndex == 2
+        'image': currentIndex == 3
             ? Assets.imagesNotificationfilled
             : Assets.imagesNotificationunfilled,
-        'label': 'Reviews'.tr,
+        'label': 'Notification'.tr,
       },
       {
-        'image': currentIndex == 3
+        'image': currentIndex == 4
             ? Assets.imagesProfilefilled
             : Assets.imagesProfileunfilled,
         'label': 'Profile'.tr,
@@ -64,7 +69,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
 
   @override
   Widget build(BuildContext context) {
-    final List<Widget> screens = [Home(), Home(), Home(), Home(), Home()];
+    final List<Widget> screens = [Home(), Community(), Home(), Notificationss(), Profile()];
 
     return Scaffold(
       backgroundColor: kbackground,
@@ -90,15 +95,18 @@ class _BottomNavBarState extends State<BottomNavBar> {
 
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-      floatingActionButton: FloatingActionButton(
-        backgroundColor: kbackground,
-        onPressed: () {
-          Get.to(() => Home());
+      floatingActionButton: Bounce(
+        onTap: () {
+          Get.bottomSheet(ApcAi(),isScrollControlled: true,barrierColor: kblackfill.withOpacity(0.5));
+        //  Get.offAll(()=>BottomNavBar(index: 0,));
         },
-        child: Image.asset(
-          Assets.imagesApcAI,
-          width: 66,
-          height: 55,
+        child: Padding(
+          padding: const EdgeInsets.only(top: 30),
+          child: Image.asset(
+            Assets.imagesApcAI,
+            width: 77,
+            height: 77,
+          ),
         ),
       ),
     );
