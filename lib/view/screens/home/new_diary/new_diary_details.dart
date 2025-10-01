@@ -37,9 +37,14 @@ class NewDiaryDetails extends StatelessWidget {
                   SimpleDropDown(
                     label: "Competency *",
                     hint: "Select competency",
-                    items: ["competency 1", "competency 2", "competency 3",'Select competency'],
-                value: 'Select competency',
-                  
+                    items: [
+                      "competency 1",
+                      "competency 2",
+                      "competency 3",
+                      'Select competency'
+                    ],
+                    value: 'Select competency',
+                    backgroundColor: kbackground,
                     onChanged: (val) {},
                     // onInfoTap: () {},
                     // hasInfo: false,
@@ -48,12 +53,12 @@ class NewDiaryDetails extends StatelessWidget {
                     height: 26,
                   ),
                   SimpleDropDown(
+                    backgroundColor: kbackground,
                     label: "Competency Level *",
                     hint: "Level 1",
                     items: ["Level 1", "Level 2", "Level 3"],
                     value: 'Level 1',
                     onChanged: (val) {},
-                
                   ),
                   SizedBox(
                     height: 26,

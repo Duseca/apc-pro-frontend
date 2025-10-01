@@ -26,15 +26,16 @@ class AddNewSubmissionItems extends StatelessWidget {
             Expanded(
               child: ListView(
                 shrinkWrap: true,
-                padding:
-                    const EdgeInsets.symmetric(vertical: 15, ),
+                padding: const EdgeInsets.symmetric(
+                  vertical: 15,
+                ),
                 physics: const BouncingScrollPhysics(),
                 children: [
                   Row(
                     children: [
                       Expanded(
                           child: MyText(
-                        text:title?? 'Add New Entry',
+                        text: title ?? 'Add New Entry',
                         size: 18,
                         fontFamily: AppFonts.gilroyBold,
                       )),
@@ -61,6 +62,7 @@ class AddNewSubmissionItems extends StatelessWidget {
                     label: 'Category',
                     hasInfo: false,
                     iconColor: klighblue,
+                    backgroundColor: kbackground,
                   ),
                   SizedBox(
                     height: 25,
@@ -73,6 +75,7 @@ class AddNewSubmissionItems extends StatelessWidget {
                     label: 'Priority',
                     hasInfo: false,
                     iconColor: klighblue,
+                    backgroundColor: kbackground,
                   ),
                   SizedBox(
                     height: 25,
@@ -94,6 +97,7 @@ class AddNewSubmissionItems extends StatelessWidget {
                     onChanged: (i) {},
                     label: 'Status',
                     hasInfo: false,
+                    backgroundColor: kbackground,
                     iconColor: klighblue,
                   ),
                   SizedBox(
@@ -122,10 +126,11 @@ class AddNewSubmissionItems extends StatelessWidget {
                   MyButton(
                     buttonText: 'Save',
                     mTop: 20,
-                    onTap:ontap?? () {
-                      Get.back();
-                      Get.dialog(LogDiaryDialog());
-                    },
+                    onTap: ontap ??
+                        () {
+                          Get.back();
+                          Get.dialog(LogDiaryDialog());
+                        },
                   )
                 ],
               ),

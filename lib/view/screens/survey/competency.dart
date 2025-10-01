@@ -181,7 +181,7 @@ class checkbox_row extends StatelessWidget {
   final bool? isActive, hasContainer;
   final Color? cBorder, cbg;
   final double? radius;
-final double? tSize;
+  final double? tSize;
   const checkbox_row({
     super.key,
     this.title,
@@ -189,14 +189,15 @@ final double? tSize;
     this.hasContainer = false,
     this.cBorder,
     this.cbg,
-    this.radius, this.tSize,
+    this.radius,
+    this.tSize,
   });
 
   @override
   Widget build(BuildContext context) {
     return Row(
       crossAxisAlignment: CrossAxisAlignment.start,
-      mainAxisSize: MainAxisSize.min, // important in nested Row
+      mainAxisSize: MainAxisSize.min,
       children: [
         CustomCheckBox(
           isActive: isActive ?? false,

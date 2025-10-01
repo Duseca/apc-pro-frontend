@@ -53,13 +53,10 @@ class CreateNewPost extends StatelessWidget {
                 'General Chat',
                 'Select a forum'
               ],
-              onChanged: (value) {
-                
-              },
+              onChanged: (value) {},
+              backgroundColor: kbackground,
               value: 'Select a forum',
-               label: 'Forum',
-              
-  
+              label: 'Forum',
             ),
             SizedBox(
               height: 25,
@@ -86,7 +83,6 @@ class CreateNewPost extends StatelessWidget {
               mTop: 20,
               onTap: () {
                 Get.back();
-                Get.dialog(LogDiaryDialog());
               },
             )
           ],

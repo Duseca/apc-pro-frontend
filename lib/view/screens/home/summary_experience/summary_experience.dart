@@ -1,6 +1,7 @@
 import 'package:apc_pro/consts/app_colors.dart';
 import 'package:apc_pro/consts/app_fonts.dart';
 import 'package:apc_pro/generated/assets.dart';
+import 'package:apc_pro/view/screens/apc_ai/apc_AI.dart';
 import 'package:apc_pro/view/screens/home/entries/entries_detail.dart';
 import 'package:apc_pro/view/screens/home/summary_experience/continue_writing.dart';
 import 'package:apc_pro/view/widgets/appbar.dart';
@@ -67,7 +68,7 @@ class SummaryExperience extends StatelessWidget {
                       title: 'Continue Writing',
                       desc: '15 competencies to go',
                       ontap: () {
-                        Get.to(()=>ContinueWriting());
+                        Get.to(() => ContinueWriting());
                       },
                     ),
                     newEntry_container(
@@ -75,6 +76,9 @@ class SummaryExperience extends StatelessWidget {
                       icon: Assets.imagesDocument2,
                       title: 'AI Assistance',
                       desc: 'Get writing help and suggestions',
+                      ontap: () {
+                        Get.bottomSheet(ApcAi(), isScrollControlled: true);
+                      },
                     ),
                     CustomeContainer(
                       vpad: 17,
@@ -109,7 +113,9 @@ class SummaryExperience extends StatelessWidget {
                       borderColor: ktransparent,
                       hpad: 17,
                     ),
-                    SizedBox(height: 22,),
+                    SizedBox(
+                      height: 22,
+                    ),
                     CustomeContainer(
                       borderColor: kblueBorder2,
                       color: kblackfill,
@@ -119,21 +125,22 @@ class SummaryExperience extends StatelessWidget {
                       widget: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-     MyText(
-            text:  'Completion Estimate',
-            size: 14,
-            paddingBottom: 12,
-            fontFamily: AppFonts.gilroySemiBold,
-          ),
-                  TwoTextedColumn(
-                                          text1: 'About 8 working days',
-                                          text2: 'Based on remaining competencies and average writing time',
-                                          size1: 12,
-                                          size2: 12,
-                                          fontFamily2: AppFonts.gilroyRegular,
-                                          fontFamily: AppFonts.gilroyBold,
-                                          mBottom: 0,
-                                        ),
+                          MyText(
+                            text: 'Completion Estimate',
+                            size: 14,
+                            paddingBottom: 12,
+                            fontFamily: AppFonts.gilroySemiBold,
+                          ),
+                          TwoTextedColumn(
+                            text1: 'About 8 working days',
+                            text2:
+                                'Based on remaining competencies and average writing time',
+                            size1: 12,
+                            size2: 12,
+                            fontFamily2: AppFonts.gilroyRegular,
+                            fontFamily: AppFonts.gilroyBold,
+                            mBottom: 0,
+                          ),
                         ],
                       ),
                     )

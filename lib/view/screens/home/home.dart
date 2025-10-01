@@ -191,18 +191,27 @@ class Home extends StatelessWidget {
                                     Expanded(
                                       flex: 2,
                                       child: Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
                                         children: [
                                           MyText(
                                             text: 'Today’s Actions',
                                             size: 18,
                                             weight: FontWeight.w800,
+                                            paddingBottom: 5,
                                           ),
                                           checkbox_row(
                                             title:
                                                 'Complete Today’s Diary Entry',
                                           ),
+                                          SizedBox(
+                                            height: 2,
+                                          ),
                                           checkbox_row(
                                             title: 'Review Competency Program',
+                                          ),
+                                          SizedBox(
+                                            height: 2,
                                           ),
                                           checkbox_row(
                                             title: 'Upgrade Summary Draft',

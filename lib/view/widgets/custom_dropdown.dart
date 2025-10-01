@@ -377,7 +377,7 @@ class _SimpleDropDownState extends State<SimpleDropDown> {
         // padding: EdgeInsets.symmetric(    horizontal: widget.hpad ?? 12,
         //         vertical: widget.vpad ?? 9,),
         decoration: BoxDecoration(
-          color: widget.backgroundColor ?? kbackground,
+          color: widget.backgroundColor ?? ktransparent,
           border: Border.all(
             color: _isFocused ? kblueBorder : widget.borderColor ?? kblueBorder,
             width: _isFocused ? 1.5 : 1,
@@ -397,7 +397,7 @@ class _SimpleDropDownState extends State<SimpleDropDown> {
                 padding: EdgeInsets.symmetric(horizontal: 4),
                 decoration: BoxDecoration(
                   color: _shouldFloatLabel
-                      ? widget.backgroundColor ?? kbackground
+                      ? widget.backgroundColor ?? kblackfill
                       : Colors.transparent,
                 ),
                 child: Text(

@@ -1,8 +1,10 @@
+import 'package:apc_pro/consts/app_colors.dart';
 import 'package:apc_pro/view/widgets/custom_dropdown.dart';
 import 'package:apc_pro/view/widgets/dialogboxes.dart';
 import 'package:apc_pro/view/widgets/my_button.dart';
 import 'package:apc_pro/view/widgets/my_text_field.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class AddMemeberDialog extends StatelessWidget {
   const AddMemeberDialog({super.key});
@@ -36,6 +38,7 @@ class AddMemeberDialog extends StatelessWidget {
             maxLines: 2,
           ),
           SimpleDropDown(
+            backgroundColor: kbackground,
             label: 'Reporting Relationship',
             hint: 'Peer/ Colleague',
             items: ['Peer/ Colleague', 'outsiders'],
@@ -47,6 +50,9 @@ class AddMemeberDialog extends StatelessWidget {
             mTop: 30,
             buttonText: 'Add',
             mBottom: 20,
+            onTap: () {
+              Get.back();
+            },
           )
         ],
       ),
