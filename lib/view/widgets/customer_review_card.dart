@@ -97,7 +97,7 @@
 //                       ),
 //                   if(reply.value==true)...{
 //                     SizedBox(height: 10,),
-//                   MyTextField(
+//                   MyTextField2(
 //                     hintColor: kgrey.withOpacity(0.5),
 //                     hintSize: 12,
 //                     hint: 'Write your reply here',

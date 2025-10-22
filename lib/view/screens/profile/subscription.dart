@@ -16,7 +16,6 @@ class Subscription extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: kbackground,
         appBar: simpleAppBar(
           context: context,
           title: 'Subscription and billing',
@@ -94,7 +93,7 @@ class Subscription extends StatelessWidget {
                     fontFamily: AppFonts.gilroyMedium,
                     fontSize: 15,
                     onTap: () {
-                        Get.to(()=>PaymentMethod());
+                      Get.to(() => PaymentMethod());
                     },
                     buttonText: 'Manage Payment Method',
                   )

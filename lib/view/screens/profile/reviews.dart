@@ -14,7 +14,6 @@ class Reviews extends StatelessWidget {
     return Scaffold(
         appBar:
             simpleAppBar(context: context, title: 'Review', centerTitle: true),
-        backgroundColor: kbackground,
         body: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
@@ -40,7 +39,7 @@ class Reviews extends StatelessWidget {
                   SizedBox(
                     height: 51,
                   ),
-                  MyTextField(
+                  MyTextField2(
                     label: 'Your experience with APC Pro ',
                     hint: 'Enter your feedback here',
                     maxLines: 4,

@@ -42,37 +42,36 @@ class GoalsExpectations extends StatelessWidget {
         'text2': '— Targeted resources to strengthen key competencies.',
       }
     ];
- List<Map<String, dynamic>> support = [
-  {
-    'text1': 'Study Planning ',
-    'text2': '— Guidance on structuring your study time and topics.',
-  },
-  {
-    'text1': 'Technical Guidance ',
-    'text2': '— Expert help with technical subjects.',
-  },
-  {
-    'text1': 'Interview Coaching ',
-    'text2': '— Practice sessions, QGA, and feedback.',
-  },
-  {
-    'text1': 'Time Management ',
-    'text2': '— Reminders and progress tracking to stay on track.',
-  },
-  {
-    'text1': 'Motivation & Accountability ',
-    'text2': '— Strategies to balance work, study and life.',
-  },
-  {
-    'text1': 'Peer Support ',
-    'text2': '— Connect with other candidates for shared learning.',
-  },
-  {
-    'text1': 'Export Feedback ',
-    'text2': '— Reviews of submissions and competency responses.',
-  }
-];
-
+    List<Map<String, dynamic>> support = [
+      {
+        'text1': 'Study Planning ',
+        'text2': '— Guidance on structuring your study time and topics.',
+      },
+      {
+        'text1': 'Technical Guidance ',
+        'text2': '— Expert help with technical subjects.',
+      },
+      {
+        'text1': 'Interview Coaching ',
+        'text2': '— Practice sessions, QGA, and feedback.',
+      },
+      {
+        'text1': 'Time Management ',
+        'text2': '— Reminders and progress tracking to stay on track.',
+      },
+      {
+        'text1': 'Motivation & Accountability ',
+        'text2': '— Strategies to balance work, study and life.',
+      },
+      {
+        'text1': 'Peer Support ',
+        'text2': '— Connect with other candidates for shared learning.',
+      },
+      {
+        'text1': 'Export Feedback ',
+        'text2': '— Reviews of submissions and competency responses.',
+      }
+    ];
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -113,7 +112,7 @@ class GoalsExpectations extends StatelessWidget {
         SizedBox(
           height: 30,
         ),
-        MyTextField(
+        MyTextField2(
           label: 'Final Assessment Date',
           hint: 'mm/dd/yyyy',
           suffixIcon: Image.asset(
@@ -139,7 +138,7 @@ class GoalsExpectations extends StatelessWidget {
           paddingTop: 6,
           paddingBottom: 15,
         ),
-           ListView.builder(
+        ListView.builder(
           padding: EdgeInsets.all(0),
           shrinkWrap: true,
           physics: const NeverScrollableScrollPhysics(),
@@ -182,7 +181,9 @@ class GoalsExpectations extends StatelessWidget {
             ),
           ],
         ),
-        SizedBox(height: 30,)
+        SizedBox(
+          height: 30,
+        )
       ],
     );
   }

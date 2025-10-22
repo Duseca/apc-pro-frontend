@@ -29,7 +29,6 @@ class ProjectInformation extends StatelessWidget {
 
     final RxInt currentIndex = 0.obs;
     return Scaffold(
-        backgroundColor: kbackground,
         appBar: simpleAppBar(
             context: context, title: 'Project Information', centerTitle: true),
         body: Column(
@@ -113,20 +112,20 @@ class ProjectInformation extends StatelessWidget {
                   SizedBox(
                     height: 25,
                   ),
-                   Obx(() {
-                  switch (currentIndex.value) {
-                    case 0:
-                      return BasicInfo();
-                    case 1:
-                      return ProjectDetails();
-                    case 2:
-                      return TeamClient(); 
-                    case 3:
-                      return Confidential(); 
-                    default:
-                      return BasicInfo();
-                  }
-                }),
+                  Obx(() {
+                    switch (currentIndex.value) {
+                      case 0:
+                        return BasicInfo();
+                      case 1:
+                        return ProjectDetails();
+                      case 2:
+                        return TeamClient();
+                      case 3:
+                        return Confidential();
+                      default:
+                        return BasicInfo();
+                    }
+                  }),
                 ],
               ),
             ),
@@ -143,10 +142,9 @@ class BasicInfo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
-      crossAxisAlignment: 
-      CrossAxisAlignment.start,
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        MyTextField(
+        MyTextField2(
           label: 'Project Title *',
           hint: 'e.g., Commercial Office...... ',
           marginBottom: 20,
@@ -155,7 +153,7 @@ class BasicInfo extends StatelessWidget {
           spacing: 15,
           children: [
             Expanded(
-              child: MyTextField(
+              child: MyTextField2(
                 label: 'Start date *',
                 hint: 'mm/dd/yyyy',
                 suffixIcon: Image.asset(
@@ -166,7 +164,7 @@ class BasicInfo extends StatelessWidget {
               ),
             ),
             Expanded(
-              child: MyTextField(
+              child: MyTextField2(
                 label: 'End date *',
                 hint: 'mm/dd/yyyy',
                 suffixIcon: Image.asset(
@@ -178,12 +176,12 @@ class BasicInfo extends StatelessWidget {
             ),
           ],
         ),
-        MyTextField(
+        MyTextField2(
           label: 'Project Sector',
           hint: 'Other....',
           marginBottom: 20,
         ),
-        MyTextField(
+        MyTextField2(
           label: 'Project Location',
           hint: 'Other....',
           marginBottom: 20,

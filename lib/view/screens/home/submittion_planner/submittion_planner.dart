@@ -48,26 +48,26 @@ class SubmittionPlanner extends StatelessWidget {
       },
     ];
 
-final List<Map<String, dynamic>> aiRecommendations = [
-  {
-    "title": "Accelerate Diary Completion",
-    "desc":
-        "Based on your current progress, consider increasing diary logging frequency to 4–5 entries per week to ensure you meet the 200-day requirement before your assessment date.",
-    "tags": ["Time management", "High Impact"],
-  },
-  {
-    "title": "Schedule Mock Interview Practice",
-    "desc":
-        "Book at least 3 mock interview sessions 4–6 weeks before your assessment. This aligns with your case study completion timeline.",
-    "tags": ["Interview prep", "Medium Priority"],
-  },
-  {
-    "title": "CPD Balance Optimization",
-    "desc":
-        "You're ahead on informal CPD but behind on formal learning. Consider booking structured courses or webinars to balance your 10-hour formal requirement.",
-    "tags": ["CPD Planning", "Medium Priority"],
-  },
-];
+    final List<Map<String, dynamic>> aiRecommendations = [
+      {
+        "title": "Accelerate Diary Completion",
+        "desc":
+            "Based on your current progress, consider increasing diary logging frequency to 4–5 entries per week to ensure you meet the 200-day requirement before your assessment date.",
+        "tags": ["Time management", "High Impact"],
+      },
+      {
+        "title": "Schedule Mock Interview Practice",
+        "desc":
+            "Book at least 3 mock interview sessions 4–6 weeks before your assessment. This aligns with your case study completion timeline.",
+        "tags": ["Interview prep", "Medium Priority"],
+      },
+      {
+        "title": "CPD Balance Optimization",
+        "desc":
+            "You're ahead on informal CPD but behind on formal learning. Consider booking structured courses or webinars to balance your 10-hour formal requirement.",
+        "tags": ["CPD Planning", "Medium Priority"],
+      },
+    ];
 
     final List<Map<String, dynamic>> newEntryOptions = [
       {
@@ -75,7 +75,7 @@ final List<Map<String, dynamic>> aiRecommendations = [
         "desc": "See all milestones and deadlines in calendar view",
         "icon": Assets.imagesCalendar,
         "iconColor": ksecondary,
-        "ontap": () =>Get.to(() => ViewSubmittionCalender()),
+        "ontap": () => Get.to(() => ViewSubmittionCalender()),
       },
       {
         "title": "Add Task",
@@ -128,10 +128,12 @@ final List<Map<String, dynamic>> aiRecommendations = [
     ];
 
     final savedQuizzes = [
-      {'title': 'Log weekly diary entries', 'time': 'Diary management  |  120 min  | Due in 7 days'},
+      {
+        'title': 'Log weekly diary entries',
+        'time': 'Diary management  |  120 min  | Due in 7 days'
+      },
     ];
     return Scaffold(
-        backgroundColor: kbackground,
         appBar: simpleAppBar(
             context: context,
             title: 'Submission Planner',
@@ -306,58 +308,57 @@ final List<Map<String, dynamic>> aiRecommendations = [
                               },
                             ),
                           ])),
-                          CustomeContainer(
-            radius: 10,
-            borderColor: kblueBorder3,
-            color: kblackfill,
-            vpad: 17,
-            hpad: 13,
-            mbott: 20,
-            widget: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Row(
-                  children: [
-                    Expanded(
-                      child: row_widget(
-                        title: 'Active Tasks',
-                        fontFamily: AppFonts.gilroyBold,
-                        texSize: 12,
-                        icon: Assets.imagesMock,
-                        iconSize: 15,
-                      ),
+                  CustomeContainer(
+                    radius: 10,
+                    borderColor: kblueBorder3,
+                    color: kblackfill,
+                    vpad: 17,
+                    hpad: 13,
+                    mbott: 20,
+                    widget: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Row(
+                          children: [
+                            Expanded(
+                              child: row_widget(
+                                title: 'Active Tasks',
+                                fontFamily: AppFonts.gilroyBold,
+                                texSize: 12,
+                                icon: Assets.imagesMock,
+                                iconSize: 15,
+                              ),
+                            ),
+                            buttonContainer(
+                              radius: 4,
+                              vPadding: 3,
+                              hPadding: 8,
+                              text: 'Add Task',
+                              borderColor: kblueBorder2,
+                              bgColor: kblackfill,
+                              icon: Icons.add_rounded,
+                              iconColor: ksecondary,
+                              textsize: 11,
+                            )
+                          ],
+                        ),
+                        SizedBox(height: 8),
+                        ListView.builder(
+                          shrinkWrap: true,
+                          physics: NeverScrollableScrollPhysics(),
+                          itemCount: savedQuizzes.length,
+                          itemBuilder: (context, index) {
+                            final quiz = savedQuizzes[index];
+                            return test_competency_widget(
+                              text1: quiz['title'],
+                              text2: quiz['time'],
+                              hasButton: false,
+                            );
+                          },
+                        ),
+                      ],
                     ),
-                    buttonContainer(
-                      radius: 4,
-                      vPadding: 3,
-                      hPadding: 8,
-                      text: 'Add Task',
-                      borderColor: kblueBorder2,
-                      bgColor: kblackfill,
-                      icon: Icons.add_rounded,
-                      iconColor: ksecondary,
-                      textsize: 11,
-                    )
-                  ],
-                ),
-                SizedBox(height: 8),
-                ListView.builder(
-                  shrinkWrap: true,
-                  physics: NeverScrollableScrollPhysics(),
-                  itemCount: savedQuizzes.length,
-                  itemBuilder: (context, index) {
-                    final quiz = savedQuizzes[index];
-                    return test_competency_widget(
-                      text1: quiz['title'],
-                      text2: quiz['time'],
-                      hasButton: false,
-                    );
-                  },
-                ),
-              ],
-            ),
-          ),
-
+                  ),
                   CustomeContainer(
                       radius: 10,
                       borderColor: kblueBorder2,
@@ -420,7 +421,7 @@ final List<Map<String, dynamic>> aiRecommendations = [
                               mTop: 20,
                               mBottom: 15,
                               onTap: () {
-                                Get.to(()=>AiPlanningAssistant());
+                                Get.to(() => AiPlanningAssistant());
                               },
                             )
                           ])),

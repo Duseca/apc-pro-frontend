@@ -23,7 +23,6 @@ class AddCpdActivity extends StatelessWidget {
 
     final RxInt currentIndex = 0.obs;
     return Scaffold(
-        backgroundColor: kbackground,
         appBar: simpleAppBar(
             context: context, title: 'Add CPD Activity', centerTitle: true),
         body: Column(

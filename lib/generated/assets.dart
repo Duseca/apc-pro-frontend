@@ -142,6 +142,10 @@ class Assets {
   /// assets/images/clock.png
   static const String imagesClock = "assets/images/clock.png";
 
+  /// Assets for imagesCode
+  /// assets/images/code.png
+  static const String imagesCode = "assets/images/code.png";
+
   /// Assets for imagesComment
   /// assets/images/comment.png
   static const String imagesComment = "assets/images/comment.png";
@@ -170,6 +174,22 @@ class Assets {
   /// assets/images/danger.png
   static const String imagesDanger = "assets/images/danger.png";
 
+  /// Assets for imagesDapple
+  /// assets/images/Dapple.png
+  static const String imagesDapple = "assets/images/Dapple.png";
+
+  /// Assets for imagesDcode
+  /// assets/images/Dcode.png
+  static const String imagesDcode = "assets/images/Dcode.png";
+
+  /// Assets for imagesDfacebook
+  /// assets/images/Dfacebook.png
+  static const String imagesDfacebook = "assets/images/Dfacebook.png";
+
+  /// Assets for imagesDgoogle
+  /// assets/images/Dgoogle.png
+  static const String imagesDgoogle = "assets/images/Dgoogle.png";
+
   /// Assets for imagesDiary
   /// assets/images/diary.png
   static const String imagesDiary = "assets/images/diary.png";
@@ -190,6 +210,14 @@ class Assets {
   /// assets/images/document2.png
   static const String imagesDocument2 = "assets/images/document2.png";
 
+  /// Assets for imagesDotpVerify
+  /// assets/images/DotpVerify.svg
+  static const String imagesDotpVerify = "assets/images/DotpVerify.svg";
+
+  /// Assets for imagesDverifymailsvg
+  /// assets/images/dverifymailsvg.svg
+  static const String imagesDverifymailsvg = "assets/images/dverifymailsvg.svg";
+
   /// Assets for imagesEdit
   /// assets/images/edit.png
   static const String imagesEdit = "assets/images/edit.png";
@@ -205,6 +233,10 @@ class Assets {
   /// Assets for imagesExport2
   /// assets/images/export2.png
   static const String imagesExport2 = "assets/images/export2.png";
+
+  /// Assets for imagesEye
+  /// assets/images/eye.png
+  static const String imagesEye = "assets/images/eye.png";
 
   /// Assets for imagesFacebook
   /// assets/images/facebook.png
@@ -249,6 +281,10 @@ class Assets {
   /// Assets for imagesLike
   /// assets/images/like.png
   static const String imagesLike = "assets/images/like.png";
+
+  /// Assets for imagesLogo
+  /// assets/images/logo.png
+  static const String imagesLogo = "assets/images/logo.png";
 
   /// Assets for imagesLogo1
   /// assets/images/logo1.png

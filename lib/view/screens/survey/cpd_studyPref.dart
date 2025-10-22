@@ -27,20 +27,20 @@ class CpdStudypref extends StatelessWidget {
     List learning = [
       'Self-paced',
       'Structured Timeline',
-          'Interactive Content',
-          'Written Guides',
-          'Practice Exercises',
-          'Structured Timeline',
-          'Video Tutorials',
-          'Live Sessions',
-          'Practice Exercises',
-          'Case Studies',
+      'Interactive Content',
+      'Written Guides',
+      'Practice Exercises',
+      'Structured Timeline',
+      'Video Tutorials',
+      'Live Sessions',
+      'Practice Exercises',
+      'Case Studies',
     ];
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        MyTextField(
+        MyTextField2(
           label: 'Current CPD Hours *',
           hint: 'Enter your total completed CPD hours so far.',
         ),
@@ -72,7 +72,7 @@ class CpdStudypref extends StatelessWidget {
         SizedBox(
           height: 25,
         ),
-        MyTextField(
+        MyTextField2(
           label: 'Weekly Study Time Commitment',
           hint: 'How many hours can you commit to studying each week?',
         ),
@@ -93,12 +93,11 @@ class CpdStudypref extends StatelessWidget {
           itemCount: learning.length,
           shrinkWrap: true,
           physics: NeverScrollableScrollPhysics(),
-          gridDelegate:  SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: 2, 
-            crossAxisSpacing: 12,
-            mainAxisSpacing: 12, 
-            mainAxisExtent: 24
-          ),
+          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisCount: 2,
+              crossAxisSpacing: 12,
+              mainAxisSpacing: 12,
+              mainAxisExtent: 24),
           itemBuilder: (context, index) {
             return checkbox_row(
               title: learning[index],
@@ -130,7 +129,9 @@ class CpdStudypref extends StatelessWidget {
             ),
           ],
         ),
-        SizedBox(height: 30,)
+        SizedBox(
+          height: 30,
+        )
       ],
     );
   }

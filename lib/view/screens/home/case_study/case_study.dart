@@ -40,7 +40,6 @@ class CaseStudy extends StatelessWidget {
     ];
 
     return Scaffold(
-        backgroundColor: kbackground,
         appBar: simpleAppBar(
             context: context, title: 'Case Study', centerTitle: true),
         body: Column(
@@ -95,7 +94,7 @@ class CaseStudy extends StatelessWidget {
                         ),
                         MyButton(
                           onTap: () {
-                            Get.to(()=>ProjectInformation());
+                            Get.to(() => ProjectInformation());
                           },
                           mTop: 30,
                           mhoriz: 20,
@@ -268,9 +267,10 @@ class _caseStudy_section_widget extends StatelessWidget {
               ),
             ),
             Bounce(
-                onTap: ontap??(){
-                  Get.to(()=>EditCasestudy());
-                },
+                onTap: ontap ??
+                    () {
+                      Get.to(() => EditCasestudy());
+                    },
                 child: Image.asset(
                   Assets.imagesEdit,
                   width: 18,

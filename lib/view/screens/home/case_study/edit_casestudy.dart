@@ -18,7 +18,6 @@ class EditCasestudy extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: kbackground,
         appBar: simpleAppBar(
             context: context, title: 'Edit Case Study', centerTitle: true),
         body: Column(
@@ -171,7 +170,7 @@ class EditCasestudy extends StatelessWidget {
                             SizedBox(
                               height: 12,
                             ),
-                            MyTextField(
+                            MyTextField2(
                               maxLines: 6,
                               bordercolor: kblueBorder2,
                               hint:

@@ -91,7 +91,6 @@ class TestQuiz extends StatelessWidget {
 
     final RxInt currentIndex = 0.obs;
     return Scaffold(
-      backgroundColor: kbackground,
       appBar: simpleAppBar(
         context: context,
         title: 'Test and Quiz',

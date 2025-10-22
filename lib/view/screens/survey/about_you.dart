@@ -11,21 +11,21 @@ class AboutYou extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-     final controller = Get.find<SurveyController>();
+    final controller = Get.find<SurveyController>();
     return Column(
       children: [
         Row(
           spacing: 20,
           children: [
             Expanded(
-                child: MyTextField(
+                child: MyTextField2(
               label: 'First Name',
               hint: 'e.g., john',
               //isoptional: false,
               marginBottom: 27,
             )),
             Expanded(
-                child: MyTextField(
+                child: MyTextField2(
               label: 'Last Name',
               hint: 'e.g., doe',
               //isoptional: false,
@@ -33,12 +33,11 @@ class AboutYou extends StatelessWidget {
             ))
           ],
         ),
-       
-        MyTextField(
+        MyTextField2(
           label: 'Email Address',
           marginBottom: 27,
         ),
-        MyTextField(
+        MyTextField2(
           label: 'Phone Number',
         ),
         SizedBox(

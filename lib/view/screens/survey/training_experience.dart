@@ -30,12 +30,12 @@ class TrainingExperience extends StatelessWidget {
         SizedBox(
           height: 24,
         ),
-        MyTextField(
+        MyTextField2(
           hint: 'Enter the name of your employer',
           label: 'Current Employer',
           marginBottom: 26,
         ),
-        MyTextField(
+        MyTextField2(
           hint: 'Your current role or title',
           label: 'Job Title',
           marginBottom: 26,

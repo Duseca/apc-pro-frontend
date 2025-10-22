@@ -40,10 +40,10 @@ class CpdDetails extends StatelessWidget {
             spacing: 10,
             children: [
               Expanded(
-                child: MyTextField(
+                child: MyTextField2(
                   // label: 'Reflection Notes*',
                   hint: '0',
-                  textAlign: TextAlign.center,
+                  //   textAlign: TextAlign.center,
 
                   bordercolor: kblueBorder4,
                 ),
@@ -80,23 +80,22 @@ class CpdDetails extends StatelessWidget {
             bordercolor: kblueBorder4,
             onChanged: (value) {},
           ),
-Row(
-  mainAxisSize: MainAxisSize.min,
-  children: [
-    checkbox_row(
-      title: 'Certificate Received',
-      cBorder: ksecondary,
-      tSize: 10,
-    ),
-    SizedBox(width: 15),
-    checkbox_row(
-      title: 'Verification Required',
-      cBorder: ksecondary,
-      tSize: 10,
-    ),
-  ],
-),
-
+          Row(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              checkbox_row(
+                title: 'Certificate Received',
+                cBorder: ksecondary,
+                tSize: 10,
+              ),
+              SizedBox(width: 15),
+              checkbox_row(
+                title: 'Verification Required',
+                cBorder: ksecondary,
+                tSize: 10,
+              ),
+            ],
+          ),
           MyText(
             paddingTop: 10,
             text: 'Tags',
@@ -109,7 +108,7 @@ Row(
             children: [
               Expanded(
                 flex: 3,
-                child: MyTextField(
+                child: MyTextField2(
                     hint: 'Add a tag....',
                     marginBottom: 15,
                     hintColor: kwhite,
@@ -117,8 +116,8 @@ Row(
               ),
               Expanded(
                 flex: 1,
-                child: MyTextField(
-                    readOnly: true,
+                child: MyTextField2(
+                    //readOnly: true,
                     prefixIcon: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
@@ -151,10 +150,8 @@ Row(
             title: 'Make public in community',
             cBorder: ksecondary,
           ),
-
           MyButton(
-            buttonText: 
-            'Add',
+            buttonText: 'Add',
             mTop: 25,
             mBottom: 10,
           )

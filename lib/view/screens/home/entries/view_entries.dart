@@ -18,7 +18,6 @@ class ViewEntries extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: kbackground,
         appBar:
             simpleAppBar(context: context, title: 'Entries', centerTitle: true),
         body: Column(
@@ -33,7 +32,7 @@ class ViewEntries extends StatelessWidget {
                 children: [
                   Expanded(
                       flex: 4,
-                      child: MyTextField(
+                      child: MyTextField2(
                         hint: 'Search entries... ',
                         hintColor: kwhite,
                         prefixIcon: Image.asset(
@@ -47,7 +46,7 @@ class ViewEntries extends StatelessWidget {
                   ),
                   Expanded(
                     flex: 1,
-                    child: MyTextField(
+                    child: MyTextField2(
                       bordercolor: ksecondary,
                       prefixIcon: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
@@ -70,19 +69,18 @@ class ViewEntries extends StatelessWidget {
                     const EdgeInsets.symmetric(vertical: 15, horizontal: 20),
                 physics: const BouncingScrollPhysics(),
                 children: [
-                 ListView.builder(
- padding: EdgeInsets.all(0),
-                  shrinkWrap: true,
-                  physics: const NeverScrollableScrollPhysics(),
-                  itemCount: 3,
-                  itemBuilder: (context, index) {
-                    return Padding(
-                      padding: const EdgeInsets.only(bottom: 20),
-                      child: view_entry_card(),
-                    );
-                  },
-                ),
-
+                  ListView.builder(
+                    padding: EdgeInsets.all(0),
+                    shrinkWrap: true,
+                    physics: const NeverScrollableScrollPhysics(),
+                    itemCount: 3,
+                    itemBuilder: (context, index) {
+                      return Padding(
+                        padding: const EdgeInsets.only(bottom: 20),
+                        child: view_entry_card(),
+                      );
+                    },
+                  ),
                 ],
               ),
             ),
@@ -100,7 +98,7 @@ class view_entry_card extends StatelessWidget {
   Widget build(BuildContext context) {
     return Bounce(
       onTap: () {
-        Get.to(()=>EntriesDetail());
+        Get.to(() => EntriesDetail());
       },
       child: CustomeContainer(
         radius: 10,

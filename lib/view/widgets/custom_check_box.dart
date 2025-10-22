@@ -1,9 +1,5 @@
-
 import 'package:flutter/material.dart';
 import 'package:apc_pro/consts/app_colors.dart';
-
-
-
 
 // ignore: must_be_immutable
 class CustomCheckBox extends StatelessWidget {
@@ -14,7 +10,8 @@ class CustomCheckBox extends StatelessWidget {
       this.unSelectedColor,
       this.selectedColor,
       this.size,
-      this.circleIcon,this.iconColor,
+      this.circleIcon,
+      this.iconColor,
       this.radius,
       this.borderColor,
       this.bordercolor2,
@@ -24,9 +21,9 @@ class CustomCheckBox extends StatelessWidget {
 
   final bool isActive;
   final VoidCallback onTap;
-  Color? unSelectedColor, selectedColor,iconColor,borderColor,bordercolor2;
+  Color? unSelectedColor, selectedColor, iconColor, borderColor, bordercolor2;
   bool? iscircle;
-  final double? size,radius,circleIconsize;
+  final double? size, radius, circleIconsize;
   final IconData? circleIcon;
 
   @override
@@ -38,24 +35,32 @@ class CustomCheckBox extends StatelessWidget {
           milliseconds: 230,
         ),
         curve: Curves.easeInOut,
-        height:size?? 20,
-        width:size?? 20,
+        height: size ?? 20,
+        width: size ?? 20,
         decoration: BoxDecoration(
-          color: isActive ? selectedColor ?? ksecondary :unSelectedColor ?? ktransparent,
+          color: isActive
+              ? selectedColor ?? getSecondaryColor(context)
+              : unSelectedColor ?? ktransparent,
           border: Border.all(
             width: 1.0,
             color: isActive
-                ?bordercolor2??ksecondary
-                : borderColor?? ksecondary,
+                ? bordercolor2 ?? getSecondaryColor(context)
+                : borderColor ?? getSecondaryColor(context),
           ),
-          borderRadius: BorderRadius.circular(iscircle == true ? 50 :radius?? 5),
+          borderRadius:
+              BorderRadius.circular(iscircle == true ? 50 : radius ?? 3),
         ),
         child: !isActive
-            ? Icon(circleIcon,size: 16,color: kwhite,)?? SizedBox()
+            ? Icon(
+                  circleIcon,
+                  size: 16,
+                  color: kwhite,
+                ) ??
+                SizedBox()
             : Icon(
-              iscircle==true?circleIcon?? Icons.circle:  Icons.check,
-                size:circleIconsize?? 16,
-                color: isActive == true ?iconColor?? kwhite : kwhite,
+                iscircle == true ? circleIcon ?? Icons.circle : Icons.check,
+                size: circleIconsize ?? 16,
+                color: isActive == true ? iconColor ?? kwhite : kwhite,
               ),
       ),
     );

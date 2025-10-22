@@ -8,7 +8,6 @@ import 'package:apc_pro/view/widgets/common_image_view_widget.dart';
 import 'package:apc_pro/view/widgets/custome_comtainer.dart';
 import 'package:get/get.dart';
 
-
 import 'my_text_widget.dart';
 
 AppBar simpleAppBar(
@@ -34,8 +33,8 @@ AppBar simpleAppBar(
     bool useCustomFont = false}) {
   return AppBar(
       toolbarHeight: toolbarHeight ?? 38,
-      backgroundColor: bgColor ?? kbackground,
-      surfaceTintColor: bgColor ?? kbackground,
+      backgroundColor: bgColor ?? getPrimaryColor(context),
+      surfaceTintColor: bgColor ?? getPrimaryColor(context),
       centerTitle: centerTitle,
       iconTheme: IconThemeData(
         color: Colors.transparent,
@@ -54,6 +53,7 @@ AppBar simpleAppBar(
                   leadingIcon ?? Assets.imagesBackIcon2,
                   height: 40,
                   width: 40,
+                  color: getSecondaryColor(context),
                   //color: contentColor,
                 ),
               ),
@@ -135,7 +135,7 @@ AppBar simpleAppBar(
 // //               )),
 // //               SuperTooltip(
 // //                   hideTooltipOnBarrierTap: true,
-// //                   backgroundColor: kbackground,
+// //
 // //                   arrowTipRadius: 3,
 // //                   elevation: 0,
 // //                   borderColor: kbackground,

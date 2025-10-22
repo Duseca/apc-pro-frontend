@@ -11,7 +11,7 @@ class DiffTextsTxt extends StatelessWidget {
   final TextAlign? align;
   final FontWeight? weight1, weight2;
   final Color? color1, color2, color3, color4;
-final String? fontFamily,fontFamily2;
+  final String? fontFamily, fontFamily2;
   const DiffTextsTxt({
     super.key,
     this.text1,
@@ -28,7 +28,9 @@ final String? fontFamily,fontFamily2;
     this.text3,
     this.text4,
     this.color3,
-    this.color4, this.fontFamily, this.fontFamily2,
+    this.color4,
+    this.fontFamily,
+    this.fontFamily2,
   });
 
   @override
@@ -44,7 +46,7 @@ final String? fontFamily,fontFamily2;
                   color: color1 ?? kgrey,
                   fontSize: size ?? 14,
                   fontWeight: weight1 ?? FontWeight.w400,
-                  fontFamily:fontFamily?? AppFonts.gilroyRegular,
+                  fontFamily: fontFamily ?? AppFonts.gilroyRegular,
                   letterSpacing: 0.5),
             ),
             TextSpan(
@@ -59,7 +61,7 @@ final String? fontFamily,fontFamily2;
                   //decorationColor: ksecondary,
                   decorationThickness: 1,
                   decorationStyle: TextDecorationStyle.solid,
-                  fontFamily:fontFamily2?? AppFonts.gilroyMedium,
+                  fontFamily: fontFamily2 ?? AppFonts.gilroyMedium,
                   letterSpacing: letterSpacing ?? 0.5
                   // height: 1.4, // Adjusts spacing between text and underline
                   ),
@@ -71,7 +73,7 @@ final String? fontFamily,fontFamily2;
                     color: color3 ?? kwhite,
                     fontSize: size2 ?? 14,
                     fontWeight: weight2 ?? FontWeight.w400,
-                    fontFamily:fontFamily2?? AppFonts.gilroyBold,
+                    fontFamily: fontFamily2 ?? AppFonts.gilroyBold,
                     letterSpacing: letterSpacing ?? 0.5),
               ),
             if (text4 != null)
@@ -80,8 +82,7 @@ final String? fontFamily,fontFamily2;
                 style: TextStyle(
                     color: color4 ?? kwhite,
                     fontSize: size2 ?? 14,
-                    fontWeight: weight2 ?? FontWeight.w400,
-                    fontFamily:fontFamily2?? AppFonts.gilroyRegular,
+                    fontFamily: fontFamily2 ?? AppFonts.gilroyMedium,
                     letterSpacing: letterSpacing ?? 0.5),
               ),
           ],

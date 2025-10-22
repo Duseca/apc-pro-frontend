@@ -32,19 +32,19 @@ class CpdBasicinfo extends StatelessWidget {
           SizedBox(
             height: 20,
           ),
-          MyTextField(
+          MyTextField2(
             label: 'Activity Title*',
             hint: 'e.g., RICS Professional Ethics Course',
             marginBottom: 25,
             bordercolor: ksecondary,
           ),
-          MyTextField(
+          MyTextField2(
             label: 'Provider*',
             hint: 'e.g., RICS , University Name',
             marginBottom: 25,
             bordercolor: ksecondary,
           ),
-          MyTextField(
+          MyTextField2(
             label: 'Description*',
             hint: 'Provide a detailed description of the activity.....',
             marginBottom: 25,
@@ -75,20 +75,23 @@ class CpdBasicinfo extends StatelessWidget {
           SizedBox(
             height: 25,
           ),
-          MyTextField(
+          MyTextField2(
             label: 'Duration (hours)*',
             hint: '1',
             bordercolor: kblueBorder4,
             hintColor: kwhite,
             marginBottom: 25,
           ),
-                 MyTextField(
+          MyTextField2(
             label: 'Activity Date*',
             hint: 'Structured Course',
             bordercolor: kblueBorder4,
             hintColor: kwhite,
             marginBottom: 25,
-            suffixIcon: Image.asset(Assets.imagesQuiz,width: 18,),
+            suffixIcon: Image.asset(
+              Assets.imagesQuiz,
+              width: 18,
+            ),
           )
         ],
       ),

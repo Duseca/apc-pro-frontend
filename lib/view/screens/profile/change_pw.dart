@@ -10,7 +10,6 @@ class ChangePw extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: kbackground,
         appBar: simpleAppBar(
           context: context,
           title: 'Password Change',
@@ -26,14 +25,14 @@ class ChangePw extends StatelessWidget {
                     const EdgeInsets.symmetric(vertical: 25, horizontal: 20),
                 physics: const BouncingScrollPhysics(),
                 children: [
-                  MyTextField(
+                  MyTextField2(
                     label: 'New Password',
                     hint: '************',
                     hintColor: kwhite,
                     marginBottom: 24,
                     bordercolor: ksecondary,
                   ),
-                  MyTextField(
+                  MyTextField2(
                     label: 'Confirm Password',
                     hint: '************',
                     hintColor: kwhite,

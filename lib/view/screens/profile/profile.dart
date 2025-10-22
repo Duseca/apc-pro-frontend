@@ -105,7 +105,7 @@ class Profile extends StatelessWidget {
         'title': 'Logout',
         'icon': Assets.imagesLogout,
         'onTap': () {
-          SuccessDialog.showSuccessDialog('Logout',
+          SuccessDialog.showSuccessDialog('Logout', context,
               message: 'Are you sure you want to logout?',
               ButtonText: 'Cancel',
               button2text: 'Logout',
@@ -120,7 +120,6 @@ class Profile extends StatelessWidget {
     ];
 
     return Scaffold(
-        backgroundColor: kbackground,
         appBar: simpleAppBar(
             context: context,
             title: 'Profile',

@@ -18,7 +18,6 @@ class NewDiaryDetails extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: kbackground,
         appBar: simpleAppBar(
             context: context, title: 'New Diary Entry', centerTitle: true),
         body: Column(
@@ -44,7 +43,7 @@ class NewDiaryDetails extends StatelessWidget {
                       'Select competency'
                     ],
                     value: 'Select competency',
-                    backgroundColor: kbackground,
+
                     onChanged: (val) {},
                     // onInfoTap: () {},
                     // hasInfo: false,
@@ -53,7 +52,6 @@ class NewDiaryDetails extends StatelessWidget {
                     height: 26,
                   ),
                   SimpleDropDown(
-                    backgroundColor: kbackground,
                     label: "Competency Level *",
                     hint: "Level 1",
                     items: ["Level 1", "Level 2", "Level 3"],
@@ -63,7 +61,7 @@ class NewDiaryDetails extends StatelessWidget {
                   SizedBox(
                     height: 26,
                   ),
-                  MyTextField(
+                  MyTextField2(
                     hint: 'mm/dd/yyyy',
                     label: 'Start Date *',
                     suffixIcon: Image.asset(
@@ -92,19 +90,19 @@ class NewDiaryDetails extends StatelessWidget {
                   SizedBox(
                     height: 8,
                   ),
-                  MyTextField(
+                  MyTextField2(
                     hint:
                         'Describe the work undertaken, including your specific role, tasks completed, techniques used, and any challenge encountered',
                     maxLines: 4,
                     marginBottom: 20,
                   ),
-                  MyTextField(
+                  MyTextField2(
                     label: 'Project Content',
                     hint:
                         'e.g., Commercial office refurbishment, Residential.....',
                     marginBottom: 20,
                   ),
-                  MyTextField(
+                  MyTextField2(
                     label: 'Reflection & Learning',
                     hint:
                         'What did you learn from this experience? How did it contribute to your professional development? What would you do differently?',

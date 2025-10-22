@@ -19,7 +19,6 @@ class ApcDiary extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: kbackground,
         appBar: simpleAppBar(
             context: context,
             title: 'APC Diary',
@@ -184,7 +183,7 @@ class ApcDiary extends StatelessWidget {
                   ),
                   newEntry_container(
                     ontap: () {
-                      Get.to(()=>NewDiaryDetails());
+                      Get.to(() => NewDiaryDetails());
                     },
                   ),
                   newEntry_container(
@@ -192,7 +191,7 @@ class ApcDiary extends StatelessWidget {
                     desc: 'Browse 2 entries',
                     icon: Assets.imagesNewbook,
                     ontap: () {
-                            Get.to(()=>ViewEntries());
+                      Get.to(() => ViewEntries());
                     },
                   ),
                   newEntry_container(

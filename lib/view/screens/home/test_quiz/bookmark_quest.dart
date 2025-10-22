@@ -27,7 +27,6 @@ class BookmarkQuest extends StatelessWidget {
       '3pts',
     ];
     return Scaffold(
-        backgroundColor: kbackground,
         appBar: simpleAppBar(
             context: context, title: 'Bookmarked Questions', centerTitle: true),
         body: Column(
@@ -40,7 +39,7 @@ class BookmarkQuest extends StatelessWidget {
                     const EdgeInsets.symmetric(vertical: 25, horizontal: 20),
                 physics: const BouncingScrollPhysics(),
                 children: [
-                  MyTextField(
+                  MyTextField2(
                     hint: 'Search questions',
                     prefixIcon: Image.asset(
                       Assets.imagesSearch,
@@ -113,13 +112,13 @@ class BookmarkQuest extends StatelessWidget {
                       widget: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                          Wrap(
-                      spacing: 8,
-                      runSpacing: 6,
-                      children: quizTags.map((tag) {
-                        return TagsWidget(tag);
-                      }).toList(),
-                    ),
+                            Wrap(
+                              spacing: 8,
+                              runSpacing: 6,
+                              children: quizTags.map((tag) {
+                                return TagsWidget(tag);
+                              }).toList(),
+                            ),
                             MyText(
                               paddingTop: 10,
                               text:
@@ -128,7 +127,7 @@ class BookmarkQuest extends StatelessWidget {
                               fontFamily: AppFonts.gilroyBold,
                               paddingBottom: 20,
                             ),
-                            MyTextField(
+                            MyTextField2(
                               hint:
                                   'Need to review RICS guidance on this topic',
                               label: 'Notes',
@@ -203,7 +202,7 @@ class EditDialog extends StatelessWidget {
           SizedBox(
             height: 20,
           ),
-          MyTextField(
+          MyTextField2(
             hint: 'Need to review RICS guidance on this topic',
             label: 'Notes',
             maxLines: 5,

@@ -15,7 +15,6 @@ class PaymentMethod extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: kbackground,
         appBar: simpleAppBar(
           context: context,
           title: 'Payment Method',
@@ -40,18 +39,18 @@ class PaymentMethod extends StatelessWidget {
                     widget: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        MyTextField(
+                        MyTextField2(
                           label: 'Email Address',
                           hint: 'robertfox@gmail.com',
                           marginBottom: 24,
                           hintColor: kwhite,
                           bordercolor: ksecondary,
                         ),
-                        MyTextField(
+                        MyTextField2(
                           label: 'Card Information',
                           hint: '1234 1234 1234 1234',
-                            marginBottom: 20,
-                               hintColor: kwhite,
+                          marginBottom: 20,
+                          hintColor: kwhite,
                           bordercolor: ksecondary,
                           suffixIcon: Row(
                             spacing: 3,
@@ -84,37 +83,34 @@ class PaymentMethod extends StatelessWidget {
                         Row(
                           children: [
                             Expanded(
-                                child: MyTextField(
+                                child: MyTextField2(
                               hint: 'MM/YY',
-                                   hintColor: kwhite,
-                                     marginBottom: 24,
-                          bordercolor: ksecondary,
+                              hintColor: kwhite,
+                              marginBottom: 24,
+                              bordercolor: ksecondary,
                             )),
                             SizedBox(
                               width: 10,
                             ),
                             Expanded(
-                                child: MyTextField(
+                                child: MyTextField2(
                               hint: 'CVC',
-                                   hintColor: kwhite,
-                                     marginBottom: 24,
-                          bordercolor: ksecondary,
+                              hintColor: kwhite,
+                              marginBottom: 24,
+                              bordercolor: ksecondary,
                             )),
                           ],
                         ),
-                        MyTextField(
+                        MyTextField2(
                           label: 'Account Title',
                           hint: 'Robert Fox',
                           hintColor: kwhite,
                           marginBottom: 24,
                           bordercolor: ksecondary,
-                            
                         ),
                         MyButton(
                           buttonText: 'Change Payment Method',
-                         
                         ),
-                   
                       ],
                     ),
                   ),

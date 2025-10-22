@@ -16,8 +16,7 @@ class ProjectDetails extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
- 
-        MyTextField(
+        MyTextField2(
           label: 'Project Description',
           hint:
               'Provide a comprehensive description of the project, including scope, objectives, and key deliverables...',
@@ -25,13 +24,13 @@ class ProjectDetails extends StatelessWidget {
           marginBottom: 4,
           hintSize: 10,
         ),
-               MyText(
+        MyText(
           text: '0 characters',
           size: 12,
           fontFamily: AppFonts.gilroyBold,
           paddingBottom: 20,
         ),
-        MyTextField(
+        MyTextField2(
           label: 'Your Role and Responsibilities *',
           hint:
               'Describe your specific role, responsibilities, and level of authority on this project...',
@@ -39,14 +38,14 @@ class ProjectDetails extends StatelessWidget {
           maxLines: 2,
           hintSize: 10,
         ),
-        MyTextField(
+        MyTextField2(
           label: 'Scope of work (optional)',
           hint: 'Detail the specific scope of work you were responsible for...',
           marginBottom: 20,
           hintSize: 10,
           maxLines: 2,
         ),
-        MyTextField(
+        MyTextField2(
           label: 'Key Project Objectives (optional)',
           hint: 'Enter project objectives',
           hintSize: 10,

@@ -14,7 +14,6 @@ class ViewSubmittionCalender extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: kbackground,
         appBar: simpleAppBar(
             context: context, title: 'Submission Calendar', centerTitle: true),
         body: Column(

@@ -13,7 +13,7 @@ class ExpandedRow extends StatelessWidget {
   final double? size1;
   final bool? isExpanded;
   final double? size2;
-  final String? fontFamily,fontFamily2;
+  final String? fontFamily, fontFamily2;
   final VoidCallback? ontap1, ontap2;
   final TextDecoration? decoration1, decoration2;
   const ExpandedRow({
@@ -30,21 +30,23 @@ class ExpandedRow extends StatelessWidget {
     this.ontap1,
     this.decoration1,
     this.decoration2,
-    this.isExpanded = false, this.fontFamily, this.fontFamily2,
+    this.isExpanded = false,
+    this.fontFamily,
+    this.fontFamily2,
   });
 
   @override
   Widget build(BuildContext context) {
     return isExpanded == true
         ? Row(
-          crossAxisAlignment: CrossAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Expanded(
                 flex: 4,
                 child: MyText(
                   text: text1, //'\$39.69',
                   size: size1 ?? 12.5,
-                  color: color1 ?? kwhite,
+                  color: color1 ?? getSecondaryColor(context),
                   weight: weight1 ?? FontWeight.w500,
                   onTap: ontap1,
                   fontFamily: fontFamily,
@@ -55,7 +57,7 @@ class ExpandedRow extends StatelessWidget {
                 child: MyText(
                   text: text2, //'Free Now Booking Fee',
                   size: size2 ?? 12.5,
-                  color: color2 ?? kwhite,
+                  color: color2 ?? getSecondaryColor(context),
                   weight: weight2 ?? FontWeight.w500,
                   onTap: ontap2,
                   fontFamily: fontFamily2,
@@ -70,7 +72,7 @@ class ExpandedRow extends StatelessWidget {
               MyText(
                 text: text1, //'\$39.69',
                 size: size1 ?? 12.5,
-                color: color1 ?? kwhite,
+                color: color1 ?? getSecondaryColor(context),
                 weight: weight1 ?? FontWeight.w500,
                 onTap: ontap1,
                 fontFamily: fontFamily,
@@ -79,7 +81,7 @@ class ExpandedRow extends StatelessWidget {
               MyText(
                 text: text2, //'Free Now Booking Fee',
                 size: size2 ?? 12.5,
-                color: color2 ?? kwhite,
+                color: color2 ?? getSecondaryColor(context),
                 weight: weight2 ?? FontWeight.w500,
                 onTap: ontap2,
                 fontFamily: fontFamily2,
@@ -104,9 +106,10 @@ class TwoTextedColumn extends StatelessWidget {
   final ColumnAlignment alignment;
   final bool? isExpanded;
   final TextDecoration? decoration1, decoration2;
-  final String? fontFamily,fontFamily2;
+  final String? fontFamily, fontFamily2;
   final TextAlign? align;
   final int? maxLines;
+  final double? lineHeight;
   const TwoTextedColumn({
     super.key,
     required this.text1,
@@ -124,7 +127,9 @@ class TwoTextedColumn extends StatelessWidget {
     this.fontFamily,
     this.isExpanded,
     this.align,
-    this.maxLines, this.fontFamily2,
+    this.maxLines,
+    this.fontFamily2,
+    this.lineHeight,
   });
 
   @override
@@ -142,7 +147,7 @@ class TwoTextedColumn extends StatelessWidget {
         MyText(
           text: text1,
           size: size1 ?? 14,
-          color: color1 ?? kwhite,
+          color: color1 ?? getSecondaryColor(context),
           weight: weight1 ?? FontWeight.w500,
           paddingBottom: mBottom ?? 3,
           textAlign: align,
@@ -154,13 +159,14 @@ class TwoTextedColumn extends StatelessWidget {
         MyText(
           text: text2,
           size: size2 ?? 14,
-          color: color2 ?? kwhite,
+          color: color2 ?? getSecondaryColor(context),
           weight: weight2 ?? FontWeight.w400,
           maxLines: maxLines ?? 10,
           textAlign: align,
           fontFamily: fontFamily2,
           textOverflow: TextOverflow.ellipsis,
           decoration: decoration2 ?? TextDecoration.none,
+          lineHeight: lineHeight ?? 1.5,
         ),
       ],
     );

@@ -15,7 +15,6 @@ class EditProfile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: kbackground,
         appBar: simpleAppBar(
           context: context,
           title: 'Profile',
@@ -41,21 +40,21 @@ class EditProfile extends StatelessWidget {
                       paddingBottom: 20,
                     ),
                   ),
-                  MyTextField(
+                  MyTextField2(
                     label: 'Full Name',
                     hint: 'Robert Fox',
                     hintColor: kwhite,
                     marginBottom: 24,
                     bordercolor: ksecondary,
                   ),
-                  MyTextField(
+                  MyTextField2(
                     label: 'Email Address',
                     hint: 'robertfox@gmail.com',
                     marginBottom: 24,
                     hintColor: kwhite,
                     bordercolor: ksecondary,
                   ),
-                  MyTextField(
+                  MyTextField2(
                     label: 'Password',
                     hint: '************',
                     hintColor: kwhite,
@@ -68,7 +67,7 @@ class EditProfile extends StatelessWidget {
                       decoration: TextDecoration.underline,
                     ),
                     suffixTap: () {
-                      Get.to(()=>ChangePw());
+                      Get.to(() => ChangePw());
                     },
                   ),
                   MyButton(

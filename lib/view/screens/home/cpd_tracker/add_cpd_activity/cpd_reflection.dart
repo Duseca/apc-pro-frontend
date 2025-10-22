@@ -26,7 +26,7 @@ class CpdReflection extends StatelessWidget {
             fontFamily: AppFonts.gilroyBold,
             paddingBottom: 20,
           ),
-          MyTextField(
+          MyTextField2(
             label: 'Reflection Notes*',
             hint:
                 'Reflect on what you learned, how it impacted your understanding, and what insights you gained.......',
@@ -34,7 +34,7 @@ class CpdReflection extends StatelessWidget {
             maxLines: 3,
             bordercolor: ksecondary,
           ),
-          MyTextField(
+          MyTextField2(
             label: 'Application to Work*',
             hint:
                 'Describe how you have or will apply this learning to your professional work.....',

@@ -39,7 +39,6 @@ class EntriesDetail extends StatelessWidget {
     ];
 
     return Scaffold(
-        backgroundColor: kbackground,
         appBar: simpleAppBar(
             context: context,
             title: 'Entries Detail',
@@ -313,7 +312,8 @@ class icon_button_row extends StatelessWidget {
     this.icon,
     this.title,
     this.buttonText,
-    this.pbot, this.hasIcon=true,
+    this.pbot,
+    this.hasIcon = true,
   });
 
   @override
@@ -323,18 +323,18 @@ class icon_button_row extends StatelessWidget {
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          if(hasIcon==true)...{
-          Image.asset(
-            icon ?? Assets.imagesDocument,
-            width: 18,
-          ),
+          if (hasIcon == true) ...{
+            Image.asset(
+              icon ?? Assets.imagesDocument,
+              width: 18,
+            ),
           },
           Expanded(
             child: MyText(
               text: title ?? 'Work Description',
               size: 14,
               fontFamily: AppFonts.gilroyBold,
-              paddingLeft:hasIcon==true? 5:0,
+              paddingLeft: hasIcon == true ? 5 : 0,
               // paddingRight: 15,
             ),
           ),

@@ -28,7 +28,7 @@ class CpdLearning extends StatelessWidget {
             fontFamily: AppFonts.gilroyBold,
             paddingBottom: 20,
           ),
-          MyTextField(
+          MyTextField2(
             label: 'Learning Outcomes*',
             hint: 'Describe what you learned or achieved from this activity',
             marginBottom: 25,

@@ -37,7 +37,6 @@ class AiPlanningAssistant extends StatelessWidget {
     ];
     final RxInt currentIndex = 0.obs;
     return Scaffold(
-        backgroundColor: kbackground,
         appBar: simpleAppBar(
             context: context,
             title: 'AI Planning Assistant',
@@ -98,7 +97,6 @@ class AiPlanningAssistant extends StatelessWidget {
                   ),
                   Obx(
                     () => TabsWidget(
-                     
                       isexpanded: false,
                       margin: 2,
                       bgColor: kblackfill,
@@ -219,7 +217,8 @@ class recommendations extends StatelessWidget {
   const recommendations({
     super.key,
     this.text1,
-    this.text2, this.bgColor,
+    this.text2,
+    this.bgColor,
   });
 
   @override
@@ -227,8 +226,8 @@ class recommendations extends StatelessWidget {
     return CustomeContainer(
         mtop: 20,
         radius: 10,
-        color:bgColor?? kblueBorder4,
-        borderColor:bgColor?? kblueBorder4,
+        color: bgColor ?? kblueBorder4,
+        borderColor: bgColor ?? kblueBorder4,
         vpad: 17,
         hpad: 14,
         widget: Column(

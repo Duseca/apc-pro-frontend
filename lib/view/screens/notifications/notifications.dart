@@ -13,7 +13,6 @@ class Notificationss extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: kbackground,
         appBar: simpleAppBar(
             context: context, title: 'Notifications', centerTitle: true),
         body: Column(
@@ -31,7 +30,7 @@ class Notificationss extends StatelessWidget {
                     children: [
                       Expanded(
                         flex: 3,
-                        child: MyTextField(
+                        child: MyTextField2(
                           hint: 'Search Here',
                           hintColor: klighblue,
                           bordercolor: ksecondary,

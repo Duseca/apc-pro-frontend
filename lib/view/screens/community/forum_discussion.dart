@@ -51,7 +51,7 @@ class ForumDiscussion extends StatelessWidget {
           fontFamily: AppFonts.gilroyBold,
           paddingBottom: 25,
         ),
-        MyTextField(
+        MyTextField2(
           hint: 'Search Here',
           hintColor: klighblue,
           bordercolor: ksecondary,
@@ -102,7 +102,7 @@ class ForumDiscussion extends StatelessWidget {
               desc: item["desc"]!,
               text3: item["text3"]!,
               ontap: () {
-                Get.to(()=>MandatoryCompetencies());
+                Get.to(() => MandatoryCompetencies());
               },
             );
           },

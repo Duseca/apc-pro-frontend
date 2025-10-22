@@ -29,22 +29,22 @@ class MyPinCode extends StatefulWidget {
   State<MyPinCode> createState() => _MyPinCodeState();
 }
 
-class _MyPinCodeState extends State<MyPinCode>{
+class _MyPinCodeState extends State<MyPinCode> {
   @override
   Widget build(BuildContext context) {
     final defaultPinTheme = PinTheme(
-      width: widget.width ?? 56,
-      height: widget.heigth ?? 56,
+      width: widget.width ?? 51,
+      height: widget.heigth ?? 51,
       margin: EdgeInsets.all(widget.margin ?? 0),
       textStyle: TextStyle(
-          fontSize: widget.fontsize ?? 22,
-          color: widget.color ?? kwhite,
-          fontFamily: AppFonts.gilroyMedium,
-          //fontFamily: AppFonts.gilroyBold
-          ),
+        fontSize: widget.fontsize ?? 22,
+        color: widget.color ?? kwhite,
+        fontFamily: AppFonts.gilroyMedium,
+        //fontFamily: AppFonts.gilroyBold
+      ),
       decoration: BoxDecoration(
-        color: widget.fillcolor ?? kbluefill,
-        border: Border.all(color: ksecondary),
+        color: widget.fillcolor ?? getfillcolor(context),
+        // border: Border.all(color: ksecondary),
         borderRadius: BorderRadius.circular(8),
       ),
     );
@@ -53,9 +53,9 @@ class _MyPinCodeState extends State<MyPinCode>{
       decoration: BoxDecoration(
         color: widget.fillcolor ?? ktransparent,
         borderRadius: BorderRadius.circular(8),
-        border: Border.all(
-          color: widget.borderColor ?? ksecondary,
-        ),
+        // border: Border.all(
+        //   color: widget.borderColor ?? ksecondary,
+        // ),
       ),
     );
 
@@ -67,9 +67,9 @@ class _MyPinCodeState extends State<MyPinCode>{
         decoration: BoxDecoration(
           color: widget.fillcolor ?? ktransparent,
           borderRadius: BorderRadius.circular(8),
-          border: Border.all(
-            color: widget.borderColor ?? ksecondary,
-          ),
+          // border: Border.all(
+          //   color: widget.borderColor ?? ksecondary,
+          // ),
         ),
       ),
       preFilledWidget: widget.showPlaceholder == true

@@ -38,7 +38,7 @@ class Confidential extends StatelessWidget {
         SizedBox(
           height: 20,
         ),
-        MyTextField(
+        MyTextField2(
           label: 'Reason for confidentiality (optional)',
           hint: 'Explain why this project requires confidential treatment....',
           marginBottom: 0,

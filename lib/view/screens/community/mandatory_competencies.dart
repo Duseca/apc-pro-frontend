@@ -13,7 +13,6 @@ class MandatoryCompetencies extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: kbackground,
         appBar: simpleAppBar(
             context: context,
             title: 'Mandatory Competencies',

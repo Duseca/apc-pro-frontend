@@ -1,12 +1,14 @@
 import 'package:apc_pro/consts/app_colors.dart';
+import 'package:apc_pro/consts/app_fonts.dart';
 import 'package:apc_pro/generated/assets.dart';
 import 'package:apc_pro/view/screens/auth/signUp/signUp.dart';
 import 'package:apc_pro/view/widgets/appbar.dart';
 import 'package:apc_pro/view/widgets/common_image_view_widget.dart';
-import 'package:apc_pro/view/widgets/custom_check_box.dart';
 import 'package:apc_pro/view/widgets/diff_texts_txt.dart';
+import 'package:apc_pro/view/widgets/expanded_row.dart';
 import 'package:apc_pro/view/widgets/my_button.dart';
 import 'package:apc_pro/view/widgets/my_text_field.dart';
+
 import 'package:apc_pro/view/widgets/my_text_widget.dart';
 import 'package:bounce/bounce.dart';
 import 'package:flutter/material.dart';
@@ -23,83 +25,53 @@ class Login extends StatefulWidget {
 class _LoginState extends State<Login> {
   @override
   Widget build(BuildContext context) {
+    final isDarkMode = Theme.of(context).brightness == Brightness.dark;
     return Scaffold(
-      backgroundColor: kbackground,
       appBar: simpleAppBar(
-        context: context,
-        title: 'Login',
-        size: 16,
-        centerTitle: true,
-          leadingIcon: Assets.imagesBackIcon,
-        contentColor: ksecondary,
-      ),
+          toolbarHeight: 80,
+          context: context,
+          title2: TwoTextedColumn(
+            text1: 'Welcome Back!',
+            text2: 'Sign in to continue',
+            size1: 24,
+            size2: 13.5,
+            align: TextAlign.center,
+            alignment: ColumnAlignment.center,
+            fontFamily: AppFonts.gilroyBold,
+            fontFamily2: AppFonts.gilroySemiBold,
+          ),
+          centerTitle: true,
+          hasNonTextedTitle: true,
+          haveBackButton: false),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          Divider(
-            color: kgrey.withOpacity(0.5),
-          ),
           Expanded(
             child: ListView(
               shrinkWrap: true,
               padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 20),
               physics: const BouncingScrollPhysics(),
               children: [
-                Row(
-                  children: [
-                    CommonImageView(
-                      imagePath: Assets.imagesLogo1,
-                      height: 30,
-                      fit: BoxFit.contain,
-                      //  color: kBlack2Color,
-                    ),
-                  ],
+                MyTextField2(
+                  label: 'Email or Phone',
+                  hint: 'Enter your email or phone number',
                 ),
-                MyText(
-                  paddingTop: 10,
-                  text: 'Login',
-                  size: 30,
-                  weight: FontWeight.bold,
-                  paddingBottom: 10,
-                ),
-                MyText(
-                  paddingBottom: 20,
-                  text:
-                      'Log in to access your personalized APC study tools and track your progress toward chartership.',
-                  color: kgrey,
-                  size: 14,
-                ),
-                MyTextField(
-                  label: 'Email Address',
-                ),
-                MyTextField(
+                MyTextField2(
                   label: 'Password',
+                  hint: 'Enter your password',
                   // isOutline: true,
                 ),
                 MyText(
                   textAlign: TextAlign.end,
                   text: 'Forget Password?',
-                  color: kred,
+                  color: getSecondaryColor(context),
                   size: 14,
-                  weight: FontWeight.normal,
+                  fontFamily: AppFonts.gilroySemiBold,
+                  lineHeight: 20 / 14,
                   onTap: () {
-                Get.to(() => ForgetPw());
+                    Get.to(() => ForgetPw());
                   },
                   paddingBottom: 10,
-                ),
-                Row(
-                  children: [
-                    CustomCheckBox(
-                      isActive: true,
-                      onTap: () {},
-                    ),
-                    MyText(
-                      text: 'Remember Me',
-                      size: 12,
-                      color: kgrey,
-                      paddingLeft: 10,
-                    ),
-                  ],
                 ),
                 SizedBox(
                   height: 20,
@@ -108,47 +80,50 @@ class _LoginState extends State<Login> {
                   onTap: () {
                     //Get.to(() => BottomNavBar());
                   },
-                  buttonText: 'Login',
-                  mBottom: 15,
+                  buttonText: 'Sign In',
+                  mBottom: 25,
                 ),
                 Row(
                   children: [
                     Expanded(
                         child: Divider(
-                      color: kborder,
+                      thickness: 1.1,
+                      color: getSecondaryColor(context),
                     )),
                     MyText(
-                      text: '   or continue with   ',
-                      color: kgrey,
+                      text: '  Or   ',
+                      color: getSecondaryColor(context),
                       size: 14,
+                      fontFamily: AppFonts.gilroySemiBold,
                     ),
                     Expanded(
                         child: Divider(
-                      color: kborder,
+                      thickness: 1.1,
+                      color: getSecondaryColor(context),
                     ))
                   ],
                 ),
+                SizedBox(height: 25),
+                LoginOptions(
+                    icon: isDarkMode
+                        ? Assets.imagesDfacebook
+                        : Assets.imagesFacebook,
+                    ontap: () {}),
                 SizedBox(
-                  height: 20,
+                  height: 10,
                 ),
-                Row(
-                  children: [
-                    Expanded(
-                        child: LoginOptions(
-                            icon: Assets.imagesGoogle, ontap: () {})),
-                    SizedBox(
-                      width: 10,
-                    ),
-                    Expanded(
-                        child: LoginOptions(
-                            icon: Assets.imagesApple, ontap: () {})),
-                    SizedBox(
-                      width: 10,
-                    ),
-                    Expanded(
-                        child: LoginOptions(
-                            icon: Assets.imagesFacebook, ontap: () {}))
-                  ],
+                LoginOptions(
+                  icon: isDarkMode ? Assets.imagesDapple : Assets.imagesApple,
+                  ontap: () {},
+                  text: 'Continue with Apple',
+                ),
+                SizedBox(
+                  height: 10,
+                ),
+                LoginOptions(
+                  icon: isDarkMode ? Assets.imagesDgoogle : Assets.imagesGoogle,
+                  ontap: () {},
+                  text: 'Continue with Google',
                 ),
               ],
             ),
@@ -159,11 +134,12 @@ class _LoginState extends State<Login> {
             align: TextAlign.center,
             size2: 14,
             size: 14,
-            color2: kwhite,
-            color1: kgrey,
-            weight2: FontWeight.w500,
+            color2: getSecondaryColor(context),
+            color1: getTertiary(context),
+            fontFamily2: AppFonts.gilroySemiBold,
+            fontFamily: AppFonts.gilroySemiBold,
             ontap: () {
-                 Get.to(() => Signup());
+              Get.to(() => Signup());
             },
           ),
           SizedBox(
@@ -178,28 +154,46 @@ class _LoginState extends State<Login> {
 class LoginOptions extends StatelessWidget {
   final String icon;
   final VoidCallback ontap;
+  final String? text;
   const LoginOptions({
     super.key,
     required this.icon,
     required this.ontap,
+    this.text,
   });
 
   @override
   Widget build(BuildContext context) {
     return Bounce(
+      onTap: ontap, // don't forget to add ontap here
       child: Container(
-        padding: EdgeInsets.symmetric(horizontal: 26, vertical: 15),
+        alignment: Alignment.center,
+        padding: const EdgeInsets.symmetric(horizontal: 26, vertical: 15),
         decoration: BoxDecoration(
-            color: ktransparent,
-            borderRadius: BorderRadius.circular(6),
-            border: Border.all(color: kborder)),
-        child: Center(
-            child: CommonImageView(
-          imagePath: icon,
-          width: 21,
-          height: 21,
-          fit: BoxFit.contain,
-        )),
+          color: ktransparent,
+          borderRadius: BorderRadius.circular(6),
+          border: Border.all(color: getSecondaryColor(context)),
+        ),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center, // centers horizontally
+          mainAxisSize: MainAxisSize.min, // avoids extra space
+          crossAxisAlignment: CrossAxisAlignment.center, // centers vertically
+          children: [
+            CommonImageView(
+              imagePath: icon,
+              width: 21,
+              height: 21,
+              fit: BoxFit.contain,
+            ),
+            const SizedBox(width: 8),
+            MyText(
+              text: text ?? 'Continue with Facebook',
+              size: 14,
+              fontFamily: AppFonts.gilroySemiBold,
+              color: getSecondaryColor(context),
+            ),
+          ],
+        ),
       ),
     );
   }

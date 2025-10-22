@@ -39,7 +39,7 @@ class CreateNewEvent extends StatelessWidget {
             SizedBox(
               height: 20,
             ),
-            MyTextField(
+            MyTextField2(
               label: 'Event Title',
               hint: 'Write event title',
               marginBottom: 25,
@@ -48,7 +48,7 @@ class CreateNewEvent extends StatelessWidget {
               spacing: 20,
               children: [
                 Expanded(
-                  child: MyTextField(
+                  child: MyTextField2(
                     label: 'Date',
                     hint: 'Select Date',
                     marginBottom: 25,
@@ -60,7 +60,7 @@ class CreateNewEvent extends StatelessWidget {
                   ),
                 ),
                 Expanded(
-                  child: MyTextField(
+                  child: MyTextField2(
                     label: 'Time',
                     hint: 'Select Time',
                     marginBottom: 25,
@@ -73,7 +73,7 @@ class CreateNewEvent extends StatelessWidget {
                 ),
               ],
             ),
-            MyTextField(
+            MyTextField2(
               label: 'Description',
               hint: 'Write about the event',
               maxLines: 4,

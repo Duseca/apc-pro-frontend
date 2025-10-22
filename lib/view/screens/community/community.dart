@@ -37,7 +37,6 @@ class Community extends StatelessWidget {
     ];
     final RxInt currentIndex = 0.obs;
     return Scaffold(
-        backgroundColor: kbackground,
         appBar: simpleAppBar(
             context: context,
             title: 'Community',

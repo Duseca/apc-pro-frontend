@@ -32,7 +32,6 @@ class _TooltipIconState extends State<TooltipIcon> {
     return SuperTooltip(
       controller: _tooltipController,
       hideTooltipOnBarrierTap: true,
-      backgroundColor: kbackground,
       arrowTipDistance: 0,
       right: 40,
       elevation: 0,

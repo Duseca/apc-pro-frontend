@@ -24,13 +24,13 @@ class TeamClient extends StatelessWidget {
           fontFamily: AppFonts.gilroyBold,
           paddingBottom: 15,
         ),
-        MyTextField(
+        MyTextField2(
           label: 'Client Name (Optional)',
           hint: 'Client or organization name',
           marginBottom: 20,
           hintSize: 10,
         ),
-        MyTextField(
+        MyTextField2(
           label: 'Client Type',
           hint:
               'Describe your specific role, responsibilities, and level of authority on this project...',
@@ -38,7 +38,7 @@ class TeamClient extends StatelessWidget {
           maxLines: 2,
           hintSize: 10,
         ),
-        MyTextField(
+        MyTextField2(
           label: 'Client Description (optional)',
           hint: 'Detail the specific scope of work you were responsible for...',
           marginBottom: 20,

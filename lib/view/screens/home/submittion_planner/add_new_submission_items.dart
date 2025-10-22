@@ -49,7 +49,7 @@ class AddNewSubmissionItems extends StatelessWidget {
                   SizedBox(
                     height: 20,
                   ),
-                  MyTextField(
+                  MyTextField2(
                     label: 'Title',
                     hint: 'Enter title',
                     marginBottom: 25,
@@ -62,7 +62,6 @@ class AddNewSubmissionItems extends StatelessWidget {
                     label: 'Category',
                     hasInfo: false,
                     iconColor: klighblue,
-                    backgroundColor: kbackground,
                   ),
                   SizedBox(
                     height: 25,
@@ -75,12 +74,11 @@ class AddNewSubmissionItems extends StatelessWidget {
                     label: 'Priority',
                     hasInfo: false,
                     iconColor: klighblue,
-                    backgroundColor: kbackground,
                   ),
                   SizedBox(
                     height: 25,
                   ),
-                  MyTextField(
+                  MyTextField2(
                     label: 'Due Date',
                     hint: '',
                     suffixIcon: Image.asset(
@@ -97,17 +95,17 @@ class AddNewSubmissionItems extends StatelessWidget {
                     onChanged: (i) {},
                     label: 'Status',
                     hasInfo: false,
-                    backgroundColor: kbackground,
+
                     iconColor: klighblue,
                   ),
                   SizedBox(
                     height: 25,
                   ),
-                  MyTextField(
+                  MyTextField2(
                     label: 'Estimated Time',
                     hint: 'Enter estimated time',
                   ),
-                  MyTextField(
+                  MyTextField2(
                     label: 'Description',
                     hint:
                         'Write your notes, reflections, or progress details here.',

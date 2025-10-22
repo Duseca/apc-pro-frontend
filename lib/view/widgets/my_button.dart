@@ -1,44 +1,41 @@
-
+import 'package:apc_pro/consts/app_fonts.dart';
 import 'package:bounce/bounce.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:apc_pro/consts/app_colors.dart';
 
-
-
 import 'my_text_widget.dart';
 
 // ignore: must_be_immutable
 class MyButton extends StatelessWidget {
-  MyButton({
-    this.onTap,
-    this.width,
-    this.buttonText,
-    this.height = 56,
-    this.backgroundColor,
-    this.fontColor,
-    this.fontSize = 16,
-    this.outlineColor = Colors.transparent,
-    this.radius =12,
-    this.svgIcon,
-    this.isleft = false,
-    this.hasgrad = false,
-    this.mBottom = 0,
-    this.mhoriz = 0,
-    this.mTop=0,
-    this.hpad=0,
-    this.vpad=0,
-    this.fontWeight = FontWeight.bold,
-    this.icon,
-    this.image,
-    this.iconSize = 24,
-    this.iconPosition = IconPosition.left,
-    this.imgColor,
-    this.cornerIcon = false,
-    this.hasShadow,
-    this.opacity,
-    this.fontFamily
-  });
+  MyButton(
+      {this.onTap,
+      this.width,
+      this.buttonText,
+      this.height = 45,
+      this.backgroundColor,
+      this.fontColor,
+      this.fontSize = 16,
+      this.outlineColor = Colors.transparent,
+      this.radius = 12,
+      this.svgIcon,
+      this.isleft = false,
+      this.hasgrad = false,
+      this.mBottom = 0,
+      this.mhoriz = 0,
+      this.mTop = 0,
+      this.hpad = 0,
+      this.vpad = 0,
+      this.fontWeight = FontWeight.bold,
+      this.icon,
+      this.image,
+      this.iconSize = 24,
+      this.iconPosition = IconPosition.left,
+      this.imgColor,
+      this.cornerIcon = false,
+      this.hasShadow,
+      this.opacity,
+      this.fontFamily = AppFonts.gilroySemiBold});
 
   final String? buttonText;
   final VoidCallback? onTap;
@@ -56,8 +53,8 @@ class MyButton extends StatelessWidget {
   final double iconSize;
   final double? opacity;
   final IconPosition iconPosition;
-final String? fontFamily;
-  final double mhoriz, mBottom,mTop,vpad,hpad;
+  final String? fontFamily;
+  final double mhoriz, mBottom, mTop, vpad, hpad;
   final FontWeight fontWeight;
 
   @override
@@ -66,23 +63,24 @@ final String? fontFamily;
       effects: [ShimmerEffect(duration: Duration(milliseconds: 300))],
       child: Bounce(
         duration: Duration(milliseconds: 200),
-       onTap: onTap ?? () {},
+        onTap: onTap ?? () {},
         child: Opacity(
-          opacity:opacity??1 ,
+          opacity: opacity ?? 1,
           child: Container(
-            padding: EdgeInsets.symmetric(horizontal: hpad,vertical: vpad),
-            margin: EdgeInsets.only(left: mhoriz, right: mhoriz, bottom: mBottom,top: mTop),
+            padding: EdgeInsets.symmetric(horizontal: hpad, vertical: vpad),
+            margin: EdgeInsets.only(
+                left: mhoriz, right: mhoriz, bottom: mBottom, top: mTop),
             height: height,
             width: width,
             decoration: hasgrad == true
                 ? BoxDecoration(
-                   // gradient: kbuttongrad,
-                   color: ksecondary,
+                    // gradient: kbuttongrad,
+                    color: getSecondaryColor(context),
                     border: Border.all(color: outlineColor),
                     borderRadius: BorderRadius.circular(radius),
                     boxShadow: [
                       BoxShadow(
-                        color: ksecondary.withOpacity(0.4),
+                        color: getSecondaryColor(context).withOpacity(0.4),
                         spreadRadius: 1,
                         blurRadius: 10,
                         offset: Offset(0, 02),
@@ -90,22 +88,23 @@ final String? fontFamily;
                     ],
                   )
                 : BoxDecoration(
-                    color: backgroundColor ?? ksecondary,
+                    color: backgroundColor ?? getSecondaryColor(context),
                     border: Border.all(color: outlineColor),
                     borderRadius: BorderRadius.circular(radius),
                     boxShadow: hasShadow == true
                         ? [
-                                   BoxShadow(
-                      color: kgrey.withOpacity(0.08),
-                      spreadRadius: 0.5,
-                      blurRadius: 4,
-                      offset: Offset(0, 2),
-                    ),
+                            BoxShadow(
+                              color: kgrey.withOpacity(0.08),
+                              spreadRadius: 0.5,
+                              blurRadius: 4,
+                              offset: Offset(0, 2),
+                            ),
                           ]
                         : [],
                   ),
             child: Align(
-              alignment: isleft == true ? Alignment.centerLeft : Alignment.center,
+              alignment:
+                  isleft == true ? Alignment.centerLeft : Alignment.center,
               child: Row(
                 mainAxisSize: MainAxisSize.max,
                 mainAxisAlignment: cornerIcon == true
@@ -117,23 +116,25 @@ final String? fontFamily;
                   if (icon != null && iconPosition == IconPosition.left)
                     Padding(
                       padding: EdgeInsets.only(
-                          left: cornerIcon == true
-                              ? 10.0
-                              : 8.0), 
+                          left: cornerIcon == true ? 10.0 : 8.0),
                       child: Icon(icon, color: fontColor, size: iconSize),
                     ),
                   if (image != null && iconPosition == IconPosition.left)
                     Padding(
-                      padding:
-                          EdgeInsets.only(left: cornerIcon == true ? 10.0 : 8.0),
-                      child:
-                          Image.asset(image!, height: iconSize, width: iconSize,color: imgColor,),
+                      padding: EdgeInsets.only(
+                          left: cornerIcon == true ? 10.0 : 8.0),
+                      child: Image.asset(
+                        image!,
+                        height: iconSize,
+                        width: iconSize,
+                        color: imgColor,
+                      ),
                     ),
                   if (buttonText != null)
                     MyText(
                       text: buttonText!,
                       size: fontSize,
-                      color: fontColor ?? kwhite,
+                      color: fontColor ?? getsplashcolor(context),
                       weight: fontWeight,
                       fontFamily: fontFamily,
                       paddingLeft: isleft == true ? 10 : 0,
@@ -148,10 +149,14 @@ final String? fontFamily;
                     ),
                   if (image != null && iconPosition == IconPosition.right)
                     Padding(
-                      padding:
-                          EdgeInsets.only(right: cornerIcon == true ? 10.0 : 8.0),
-                      child:
-                          Image.asset(image!, height: iconSize, width: iconSize,color: imgColor,),
+                      padding: EdgeInsets.only(
+                          right: cornerIcon == true ? 10.0 : 8.0),
+                      child: Image.asset(
+                        image!,
+                        height: iconSize,
+                        width: iconSize,
+                        color: imgColor,
+                      ),
                     ),
                 ],
               ),

@@ -16,21 +16,21 @@ class AddMemeberDialog extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          MyTextField(
+          MyTextField2(
             label: 'Name',
             hint:
                 'Provide a comprehensive description of the project, including scope, objectives, and key deliverables...',
             marginBottom: 20,
             maxLines: 2,
           ),
-          MyTextField(
+          MyTextField2(
             label: 'Role',
             hint:
                 'Describe your specific role, responsibilities, and level of authority on this project...',
             marginBottom: 20,
             maxLines: 2,
           ),
-          MyTextField(
+          MyTextField2(
             label: 'Organization',
             hint:
                 'Detail the specific scope of work you were responsible for...',
@@ -38,7 +38,6 @@ class AddMemeberDialog extends StatelessWidget {
             maxLines: 2,
           ),
           SimpleDropDown(
-            backgroundColor: kbackground,
             label: 'Reporting Relationship',
             hint: 'Peer/ Colleague',
             items: ['Peer/ Colleague', 'outsiders'],

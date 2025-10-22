@@ -15,7 +15,6 @@ class SurveyMain extends StatelessWidget {
 
     return Scaffold(
       appBar: simpleAppBar(context: context, haveBackButton: false),
-      backgroundColor: kbackground,
       body: Obx(() {
         final step = controller.stepsData[controller.currentStep.value];
         final String title = step['title'] as String;

@@ -72,7 +72,6 @@ class Home extends StatelessWidget {
 
     return Scaffold(
         appBar: simpleAppBar(context: context, haveBackButton: false),
-        backgroundColor: kbackground,
         body: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [

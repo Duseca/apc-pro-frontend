@@ -26,19 +26,18 @@ class _SplashState extends State<Splash> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: kbackground,
         body: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 50),
-              child: Image.asset(
-                Assets.imagesLogo1,
-                height: 59,
-              ),
-            )
-          ],
-        ));
+      crossAxisAlignment: CrossAxisAlignment.center,
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 50),
+          child: Image.asset(
+            Assets.imagesLogo1,
+            height: 59,
+          ),
+        )
+      ],
+    ));
   }
 }

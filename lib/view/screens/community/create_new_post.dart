@@ -54,26 +54,25 @@ class CreateNewPost extends StatelessWidget {
                 'Select a forum'
               ],
               onChanged: (value) {},
-              backgroundColor: kbackground,
               value: 'Select a forum',
               label: 'Forum',
             ),
             SizedBox(
               height: 25,
             ),
-            MyTextField(
+            MyTextField2(
               label: 'Title',
               hint: 'What’s your questions and topic',
               marginBottom: 25,
             ),
-            MyTextField(
+            MyTextField2(
               label: 'Content',
               hint:
                   'Provide details about your questions or share your insights',
               maxLines: 4,
               marginBottom: 25,
             ),
-            MyTextField(
+            MyTextField2(
               label: 'Tags(Optional)',
               hint: 'case study, interview, cpd........',
               marginBottom: 25,

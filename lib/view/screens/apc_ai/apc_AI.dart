@@ -38,13 +38,13 @@ class ApcAi extends StatelessWidget {
                 fontFamily: AppFonts.gilroyBold,
               ),
               Bounce(
-                onTap: () {
-                  Get.back();
-                },
+                  onTap: () {
+                    Get.back();
+                  },
                   child: Image.asset(
-                Assets.imagesCross,
-                width: 14,
-              ))
+                    Assets.imagesCross,
+                    width: 14,
+                  ))
             ],
           ),
           MyText(
@@ -55,7 +55,7 @@ class ApcAi extends StatelessWidget {
             paddingBottom: 14,
           ),
           Padding(
-          padding: const EdgeInsets.only(right: 30),
+            padding: const EdgeInsets.only(right: 30),
             child: Row(
               spacing: 30,
               children: [
@@ -92,7 +92,9 @@ class ApcAi extends StatelessWidget {
               ],
             ),
           ),
-          SizedBox(height: 30,),
+          SizedBox(
+            height: 30,
+          ),
           MessageTile(
               isSentBy: false,
               message:
@@ -100,7 +102,7 @@ class ApcAi extends StatelessWidget {
           SizedBox(
             height: 100,
           ),
-          MyTextField(
+          MyTextField2(
             hint: 'Ask Apc Pro AI',
             hintColor: klighblue,
             bordercolor: ksecondary,

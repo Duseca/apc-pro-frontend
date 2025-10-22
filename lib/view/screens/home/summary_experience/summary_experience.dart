@@ -28,7 +28,6 @@ class SummaryExperience extends StatelessWidget {
       'Construction Technology and Environmental Services'
     ];
     return Scaffold(
-        backgroundColor: kbackground,
         appBar: simpleAppBar(
             context: context,
             title: 'Summary of Experience',

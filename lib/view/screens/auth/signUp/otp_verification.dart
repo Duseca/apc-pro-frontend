@@ -1,13 +1,11 @@
-import 'dart:async';
 import 'package:apc_pro/consts/app_colors.dart';
+import 'package:apc_pro/consts/app_fonts.dart';
 import 'package:apc_pro/view/screens/survey/survey_main.dart';
-import 'package:apc_pro/view/widgets/diff_texts_txt.dart';
+import 'package:apc_pro/view/widgets/expanded_row.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:apc_pro/generated/assets.dart';
-import 'package:apc_pro/view/screens/auth/login/login.dart';
 import 'package:apc_pro/view/widgets/appbar.dart';
-import 'package:apc_pro/view/widgets/common_image_view_widget.dart';
 import 'package:apc_pro/view/widgets/dialogboxes.dart';
 import 'package:apc_pro/view/widgets/my_button.dart';
 import 'package:apc_pro/view/widgets/my_text_widget.dart';
@@ -22,48 +20,47 @@ class OtpVerification extends StatefulWidget {
 class _OtpVerificationState extends State<OtpVerification> {
   @override
   Widget build(BuildContext context) {
+    final isDarkMode = Theme.of(context).brightness == Brightness.dark;
     return Scaffold(
-      backgroundColor: kbackground,
-      appBar: simpleAppBar(
-        context: context,
-        title: 'Account Verification',
-        centerTitle: true,
-          size: 16,
-          leadingIcon: Assets.imagesBackIcon,
-        contentColor: ksecondary,
-      ),
+      appBar: simpleAppBar(context: context, toolbarHeight: 60),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          Divider(color: kgrey),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 20),
+            child: TwoTextedColumn(
+              text1: 'Create Account',
+              text2:
+                  'Enter your email address to create your Vacation Buddy account',
+              size1: 16,
+              size2: 14,
+              fontFamily: AppFonts.gilroySemiBold,
+              fontFamily2: AppFonts.gilroyMedium,
+            ),
+          ),
           Expanded(
             child: ListView(
               shrinkWrap: true,
               padding: const EdgeInsets.symmetric(vertical: 25, horizontal: 20),
               physics: const BouncingScrollPhysics(),
               children: [
-                Row(
-                  children: [
-                    CommonImageView(
-                      imagePath: Assets.imagesLogo1,
-                      height: 30,
-                      fit: BoxFit.contain,
-                      //  color: kBlack2Color,
-                    ),
-                  ],
+                SizedBox(
+                  height: 20,
+                ),
+                Center(
+                  child: Image.asset(
+                    Assets.imagesCode,
+                    width: 60,
+                    height: 60,
+                  ),
                 ),
                 MyText(
-                  paddingTop: 10,
-                  text: 'OTP Verification',
-                  size: 30,
-                  weight: FontWeight.bold,
-                  paddingBottom: 10,
-                ),
-                MyText(
-                  paddingBottom: 20,
-                  text: 'Enter OTP sent to your email to verify yout account.',
-                  color: kgrey,
+                  paddingTop: 20,
+                  text: 'Verification Code',
                   size: 14,
+                  color: getSecondaryColor(context),
+                  fontFamily: AppFonts.gilroyBold,
+                  paddingBottom: 10,
                 ),
                 MyPinCode(
                   onChanged: (value) {},
@@ -71,26 +68,46 @@ class _OtpVerificationState extends State<OtpVerification> {
                     print("Completed: $value");
                   },
                 ),
-                SizedBox(
-                  height: 80,
-                ),
-                DiffTextsTxt(
-                  text1: '00:58 ',
-                  text2: 'Resend',
-                ),
-                SizedBox(
-                  height: 20,
+                MyText(
+                  paddingTop: 30,
+                  text: 'Code expires in 05:00',
+                  size: 12,
+                  color: getTertiary(context),
+                  fontFamily: AppFonts.gilroySemiBold,
+                  textAlign: TextAlign.center,
+                  paddingBottom: 20,
                 ),
                 MyButton(
                   onTap: () {
-                    SuccessDialog.showSuccessDialog('Verification Complete!',
+                    SuccessDialog.showSuccessDialog(
+                        'Verification Complete!', context,
                         message: 'Your account has been successfully verified.',
                         ButtonText: 'Continue', ontap: () {
-                         Get.to(() => SurveyMain());
-                    }, image: Assets.imagesOtpverify, isSvg: true);
+                      Get.to(() => SurveyMain());
+                    },
+                        image: isDarkMode
+                            ? Assets.imagesDotpVerify
+                            : Assets.imagesOtpverify,
+                        isSvg: true);
                   },
-                  buttonText: 'Confirm',
+                  buttonText: 'Verify Email',
                   mBottom: 15,
+                ),
+                MyText(
+                  text: 'Didn’t receive the code',
+                  size: 12,
+                  color: getTertiary(context),
+                  fontFamily: AppFonts.gilroySemiBold,
+                  textAlign: TextAlign.center,
+                  paddingBottom: 10,
+                ),
+                MyText(
+                  text: 'Resend Email',
+                  size: 12,
+                  color: getSecondaryColor(context),
+                  fontFamily: AppFonts.gilroyBold,
+                  textAlign: TextAlign.center,
+                  paddingBottom: 20,
                 ),
               ],
             ),

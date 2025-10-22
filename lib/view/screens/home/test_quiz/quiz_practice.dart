@@ -33,7 +33,6 @@ class QuizPractice extends StatelessWidget {
       '3pts',
     ];
     return Scaffold(
-        backgroundColor: kbackground,
         appBar: simpleAppBar(
             context: context, title: 'Quiz Practice', centerTitle: true),
         body: Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
@@ -90,7 +89,7 @@ class QuizPractice extends StatelessWidget {
                   ),
                   buttonContainer(
                     onTap: () {
-                      SuccessDialog.showSuccessDialog('Quiz Paused',
+                      SuccessDialog.showSuccessDialog('Quiz Paused', context,
                           message:
                               'Your progress has been saved. You can resume anytime',
                           image: Assets.imagesPause2,
@@ -245,7 +244,7 @@ class _NumberGridState extends State<NumberGrid> {
             onTap: () => selectedIndex.value = index,
             child: CustomeContainer(
               radius: 6,
-              borderColor:  kblueBorder4,
+              borderColor: kblueBorder4,
               color: isSelected ? ksecondary : Color(0xff477DCC),
               vpad: 10,
               hpad: 10,

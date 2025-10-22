@@ -31,11 +31,10 @@ class ContinueWriting extends StatelessWidget {
       'Business Planning',
       'Data Management'
     ];
-    
-  final RxInt currentIndex = 0.obs;
+
+    final RxInt currentIndex = 0.obs;
 
     return Scaffold(
-      backgroundColor: kbackground,
       appBar: simpleAppBar(
         context: context,
         title: 'Continue Writing',
@@ -51,13 +50,13 @@ class ContinueWriting extends StatelessWidget {
               physics: const BouncingScrollPhysics(),
               children: [
                 Obx(
-                ()=> TabsWidget(
-                      items: _tabs,
-                      currentindex: currentIndex.value,
-                      ontap: (p0) {
-                        currentIndex.value = p0; 
-                      },
-                    ),
+                  () => TabsWidget(
+                    items: _tabs,
+                    currentindex: currentIndex.value,
+                    ontap: (p0) {
+                      currentIndex.value = p0;
+                    },
+                  ),
                 ),
                 ListView.builder(
                   padding: EdgeInsets.zero,
@@ -123,16 +122,15 @@ class ContinueWritingContainer extends StatelessWidget {
                 ],
               ),
             ),
-           
-              const SizedBox(height: 20),
-              MyText(
-                text: 'Progress: 0%   Words: 0',
-                size: 12,
-                fontFamily: AppFonts.gilroyMedium,
-                paddingBottom: 8,
-              ),
-              linearProgressIndicatorr(),
-               if (_expanded.value) ...[
+            const SizedBox(height: 20),
+            MyText(
+              text: 'Progress: 0%   Words: 0',
+              size: 12,
+              fontFamily: AppFonts.gilroyMedium,
+              paddingBottom: 8,
+            ),
+            linearProgressIndicatorr(),
+            if (_expanded.value) ...[
               const SizedBox(height: 13),
               Row(
                 children: [

@@ -33,7 +33,6 @@ class CreateCustomQuiz extends StatelessWidget {
 
     final RxInt currentIndex = 0.obs;
     return Scaffold(
-        backgroundColor: kbackground,
         appBar: simpleAppBar(
             context: context, title: 'Create Custom Quiz', centerTitle: true),
         body: Column(
@@ -72,7 +71,9 @@ class CreateCustomQuiz extends StatelessWidget {
                                     },
                                   ),
                                   tabContents[currentIndex.value],
-                                  SizedBox(height: 20,)
+                                  SizedBox(
+                                    height: 20,
+                                  )
                                 ],
                               ),
                             ),
@@ -99,13 +100,13 @@ class CustomQuizBasic extends StatelessWidget {
           fontFamily: AppFonts.gilroyBold,
           paddingBottom: 20,
         ),
-        MyTextField(
+        MyTextField2(
           label: 'Quiz Name*',
           hint: 'Enter quiz name',
           marginBottom: 22,
           bordercolor: ksecondary,
         ),
-        MyTextField(
+        MyTextField2(
           label: 'Description',
           hint: 'Describe the purpose and focus of this quiz',
           maxLines: 3,

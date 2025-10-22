@@ -8,9 +8,9 @@ class Faqs extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-       return Scaffold(
-        backgroundColor: kbackground,
-        appBar: simpleAppBar(context: context,title: 'FAQ’s',centerTitle: true),
+    return Scaffold(
+        appBar:
+            simpleAppBar(context: context, title: 'FAQ’s', centerTitle: true),
         body: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
@@ -21,19 +21,18 @@ class Faqs extends StatelessWidget {
                     const EdgeInsets.symmetric(vertical: 15, horizontal: 20),
                 physics: const BouncingScrollPhysics(),
                 children: [
-
-                        ListView.builder(
-                          padding: EdgeInsets.all(0),
-                          shrinkWrap: true,
-                          physics: const NeverScrollableScrollPhysics(),
-                          itemCount: 4,
-                          itemBuilder: (context, index) {
-                            return Padding(
-                              padding: const EdgeInsets.only(bottom: 15),
-                              child: CustomAccordion(),
-                            );
-                          },
-                        ),
+                  ListView.builder(
+                    padding: EdgeInsets.all(0),
+                    shrinkWrap: true,
+                    physics: const NeverScrollableScrollPhysics(),
+                    itemCount: 4,
+                    itemBuilder: (context, index) {
+                      return Padding(
+                        padding: const EdgeInsets.only(bottom: 15),
+                        child: CustomAccordion(),
+                      );
+                    },
+                  ),
                 ],
               ),
             ),

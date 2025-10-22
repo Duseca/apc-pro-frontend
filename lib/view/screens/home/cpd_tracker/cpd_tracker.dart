@@ -85,7 +85,6 @@ class CpdTracker extends StatelessWidget {
     ];
 
     return Scaffold(
-        backgroundColor: kbackground,
         appBar: simpleAppBar(
             context: context,
             title: 'CPD Tracker',
@@ -399,7 +398,9 @@ class recnet_activity_widget extends StatelessWidget {
     this.text2,
     this.hastext2 = true,
     this.buttonText,
-    this.text3, this.fontFamily1, this.size1,
+    this.text3,
+    this.fontFamily1,
+    this.size1,
   });
 
   @override
@@ -416,8 +417,8 @@ class recnet_activity_widget extends StatelessWidget {
               children: [
                 MyText(
                   text: text1 ?? 'RICS Professional Ethics Course',
-                  size:size1?? 11,
-                  fontFamily:fontFamily1?? AppFonts.gilroyMedium,
+                  size: size1 ?? 11,
+                  fontFamily: fontFamily1 ?? AppFonts.gilroyMedium,
                   maxLines: null,
                   paddingRight: 6,
                 ),
@@ -432,7 +433,6 @@ class recnet_activity_widget extends StatelessWidget {
                 ),
               ],
             ),
-
             MyText(
               text: text3 ?? '8h',
               size: 14,

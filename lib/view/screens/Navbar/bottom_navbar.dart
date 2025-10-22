@@ -69,15 +69,19 @@ class _BottomNavBarState extends State<BottomNavBar> {
 
   @override
   Widget build(BuildContext context) {
-    final List<Widget> screens = [Home(), Community(), Home(), Notificationss(), Profile()];
+    final List<Widget> screens = [
+      Home(),
+      Community(),
+      Home(),
+      Notificationss(),
+      Profile()
+    ];
 
     return Scaffold(
-      backgroundColor: kbackground,
       body: screens[currentIndex],
       bottomNavigationBar: BottomAppBar(
-         shape: const CircularNotchedRectangle(), 
+        shape: const CircularNotchedRectangle(),
         notchMargin: 0,
-        
         color: kbackground,
         child: SizedBox(
           height: Platform.isIOS ? 90 : 70,
@@ -92,13 +96,14 @@ class _BottomNavBarState extends State<BottomNavBar> {
             ],
           ),
         ),
-
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       floatingActionButton: Bounce(
         onTap: () {
-          Get.bottomSheet(ApcAi(),isScrollControlled: true,barrierColor: kblackfill.withOpacity(0.5));
-        //  Get.offAll(()=>BottomNavBar(index: 0,));
+          Get.bottomSheet(ApcAi(),
+              isScrollControlled: true,
+              barrierColor: kblackfill.withOpacity(0.5));
+          //  Get.offAll(()=>BottomNavBar(index: 0,));
         },
         child: Padding(
           padding: const EdgeInsets.only(top: 30),
