@@ -326,6 +326,10 @@ class Assets {
   /// assets/images/DotpVerify.svg
   static const String imagesDotpVerify = "assets/images/DotpVerify.svg";
 
+  /// Assets for imagesDownload
+  /// assets/images/download.png
+  static const String imagesDownload = "assets/images/download.png";
+
   /// Assets for imagesDsend
   /// assets/images/dsend.png
   static const String imagesDsend = "assets/images/dsend.png";
@@ -633,6 +637,10 @@ class Assets {
   /// Assets for imagesSearch
   /// assets/images/search.png
   static const String imagesSearch = "assets/images/search.png";
+
+  /// Assets for imagesSecurity
+  /// assets/images/security.png
+  static const String imagesSecurity = "assets/images/security.png";
 
   /// Assets for imagesSend
   /// assets/images/send.png
