@@ -7,8 +7,10 @@ import 'package:apc_pro/view/widgets/button_container.dart';
 import 'package:apc_pro/view/widgets/custom_row.dart';
 import 'package:apc_pro/view/widgets/custome_comtainer.dart';
 import 'package:apc_pro/view/widgets/diff_texts_txt.dart';
+import 'package:apc_pro/view/widgets/expanded_row.dart';
 import 'package:apc_pro/view/widgets/home_widgets/apc_diary_widgets.dart';
 import 'package:apc_pro/view/widgets/my_text_widget.dart';
+import 'package:apc_pro/view/widgets/tags_widget.dart';
 import 'package:bounce/bounce.dart';
 import 'package:flutter/material.dart';
 
@@ -26,18 +28,25 @@ class EntriesDetail extends StatelessWidget {
     final List<Map<String, String>> AiEnhancement = [
       {
         "title": "Enhance Description",
-        "desc": "Get suggestions to improve technical detail and clarity",
+        // "desc": "Get suggestions to improve technical detail and clarity",
+        'icon': Assets.imagesEdit2
       },
       {
         "title": "Deepen Reflections",
-        "desc": "Add meaningful insights and learning connections",
+        // "desc": "Add meaningful insights and learning connections",
+        'icon': Assets.imagesBrain
       },
       {
         "title": "RICS Compliance",
-        "desc": "Ensure entry meets all RICS diary requirements",
+        // "desc": "Ensure entry meets all RICS diary requirements",
+        'icon': Assets.imagesBadge
       },
     ];
-
+    final List<String> tagList = [
+      'Laser Scanning',
+      'Drone Photogrammetry',
+      '3D Modeling',
+    ];
     return Scaffold(
         appBar: simpleAppBar(
             context: context,
@@ -47,7 +56,7 @@ class EntriesDetail extends StatelessWidget {
               Bounce(
                   child: Image.asset(
                 Assets.imagesEdit,
-                color: kwhite,
+                color: getSecondaryColor(context),
                 width: 24,
               )),
               SizedBox(
@@ -56,7 +65,7 @@ class EntriesDetail extends StatelessWidget {
               Bounce(
                   child: Image.asset(
                 Assets.imagesTrash,
-                color: kwhite,
+                color: getSecondaryColor(context),
                 width: 24,
               )),
               SizedBox(
@@ -77,11 +86,10 @@ class EntriesDetail extends StatelessWidget {
                     height: 15,
                   ),
                   CustomeContainer(
-                    radius: 10,
+                    radius: 8,
                     hpad: 16,
                     vpad: 15,
-                    color: kblackfill,
-                    borderColor: kblueBorder2,
+                    color: getfillcolor(context),
                     widget: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -98,10 +106,10 @@ class EntriesDetail extends StatelessWidget {
                             Row(
                               children: [
                                 buttonContainer(
-                                  borderColor: kblueBorder2,
                                   radius: 50,
                                   text: 'lvl 2 - Application of Knowledge',
-                                  bgColor: kblackfill,
+                                  bgColor: getsplashcolor(context),
+                                  txtColor: getTertiary(context),
                                   vPadding: 4,
                                   hPadding: 15,
                                 ),
@@ -110,11 +118,10 @@ class EntriesDetail extends StatelessWidget {
                             Row(
                               children: [
                                 buttonContainer(
-                                  borderColor: kblueBorder2,
                                   radius: 50,
                                   text: '1.5 days committed',
-                                  bgColor: kblueBorder2,
-                                  txtColor: kwhite,
+                                  bgColor: getsplashcolor(context),
+                                  txtColor: getTertiary(context),
                                   vPadding: 4,
                                   hPadding: 10,
                                 ),
@@ -144,10 +151,21 @@ class EntriesDetail extends StatelessWidget {
                             lpad: 5,
                             texSize: 11,
                             textColor: kwhite),
+                      ],
+                    ),
+                  ),
+                  CustomeContainer(
+                    mtop: 16,
+                    radius: 8,
+                    hpad: 16,
+                    vpad: 15,
+                    color: getfillcolor(context),
+                    widget: Column(
+                      children: [
+                        icon_button_row(),
                         SizedBox(
                           height: 12,
                         ),
-                        icon_button_row(),
                         ListView.builder(
                           padding: EdgeInsets.all(0),
                           shrinkWrap: true,
@@ -156,54 +174,135 @@ class EntriesDetail extends StatelessWidget {
                           itemBuilder: (context, index) {
                             return Padding(
                                 padding: const EdgeInsets.only(bottom: 1),
-                                child: MyBullet(point: work[index]));
+                                child: MyBullet(
+                                  point: work[index],
+                                  color: getTertiary(context),
+                                ));
                           },
                         ),
-                        Padding(
-                          padding: const EdgeInsets.symmetric(vertical: 5),
-                          child: Divider(
-                            color: kblueBorder2,
-                          ),
-                        ),
+                      ],
+                    ),
+                  ),
+                  CustomeContainer(
+                    mtop: 16,
+                    mbott: 16,
+                    radius: 8,
+                    hpad: 16,
+                    vpad: 15,
+                    color: getfillcolor(context),
+                    widget: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
                         icon_button_row(
                           title: 'Reflection & Learning',
                           buttonText: '18 words',
-                        ),
-                        MyBullet(
-                            point:
-                                'This survey enhanced my understanding of traditional building construction and common defect patterns in Victorian properties.'),
-                        Padding(
-                          padding: const EdgeInsets.symmetric(vertical: 5),
-                          child: Divider(
-                            color: kblueBorder2,
-                          ),
-                        ),
-                        newEntry_container(
-                          mbott: 0,
-                          title: 'Survey-photos.zip',
-                          desc:
-                              '195 MB 15/01/2024\nProperty survey photographs',
-                          icon: Assets.imagesDocument2,
-                          borderColor: kblueBorder2,
-                          suffixIcon: Assets.imagesExport,
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.symmetric(vertical: 5),
-                          child: Divider(
-                            color: kblueBorder2,
-                          ),
+                          icon: Assets.imagesReflection,
                         ),
                         SizedBox(
-                          height: 10,
+                          height: 12,
                         ),
+                        MyBullet(
+                            color: getTertiary(context),
+                            point:
+                                'This survey enhanced my understanding of traditional building construction and common defect patterns in Victorian properties.'),
+                        MyText(
+                          text: 'Skills Developed',
+                          size: 14,
+                          fontFamily: AppFonts.gilroySemiBold,
+                          paddingTop: 10,
+                          paddingBottom: 10,
+                        ),
+                        Wrap(
+                          spacing: 8,
+                          runSpacing: 8,
+                          children: tagList.map((tag) {
+                            return TagsWidget(
+                              tag,
+                              bgColor:
+                                  getSecondaryColor(context).withOpacity(0.08),
+                              radius: 30,
+                              borderColor: ktransparent,
+                              textColor: getTertiary(context),
+                            );
+                          }).toList(),
+                        ),
+                      ],
+                    ),
+                  ),
+                  CustomeContainer(
+                    mtop: 16,
+                    mbott: 16,
+                    radius: 8,
+                    hpad: 16,
+                    vpad: 15,
+                    color: getfillcolor(context),
+                    widget: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        icon_button_row(
+                          icon: Assets.imagesAttachment2,
+                          title: 'Attachment',
+                          buttonText: '',
+                        ),
+                        SizedBox(
+                          height: 12,
+                        ),
+                        newEntry_container(
+                          iconSize: 20,
+                          bgColor: getSecondaryColor(context).withOpacity(0.08),
+                          mbott: 0,
+                          title: 'Survey-photos.zip',
+                          desc: '24.5 MB • Images',
+                          icon: Assets.imagesImages,
+                          suffixIcon: Assets.imagesExport,
+                          iconColor: getSecondaryColor(context),
+                        ),
+                        SizedBox(
+                          height: 12,
+                        ),
+                        newEntry_container(
+                          iconSize: 20,
+                          bgColor: getSecondaryColor(context).withOpacity(0.08),
+                          mbott: 0,
+                          title: 'Survey_Report.pdf',
+                          desc: '3.2 MB • Document',
+                          icon: Assets.imagesDocument,
+                          suffixIcon: Assets.imagesExport,
+                          iconColor: getSecondaryColor(context),
+                        ),
+                      ],
+                    ),
+                  ),
+                  CustomeContainer(
+                    mbott: 16,
+                    radius: 8,
+                    hpad: 16,
+                    vpad: 15,
+                    color: getfillcolor(context),
+                    widget: Column(
+                      children: [
                         icon_button_row(
                           title: 'AI Enhancement Suggestions',
-                          icon: Assets.imagesMagicpen,
-                          buttonText: 'Get AI Feedback',
+                          icon: Assets.imagesMagic2,
+                          buttonText: '',
                           pbot: 18,
                         ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            buttonContainer(
+                              borderColor: getSecondaryColor(context),
+                              radius: 8,
+                              bgColor: ktransparent,
+                              text: ' Get AI Feedback',
+                              imagePath: Assets.imagesLight,
+                            iconColor: getSecondaryColor(context),
+                              imageSize: 17,
+                            )
+                          ],
+                        ),
                         ListView.builder(
-                          padding: EdgeInsets.all(0),
+                          padding: EdgeInsets.only(top: 16),
                           shrinkWrap: true,
                           physics: const NeverScrollableScrollPhysics(),
                           itemCount: AiEnhancement.length,
@@ -211,90 +310,96 @@ class EntriesDetail extends StatelessWidget {
                             final item = AiEnhancement[index];
                             return Padding(
                               padding: const EdgeInsets.only(bottom: 18),
-                              child: newEntry_container(
-                                title: item["title"]!,
-                                desc: item["desc"]!,
-                                borderColor: kblueBorder2,
-                                hasPrefix: false,
-                                mbott: 0,
+                              child: CustomeContainer(
+                                radius: 8,
+                                color: getSecondaryColor(context)
+                                    .withOpacity(0.05),
+                                vpad: 20,
+                                hpad: 12,
+                                widget: Row(
+                                  children: [
+                                    Image.asset(
+                                      item["icon"]!,
+                                      width: 16,
+                                      color: getSecondaryColor(context),
+                                    ),
+                                    Expanded(
+                                        child: MyText(
+                                      text: item["title"]!,
+                                      size: 14,
+                                      fontFamily: AppFonts.gilroyMedium,
+                                      paddingLeft: 10,
+                                    )),
+                                    MyText(
+                                      text: 'Apply',
+                                      size: 12,
+                                      color: getTertiary(context),
+                                    )
+                                  ],
+                                ),
                               ),
                             );
                           },
                         ),
-                        Padding(
-                          padding: const EdgeInsets.only(bottom: 5),
-                          child: Divider(
-                            color: kblueBorder2,
-                          ),
+                      ],
+                    ),
+                  ),
+                  CustomeContainer(
+                    mbott: 16,
+                    radius: 8,
+                    hpad: 16,
+                    vpad: 15,
+                    color: getfillcolor(context),
+                    widget: Column(
+                      children: [
+                        icon_button_row(
+                          title: 'Related Entries',
+                          icon: Assets.imagesChain,
+                          buttonText: '',
+                          pbot: 18,
                         ),
-                        Row(
-                          children: [
-                            Expanded(
-                              child: DiffTextsTxt(
-                                align: TextAlign.start,
-                                text1: 'Created ',
-                                text2: '15/01/2024 , 14:00:00',
-                                size: 10,
-                                size2: 10,
-                                color1: kwhite,
-                                color2: kgrey,
-                                fontFamily: AppFonts.gilroyBold,
-                                fontFamily2: AppFonts.gilroyRegular,
+                        ListView.builder(
+                          padding: EdgeInsets.all(0),
+                          shrinkWrap: true,
+                          physics: const NeverScrollableScrollPhysics(),
+                          itemCount: 2,
+                          itemBuilder: (context, index) {
+                           
+                            return Padding(
+                              padding: const EdgeInsets.only(bottom: 18),
+                              child: CustomeContainer(
+                                radius: 8,
+                                color: getSecondaryColor(context)
+                                    .withOpacity(0.05),
+                                vpad: 20,
+                                hpad: 12,
+                                widget: Row(
+                                  children: [
+                                    Expanded(
+                                        child: TwoTextedColumn(
+                                      text1:index==1?'CAD Software Proficiency' :'Structural Analysis Techniques',
+                                      text2: 'Competency Level 2 • 3 weeks ago',
+                                      size1: 14,
+                                      size2: 12,
+                                      fontFamily: AppFonts.gilroySemiBold,
+                                      color2: getTertiary(context),
+                                    )),
+                                    SizedBox(width: 12,),
+                                    MyText(
+                                      text: 'View',
+                                      size: 14,
+                                      color: getSecondaryColor(context),
+                                      fontFamily: AppFonts.gilroyMedium,
+                                    )
+                                  ],
+                                ),
                               ),
-                            ),
-                            Expanded(
-                              child: DiffTextsTxt(
-                                align: TextAlign.start,
-                                text1: 'Last Modified ',
-                                text2: '15/01/2024 , 14:00:00',
-                                size: 10,
-                                size2: 10,
-                                color1: kwhite,
-                                color2: kgrey,
-                                fontFamily: AppFonts.gilroyBold,
-                                fontFamily2: AppFonts.gilroyRegular,
-                              ),
-                            )
-                          ],
-                        ),
-                        SizedBox(
-                          height: 18,
-                        ),
-                        Row(
-                          children: [
-                            Expanded(
-                              child: DiffTextsTxt(
-                                align: TextAlign.start,
-                                text1: 'Reporting Year ',
-                                text2: '2024',
-                                size: 10,
-                                size2: 10,
-                                color1: kwhite,
-                                color2: kgrey,
-                                fontFamily: AppFonts.gilroyBold,
-                                fontFamily2: AppFonts.gilroyRegular,
-                              ),
-                            ),
-                            MyText(
-                              text: 'Sync Status',
-                              size: 10,
-                              fontFamily: AppFonts.gilroyBold,
-                              paddingRight: 8,
-                            ),
-                            buttonContainer(
-                              borderColor: kblueBorder2,
-                              radius: 50,
-                              text: 'Synced',
-                              bgColor: kblackfill,
-                              textsize: 11,
-                              vPadding: 2,
-                              hPadding: 15,
-                            ),
-                          ],
+                            );
+                          },
                         ),
                       ],
                     ),
-                  )
+                  ),
                 ],
               ),
             ),
@@ -327,6 +432,7 @@ class icon_button_row extends StatelessWidget {
             Image.asset(
               icon ?? Assets.imagesDocument,
               width: 18,
+              color: getSecondaryColor(context),
             ),
           },
           Expanded(
@@ -339,13 +445,13 @@ class icon_button_row extends StatelessWidget {
             ),
           ),
           buttonContainer(
-            borderColor: kblueBorder2,
             radius: 50,
             text: buttonText ?? '35 words',
-            bgColor: kblackfill,
+            bgColor: getfillcolor(context),
             textsize: 11,
             vPadding: 2,
             hPadding: 15,
+            txtColor: getTertiary(context),
           ),
         ],
       ),

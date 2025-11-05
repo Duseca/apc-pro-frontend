@@ -2,6 +2,7 @@ import 'package:apc_pro/consts/app_colors.dart';
 import 'package:apc_pro/consts/app_fonts.dart';
 import 'package:apc_pro/generated/assets.dart';
 import 'package:apc_pro/view/screens/community/create_new_event.dart';
+import 'package:apc_pro/view/widgets/button_container.dart';
 import 'package:apc_pro/view/widgets/custom_row.dart';
 import 'package:apc_pro/view/widgets/custome_comtainer.dart';
 import 'package:apc_pro/view/widgets/my_button.dart';
@@ -26,8 +27,11 @@ class CommunityEvent extends StatelessWidget {
         MyButton(
           buttonText: ' Create New Event',
           image: Assets.imagesAdd,
-          imgColor: klighblue,
+          imgColor: getSecondaryColor(context),
           mBottom: 36,
+          fontColor: getSecondaryColor(context),
+          backgroundColor: ktransparent,
+          outlineColor: getSecondaryColor(context),
           onTap: () {
             Get.dialog(CreateNewEvent());
           },
@@ -67,85 +71,59 @@ class community_event_card extends StatelessWidget {
       radius: 8,
       vpad: 17,
       hpad: 14,
-      borderColor: ksecondary,
-      color: kblackfill,
+      borderColor: getfifth(context),
+      color: getfillcolor(context),
       widget: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
+          MyText(
+            text: title ?? 'AMA with Senior Partners - Career Progression',
+            size: 14,
+            fontFamily: AppFonts.gilroyBold,
+          ),
+          MyText(
+            text: desc ??
+                'Join our panel of senior partners as they share insights about career progression post-APC',
+            size: 11,
+            fontFamily: AppFonts.gilroyMedium,
+            paddingBottom: 14,
+          ),
           Row(
-            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Image.asset(
-                Assets.imagesBuilding,
-                width: 30,
-              ),
-              SizedBox(
-                width: 8,
-              ),
-              Expanded(
-                  child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
+              Row(
+                spacing: 10,
                 children: [
-                  Row(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Expanded(
-                        child: MyText(
-                          text: title ??
-                              'AMA with Senior Partners - Career Progression',
-                          size: 14,
-                          fontFamily: AppFonts.gilroyBold,
-                        ),
-                      ),
-                      Row(
-                        children: [
-                          Image.asset(
-                            Assets.imagesGlobe,
-                            width: 14,
-                          ),
-                          MyText(
-                            paddingLeft: 2,
-                            text: 'Join Online',
-                            decoration: TextDecoration.underline,
-                            color: klighblue,
-                            size: 11,
-                            fontFamily: AppFonts.gilroyMedium,
-                          )
-                        ],
-                      ),
-                    ],
-                  ),
-                  MyText(
-                    text: desc ??
-                        'Join our panel of senior partners as they share insights about career progression post-APC',
-                    size: 11,
+                  row_widget(
+                    icon: Assets.imagesCalendar,
+                    iconColor: getSecondaryColor(context),
+                    iconSize: 15,
+                    title: date ?? '2024-02-15',
+                    texSize: 11,
                     fontFamily: AppFonts.gilroyMedium,
-                    paddingBottom: 14,
                   ),
-                  Row(
-                    spacing: 24,
-                    children: [
-                      row_widget(
-                        icon: Assets.imagesCalendar,
-                        iconColor: klighblue,
-                        iconSize: 15,
-                        title: date ?? '2024-02-15',
-                        texSize: 11,
-                        fontFamily: AppFonts.gilroyMedium,
-                      ),
-                      row_widget(
-                        icon: Assets.imagesClock,
-                        iconColor: klighblue,
-                        iconSize: 15,
-                        title: time ?? '19:00',
-                        texSize: 11,
-                        fontFamily: AppFonts.gilroyMedium,
-                      ),
-                    ],
+                  row_widget(
+                    icon: Assets.imagesClock,
+                    iconColor: getSecondaryColor(context),
+                    iconSize: 15,
+                    title: time ?? '19:00',
+                    texSize: 11,
+                    fontFamily: AppFonts.gilroyMedium,
                   ),
                 ],
-              )),
+              ),
+              buttonContainer(
+                radius: 6,
+                bgColor: ktransparent,
+                borderColor: getSecondaryColor(context),
+                txtColor: getSecondaryColor(context),
+                text: 'Join Online',
+                vPadding: 6,
+                hPadding: 6,
+              )
             ],
-          )
+          ),
+          Divider(color: getfifth(context),)
         ],
       ),
     );

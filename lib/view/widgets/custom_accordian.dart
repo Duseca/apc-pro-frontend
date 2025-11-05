@@ -25,7 +25,7 @@ class _CustomAccordionState extends State<CustomAccordion> {
         //     bottom: BorderSide(color: ktransparent),
         //     top: BorderSide(color: ktransparent)),
         borderRadius: BorderRadius.circular(11),
-        color: _isOpen ? kblackfill : kblackfill,
+        color: _isOpen ? getfillcolor(context) : getfillcolor(context),
         //  border: Border.all(color: kbluewithopacity.withOpacity(0.5))
       ),
       child: Theme(

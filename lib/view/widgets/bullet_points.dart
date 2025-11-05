@@ -16,7 +16,7 @@ class MyBullet extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 8),
+      padding: const EdgeInsets.symmetric(horizontal: 8,vertical:3 ),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -31,13 +31,13 @@ class MyBullet extends StatelessWidget {
             // paddingLeft: 5,
             paddingBottom: 6,
             paddingRight: 8,
-            color: kwhite,
+            color: getSecondaryColor(context),
           ),
           Expanded(
             child: MyText(
               text: point,
               size: size ?? 12,
-              color: color ?? kwhite,
+              color: color ?? getSecondaryColor(context),
               textOverflow: TextOverflow.ellipsis,
               maxLines: 4,
               weight: weight ?? FontWeight.w400,

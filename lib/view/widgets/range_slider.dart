@@ -41,9 +41,11 @@ class _QuestionSilderState extends State<QuestionSilder> {
           child: SliderTheme(
             data: SliderTheme.of(context).copyWith(
               trackHeight: 12.0,
-              activeTrackColor: kblueBorder4,
-              inactiveTrackColor:Color(0xff5576A7),
-              thumbShape: _CustomThumbShape(),
+              activeTrackColor: getSecondaryColor(context),
+              inactiveTrackColor:getfifth(context),
+              thumbShape: _CustomThumbShape(
+                contextt: context
+              ),
             ),
             child: Slider(
               min: widget.min ?? 0.0,
@@ -91,6 +93,9 @@ class _QuestionSilderState extends State<QuestionSilder> {
 
 /// Custom Thumb with border + fill
 class _CustomThumbShape extends RoundSliderThumbShape {
+  final BuildContext contextt;
+
+  _CustomThumbShape({super.enabledThumbRadius, super.disabledThumbRadius, super.elevation, super.pressedElevation, required this.contextt});
   @override
   void paint(
     PaintingContext context,
@@ -105,16 +110,17 @@ class _CustomThumbShape extends RoundSliderThumbShape {
     required double value,
     required double textScaleFactor,
     required Size sizeWithOverflow,
+ 
   }) {
     final Canvas canvas = context.canvas;
 
     final Paint paint = Paint()
-      ..color =kblueBorder4
+      ..color =getSecondaryColor(contextt)
 // thumb fill
       ..style = PaintingStyle.fill;
 
     final Paint border = Paint()
-      ..color = Colors.white // border color
+      ..color = getTertiary(contextt)// border color
       ..strokeWidth = 1
       ..style = PaintingStyle.stroke;
 

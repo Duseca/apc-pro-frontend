@@ -17,6 +17,7 @@ class row_widget extends StatelessWidget {
   final bool isIconRight;
   final Widget? customWidget;
   final String? fontFamily;
+  final TextDecoration? decor;
 final int? maxLines;
   const row_widget({
     super.key,
@@ -30,7 +31,7 @@ final int? maxLines;
     this.iconSize,
     this.onTap,
     this.isIconRight = false,
-    this.customWidget, this.lpad, this.rpad, this.maxLines, this.fontFamily, 
+    this.customWidget, this.lpad, this.rpad, this.maxLines, this.fontFamily, this.decor, 
   });
 
   @override
@@ -56,7 +57,7 @@ final int? maxLines;
 
     final Widget textWidget = MyText(
       text: title ?? '',
-      color: textColor ?? kwhite,
+      color: textColor ?? getSecondaryColor(context),
       size: texSize ?? 14,
       paddingLeft: isIconRight ? 0 :lpad?? 5,
       paddingRight: isIconRight ?rpad?? 5 : 0,
@@ -65,6 +66,7 @@ final int? maxLines;
       maxLines: maxLines??1,
       fontFamily: fontFamily,
       textOverflow: TextOverflow.ellipsis,
+      decoration:decor?? TextDecoration.none,
     );
 
     return Row(

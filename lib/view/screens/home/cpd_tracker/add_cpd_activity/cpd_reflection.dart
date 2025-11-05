@@ -10,19 +10,12 @@ class CpdReflection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return CustomeContainer(
-      radius: 10,
-      color: kblackfill,
-      borderColor: kblueBorder4,
-      vpad: 17,
-      hpad: 17,
-      mtop: 30,
-      widget: Column(
+    return  Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           MyText(
             text: 'Reflection & Application',
-            size: 12,
+            size: 16,
             fontFamily: AppFonts.gilroyBold,
             paddingBottom: 20,
           ),
@@ -30,32 +23,33 @@ class CpdReflection extends StatelessWidget {
             label: 'Reflection Notes*',
             hint:
                 'Reflect on what you learned, how it impacted your understanding, and what insights you gained.......',
-            marginBottom: 25,
+       filledColor: getfillcolor(context),
             maxLines: 3,
-            bordercolor: ksecondary,
+            bordercolor: ktransparent,
           ),
           MyTextField2(
             label: 'Application to Work*',
             hint:
                 'Describe how you have or will apply this learning to your professional work.....',
-            marginBottom: 15,
+           filledColor: getfillcolor(context),
             maxLines: 3,
-            bordercolor: ksecondary,
+            bordercolor: ktransparent,
           ),
           CustomeContainer(
               radius: 10,
-              color: kblackfill,
-              borderColor: ksecondary,
+              color: getfillcolor(context),
+              borderColor: ktransparent,
               vpad: 17,
               hpad: 17,
               widget: MyText(
                 text:
-                    "RICS Guidance:\nReflection is a key requirement for CPD. Consider what you learned, how it changed your understanding, and how you'll apply it in practice. Good reflection demonstrates professional development and learning.",
+                    "RICS Guidance:\n\nReflection is a key requirement for CPD. Consider what you learned, how it changed your understanding, and how you'll apply it in practice. Good reflection demonstrates professional development and learning.",
                 size: 12,
+                color: getTertiary(context),
                 fontFamily: AppFonts.gilroyMedium,
               ))
         ],
-      ),
+    
     );
   }
 }

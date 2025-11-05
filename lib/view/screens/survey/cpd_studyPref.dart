@@ -1,9 +1,14 @@
 import 'package:apc_pro/consts/app_colors.dart';
+import 'package:apc_pro/consts/app_fonts.dart';
 import 'package:apc_pro/controllers/survey_controller.dart';
+import 'package:apc_pro/generated/assets.dart';
 import 'package:apc_pro/view/screens/survey/competency.dart';
+import 'package:apc_pro/view/screens/survey/training_experience.dart';
+import 'package:apc_pro/view/widgets/custome_comtainer.dart';
 import 'package:apc_pro/view/widgets/my_button.dart';
 import 'package:apc_pro/view/widgets/my_text_field.dart';
 import 'package:apc_pro/view/widgets/my_text_widget.dart';
+import 'package:bounce/bounce.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -12,50 +17,104 @@ class CpdStudypref extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isDarkMode = Theme.of(context).brightness == Brightness.dark;
     final controller = Get.find<SurveyController>();
     List cpd = [
-      'Visual Learning (e.g., charts, infographics)',
-      'Audio Learning (e.g., podcasts, recorded lectures)',
-      'Reading/Writing (e.g., notes, articles)',
-      'Hands-on Practice (learning by doing)',
-      'Group Study (interactive learning with peers)',
-      'Individual Study (solo focus)',
-      'Mobile Learning (on-the-go study via phone)',
-      'Desktop Learning (at a desk with a computer)'
+      'Videos',
+      'Articles & Documents',
+      'Interactive Modules',
+      'Webinars & Live Sessions',
     ];
 
     List learning = [
-      'Self-paced',
-      'Structured Timeline',
-      'Interactive Content',
-      'Written Guides',
-      'Practice Exercises',
-      'Structured Timeline',
-      'Video Tutorials',
-      'Live Sessions',
-      'Practice Exercises',
-      'Case Studies',
+      'Visual Learning',
+      'Audio Learning',
+      'Reading',
+      'Hands-on Practice',
+ 
     ];
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         MyTextField2(
-          label: 'Current CPD Hours *',
-          hint: 'Enter your total completed CPD hours so far.',
+          label: 'Current CPD Hours Completed',
+          hint: 'e.g. 35 hours ',
+        ),
+        MyTextField2(
+          label: 'Weekly Study Time Commitment',
+          hint: 'How many hours can you commit to studying each week?',
         ),
         MyText(
           paddingTop: 5,
-          text: 'Study Preferences *',
-          size: 16,
-          weight: FontWeight.bold,
+          text: 'Preferred Study Schedule',
+          size: 14,
+         fontFamily: AppFonts.gilroyBold,
           paddingBottom: 5,
         ),
+        training_container(
+          title: 'Weekdays',
+          desc: 'Monday to Friday during work hours or evenings',
+        ),
+        training_container(
+          title: 'Weekends',
+          desc: 'Saturday and Sunday for dedicated study time',
+        ),
+        training_container(
+          title: 'Flexible',
+          desc: 'Mixed schedule based on availability',
+        ),
         MyText(
-          text: 'How do you prefer to take in information?',
+          paddingTop: 5,
+          text: 'Study Preferences',
+          size: 14,
+         fontFamily: AppFonts.gilroyBold,
+          paddingBottom: 3,
+        ),
+        MyText(
+          text: 'Share your learning style and content preferences',
+          fontFamily: AppFonts.gilroyMedium,
           size: 12,
-          weight: FontWeight.w400,
-          paddingBottom: 16,
+          color: getTertiary(context),
+       
+          paddingBottom: 10,
+        ),
+        MyText(
+          text: 'Learning Style Preferences (Select all that apply)',
+          size: 12,
+          fontFamily: AppFonts.gilroyBold,
+          paddingBottom: 14,
+        ),
+
+   GridView.builder(
+          itemCount: learning.length,
+          shrinkWrap: true,
+          physics: NeverScrollableScrollPhysics(),
+          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisCount: 2,
+              crossAxisSpacing: 12,
+              mainAxisSpacing: 12,
+              mainAxisExtent: 42),
+          itemBuilder: (context, index) {
+            return CustomeContainer(
+               color: getfillcolor(context),
+                  vpad: 10,
+                  hpad: 10,
+                  radius: 8,
+              widget: checkbox_row(
+                title: learning[index],
+                tSize: 11,
+              ),
+            );
+          },
+        ),
+    
+            MyText(
+          text: 'Preferred Content Formats (Select all that apply)',
+          size: 12,
+          fontFamily: AppFonts.gilroyBold,
+          paddingBottom: 15,
+          paddingTop: 15,
         ),
         ListView.builder(
           padding: EdgeInsets.all(0),
@@ -64,64 +123,101 @@ class CpdStudypref extends StatelessWidget {
           itemCount: cpd.length,
           itemBuilder: (context, index) {
             return Padding(
-              padding: const EdgeInsets.only(bottom: 15),
-              child: checkbox_row(title: cpd[index]),
+              padding: const EdgeInsets.only(bottom:4),
+              child: CustomeContainer(
+                  color: getfillcolor(context),
+                  vpad: 10,
+                  hpad: 10,
+                  radius: 8,
+                  widget: checkbox_row(title: cpd[index])),
             );
           },
         ),
-        SizedBox(
-          height: 25,
+          MyText(
+            paddingTop: 15,
+          text: 'Study Pace Preference',
+          size: 12,
+          fontFamily: AppFonts.gilroyBold,
+          paddingBottom: 15,
         ),
-        MyTextField2(
-          label: 'Weekly Study Time Commitment',
-          hint: 'How many hours can you commit to studying each week?',
+
+
+    
+      
+        training_container(
+          title: 'Self-paced',
+          desc: 'Learn at your own speed and schedule',
         ),
-        MyText(
-          paddingTop: 10,
-          text: 'Learning Style',
-          size: 16,
-          weight: FontWeight.bold,
+        training_container(
+          title: 'Structured',
+          desc: 'Follow a guided timeline with milestones',
+        ),
+        training_container(
+          title: 'Intensive',
+          desc: 'Fast-track learning with concentrated sessions',
+        ),
+                MyText(
+          paddingTop: 5,
+          text: 'Support Needs',
+          size: 14,
+         fontFamily: AppFonts.gilroyBold,
           paddingBottom: 5,
         ),
         MyText(
-          text: 'How do you prefer to learn?',
+          text: 'Tell us about your preferred learning support and collaboration style',
+          fontFamily: AppFonts.gilroyMedium,
           size: 12,
-          weight: FontWeight.w400,
-          paddingBottom: 16,
+          paddingTop: 5,
+          paddingBottom: 10,
         ),
-        GridView.builder(
-          itemCount: learning.length,
-          shrinkWrap: true,
-          physics: NeverScrollableScrollPhysics(),
-          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: 2,
-              crossAxisSpacing: 12,
-              mainAxisSpacing: 12,
-              mainAxisExtent: 24),
-          itemBuilder: (context, index) {
-            return checkbox_row(
-              title: learning[index],
-            );
-          },
+        MyText(
+          text: 'Peer Collaboration Preferences',
+          size: 12,
+          fontFamily: AppFonts.gilroyMedium,
+          paddingBottom: 14,
         ),
-        Row(
-          spacing: 25,
+
+
+    
+    
+        training_container(
+          title: 'Group Learning',
+          desc: 'Enjoy collaborative learning and group discussions',
+        ),
+        training_container(
+          title: 'Peer Learning',
+          desc: 'Prefer one-on-one or small group interactions',
+        ),
+        training_container(
+          title: 'Individual Learning',
+          desc: 'Prefer to learn independently without collaboration',
+        ),
+           
+  
+         SizedBox(
+          height: 30,
+        ),
+                Row(
           children: [
-            Expanded(
-              child: MyButton(
-                mTop: 30,
-                backgroundColor: klighblue,
-                fontColor: ksecondary,
-                buttonText: 'Back',
+            Bounce(
                 onTap: () {
                   controller.previousStep();
                 },
-              ),
+                child: Image.asset(
+                  isDarkMode
+                      ? Assets.imagesBackbutton
+                      : Assets.imagesBackbutton2,
+                  width: 48,
+                  height: 45,
+                )),
+            SizedBox(
+              width: 12,
             ),
             Expanded(
               child: MyButton(
-                mTop: 30,
+                backgroundColor: getSecondaryColor(context).withOpacity(0.1),
                 buttonText: 'Continue',
+                fontColor: getTertiary(context),
                 onTap: () {
                   controller.nextStep();
                 },

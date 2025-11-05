@@ -1,3 +1,4 @@
+import 'package:apc_pro/view/widgets/custom_check_box.dart';
 import 'package:flutter/material.dart';
 import 'package:apc_pro/consts/app_colors.dart';
 
@@ -160,7 +161,7 @@ class TwoTextedColumn extends StatelessWidget {
           text: text2,
           size: size2 ?? 14,
           color: color2 ?? getSecondaryColor(context),
-          weight: weight2 ?? FontWeight.w400,
+          // weight: weight2 ?? FontWeight.w400,
           maxLines: maxLines ?? 10,
           textAlign: align,
           fontFamily: fontFamily2,
@@ -171,4 +172,5 @@ class TwoTextedColumn extends StatelessWidget {
       ],
     );
   }
+   
 }

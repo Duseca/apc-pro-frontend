@@ -10,6 +10,7 @@ import 'package:apc_pro/view/screens/community/forum_discussion.dart';
 import 'package:apc_pro/view/widgets/appbar.dart';
 import 'package:apc_pro/view/widgets/common_image_view_widget.dart';
 import 'package:apc_pro/view/widgets/community_widgets/community_main_widget.dart';
+import 'package:apc_pro/view/widgets/custome_comtainer.dart';
 import 'package:apc_pro/view/widgets/expanded_row.dart';
 import 'package:apc_pro/view/widgets/my_text_widget.dart';
 import 'package:apc_pro/view/widgets/tabs_view.dart';
@@ -61,6 +62,7 @@ class Community extends StatelessWidget {
                       isexpanded: true,
                       useIcons: true,
                       iconSize: 20,
+                      bgColor: getfillcolor(context),
                     ),
                   ),
                   Obx(() => tabContents[currentIndex.value]),
@@ -112,24 +114,34 @@ class CommunityHome extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Row(
-          children: [
-            CommonImageView(
-              url: dummyImage2,
-              radius: 100,
-              width: 50,
-              height: 50,
-            ),
-            SizedBox(
-              width: 10,
-            ),
-            Expanded(
-                child: MyText(
-              text: 'Welcome Back\nRobert',
-              size: 18,
-              fontFamily: AppFonts.gilroyBold,
-            ))
-          ],
+        CustomeContainer(
+          mtop: 10,
+          color: getfillcolor(context),
+          vpad: 20,
+          hpad: 15,
+          radius: 8,
+       widget: Row(
+            children: [
+              CommonImageView(
+                url: dummyImage2,
+                radius: 100,
+                width: 50,
+                height: 50,
+              ),
+              SizedBox(
+                width: 10,
+              ),
+              Expanded(
+                  child: TwoTextedColumn(
+                text1: 'Robert Smith',
+                text2: 'APC Candidate\nQuantity Surveying and Construction',
+                size1: 14,
+                fontFamily: AppFonts.gilroyBold,
+                color2: getTertiary(context),
+                size2: 12,
+              ))
+            ],
+          ),
         ),
         SizedBox(
           height: 25,
@@ -160,15 +172,15 @@ class CommunityHome extends StatelessWidget {
                 text2: 'View all',
                 size1: 16,
                 fontFamily: AppFonts.gilroyBold,
-                size2: 16,
+                size2: 12,
                 fontFamily2: AppFonts.gilroyMedium,
-                color2: klighblue,
+                color2: getTertiary(context),
               ),
             ),
             Image.asset(
-              Assets.imagesForward,
+              Assets.imagesForward2,
               width: 18,
-              color: klighblue,
+              color: getTertiary(context),
             )
           ],
         ),
@@ -211,15 +223,15 @@ class CommunityHome extends StatelessWidget {
                 text2: 'View all',
                 size1: 16,
                 fontFamily: AppFonts.gilroyBold,
-                size2: 16,
+                size2: 12,
                 fontFamily2: AppFonts.gilroyMedium,
-                color2: klighblue,
+                color2: getTertiary(context),
               ),
             ),
             Image.asset(
-              Assets.imagesForward,
+              Assets.imagesForward2,
               width: 18,
-              color: klighblue,
+              color: getTertiary(context),
             )
           ],
         ),

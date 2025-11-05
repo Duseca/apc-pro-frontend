@@ -39,7 +39,7 @@ class _CustomCalendarSheetState extends State<CustomCalendarSheet> {
 
     return CustomeContainer(
       radius: 8,
-      color: kblackfill,
+      color: getfillcolor(context),
       vpad: 10,
       hpad: 20,
       widget: Column(
@@ -55,15 +55,15 @@ class _CustomCalendarSheetState extends State<CustomCalendarSheet> {
                         DateTime(_focusedDay.year, _focusedDay.month - 1, 1);
                   });
                 },
-                icon: const Icon(Icons.chevron_left, color: kwhite, size: 22),
+                icon:  Icon(Icons.chevron_left, color: getSecondaryColor(context), size: 22),
                 padding: EdgeInsets.zero,
                 constraints: const BoxConstraints(),
               ),
               Text(
                 "$month, ${_focusedDay.year}",
-                style: const TextStyle(
+                style:  TextStyle(
                   fontSize: 14,
-                  color: kwhite,
+                  color: getSecondaryColor(context),
                   fontFamily: AppFonts.gilroyMedium,
                 ),
               ),
@@ -74,7 +74,7 @@ class _CustomCalendarSheetState extends State<CustomCalendarSheet> {
                         DateTime(_focusedDay.year, _focusedDay.month + 1, 1);
                   });
                 },
-                icon: const Icon(Icons.chevron_right, color: kwhite, size: 22),
+                icon:  Icon(Icons.chevron_right, color: getSecondaryColor(context), size: 22),
                 padding: EdgeInsets.zero,
                 constraints: const BoxConstraints(),
               ),
@@ -103,24 +103,24 @@ class _CustomCalendarSheetState extends State<CustomCalendarSheet> {
             calendarFormat: CalendarFormat.month,
             daysOfWeekVisible: true,
             headerVisible: false,
-            daysOfWeekStyle: const DaysOfWeekStyle(
+            daysOfWeekStyle:  DaysOfWeekStyle(
               weekdayStyle: TextStyle(
-                color: kwhite,
+                color: getSecondaryColor(context),
                 fontWeight: FontWeight.w400,
               ),
               weekendStyle: TextStyle(
-                color: kwhite,
+                color: getSecondaryColor(context),
                 fontWeight: FontWeight.w400,
               ),
             ),
-            calendarStyle: const CalendarStyle(
+            calendarStyle:  CalendarStyle(
                 outsideDaysVisible: false,
                 cellPadding: EdgeInsets.zero,
-                weekendTextStyle: TextStyle(color: kwhite),
+                weekendTextStyle: TextStyle(color: getSecondaryColor(context)),
                 todayDecoration: BoxDecoration(
                   color: Colors.transparent,
                 ),
-                todayTextStyle: TextStyle(color: kwhite, fontSize: 14)),
+                todayTextStyle: TextStyle(color: getSecondaryColor(context), fontSize: 14)),
             calendarBuilders: CalendarBuilders(
               dowBuilder: (context, day) {
                 final text = [
@@ -138,8 +138,8 @@ class _CustomCalendarSheetState extends State<CustomCalendarSheet> {
                   child: Text(
                     text,
                     style: TextStyle(
-                      fontSize: 11,
-                      color: kgrey,
+                      fontSize: 12,
+                      color: getTertiary(context),
                       fontWeight: FontWeight.w500,
                       fontFamily: AppFonts.gilroyMedium,
                     ),
@@ -152,25 +152,30 @@ class _CustomCalendarSheetState extends State<CustomCalendarSheet> {
                 final isSunday = day.weekday == DateTime.sunday;
 
                 return Center(
-                  child: Container(
-                    width: 36,
-                    height: 36,
-                    decoration: isSelected || isToday
-                        ? BoxDecoration(
-                            color: ksecondary, shape: BoxShape.circle)
-                        : null,
-                    alignment: Alignment.center,
-                    child: Text(
-                      '${day.day}',
-                      style: TextStyle(
-                        fontSize: 16,
-                        color: isSelected || isToday
-                            ? kwhite
-                            : isSunday
-                                ? kwhite
-                                : kwhite,
-                        fontWeight: FontWeight.w400,
-                        fontFamily: AppFonts.gilroyMedium,
+                  child: ClipRRect(
+                     borderRadius: BorderRadius.circular(5),
+                    child: Container(
+                      width: 38,
+                      height: 40,
+                    
+                      decoration: isSelected || isToday
+                          ? BoxDecoration(
+                            borderRadius: BorderRadius.circular(5),
+                              color: getsplashcolor(context), )
+                          : null,
+                      alignment: Alignment.center,
+                      child: Text(
+                        '${day.day}',
+                        style: TextStyle(
+                          fontSize: 14,
+                          color: isSelected || isToday
+                              ? getSecondaryColor(context)
+                              : isSunday
+                                  ? getSecondaryColor(context)
+                                  : getSecondaryColor(context),
+                          fontWeight: FontWeight.w400,
+                          fontFamily: AppFonts.gilroyMedium,
+                        ),
                       ),
                     ),
                   ),
@@ -182,13 +187,13 @@ class _CustomCalendarSheetState extends State<CustomCalendarSheet> {
                     width: 30,
                     height: 30,
                     decoration: BoxDecoration(
-                        color: ksecondary, shape: BoxShape.circle),
+                        color: getsplashcolor(context), ),
                     alignment: Alignment.center,
                     child: Text(
                       '${day.day}',
                       style: TextStyle(
-                        fontSize: 16,
-                        color: kwhite,
+                        fontSize: 14,
+                        color: getSecondaryColor(context),
                         fontWeight: FontWeight.w400,
                         fontFamily: AppFonts.gilroyMedium,
                       ),

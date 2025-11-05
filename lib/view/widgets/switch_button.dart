@@ -19,11 +19,11 @@ scale:scale?? 0.9,
         value: isActive ?? false,
         
         onChanged: (w) {},
-        inactiveTrackColor: Color(0xff5D5D5D),
+        inactiveTrackColor: getTertiary(context),
         trackOutlineColor: WidgetStateColor.transparent,
-        inactiveThumbColor: Color(0xff2A2A2A),
-        activeTrackColor:Color(0xff94BFFF) ,
-        activeColor: kblueBorder4,
+        inactiveThumbColor:getSecondaryColor(context),
+        activeTrackColor:getTertiary(context),
+        activeColor: getSecondaryColor(context),
 
         thumbIcon: MaterialStateProperty.all(const Icon(null)),
 
@@ -78,10 +78,10 @@ class _CustomSwitchState extends State<CustomSwitch> {
             AnimatedContainer(
               duration: const Duration(milliseconds: 200),
               width: 42,
-              height: 17,
+              height: 24,
               decoration: BoxDecoration(
-                color: isOn ? ksecondary : kwhite,
-                border: Border.all(color:isOn?ktransparent:ksecondary),
+                color: isOn ? getSecondaryColor(context) :getfifth(context),
+               // border: Border.all(color:isOn?ktransparent:getSecondaryColor(context)),
                 borderRadius: BorderRadius.circular(20),
               ),
             ),
@@ -90,13 +90,14 @@ class _CustomSwitchState extends State<CustomSwitch> {
               duration: const Duration(milliseconds: 200),
               alignment: isOn ? Alignment.centerRight : Alignment.centerLeft,
               child: Container(
+                margin: EdgeInsets.all(2),
                 width: 20,
                 height: 20,
                 decoration: BoxDecoration(
-                  color: kwhite,
+                  color:isOn?getsplashcolor(context) :getSecondaryColor(context),
                   shape: BoxShape.circle,
                   border: Border.all(
-                    color: ksecondary,
+                    color: isOn?getsplashcolor(context) :getSecondaryColor(context),
                     width: 2,
                   ),
                 ),

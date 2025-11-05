@@ -14,25 +14,25 @@ class CommunityQA extends StatelessWidget {
         "title": "AMA with Senior Partners - Career Progression",
         "desc":
             "Join our panel of senior partners as they share insights about career progression post-APC",
-        "text3": "by Sarah Chen | 2 hours ago |  18 answers  |  234 ",
+        "text3": "2 hours ago |  18 answers | 234",
       },
       {
         "title": "Final Assessment Preparation Workshop",
         "desc":
             "Interactive workshop covering presentation techniques and competency questions",
-        "text3": "by Sarah Chen | 2 hours ago |  18 answers  |  234 ",
+        "text3": "2 hours ago |  18 answers | 234",
       },
             {
         "title": "AMA with Senior Partners - Career Progression",
         "desc":
             "Join our panel of senior partners as they share insights about career progression post-APC",
-        "text3": "by Sarah Chen | 2 hours ago |  18 answers  |  234 ",
+        "text3": "2 hours ago |  18 answers | 234",
       },
       {
         "title": "Final Assessment Preparation Workshop",
         "desc":
             "Interactive workshop covering presentation techniques and competency questions",
-        "text3": "by Sarah Chen | 2 hours ago |  18 answers  |  234 ",
+        "text3": "2 hours ago |  18 answers | 234",
       },
     ];
     return Column(

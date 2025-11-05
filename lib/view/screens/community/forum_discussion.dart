@@ -53,11 +53,11 @@ class ForumDiscussion extends StatelessWidget {
         ),
         MyTextField2(
           hint: 'Search Here',
-          hintColor: klighblue,
-          bordercolor: ksecondary,
+          hintColor: getSecondaryColor(context),
+          bordercolor: getSecondaryColor(context),
           prefixIcon: Image.asset(
             Assets.imagesSearch,
-            color: klighblue,
+            color: getSecondaryColor(context),
             width: 17,
           ),
         ),
@@ -67,8 +67,8 @@ class ForumDiscussion extends StatelessWidget {
             Expanded(
                 child: CustomDropDown(
                     hint: 'All Topics',
-                    hintColor: klighblue,
-                    bordercolor: ksecondary,
+                    hintColor: getSecondaryColor(context),
+                    bordercolor: getSecondaryColor(context),
                     items: [
                       'All Topics',
                       'Case Study',
@@ -76,17 +76,19 @@ class ForumDiscussion extends StatelessWidget {
                       'CPD',
                       'Ethics'
                     ],
-                    selectedValue: 'All Topics',
-                    iconColor: klighblue,
+                    bgColor: ktransparent,
+                    value: 'All Topics',
+                    iconColor: getSecondaryColor(context),
                     onChanged: (y) {})),
             Expanded(
                 child: CustomDropDown(
-                    hintColor: klighblue,
-                    bordercolor: ksecondary,
+                  bgColor: ktransparent,
+                    hintColor: getSecondaryColor(context),
+                    bordercolor: getSecondaryColor(context),
                     hint: 'Latest',
                     items: ['Latest', 'Popular', 'Most Replies', 'Solved'],
-                    selectedValue: 'Latest',
-                    iconColor: klighblue,
+                    value: 'Latest',
+                    iconColor: getSecondaryColor(context),
                     onChanged: (y) {}))
           ],
         ),

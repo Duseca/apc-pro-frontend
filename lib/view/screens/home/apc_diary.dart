@@ -9,6 +9,8 @@ import 'package:apc_pro/view/widgets/custome_comtainer.dart';
 import 'package:apc_pro/view/widgets/expanded_row.dart';
 import 'package:apc_pro/view/widgets/home_widgets/apc_diary_widgets.dart';
 import 'package:apc_pro/view/widgets/my_text_widget.dart';
+import 'package:apc_pro/view/widgets/progress_indicator.dart';
+import 'package:apc_pro/view/widgets/tags_widget.dart';
 import 'package:bounce/bounce.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -18,6 +20,8 @@ class ApcDiary extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    
+ final isDarkMode = Theme.of(context).brightness == Brightness.dark;
     return Scaffold(
         appBar: simpleAppBar(
             context: context,
@@ -28,6 +32,7 @@ class ApcDiary extends StatelessWidget {
                 child: Image.asset(
                   Assets.imagesBulb2,
                   width: 26,
+                  color: getSecondaryColor(context),
                 ),
               ),
               SizedBox(
@@ -46,8 +51,8 @@ class ApcDiary extends StatelessWidget {
                 children: [
                   CustomeContainer(
                     radius: 10,
-                    color: kblackfill,
-                    borderColor: kblueBorder2,
+                    color: getfillcolor(context),
+                   
                     widget: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -61,12 +66,13 @@ class ApcDiary extends StatelessWidget {
                             )),
                             buttonContainer(
                               radius: 50,
-                              bgColor: klighblue,
-                              txtColor: ksecondary,
+                              bgColor: getsplashcolor(context),
+                              txtColor: getTertiary(context),
                               text: '0% Complete',
-                              vPadding: 6,
+                              vPadding: 5,
                               hPadding: 8,
-                              fontFamily: AppFonts.gilroyBold,
+                              textsize: 12,
+                              fontFamily: AppFonts.gilroyRegular
                             )
                           ],
                         ),
@@ -76,25 +82,22 @@ class ApcDiary extends StatelessWidget {
                         ExpandedRow(
                           text1: 'Days Logged: 0',
                           text2: 'Target: 200',
-                          weight1: FontWeight.w500,
-                          weight2: FontWeight.w500,
+                       fontFamily2: AppFonts.gilroyMedium,
+                       fontFamily: AppFonts.gilroyMedium,
+                          color1: getTertiary(context),
+                          color2: getTertiary(context),
                         ),
                         SizedBox(
                           height: 15,
                         ),
-                        LinearProgressIndicator(
-                          borderRadius: BorderRadius.circular(20),
-                          color: ksecondary.withOpacity(0.4),
-                          minHeight: 12,
-                          value: 0.0,
-                          backgroundColor: ksecondary.withOpacity(0.4),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.symmetric(vertical: 12),
-                          child: Divider(
-                            color: ksecondary.withOpacity(0.5),
-                          ),
-                        ),
+                    linearProgressIndicatorr(
+                      height: 4,
+                      value: 1.0,
+                      valueColor: getsplashcolor(context),
+                      bgColor: getsplashcolor(context),
+                    ),
+
+                     SizedBox(height: 18,),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
@@ -109,6 +112,7 @@ class ApcDiary extends StatelessWidget {
                               alignment: ColumnAlignment.center,
                               fontFamily: AppFonts.gilroySemiBold,
                               fontFamily2: AppFonts.gilroyMedium,
+                              color2: getTertiary(context),
                             ),
                             TwoTextedColumn(
                               text1: '2',
@@ -121,6 +125,7 @@ class ApcDiary extends StatelessWidget {
                               alignment: ColumnAlignment.center,
                               fontFamily: AppFonts.gilroySemiBold,
                               fontFamily2: AppFonts.gilroyMedium,
+                                 color2: getTertiary(context),
                             ),
                             TwoTextedColumn(
                               text1: '2',
@@ -133,6 +138,7 @@ class ApcDiary extends StatelessWidget {
                               alignment: ColumnAlignment.center,
                               fontFamily: AppFonts.gilroySemiBold,
                               fontFamily2: AppFonts.gilroyMedium,
+                                 color2: getTertiary(context),
                             )
                           ],
                         )
@@ -142,8 +148,8 @@ class ApcDiary extends StatelessWidget {
                   ),
                   CustomeContainer(
                     radius: 10,
-                    color: kblackfill,
-                    borderColor: kblueBorder2,
+                    color: getfillcolor(context),
+                   
                     widget: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
@@ -153,43 +159,43 @@ class ApcDiary extends StatelessWidget {
                             fontFamily: AppFonts.gilroyBold,
                             paddingBottom: 18,
                           ),
-                          ExpandedRow(
+                          TwoTextedColumn(
                             text1:
                                 'You’re at 0% of your annual target.\nConsider logging more regular entries',
-                            text2: 'View Tips',
+                            text2: 'Focus on logging entries for your technical core competencies',
                             size1: 12,
-                            size2: 11,
-                            fontFamily2: AppFonts.gilroyBold,
+                            size2: 12,
+                            fontFamily2: AppFonts.gilroyMedium,
                             fontFamily: AppFonts.gilroyMedium,
-                            color2: klighblue,
+                            color2: getTertiary(context),
+                            color1: getTertiary(context),
                             isExpanded: true,
+                            mBottom: 7,
                           ),
                           SizedBox(
                             height: 10,
                           ),
-                          ExpandedRow(
-                            text1:
-                                'Focus on logging entries for your technical core competencies',
-                            text2: 'Add Core Entry',
-                            size1: 12,
-                            size2: 11,
-                            fontFamily2: AppFonts.gilroyBold,
-                            fontFamily: AppFonts.gilroyMedium,
-                            color2: klighblue,
-                            isExpanded: true,
-                          )
+                       Row(
+                        spacing: 7,
+                         children: [
+                           TagsWidget('View Tips'),
+                            TagsWidget('Add Core Entry'),
+                         ],
+                       )
                         ]),
                     mbott: 20,
                   ),
                   newEntry_container(
                     ontap: () {
                       Get.to(() => NewDiaryDetails());
+
                     },
+                    icon: isDarkMode?Assets.imagesNewentryd:Assets.imagesNewentry,
                   ),
                   newEntry_container(
                     title: 'View All Entries',
                     desc: 'Browse 2 entries',
-                    icon: Assets.imagesNewbook,
+                    icon:isDarkMode?Assets.imagesNewbookd: Assets.imagesNewbook,
                     ontap: () {
                       Get.to(() => ViewEntries());
                     },
@@ -197,7 +203,7 @@ class ApcDiary extends StatelessWidget {
                   newEntry_container(
                     title: 'AI Guidance',
                     desc: 'Get personalized advice',
-                    icon: Assets.imagesMagicpen,
+                    icon:isDarkMode?Assets.imagesMagicpend: Assets.imagesMagicpen,
                     ontap: () {},
                   ),
 
@@ -208,8 +214,8 @@ class ApcDiary extends StatelessWidget {
                       mbott: 20,
                       radius: 10,
                       hpad: 14,
-                      color: kblackfill,
-                      borderColor: kblueBorder3,
+                      color: getfillcolor(context),
+                   
                       widget: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
@@ -220,7 +226,7 @@ class ApcDiary extends StatelessWidget {
                               size2: 12,
                               fontFamily2: AppFonts.gilroyBold,
                               fontFamily: AppFonts.gilroyBold,
-                              color2: klighblue,
+                              color2: getSecondaryColor(context),
                               isExpanded: true,
                             ),
                             SizedBox(

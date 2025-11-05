@@ -89,7 +89,7 @@ class buttonContainer extends StatelessWidget {
             if (text != null)
               MyText(
                 text: text!,
-                color: txtColor ?? kwhite,
+                color: txtColor ?? getSecondaryColor(context),
                 size: textsize ?? 13,
                 weight: weight ?? FontWeight.w600,
                 fontFamily: fontFamily,

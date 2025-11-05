@@ -97,7 +97,11 @@ class TestQuiz extends StatelessWidget {
         centerTitle: true,
         actions: [
           Bounce(
-            child: Image.asset(Assets.imagesBulb2, width: 24),
+            child: Image.asset(
+              Assets.imagesBulb2,
+              width: 24,
+              color: getSecondaryColor(context),
+            ),
           ),
           SizedBox(width: 12),
         ],
@@ -110,8 +114,8 @@ class TestQuiz extends StatelessWidget {
 
           /// Performance Overview
           CustomeContainer(
-            radius: 10,
-            borderColor: kblueBorder3,
+            radius: 8,
+            color: getfillcolor(context),
             vpad: 17,
             hpad: 13,
             mbott: 20,
@@ -146,80 +150,78 @@ class TestQuiz extends StatelessWidget {
           ),
 
           /// Quick Start
-          CustomeContainer(
-            radius: 10,
-            borderColor: kblueBorder3,
-            vpad: 17,
-            hpad: 13,
-            mbott: 20,
-            widget: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                MyText(
-                  text: 'Quick Start',
-                  size: 14,
-                  fontFamily: AppFonts.gilroyBold,
-                  paddingBottom: 10,
-                ),
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              MyText(
+                text: 'Quick Start',
+                size: 14,
+                fontFamily: AppFonts.gilroyBold,
+                paddingBottom: 10,
+              ),
 
-                /// Quick Start
-                ListView.builder(
-                  shrinkWrap: true,
-                  physics: NeverScrollableScrollPhysics(),
-                  itemCount: quickStartItems.length,
-                  itemBuilder: (context, index) {
-                    final item = quickStartItems[index];
-                    return newEntry_container(
-                      borderColor: kblueBorder2,
-                      ontap: item['ontap'],
-                      title: item['title']!,
-                      desc: item['desc']!,
-                      icon: item['icon']!,
-                    );
-                  },
-                ),
-              ],
-            ),
+              /// Quick Start
+              ListView.builder(
+                shrinkWrap: true,
+                physics: NeverScrollableScrollPhysics(),
+                itemCount: quickStartItems.length,
+                itemBuilder: (context, index) {
+                  final item = quickStartItems[index];
+                  return newEntry_container(
+                    iconSize: 16,
+                    iconColor: getSecondaryColor(context),
+                    borderColor: getSecondaryColor(context),
+                    bgColor: getfillcolor(context),
+                    ontap: item['ontap'],
+                    title: item['title']!,
+                    desc: item['desc']!,
+                    icon: item['icon']!,
+                    mbott: 25,
+                  );
+                },
+              ),
+            ],
           ),
 
           /// Competency Performance
+          MyText(
+            text: 'Competency Performance',
+            size: 16,
+            fontFamily: AppFonts.gilroyBold,
+            paddingBottom: 15,
+          ),
+          Obx(
+            () => TabsWidget(
+              height: 43,
+              margin: 2,
+              bgColor: getfillcolor(context),
+              textSize: 11,
+              items: _tabs,
+              currentindex: currentIndex.value,
+              ontap: (p0) {
+                currentIndex.value = p0;
+              },
+            ),
+          ),
           CustomeContainer(
-            radius: 10,
-            borderColor: kblueBorder3,
-            vpad: 17,
-            hpad: 13,
-            mbott: 20,
+            color: getfillcolor(context),
+            borderColor: getSecondaryColor(context),
             widget: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                MyText(
-                  text: 'Competency Performance',
-                  size: 16,
-                  fontFamily: AppFonts.gilroyBold,
-                  paddingBottom: 15,
-                ),
-                Obx(
-                  () => TabsWidget(
-                    height: 43,
-                    margin: 2,
-                    bgColor: ktransparent,
-                    textSize: 11,
-                    items: _tabs,
-                    currentindex: currentIndex.value,
-                    ontap: (p0) {
-                      currentIndex.value = p0;
-                    },
-                  ),
-                ),
                 row_widget(
                   title: 'Areas for improvement',
                   fontFamily: AppFonts.gilroyBold,
-                  texSize: 12,
+                  texSize: 14,
                   icon: Assets.imagesDanger,
+                  iconColor: getSecondaryColor(context),
                   iconSize: 15,
                 ),
-                SizedBox(height: 8),
-                ListView.builder(
+                SizedBox(height: 15),
+                ListView.separated(
+                  separatorBuilder: (context, index) => Divider(
+                    color: getTertiary(context),
+                  ),
                   shrinkWrap: true,
                   physics: NeverScrollableScrollPhysics(),
                   itemCount: weakAreas.length,
@@ -230,12 +232,15 @@ class TestQuiz extends StatelessWidget {
                 row_widget(
                   title: 'Strong areas',
                   fontFamily: AppFonts.gilroyBold,
-                  texSize: 12,
+                  texSize: 14,
                   icon: Assets.imagesBrain,
                   iconSize: 15,
                 ),
-                SizedBox(height: 8),
-                ListView.builder(
+                SizedBox(height: 15),
+                ListView.separated(
+                  separatorBuilder: (context, index) => Divider(
+                    color: getTertiary(context),
+                  ),
                   shrinkWrap: true,
                   physics: NeverScrollableScrollPhysics(),
                   itemCount: strongAreas.length,
@@ -248,22 +253,24 @@ class TestQuiz extends StatelessWidget {
 
           /// Recent Quiz Activity
           CustomeContainer(
-            radius: 10,
-            borderColor: kblueBorder3,
+            mtop: 24,
+            radius: 8,
+            borderColor: getSecondaryColor(context),
+            color: getfillcolor(context),
             vpad: 17,
             hpad: 13,
-            mbott: 20,
             widget: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 row_widget(
                   title: 'Recent Quiz Activity',
                   fontFamily: AppFonts.gilroyBold,
-                  texSize: 12,
+                  texSize: 14,
                   icon: Assets.imagesQuiz,
-                  iconSize: 15,
+                  iconSize: 16,
+                  iconColor: getSecondaryColor(context),
                 ),
-                SizedBox(height: 8),
+                SizedBox(height: 15),
                 test_competency_widget(
                   text1: 'Mandatory Competencies Practice',
                   text2: '10 Aug   16:11   25 min',
@@ -274,11 +281,13 @@ class TestQuiz extends StatelessWidget {
 
           /// Saved Quizzes
           CustomeContainer(
-            radius: 10,
-            borderColor: kblueBorder3,
+            mtop: 24,
+            radius: 8,
+            borderColor: getSecondaryColor(context),
+            color: getfillcolor(context),
             vpad: 17,
             hpad: 13,
-            mbott: 20,
+            mbott: 24,
             widget: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -288,9 +297,10 @@ class TestQuiz extends StatelessWidget {
                       child: row_widget(
                         title: 'Saved Quizzes',
                         fontFamily: AppFonts.gilroyBold,
-                        texSize: 12,
+                        texSize: 14,
                         icon: Assets.imagesMock,
-                        iconSize: 15,
+                        iconSize: 16,
+                        iconColor: getSecondaryColor(context),
                       ),
                     ),
                     buttonContainer(
@@ -298,8 +308,8 @@ class TestQuiz extends StatelessWidget {
                       vPadding: 3,
                       hPadding: 8,
                       text: 'Create',
-                      borderColor: kblueBorder2,
-                      bgColor: kblackfill,
+                      borderColor: getSecondaryColor(context),
+                      bgColor: getfillcolor(context),
                       textsize: 11,
                     )
                   ],
@@ -325,20 +335,22 @@ class TestQuiz extends StatelessWidget {
 
           /// Study Tools
           CustomeContainer(
-            radius: 10,
-            borderColor: kblueBorder3,
+            radius: 8,
+            borderColor: getSecondaryColor(context),
+            color: getfillcolor(context),
             vpad: 17,
             hpad: 13,
-            mbott: 20,
+            mbott: 24,
             widget: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 row_widget(
                   title: 'Study Tools',
                   fontFamily: AppFonts.gilroyBold,
-                  texSize: 12,
+                  texSize: 14,
                   icon: Assets.imagesStudytool,
-                  iconSize: 15,
+                  iconSize: 16,
+                  iconColor: getSecondaryColor(context),
                 ),
                 SizedBox(height: 20),
 

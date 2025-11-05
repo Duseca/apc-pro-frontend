@@ -45,39 +45,31 @@ class CreateCustomQuiz extends StatelessWidget {
                     const EdgeInsets.symmetric(vertical: 15, horizontal: 20),
                 physics: const BouncingScrollPhysics(),
                 children: [
-                  CustomeContainer(
-                      radius: 20,
-                      borderColor: kblueBorder2,
-                      color: kblackfill,
-                      vpad: 11,
-                      hpad: 12,
-                      mbott: 20,
-                      mtop: 20,
-                      widget: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Obx(
-                              () => Column(
-                                children: [
-                                  TabsWidget(
-                                    height: 43,
-                                    margin: 2,
-                                    bgColor: ktransparent,
-                                    textSize: 11,
-                                    items: _tabs,
-                                    currentindex: currentIndex.value,
-                                    ontap: (p0) {
-                                      currentIndex.value = p0;
-                                    },
-                                  ),
-                                  tabContents[currentIndex.value],
-                                  SizedBox(
-                                    height: 20,
-                                  )
-                                ],
+                  Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Obx(
+                          () => Column(
+                            children: [
+                              TabsWidget(
+                                height: 43,
+                                margin: 2,
+                                bgColor: getfillcolor(context),
+                                textSize: 9.5,
+                                items: _tabs,
+                                currentindex: currentIndex.value,
+                                ontap: (p0) {
+                                  currentIndex.value = p0;
+                                },
                               ),
-                            ),
-                          ]))
+                              tabContents[currentIndex.value],
+                              SizedBox(
+                                height: 20,
+                              )
+                            ],
+                          ),
+                        ),
+                      ])
                 ],
               ),
             ),
@@ -104,13 +96,11 @@ class CustomQuizBasic extends StatelessWidget {
           label: 'Quiz Name*',
           hint: 'Enter quiz name',
           marginBottom: 22,
-          bordercolor: ksecondary,
         ),
         MyTextField2(
           label: 'Description',
           hint: 'Describe the purpose and focus of this quiz',
-          maxLines: 3,
-          bordercolor: ksecondary,
+          maxLines: 4,
         ),
         MyText(
           text: 'Number of questions',
@@ -130,6 +120,9 @@ class CustomQuizBasic extends StatelessWidget {
         MyButton(
           buttonText: 'Continue',
           mTop: 40,
+          outlineColor: getSecondaryColor(context),
+          backgroundColor: ktransparent,
+          fontColor: getSecondaryColor(context),
         ),
       ],
     );

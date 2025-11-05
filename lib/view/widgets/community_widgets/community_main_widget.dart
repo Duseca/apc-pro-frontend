@@ -29,12 +29,12 @@ class forumCard extends StatelessWidget {
     return Bounce(
         onTap: ontap ?? () {},
         child: CustomeContainer(
-            radius: 10,
+            radius: 8,
             vpad: 13,
             hpad: 17,
             mbott: 12,
-            borderColor: kblueBorder4,
-            color: kblackfill,
+            //  borderColor: kblueBorder4,
+            color: getfillcolor(context),
             widget:
                 Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
               Row(
@@ -47,20 +47,20 @@ class forumCard extends StatelessWidget {
                           text1: title ?? 'Mandatory Competencies',
                           text2: desc ??
                               'Discuss professional ethics, conduct, and communication',
-                          size1: 18,
-                          fontFamily: AppFonts.gilroyMedium,
-                          size2: 11,
+                          size1: 14,
+                          fontFamily: AppFonts.gilroySemiBold,
+                          size2: 12,
                           fontFamily2: AppFonts.gilroyMedium,
-                          color2: kgrey,
+                          color2: getTertiary(context),
                           mBottom: 5,
                           maxLines: 2,
                         ),
                         MyText(
                           paddingTop: 5,
                           text: text3 ?? '3245 members | 1325 posts',
-                          size: 10,
+                          size: 11,
                           fontFamily: AppFonts.gilroyMedium,
-                          color: klighblue,
+                          color: getTertiary(context),
                         )
                       ],
                     ),
@@ -68,52 +68,51 @@ class forumCard extends StatelessWidget {
                   if (hasIcon == true)
                     Image.asset(
                       Assets.imagesForward,
-                      width: 24,
+                      width: 18,
+                      color: getTertiary(context),
                     )
                 ],
               ),
-              if (hasIcon == false)...{
-                SizedBox(height: 8,),
-              // MyText(
-              //   text: 'by Sarah Chen | 2 hours ago |  18 answers  |  234  ',
-              //   size: 10,
-              //   fontFamily: AppFonts.gilroyMedium,
-              //   color: klighblue,
-              //   paddingTop: 8,
-              //   paddingBottom: 8,
-              // ),
-              Row(
-                spacing: 24,
-                children: [
-                  row_widget(
-                    icon: Assets.imagesProfileunfilled,
-                    iconColor: klighblue,
-                    textColor: klighblue,
-                    iconSize: 15,
-                    title: 'by Sarah Chen',
-                    texSize: 11,
-                    fontFamily: AppFonts.gilroyMedium,
-                  ),
-                  row_widget(
-                    icon: Assets.imagesComment,
-                    iconColor: klighblue,
-                    textColor: klighblue,
-                    iconSize: 15,
-                    title: '12',
-                    texSize: 11,
-                    fontFamily: AppFonts.gilroyMedium,
-                  ),
-                  row_widget(
-                    icon: Assets.imagesClock,
-                    iconColor: klighblue,
-                    textColor: klighblue,
-                    iconSize: 15,
-                    title: '3 days ago',
-                    texSize: 11,
-                    fontFamily: AppFonts.gilroyMedium,
-                  ),
-                ],
-              ),
+              if (hasIcon == false) ...{
+                SizedBox(
+                  height: 8,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  spacing: 24,
+                  children: [
+                    Row(
+                      children: [
+                        MyText(
+                          text: 'by Sarah Chen | ',
+                          size: 10,
+                          fontFamily: AppFonts.gilroyMedium,
+                          color: getTertiary(context),
+                          paddingTop: 8,
+                          paddingBottom: 8,
+                        ),
+                        row_widget(
+                          icon: Assets.imagesComment,
+                          iconColor: getTertiary(context),
+                          textColor: getTertiary(context),
+                          iconSize: 15,
+                          title: '12',
+                          texSize: 11,
+                          fontFamily: AppFonts.gilroyMedium,
+                        ),
+                      ],
+                    ),
+                    row_widget(
+                      icon: Assets.imagesClock,
+                      iconColor: getTertiary(context),
+                      textColor: getTertiary(context),
+                      iconSize: 15,
+                      title: '3 days ago',
+                      texSize: 11,
+                      fontFamily: AppFonts.gilroyMedium,
+                    ),
+                  ],
+                ),
               }
             ])));
   }
@@ -139,16 +138,11 @@ class new_post_container extends StatelessWidget {
         vpad: 17,
         hpad: 17,
         mbott: 22,
-        borderColor: klighblue,
-        color: kblackfill,
+        color: getfillcolor(context),
         widget: Column(
           children: [
-            Image.asset(
-              icon ?? Assets.imagesAdd,
-              width: 24,
-              height: 24,
-              color: klighblue,
-            ),
+            Image.asset(icon ?? Assets.imagesAdd,
+                width: 24, height: 24, color: getSecondaryColor(context)),
             SizedBox(
               height: 7,
             ),
@@ -189,96 +183,83 @@ class community_recent_activity_card extends StatelessWidget {
         vpad: 13,
         hpad: 17,
         mbott: 12,
-        borderColor: kblueBorder4,
-        color: kblackfill,
+        color: getfillcolor(context),
         widget: Column(children: [
-          Row(
+          Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              CommonImageView(
-                imagePath: Assets.imagesS,
-                width: 30,
+              MyText(
+                text: title ??
+                    'How to structure your case study for maximum .......',
+                size: 14,
+                fontFamily: AppFonts.gilroyBold,
+                paddingBottom: 8,
+              ),
+              ExpandedRow(
+                text1: 'By Sarah',
+                text2: '3 Days Ago',
+                size1: 11,
+                fontFamily: AppFonts.gilroyMedium,
+                size2: 11,
+                fontFamily2: AppFonts.gilroyMedium,
+                color2: getTertiary(context),
+                color1: getTertiary(context),
               ),
               SizedBox(
-                width: 18,
+                height: 10,
               ),
-              Expanded(
-                  child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
+              Row(
+                spacing: 24,
                 children: [
-                  TwoTextedColumn(
-                    text1: title ??
-                        'How to structure your case study for maximum .......',
-                    text2: desc ?? 'by Sarah Chen in Case Study Help',
-                    size1: 14,
-                    fontFamily: AppFonts.gilroyBold,
-                    size2: 11,
-                    fontFamily2: AppFonts.gilroyMedium,
-                    color2: kwhite,
-                    mBottom: 5,
-                    maxLines: 2,
+                  row_widget(
+                    icon: Assets.imagesHeart,
+                    iconSize: 16,
+                    title: likes ?? '31',
+                    texSize: 12,
+                    fontFamily: AppFonts.gilroyMedium,
+                    iconColor: getTertiary(context),
+                    textColor: getTertiary(context),
                   ),
-                  SizedBox(
-                    height: 10,
+                  row_widget(
+                    icon: Assets.imagesComment,
+                    iconSize: 16,
+                    title: comments ?? '12',
+                    texSize: 12,
+                    fontFamily: AppFonts.gilroyMedium,
+                    iconColor: getTertiary(context),
+                    textColor: getTertiary(context),
                   ),
-                  Row(
-                    spacing: 24,
-                    children: [
-                      row_widget(
-                        icon: Assets.imagesHeart,
-                        iconSize: 15,
-                        title: likes ?? '31',
-                        texSize: 11,
-                        fontFamily: AppFonts.gilroyMedium,
-                      ),
-                      row_widget(
-                        icon: Assets.imagesComment,
-                        iconSize: 15,
-                        title: comments ?? '12',
-                        texSize: 11,
-                        fontFamily: AppFonts.gilroyMedium,
-                      ),
-                      row_widget(
-                        icon: Assets.imagesClock,
-                        iconSize: 15,
-                        title: time ?? '3 days ago',
-                        texSize: 11,
-                        fontFamily: AppFonts.gilroyMedium,
-                        iconColor: klighblue,
-                      ),
-                    ],
-                  ),
-                  if (hasComments == true) ...{
-                    SizedBox(
-                      height: 14,
-                    ),
-                    ListView.builder(
-                      padding: EdgeInsets.only(top: 14),
-                      shrinkWrap: true,
-                      physics: const NeverScrollableScrollPhysics(),
-                      itemCount: 3,
-                      itemBuilder: (context, index) {
-                        return Padding(
-                          padding: const EdgeInsets.only(bottom: 8),
-                          child: DiffTextsTxt(
-                            text1: 'James P.: ',
-                            text2:
-                                'I usually declare the conflict early and let the client decide how to proceed.',
-                            color1: klighblue,
-                            color2: kwhite,
-                            align: TextAlign.start,
-                            size2: 11,
-                            size: 11,
-                            fontFamily: AppFonts.gilroyMedium,
-                            fontFamily2: AppFonts.gilroyMedium,
-                            weight2: FontWeight.w500,
-                          ),
-                        );
-                      },
-                    ),
-                  }
                 ],
-              ))
+              ),
+              if (hasComments == true) ...{
+                Divider(
+                  color: getfifth(context),
+                ),
+                ListView.builder(
+                  padding: EdgeInsets.only(top: 14),
+                  shrinkWrap: true,
+                  physics: const NeverScrollableScrollPhysics(),
+                  itemCount: 3,
+                  itemBuilder: (context, index) {
+                    return Padding(
+                      padding: const EdgeInsets.only(bottom: 8),
+                      child: TwoTextedColumn(
+                        text1: 'James P.',
+                        text2:
+                            'I usually declare the conflict early and let the client decide how to proceed.',
+                        color2: getTertiary(context),
+                        color1: getSecondaryColor(context),
+                        align: TextAlign.start,
+                        size1: 13,
+                        size2: 12,
+                        fontFamily: AppFonts.gilroySemiBold,
+                        fontFamily2: AppFonts.gilroyMedium,
+                        weight2: FontWeight.w500,
+                      ),
+                    );
+                  },
+                ),
+              }
             ],
           )
         ]));

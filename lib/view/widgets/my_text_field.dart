@@ -306,7 +306,9 @@ class MyTextField2 extends StatefulWidget {
       this.isEditable = true,
       this.labelWeight,
       this.isCollapsed,
-      this.hintSize})
+      this.hintSize,
+      
+      this.align})
       : super(key: key);
 
   String? label, hint, suffixtext;
@@ -335,6 +337,8 @@ class MyTextField2 extends StatefulWidget {
   FontWeight? labelWeight;
   bool isOutline;
   bool isEditable;
+    TextAlign? align;
+
 
   @override
   _MyTextField2State createState() => _MyTextField2State();
@@ -376,8 +380,8 @@ class _MyTextField2State extends State<MyTextField2> {
               text: widget.label ?? '',
               size: 14,
               paddingBottom: 8,
-              weight: widget.labelWeight ?? FontWeight.bold,
-              fontFamily: AppFonts.gilroyMedium,
+            //  weight: widget.labelWeight ?? FontWeight.bold,
+              fontFamily: AppFonts.gilroySemiBold,
               color: widget.labelColor ?? getSecondaryColor(context),
             ),
           ValueListenableBuilder(
@@ -402,8 +406,9 @@ class _MyTextField2State extends State<MyTextField2> {
                   //fontfontFamily: AppFonts.gilroyMedium,
                 ),
                 cursorColor: getSecondaryColor(context),
-                textAlign:
-                    widget.isright == true ? TextAlign.right : TextAlign.left,
+                textAlign: widget.isright == true
+                    ? TextAlign.right
+                    : widget.align ?? TextAlign.left,
                 focusNode: _focusNode,
                 decoration: InputDecoration(
                     floatingLabelAlignment: FloatingLabelAlignment.start,
@@ -442,13 +447,13 @@ class _MyTextField2State extends State<MyTextField2> {
                           )
                         : null,
                     suffixStyle: TextStyle(
-                      fontFamily: AppFonts.gilroySemiBold,
+                      fontFamily: AppFonts.gilroyMedium,
                       fontSize: 14,
                       color: isFocused ? widget.fhintColor : widget.hintColor,
                     ),
                     suffixText: widget.suffixtext,
                     hintStyle: TextStyle(
-                        fontFamily: AppFonts.gilroySemiBold,
+                        fontFamily: AppFonts.gilroyMedium,
                         fontSize: widget.hintSize ?? 14,
                         color: isFocused
                             ? getTertiary(context)

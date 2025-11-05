@@ -3,8 +3,6 @@ import 'package:apc_pro/consts/app_fonts.dart';
 import 'package:apc_pro/generated/assets.dart';
 import 'package:apc_pro/main.dart';
 import 'package:apc_pro/view/widgets/common_image_view_widget.dart';
-import 'package:apc_pro/view/widgets/custom_row.dart';
-import 'package:apc_pro/view/widgets/custome_comtainer.dart';
 import 'package:apc_pro/view/widgets/my_text_widget.dart';
 import 'package:apc_pro/view/widgets/switch_button.dart';
 import 'package:bounce/bounce.dart';
@@ -17,38 +15,25 @@ class AddProfileImg extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isDarkMode = Theme.of(context).brightness == Brightness.dark;
     return Center(
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Stack(
             children: [
-              Container(
-                decoration: BoxDecoration(
-                    boxShadow: [
-                      BoxShadow(
-                        color: ksecondary,
-                        blurRadius: 12,
-                        spreadRadius: 2,
-                        offset: Offset(0, 0),
-                      ),
-                    ],
-                    shape: BoxShape.circle,
-                    border: Border.all(
-                        color: kblueBorder2, width: 2)),
-                child: CommonImageView(
-                  url: dummyImage,
-                  radius: 100,
-                  width: 76,
-                  height: 76,
-                ),
+              CommonImageView(
+                url: dummyImage,
+                radius: 100,
+                width: 76,
+                height: 76,
               ),
               Positioned(
-                  bottom: 3,
+                  bottom: 0,
                   right: 5,
                   child: Bounce(
                       child: Image.asset(
-                    Assets.imagesCamera,
+                    isDarkMode ? Assets.imagesDcamera : Assets.imagesLcamera,
                     width: 22,
                   )))
             ],
@@ -59,80 +44,105 @@ class AddProfileImg extends StatelessWidget {
   }
 }
 
-class profile_iinfo_widget extends StatelessWidget {
-  final String? title, desc, icon;
-  const profile_iinfo_widget({
-    super.key,
-    this.title,
-    this.desc,
-    this.icon,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        row_widget(
-          title: title ?? 'Pathway',
-          icon: icon ?? Assets.imagesNewbook,
-          iconColor: Color(0xff94BFFF),
-          iconSize: 16,
-          texSize: 14,
-          fontFamily: AppFonts.gilroyBold,
-        ),
-        MyText(
-          color: Color(0xff94BFFF),
-          paddingTop: 5,
-          text: desc ?? 'Project Management',
-          size: 12,
-          fontFamily: AppFonts.gilroyRegular,
-        ),
-      ],
-    );
-  }
-}
-
-Widget buildDrawerItem(String title, String icon,
-    {Color? contentColor, bool? hasIcon = false, bool? hasShadow = false,hasSwitch=false}) {
-  return CustomeContainer(
-    mbott: 22,
-    borderColor: ksecondary,
-    color: kblackfill,
-    hasShadow: hasShadow ?? false,
-    vpad: 15,
-    hpad: 20,
-    radius: 10,
-    widget: Row(
-      children: [
+Widget buildDrawerItem(String title, BuildContext context,
+    {Color? contentColor,
+    bool? hasIcon = false,
+    bool? hasShadow = false,
+    hasSwitch = false,
+    String? icon}) {
+  return Row(
+    children: [
+      if (icon != null)
         Image.asset(
           icon,
           width: 20,
           height: 20,
-          color: contentColor ?? klighblue,
+          color: contentColor ?? getSecondaryColor(context),
         ),
-        Expanded(
-          child: MyText(
-              paddingLeft: 8,
-              text: title,
-              size: 16,
-              fontFamily: AppFonts.gilroyMedium,
-              color: contentColor ?? klighblue),
-        ),
-        if(hasSwitch==true)
+      Expanded(
+        child: MyText(
+            paddingLeft: icon != null ? 8 : 0,
+            text: title,
+            size: 14,
+            fontFamily: AppFonts.gilroyMedium,
+            color: contentColor ?? getSecondaryColor(context)),
+      ),
+      if (hasSwitch == true)
         SwitchButton2(
           isActive: true,
           onChanged: (value) {},
           //  scale: 0.4,
         ),
-        if (hasIcon == true)
-          Image.asset(
-            Assets.imagesArrowdown2,
-            width: 24,
-            height: 24,
-            color: contentColor ?? klighblue,
-          )
-      ],
-    ),
+      if (hasIcon == true)
+        Image.asset(Assets.imagesArrowright2,
+            width: 15, height: 15, color: contentColor ?? getTertiary(context))
+    ],
   );
+}
+
+class notification_pref_row extends StatelessWidget {
+  final String? title, desc;
+  final bool? value, hasSwitch,isDefault;
+  final String? fontFamily;
+  const notification_pref_row({
+    super.key,
+    this.title,
+    this.desc,
+    this.value,
+    this.hasSwitch = true, this.isDefault=false, this.fontFamily,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      children: [
+        if (desc != null)
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                MyText(
+                  text: title ?? 'Push Notifications',
+                  size: 16,
+                  fontFamily:fontFamily?? AppFonts.gilroyBold,
+                ),
+                MyText(
+                  text: desc ?? 'System notifications enabled',
+                  size: 14,
+                  fontFamily: AppFonts.gilroyRegular,
+                  color: getTertiary(context),
+                )
+              ],
+            ),
+          ),
+        if (desc == null)
+          Expanded(
+            child: MyText(
+              text: title ?? 'Push Notifications',
+              size: 16,
+              fontFamily: AppFonts.gilroyMedium,
+            ),
+          ),
+        if (hasSwitch == true)
+          CustomSwitch(
+            initialValue: value ?? true,
+            onChanged: (bool value) {},
+          ),
+        if (hasSwitch == false)...{
+       if(isDefault==true)
+          MyText(
+            text: 'Default',
+            color: getTertiary(context),
+            paddingRight: 8,
+          ),
+        Image.asset(
+          Assets.imagesArrowright2,
+          width: 12,
+          height: 12,
+          color: getSecondaryColor(context).withOpacity(0.3),
+        )
+        }
+      ],
+    );
+  }
 }

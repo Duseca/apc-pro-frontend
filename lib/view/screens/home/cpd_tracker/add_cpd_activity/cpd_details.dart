@@ -16,8 +16,8 @@ class CpdDetails extends StatelessWidget {
   Widget build(BuildContext context) {
     return CustomeContainer(
       radius: 10,
-      color: kblackfill,
-      borderColor: kblueBorder4,
+      color: getfillcolor(context),
+      borderColor: getSecondaryColor(context),
       vpad: 17,
       hpad: 17,
       mtop: 30,
@@ -26,14 +26,14 @@ class CpdDetails extends StatelessWidget {
         children: [
           MyText(
             text: 'Additional Details',
-            size: 12,
+            size: 16,
             fontFamily: AppFonts.gilroyBold,
             paddingBottom: 20,
           ),
           MyText(
             text: 'Cost',
-            size: 12,
-            fontFamily: AppFonts.gilroyRegular,
+          size: 14,
+            fontFamily: AppFonts.gilroySemiBold,
             paddingBottom: 10,
           ),
           Row(
@@ -41,43 +41,43 @@ class CpdDetails extends StatelessWidget {
             children: [
               Expanded(
                 child: MyTextField2(
-                  // label: 'Reflection Notes*',
+                  //label: 'Reflection Notes*',
                   hint: '0',
                   //   textAlign: TextAlign.center,
 
-                  bordercolor: kblueBorder4,
+                  bordercolor: getSecondaryColor(context),
                 ),
               ),
               Expanded(
                 child: CustomDropDown(
                   // label: 'Reflection Notes*',
                   hint: 'GBP',
-                  selectedValue: 'GBP',
+                  value: 'GBP',
                   items: [
                     'GBP',
                     'GBP 2',
                   ],
-                  bgColor: kblackfill,
-                  bordercolor: kblueBorder4, onChanged: (value) {},
+                  bgColor: getfillcolor(context),
+                  bordercolor: getSecondaryColor(context), onChanged: (value) {},
                 ),
               ),
             ],
           ),
           MyText(
             text: 'Status',
-            size: 12,
-            fontFamily: AppFonts.gilroyRegular,
+          size: 14,
+            fontFamily: AppFonts.gilroySemiBold,
             paddingBottom: 10,
           ),
           CustomDropDown(
             hint: 'Completed',
-            selectedValue: 'Completed',
+            value: 'Completed',
             items: [
               'Completed',
               'InComplete',
             ],
-            bgColor: kblackfill,
-            bordercolor: kblueBorder4,
+            bgColor: getfillcolor(context),
+            bordercolor: getSecondaryColor(context),
             onChanged: (value) {},
           ),
           Row(
@@ -85,13 +85,13 @@ class CpdDetails extends StatelessWidget {
             children: [
               checkbox_row(
                 title: 'Certificate Received',
-                cBorder: ksecondary,
+              
                 tSize: 10,
               ),
               SizedBox(width: 15),
               checkbox_row(
                 title: 'Verification Required',
-                cBorder: ksecondary,
+              
                 tSize: 10,
               ),
             ],
@@ -99,8 +99,8 @@ class CpdDetails extends StatelessWidget {
           MyText(
             paddingTop: 10,
             text: 'Tags',
-            size: 12,
-            fontFamily: AppFonts.gilroyRegular,
+          size: 14,
+            fontFamily: AppFonts.gilroySemiBold,
             paddingBottom: 10,
           ),
           Row(
@@ -111,8 +111,8 @@ class CpdDetails extends StatelessWidget {
                 child: MyTextField2(
                     hint: 'Add a tag....',
                     marginBottom: 15,
-                    hintColor: kwhite,
-                    bordercolor: kblueBorder4),
+                    
+                    bordercolor: getSecondaryColor(context)),
               ),
               Expanded(
                 flex: 1,
@@ -124,36 +124,46 @@ class CpdDetails extends StatelessWidget {
                         Image.asset(
                           Assets.imagesAdd,
                           width: 25,
-                          color: ksecondary,
+                          color: getSecondaryColor(context),
                         ),
                       ],
                     ),
                     marginBottom: 15,
-                    bordercolor: kblueBorder4),
+                    bordercolor: getSecondaryColor(context)),
               ),
             ],
           ),
           MyText(
             text: 'Privacy & Sharing',
-            size: 12,
+          size: 14,
             fontFamily: AppFonts.gilroyRegular,
-            paddingBottom: 10,
+            paddingBottom: 15,
           ),
           checkbox_row(
             title: 'Share with employer',
-            cBorder: ksecondary,
+          
           ),
           SizedBox(
             height: 7,
           ),
           checkbox_row(
             title: 'Make public in community',
-            cBorder: ksecondary,
+          
+          ),
+              SizedBox(
+            height: 7,
+          ),
+          checkbox_row(
+            title: 'Share on LinkedIn',
+          
           ),
           MyButton(
             buttonText: 'Add',
             mTop: 25,
             mBottom: 10,
+            outlineColor: getSecondaryColor(context),
+            backgroundColor: ktransparent,
+            fontColor: getSecondaryColor(context),
           )
         ],
       ),

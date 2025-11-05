@@ -29,6 +29,7 @@ class _TooltipIconState extends State<TooltipIcon> {
 
   @override
   Widget build(BuildContext context) {
+    final isDarkMode = Theme.of(context).brightness == Brightness.dark;
     return SuperTooltip(
       controller: _tooltipController,
       hideTooltipOnBarrierTap: true,
@@ -36,7 +37,7 @@ class _TooltipIconState extends State<TooltipIcon> {
       right: 40,
       elevation: 0,
       borderRadius: 10.0,
-      borderColor: ksecondary,
+      borderColor: kborder,
       shadowColor: ktransparent,
       arrowLength: 5,
       hideTooltipOnTap: true,
@@ -46,17 +47,17 @@ class _TooltipIconState extends State<TooltipIcon> {
         children: [
           MyText(
             text: "Preliminary Review",
-            color: kwhite,
-            size: 15,
-            fontFamily: AppFonts.gilroyBold,
+            color: getSecondaryColor(context),
+            size: 13,
+            fontFamily: AppFonts.gilroySemiBold,
             paddingBottom: 10,
             weight: FontWeight.w700,
           ),
           MyText(
             text:
                 "Preparing documents and evidence for the\npreliminary review process before\nstarting structured training.",
-            color: kwhite,
-            fontFamily: AppFonts.gilroyBold,
+            color: getSecondaryColor(context),
+            fontFamily: AppFonts.gilroyRegular,
             weight: FontWeight.w400,
           ),
         ],
@@ -65,7 +66,7 @@ class _TooltipIconState extends State<TooltipIcon> {
         Assets.imagesQuestionmark,
         width: 18,
         height: 18,
-        color: ksecondary,
+         color: isDarkMode?kwhite:kblack,
       ),
     );
   }

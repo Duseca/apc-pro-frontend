@@ -60,8 +60,8 @@ class _TabsWidgetState extends State<TabsWidget> {
             height: widget.height ?? 46,
             margin: const EdgeInsets.only(bottom: 4),
             decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(15),
-              color: widget.bgColor ?? kblueBorder2.withOpacity(0.4),
+              borderRadius: BorderRadius.circular(6),
+              color: widget.bgColor ?? ktransparent,
               border: Border.all(color: ktransparent),
             ),
             child: SingleChildScrollView(
@@ -82,9 +82,9 @@ class _TabsWidgetState extends State<TabsWidget> {
                         duration: const Duration(milliseconds: 300),
                         decoration: BoxDecoration(
                           color: widget.currentindex == index
-                              ? ksecondary
+                              ? getSecondaryColor(context)
                               : ktransparent,
-                          borderRadius: BorderRadius.circular(7),
+                          borderRadius: BorderRadius.circular(6),
                         ),
                         child: Center(
                           child: widget.useIcons
@@ -93,16 +93,16 @@ class _TabsWidgetState extends State<TabsWidget> {
                                   width: widget.iconSize,
                                   height: widget.iconSize,
                                   color: widget.currentindex == index
-                                      ? kwhite
-                                      : kwhite.withOpacity(0.6),
+                                      ? getsplashcolor(context)
+                                      : getsplashcolor(context).withOpacity(0.6),
                                       
                                 )
                               : MyText(
                                   text: widget.items[index],
                                   textAlign: TextAlign.center,
                                   size: widget.textSize ?? 11,
-                                  fontFamily: AppFonts.gilroyMedium,
-                                  color: kwhite,
+                                  fontFamily: AppFonts.gilroySemiBold,
+                                  color:widget.currentindex == index? getsplashcolor(context):getSecondaryColor(context),
                                 ),
                         ),
                       ),
@@ -119,8 +119,8 @@ class _TabsWidgetState extends State<TabsWidget> {
               height: widget.height ?? 52,
               margin: const EdgeInsets.only(bottom: 4),
               decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(15),
-                color: widget.bgColor ?? kblueBorder2.withOpacity(0.4),
+                borderRadius: BorderRadius.circular(6),
+                color: widget.bgColor ?? ktransparent,
                 border: Border.all(color: ktransparent),
               ),
               child: Row(
@@ -134,15 +134,15 @@ class _TabsWidgetState extends State<TabsWidget> {
                             child: GestureDetector(
                               onTap: () => _onTap(index),
                               child: AnimatedContainer(
-                                padding: EdgeInsets.all(1),
-                                margin: EdgeInsets.all(widget.margin ?? 3),
+                                padding: EdgeInsets.all(0),
+                                margin: EdgeInsets.symmetric(vertical:widget.margin ?? 5,horizontal: 2),
                                 duration:
                                     const Duration(milliseconds: 300),
                                 decoration: BoxDecoration(
                                   color: widget.currentindex == index
-                                      ? kblueBorder2
+                                      ? getSecondaryColor(context)
                                       : ktransparent,
-                                  borderRadius: BorderRadius.circular(10),
+                                  borderRadius: BorderRadius.circular(6),
                                 ),
                                 child: Center(
                                   child: widget.useIcons
@@ -152,16 +152,16 @@ class _TabsWidgetState extends State<TabsWidget> {
                                           height: widget.iconSize,
                                           color: widget.currentindex ==
                                                   index
-                                              ? kwhite
-                                              : kwhite.withOpacity(0.6),
+                                              ? getsplashcolor(context)
+                                              : getTertiary(context),
                                         )
                                       : MyText(
                                           text: widget.items[index],
                                           textAlign: TextAlign.center,
                                           size: widget.textSize ?? 11.5,
                                           fontFamily:
-                                              AppFonts.gilroyRegular,
-                                          color: kwhite,
+                                              AppFonts.gilroySemiBold,
+                                          color:widget.currentindex==index? getsplashcolor(context):getSecondaryColor(context),
                                         ),
                                 ),
                               ),

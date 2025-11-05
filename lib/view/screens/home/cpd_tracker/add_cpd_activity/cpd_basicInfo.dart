@@ -14,10 +14,9 @@ class CpdBasicinfo extends StatelessWidget {
   Widget build(BuildContext context) {
     return CustomeContainer(
       radius: 10,
-      color: kblackfill,
-      borderColor: kblueBorder4,
-      vpad: 17,
-      hpad: 17,
+      color: getfillcolor(context),
+      vpad: 12,
+            hpad: 14,
       mtop: 30,
       widget: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -25,7 +24,8 @@ class CpdBasicinfo extends StatelessWidget {
           row_widget(
             title: 'Activity Information',
             icon: Assets.imagesQuiz,
-            iconSize: 16,
+            iconSize: 18,
+            iconColor: getSecondaryColor(context),
             fontFamily: AppFonts.gilroyBold,
             rpad: 10,
           ),
@@ -35,62 +35,56 @@ class CpdBasicinfo extends StatelessWidget {
           MyTextField2(
             label: 'Activity Title*',
             hint: 'e.g., RICS Professional Ethics Course',
-            marginBottom: 25,
-            bordercolor: ksecondary,
+            filledColor: getfifth(context),
+            bordercolor: ktransparent,
           ),
           MyTextField2(
             label: 'Provider*',
             hint: 'e.g., RICS , University Name',
-            marginBottom: 25,
-            bordercolor: ksecondary,
+            filledColor: getfifth(context),
+            bordercolor: ktransparent,
           ),
           MyTextField2(
             label: 'Description*',
             hint: 'Provide a detailed description of the activity.....',
-            marginBottom: 25,
-            bordercolor: ksecondary,
-            maxLines: 2,
+            filledColor: getfifth(context),
+            bordercolor: ktransparent,
+            maxLines: 3,
           ),
-          SimpleDropDown(
+          CustomDropDown(
               label: 'Category*',
               hint: 'Formal Learning',
               items: ['Formal Learning', 'Formal Learning 2'],
               value: 'Formal Learning',
-              hasInfo: false,
-              borderColor: kblueBorder4,
-              hintColor: kwhite,
+              //hasInfo: false,
+              //filledColor: getfifth(context),
+              bgColor: getfifth(context),
               onChanged: (w) {}),
-          SizedBox(
-            height: 25,
-          ),
-          SimpleDropDown(
+          CustomDropDown(
               label: 'SubCategory*',
               hint: 'Structured Course',
               items: ['Structured Course', 'Structured Course 2'],
               value: 'Structured Course',
-              hasInfo: false,
-              borderColor: kblueBorder4,
-              hintColor: kwhite,
+
+              //hasInfo: false,
+              //borderColor: kblueBorder4,
+              bgColor: getfifth(context),
               onChanged: (w) {}),
-          SizedBox(
-            height: 25,
-          ),
           MyTextField2(
             label: 'Duration (hours)*',
             hint: '1',
-            bordercolor: kblueBorder4,
-            hintColor: kwhite,
-            marginBottom: 25,
+            filledColor: getfifth(context),
+            bordercolor: ktransparent,
           ),
           MyTextField2(
             label: 'Activity Date*',
             hint: 'Structured Course',
-            bordercolor: kblueBorder4,
-            hintColor: kwhite,
-            marginBottom: 25,
+            filledColor: getfifth(context),
+            bordercolor: ktransparent,
             suffixIcon: Image.asset(
               Assets.imagesQuiz,
               width: 18,
+              color: getSecondaryColor(context),
             ),
           )
         ],

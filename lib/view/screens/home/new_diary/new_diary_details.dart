@@ -33,7 +33,9 @@ class NewDiaryDetails extends StatelessWidget {
                   SizedBox(
                     height: 20,
                   ),
-                  SimpleDropDown(
+                  CustomDropDown(
+                    bordercolor: ktransparent,
+                    borderColor2: ktransparent,
                     label: "Competency *",
                     hint: "Select competency",
                     items: [
@@ -43,46 +45,115 @@ class NewDiaryDetails extends StatelessWidget {
                       'Select competency'
                     ],
                     value: 'Select competency',
-
+                    hintsize: 14,
                     onChanged: (val) {},
                     // onInfoTap: () {},
                     // hasInfo: false,
                   ),
-                  SizedBox(
-                    height: 26,
-                  ),
-                  SimpleDropDown(
+                  CustomDropDown(
+                    bordercolor: ktransparent,
+                    borderColor2: ktransparent,
                     label: "Competency Level *",
                     hint: "Level 1",
                     items: ["Level 1", "Level 2", "Level 3"],
                     value: 'Level 1',
+                    hintsize: 14,
                     onChanged: (val) {},
                   ),
-                  SizedBox(
-                    height: 26,
-                  ),
                   MyTextField2(
+                    bordercolor: ktransparent,
+                    filledColor: getfillcolor(context),
                     hint: 'mm/dd/yyyy',
                     label: 'Start Date *',
                     suffixIcon: Image.asset(
                       Assets.imagesCalendar,
                       width: 18,
+                      color: getSecondaryColor(context),
                     ),
                     marginBottom: 20,
                   ),
-                  StackHintContainer(),
+                  MyText(
+                    text: 'Days Committed *',
+                    paddingBottom: 8,
+                    size: 14,
+                    fontFamily: AppFonts.gilroySemiBold,
+                  ),
+                  Row(
+                    spacing: 10,
+                    children: [
+                      Expanded(
+                          flex: 1,
+                          child: MyTextField2(
+                            bordercolor: ktransparent,
+                            filledColor: getfillcolor(context),
+                            prefixIcon: Padding(
+                              padding:
+                                  const EdgeInsets.only(bottom: 15, right: 5),
+                              child: Row(
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Icon(
+                                    Icons.minimize_rounded,
+                                    color: getSecondaryColor(context),
+                                  ),
+                                ],
+                              ),
+                            ),
+                            hintSize: 14,
+                            align: TextAlign.center,
+                            hintColor: getSecondaryColor(context),
+                          )),
+                      Expanded(
+                          flex: 3,
+                          child: MyTextField2(
+                            bordercolor: ktransparent,
+                            filledColor: getfillcolor(context),
+                            hint: '1',
+                            hintSize: 14,
+                            align: TextAlign.center,
+                            hintColor: getSecondaryColor(context),
+                          )),
+                      Expanded(
+                          flex: 1,
+                          child: MyTextField2(
+                            bordercolor: ktransparent,
+                            filledColor: getfillcolor(context),
+                            prefixIcon: Padding(
+                              padding:
+                                  const EdgeInsets.only(bottom: 4, right: 5),
+                              child: Row(
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Icon(
+                                    Icons.add_rounded,
+                                    color: getSecondaryColor(context),
+                                  ),
+                                ],
+                              ),
+                            ),
+                            hintSize: 14,
+                            align: TextAlign.center,
+                            hintColor: getSecondaryColor(context),
+                          ))
+                    ],
+                  ),
                   Row(
                     children: [
                       Expanded(
                           child: MyText(
                         text: 'Work Description *',
-                        size: 16,
+                        size: 14,
+                        fontFamily: AppFonts.gilroySemiBold,
                       )),
                       row_widget(
                         title: '0 words',
                         fontFamily: AppFonts.gilroySemiBold,
                         icon: Assets.imagesBulb2,
                         iconSize: 24,
+                        textColor: getTertiary(context),
+                        iconColor: getSecondaryColor(context),
                         isIconRight: true,
                       )
                     ],
@@ -91,44 +162,40 @@ class NewDiaryDetails extends StatelessWidget {
                     height: 8,
                   ),
                   MyTextField2(
+                    bordercolor: ktransparent,
+                    filledColor: getfillcolor(context),
                     hint:
                         'Describe the work undertaken, including your specific role, tasks completed, techniques used, and any challenge encountered',
                     maxLines: 4,
                     marginBottom: 20,
                   ),
                   MyTextField2(
+                    bordercolor: ktransparent,
+                    filledColor: getfillcolor(context),
                     label: 'Project Content',
                     hint:
-                        'e.g., Commercial office refurbishment, Residential.....',
+                        'Provide context about the project, including objectives, stakeholders, and your role.',
                     marginBottom: 20,
+                    maxLines: 2,
                   ),
                   MyTextField2(
+                    bordercolor: ktransparent,
+                    filledColor: getfillcolor(context),
                     label: 'Reflection & Learning',
                     hint:
                         'What did you learn from this experience? How did it contribute to your professional development? What would you do differently?',
                     maxLines: 4,
                     marginBottom: 20,
                   ),
-                  StackHintContainer(
-                    hint: 'Attachment',
-                    widget: Column(
-                      children: [
-                        SizedBox(
-                          height: 15,
-                        ),
-                        Center(
-                          child: row_widget(
-                            title: 'Add files',
-                            icon: Assets.imagesUpload,
-                          ),
-                        ),
-                        SizedBox(
-                          height: 15,
-                        ),
-                      ],
-                    ),
+                  MyText(
+                    text: 'Attachment',
+                    paddingBottom: 8,
+                    size: 14,
+                    fontFamily: AppFonts.gilroySemiBold,
                   ),
+                  AttachmentContainer(),
                   MyButton(
+                    mTop: 20,
                     buttonText: 'Add',
                     mBottom: 20,
                   )

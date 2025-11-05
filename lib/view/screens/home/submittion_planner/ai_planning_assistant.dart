@@ -53,8 +53,8 @@ class AiPlanningAssistant extends StatelessWidget {
                 children: [
                   CustomeContainer(
                     radius: 8,
-                    color: kblackfill,
-                    borderColor: Color(0xff4285F4),
+                    color: getfillcolor(context),
+                    borderColor: getSecondaryColor(context),
                     vpad: 17,
                     hpad: 14,
                     widget: Row(
@@ -63,7 +63,7 @@ class AiPlanningAssistant extends StatelessWidget {
                         Image.asset(
                           Assets.imagesCalendar,
                           width: 20,
-                          color: ksecondary,
+                          color: getSecondaryColor(context)
                         ),
                         SizedBox(
                           width: 8,
@@ -99,7 +99,7 @@ class AiPlanningAssistant extends StatelessWidget {
                     () => TabsWidget(
                       isexpanded: false,
                       margin: 2,
-                      bgColor: kblackfill,
+                      bgColor: getfillcolor(context),
                       textSize: 11,
                       items: tabs,
                       currentindex: currentIndex.value,
@@ -120,8 +120,8 @@ class AiPlanningAssistant extends StatelessWidget {
                   CustomeContainer(
                       radius: 8,
                       mtop: 20,
-                      color: kblackfill,
-                      borderColor: Color(0xff4285F4),
+                      color: getfillcolor(context),
+                      borderColor: getSecondaryColor(context),
                       vpad: 17,
                       hpad: 14,
                       widget: Column(
@@ -132,7 +132,7 @@ class AiPlanningAssistant extends StatelessWidget {
                               Image.asset(
                                 Assets.imagesClock,
                                 width: 20,
-                                color: ksecondary,
+                                color: getSecondaryColor(context),
                               ),
                               Expanded(
                                   child: MyText(
@@ -146,6 +146,7 @@ class AiPlanningAssistant extends StatelessWidget {
                                   child: Image.asset(
                                 Assets.imagesLike,
                                 width: 20,
+                                color: getSecondaryColor(context),
                               )),
                               SizedBox(
                                 width: 10,
@@ -154,6 +155,7 @@ class AiPlanningAssistant extends StatelessWidget {
                                   child: Image.asset(
                                 Assets.imagesDislike,
                                 width: 20,
+                                color: getSecondaryColor(context),
                               ))
                             ],
                           ),
@@ -194,8 +196,8 @@ class AiPlanningAssistant extends StatelessWidget {
                                 'Meet formal CPD requirements within 4–6 weeks',
                             fontFamily: AppFonts.gilroyBold,
                             fontFamily2: AppFonts.gilroyRegular,
-                            color1: kwhite,
-                            color2: kwhite,
+                            color1: getSecondaryColor(context),
+                            color2: getSecondaryColor(context),
                             size2: 12,
                             size: 12,
                             align: TextAlign.start,
@@ -226,8 +228,8 @@ class recommendations extends StatelessWidget {
     return CustomeContainer(
         mtop: 20,
         radius: 10,
-        color: bgColor ?? kblueBorder4,
-        borderColor: bgColor ?? kblueBorder4,
+        color: bgColor ?? getfillcolor(context),
+        borderColor: bgColor ?? getfillcolor(context),
         vpad: 17,
         hpad: 14,
         widget: Column(

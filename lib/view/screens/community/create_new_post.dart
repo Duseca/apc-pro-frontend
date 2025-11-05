@@ -19,7 +19,7 @@ class CreateNewPost extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return dialogBoxBody(
-        borderColor: kblueBorder3,
+     
         child: Column(
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -35,16 +35,16 @@ class CreateNewPost extends StatelessWidget {
                 Image.asset(
                   Assets.imagesCross,
                   width: 15,
-                  color: kwhite,
+                  color: getSecondaryColor(context),
                 )
               ],
             ),
             SizedBox(
               height: 20,
             ),
-            SimpleDropDown(
+           CustomDropDown(
               hint: '',
-              iconColor: klighblue,
+              iconColor: getSecondaryColor(context),
               items: [
                 'Mandatory Competencies',
                 'Case Study Help',
@@ -57,25 +57,19 @@ class CreateNewPost extends StatelessWidget {
               value: 'Select a forum',
               label: 'Forum',
             ),
-            SizedBox(
-              height: 25,
-            ),
+         
             MyTextField2(
               label: 'Title',
               hint: 'What’s your questions and topic',
-              marginBottom: 25,
+             filledColor: getfillcolor(context),
+             bordercolor: ktransparent,
             ),
-            MyTextField2(
-              label: 'Content',
-              hint:
-                  'Provide details about your questions or share your insights',
-              maxLines: 4,
-              marginBottom: 25,
-            ),
+        
             MyTextField2(
               label: 'Tags(Optional)',
               hint: 'case study, interview, cpd........',
-              marginBottom: 25,
+                filledColor: getfillcolor(context),
+             bordercolor: ktransparent,
             ),
             MyButton(
               buttonText: 'Post',
@@ -83,6 +77,9 @@ class CreateNewPost extends StatelessWidget {
               onTap: () {
                 Get.back();
               },
+              outlineColor: getSecondaryColor(context),
+              fontColor: getSecondaryColor(context),
+              backgroundColor: ktransparent,
             )
           ],
         ));

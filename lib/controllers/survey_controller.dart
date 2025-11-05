@@ -29,7 +29,7 @@ class SurveyController extends GetxController {
     {
       'title': 'Pathway & Location',
       'Desc':
-          'Tell us where you are in your career journey so we can tailor your experience.',
+          'Tell us your career pathway and location to personalize your opportunities and connections',
       'progress_ind': 3.0,
       'body': PathwayLocation()
     },
@@ -42,21 +42,21 @@ class SurveyController extends GetxController {
     },
     {
       'title': 'Training & Experience',
-      'Desc': "Let's gather some information about your training and experience",
+      'Desc': "Share your professional background and experience to help us create a personalized learning path that matches your career goals",
       'progress_ind': 5.0,
       'body': TrainingExperience()
     },
     {
       'title': 'CPD & Study Preferences',
       'Desc':
-          'Let’s tailor your app experience based on your current CPD progress and how you prefer to study.',
+          'Help us understand your learning style and preferences to create a personalized CPD journey that fits your schedule and goals',
       'progress_ind': 6.0,
       'body': CpdStudypref()
     },
     {
       'title': 'Goals & Expectations',
       'Desc':
-          'Define your professional objectives and the type of support you need from APC Pro.',
+          'Help us understand your professional aspirations and expectations to personalize your learning journey and success metrics',
       'progress_ind': 7.0,
       'body': GoalsExpectations()
     },

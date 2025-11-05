@@ -1,4 +1,5 @@
 import 'package:apc_pro/consts/app_colors.dart';
+import 'package:apc_pro/consts/app_fonts.dart';
 import 'package:apc_pro/controllers/survey_controller.dart';
 import 'package:apc_pro/generated/assets.dart';
 import 'package:apc_pro/view/widgets/bullet_points.dart';
@@ -6,6 +7,7 @@ import 'package:apc_pro/view/widgets/button_container.dart';
 import 'package:apc_pro/view/widgets/custom_check_box.dart';
 import 'package:apc_pro/view/widgets/my_button.dart';
 import 'package:apc_pro/view/widgets/my_text_widget.dart';
+import 'package:bounce/bounce.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -14,6 +16,7 @@ class Competency extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isDarkMode = Theme.of(context).brightness == Brightness.dark;
     final controller = Get.find<SurveyController>();
     List competency = [
       'Ethics, Rules of Conduct and Professionalism',
@@ -50,8 +53,8 @@ class Competency extends StatelessWidget {
       children: [
         MyText(
           text: 'Mandatory Competencies',
-          size: 16,
-          weight: FontWeight.bold,
+          size: 14,
+          fontFamily: AppFonts.gilroyBold,
           paddingBottom: 5,
         ),
         MyText(
@@ -67,11 +70,12 @@ class Competency extends StatelessWidget {
           itemCount: competency.length,
           itemBuilder: (context, index) {
             return Padding(
-              padding: const EdgeInsets.only(bottom: 2),
-              child: MyBullet(
-                point: competency[index],
-              ),
-            );
+                padding: const EdgeInsets.only(bottom: 10),
+                child: checkbox_row(title: competency[index])
+                //  MyBullet(
+                //   point: competency[index],
+                // ),
+                );
           },
         ),
         SizedBox(
@@ -91,6 +95,7 @@ class Competency extends StatelessWidget {
               Assets.imagesQuestionmark,
               width: 18,
               height: 18,
+              color: isDarkMode ? kwhite : kblack,
             )
           ],
         ),
@@ -144,23 +149,26 @@ class Competency extends StatelessWidget {
           height: 15,
         ),
         Row(
-          spacing: 25,
           children: [
-            Expanded(
-              child: MyButton(
-                mTop: 30,
-                backgroundColor: klighblue,
-                fontColor: ksecondary,
-                buttonText: 'Back',
+            Bounce(
                 onTap: () {
                   controller.previousStep();
                 },
-              ),
+                child: Image.asset(
+                  isDarkMode
+                      ? Assets.imagesBackbutton
+                      : Assets.imagesBackbutton2,
+                  width: 48,
+                  height: 45,
+                )),
+            SizedBox(
+              width: 12,
             ),
             Expanded(
               child: MyButton(
-                mTop: 30,
+                backgroundColor: getSecondaryColor(context).withOpacity(0.1),
                 buttonText: 'Continue',
+                fontColor: getTertiary(context),
                 onTap: () {
                   controller.nextStep();
                 },
@@ -178,19 +186,19 @@ class Competency extends StatelessWidget {
 
 class checkbox_row extends StatelessWidget {
   final String? title;
-  final bool? isActive, hasContainer;
-  final Color? cBorder, cbg;
+  final bool? isActive, hasSecText;
+  final Color? cBorder, cbg,textColor;
   final double? radius;
   final double? tSize;
   const checkbox_row({
     super.key,
     this.title,
     this.isActive,
-    this.hasContainer = false,
+    this.hasSecText = false,
     this.cBorder,
     this.cbg,
     this.radius,
-    this.tSize,
+    this.tSize, this.textColor,
   });
 
   @override
@@ -203,9 +211,9 @@ class checkbox_row extends StatelessWidget {
           isActive: isActive ?? false,
           onTap: () {},
           radius: radius ?? 2.5,
-          selectedColor: cbg ?? kbackground,
-          bordercolor2: cBorder ?? kborder,
-          borderColor: cBorder ?? kborder,
+          // selectedColor: cbg ?? kbackground,
+          // bordercolor2: cBorder ?? kborder,
+          // borderColor: cBorder ?? kborder,
           size: 15,
           circleIconsize: 12,
         ),
@@ -214,20 +222,13 @@ class checkbox_row extends StatelessWidget {
           child: MyText(
             text: title ?? '',
             paddingLeft: 6,
-            paddingRight: hasContainer == true ? 10 : 0,
+            paddingRight: hasSecText == true ? 10 : 0,
             size: tSize,
+            color: textColor,
           ),
         ),
-        if (hasContainer == true)
-          buttonContainer(
-            radius: 4,
-            vPadding: 5,
-            hPadding: 6,
-            text: '25 Questions',
-            bgColor: kblackfill,
-            borderColor: ksecondary,
-            textsize: 10,
-          )
+        if (hasSecText == true)
+        MyText(text: '(22 Questions)',size: 12,color: getTertiary(context),)
       ],
     );
   }

@@ -13,7 +13,7 @@ class AddCpdActivity extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final List<String> tabs = ["Basic", 'Learning', 'Reflection', 'Details'];
+    final List<String> tabs = ["Record", 'Learning', 'Reflection', 'Details'];
     final List<Widget> tabContents = [
       CpdBasicinfo(),
       CpdLearning(),
@@ -39,7 +39,7 @@ class AddCpdActivity extends StatelessWidget {
                     () => TabsWidget(
                       height: 43,
                       margin: 2,
-                      bgColor: kblackfill,
+                      bgColor: getfillcolor(context),
                       textSize: 11,
                       items: tabs,
                       currentindex: currentIndex.value,

@@ -1,6 +1,7 @@
 import 'package:apc_pro/consts/app_colors.dart';
 import 'package:apc_pro/consts/app_fonts.dart';
 import 'package:apc_pro/generated/assets.dart';
+import 'package:apc_pro/main.dart';
 import 'package:apc_pro/view/widgets/common_image_view_widget.dart';
 import 'package:apc_pro/view/widgets/my_text_widget.dart';
 import 'package:flutter/material.dart';
@@ -29,11 +30,11 @@ class MessageTile extends StatelessWidget {
               if (!isSentBy) ...[
                 Center(
                     child: CommonImageView(
-                  imagePath: Assets.imagesAi,
-                  fit: BoxFit.cover,
+                 url: dummyImage,
+                
                   width: 42,
                   height: 42,
-                  radius: 36,
+                  radius: 100
                 )),
               ],
 
@@ -48,12 +49,12 @@ class MessageTile extends StatelessWidget {
                     children: [
                       Container(
                         margin: EdgeInsets.only(
-                          top: isSentBy?0:20,left: isSentBy?0:5
+                          top: isSentBy?0:8,left: isSentBy?0:5
                         ),
                         decoration: BoxDecoration(
-                            color: ktransparent,
-                            border: Border.all(color: klighblue),
-                            // gradient: isSentBy ? kbuttongrad : null,
+                            
+                           
+                            color: isSentBy ?  getfillcolor(context):getSecondaryColor(context),
                       
                             borderRadius: BorderRadius.only(
                               bottomRight: Radius.circular(20),
@@ -75,7 +76,7 @@ class MessageTile extends StatelessWidget {
                               MyText(
                             
                                 text: message,
-                                color: isSentBy ? kwhite : kwhite,
+                                color: isSentBy ? getSecondaryColor(context) : getsplashcolor(context),
                                 size: 12,
                                fontFamily: AppFonts.gilroyMedium,
                                 paddingBottom: 5,

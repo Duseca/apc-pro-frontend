@@ -1,7 +1,7 @@
 import 'package:apc_pro/consts/app_colors.dart';
 import 'package:apc_pro/consts/app_fonts.dart';
 import 'package:apc_pro/generated/assets.dart';
-import 'package:apc_pro/view/screens/profile/payment_method.dart';
+import 'package:apc_pro/view/screens/profile/subscription/payment_method.dart';
 import 'package:apc_pro/view/widgets/appbar.dart';
 import 'package:apc_pro/view/widgets/custom_row.dart';
 import 'package:apc_pro/view/widgets/custome_comtainer.dart';
@@ -33,17 +33,17 @@ class Subscription extends StatelessWidget {
                 children: [
                   CustomeContainer(
                     radius: 8,
-                    color: kblackfill,
+                    color: getfillcolor(context),
                     vpad: 20,
                     hpad: 14,
-                    borderColor: Color(0xff4285F4),
+                    borderColor: getSecondaryColor(context),
                     widget: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         row_widget(
                           title: 'APC Pro',
-                          textColor: kwhite,
-                          iconColor: Color(0xff4285F4),
+                          textColor: getSecondaryColor(context),
+                          iconColor: getSecondaryColor(context),
                           texSize: 14,
                           icon: Assets.imagesCalendar,
                           iconSize: 21,
@@ -75,11 +75,13 @@ class Subscription extends StatelessWidget {
                           mTop: 38,
                           buttonText: 'Upgrade Plan',
                           mBottom: 20,
+                          backgroundColor: getfifth(context),
+                          fontColor: getSecondaryColor(context),
                         ),
                         MyButton(
-                          backgroundColor: klighblue,
-                          outlineColor: ksecondary,
-                          fontColor: ksecondary,
+                          backgroundColor: getfillcolor(context),
+                          outlineColor: getSecondaryColor(context),
+                          fontColor: getSecondaryColor(context),
                           buttonText: 'Cancel Subscription',
                         )
                       ],
@@ -87,9 +89,7 @@ class Subscription extends StatelessWidget {
                   ),
                   MyButton(
                     mTop: 40,
-                    backgroundColor: kblackfill,
-                    outlineColor: ksecondary,
-                    fontColor: klighblue,
+                
                     fontFamily: AppFonts.gilroyMedium,
                     fontSize: 15,
                     onTap: () {

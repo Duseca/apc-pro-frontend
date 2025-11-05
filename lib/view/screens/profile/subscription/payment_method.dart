@@ -1,13 +1,13 @@
 import 'package:apc_pro/consts/app_colors.dart';
 import 'package:apc_pro/consts/app_fonts.dart';
 import 'package:apc_pro/generated/assets.dart';
+import 'package:apc_pro/view/screens/profile/subscription/billing.dart';
 import 'package:apc_pro/view/widgets/appbar.dart';
-import 'package:apc_pro/view/widgets/custom_row.dart';
 import 'package:apc_pro/view/widgets/custome_comtainer.dart';
-import 'package:apc_pro/view/widgets/expanded_row.dart';
 import 'package:apc_pro/view/widgets/my_button.dart';
 import 'package:apc_pro/view/widgets/my_text_field.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class PaymentMethod extends StatelessWidget {
   const PaymentMethod({super.key});
@@ -32,10 +32,9 @@ class PaymentMethod extends StatelessWidget {
                 children: [
                   CustomeContainer(
                     radius: 8,
-                    color: kblackfill,
                     vpad: 28,
                     hpad: 14,
-                    borderColor: Color(0xff4285F4),
+                    borderColor: getSecondaryColor(context),
                     widget: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -43,15 +42,13 @@ class PaymentMethod extends StatelessWidget {
                           label: 'Email Address',
                           hint: 'robertfox@gmail.com',
                           marginBottom: 24,
-                          hintColor: kwhite,
-                          bordercolor: ksecondary,
+                          bordercolor: getSecondaryColor(context),
                         ),
                         MyTextField2(
                           label: 'Card Information',
                           hint: '1234 1234 1234 1234',
                           marginBottom: 20,
-                          hintColor: kwhite,
-                          bordercolor: ksecondary,
+                          bordercolor: getSecondaryColor(context),
                           suffixIcon: Row(
                             spacing: 3,
                             mainAxisSize: MainAxisSize.min,
@@ -85,9 +82,8 @@ class PaymentMethod extends StatelessWidget {
                             Expanded(
                                 child: MyTextField2(
                               hint: 'MM/YY',
-                              hintColor: kwhite,
                               marginBottom: 24,
-                              bordercolor: ksecondary,
+                              bordercolor: getSecondaryColor(context),
                             )),
                             SizedBox(
                               width: 10,
@@ -95,33 +91,36 @@ class PaymentMethod extends StatelessWidget {
                             Expanded(
                                 child: MyTextField2(
                               hint: 'CVC',
-                              hintColor: kwhite,
                               marginBottom: 24,
-                              bordercolor: ksecondary,
+                              bordercolor: getSecondaryColor(context),
                             )),
                           ],
                         ),
                         MyTextField2(
                           label: 'Account Title',
                           hint: 'Robert Fox',
-                          hintColor: kwhite,
                           marginBottom: 24,
-                          bordercolor: ksecondary,
+                          bordercolor: getSecondaryColor(context),
                         ),
                         MyButton(
                           buttonText: 'Change Payment Method',
+                          backgroundColor: getfifth(context),
+                          fontColor: getSecondaryColor(context),
                         ),
                       ],
                     ),
                   ),
                   MyButton(
                     mTop: 20,
-                    backgroundColor: kblackfill,
-                    outlineColor: ksecondary,
-                    fontColor: klighblue,
+                    backgroundColor: getfillcolor(context),
+                    outlineColor: getSecondaryColor(context),
+                    fontColor: getTertiary(context),
                     fontFamily: AppFonts.gilroyMedium,
                     fontSize: 15,
                     buttonText: 'Manage Payment Method',
+                    onTap: () {
+                      Get.to(() => Billing());
+                    },
                   )
                 ],
               ),

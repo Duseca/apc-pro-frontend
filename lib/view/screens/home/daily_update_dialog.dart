@@ -16,149 +16,189 @@ class DailyUpdateDialog extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isDarkMode = Theme.of(context).brightness == Brightness.dark;
     return dialogBoxBody(
+      innerVpad: 0,
+      innerHpad: 0,
+      tpad: 0,
       child: Column(
         mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Row(
-            children: [
-              Expanded(
-                  child: MyText(
-                text: 'Daily Update',
-                size: 18,
-                weight: FontWeight.bold,
-              )),
-              Bounce(
-                  onTap: () {
-                    Get.back();
-                  },
-                  child: Image.asset(
-                    Assets.imagesCross,
-                    width: 12,
-                    height: 12,
-                  ))
-            ],
-          ),
-          SizedBox(
-            height: 20,
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  row_widget(
-                    iconSize: 15,
-                    icon: Assets.imagesClock,
-                    title: 'Log new work experience',
-                    texSize: 11,
-                    fontFamily: AppFonts.gilroyMedium,
-                  ),
-                  MyText(
-                    paddingTop: 4,
-                    text: '1h',
-                    size: 16,
-                    weight: FontWeight.bold,
-                    paddingBottom: 5,
-                  ),
-                  MyText(
-                    text: '17h this week',
-                    size: 11,
-                    fontFamily: AppFonts.gilroyMedium,
-                  )
-                ],
-              ),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  row_widget(
-                    iconSize: 15,
-                    icon: Assets.imagesClock,
-                    title: 'Quiz Progress',
-                    texSize: 11,
-                    fontFamily: AppFonts.gilroyMedium,
-                  ),
-                  MyText(
-                    paddingTop: 4,
-                    text: '2',
-                    size: 16,
-                    weight: FontWeight.bold,
-                    paddingBottom: 5,
-                  ),
-                  MyText(
-                    text: '2 day streak',
-                    size: 11,
-                    fontFamily: AppFonts.gilroyMedium,
-                  )
-                ],
-              )
-            ],
-          ),
-          MyText(
-            text: 'Recent Progress',
-            size: 18,
-            weight: FontWeight.bold,
-            paddingTop: 9,
-            paddingBottom: 12,
-          ),
-          checkbox_row(
-            title: 'Completed Module 3 Assessment',
-          ),
-          SizedBox(
-            height: 10,
-          ),
-          checkbox_row(
-            title: 'Updated Case Study Section 2',
-          ),
-          SizedBox(
-            height: 10,
-          ),
-          checkbox_row(
-            title: 'Logged 3 diary entries this week',
-          ),
-          MyText(
-            text: 'Next: Complete Technical Competency Review',
-            size: 12,
-            paddingBottom: 10,
-            paddingTop: 10,
-          ),
-          MyText(
-            text: 'Today’s Recommendations',
-            size: 18,
-            weight: FontWeight.bold,
-            paddingBottom: 12,
-          ),
-          MyBullet(
-              point:
-                  'Focus on Ethics and Professional Standards this week - it’s your strongest area'),
-          MyBullet(point: 'Schedule 30 mins for diary reflection today'),
-          MyBullet(
-              point:
-                  "Review Contract Administration materials before tomorrow's quiz"),
           CustomeContainer(
-            mtop: 20,
-            radius: 8,
-            hpad: 14,
-            vpad: 12,
-            borderColor: kblueBorder2,
-            widget: Column(
+            color: getfillcolor(context),
+            borderRadius: BorderRadius.only(
+                topLeft: Radius.circular(8), topRight: Radius.circular(8)),
+            widget: Row(
+              children: [
+                Expanded(
+                    child: MyText(
+                  text: 'Daily Update',
+                  size: 18,
+                  weight: FontWeight.bold,
+                )),
+                Bounce(
+                    onTap: () {
+                      Get.back();
+                    },
+                    child: Image.asset(
+                      Assets.imagesCross,
+                      width: 12,
+                      height: 12,
+                      color: isDarkMode?kwhite:kblack,
+                    ))
+              ],
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 17, vertical: 20),
+            child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                row_widget(
-                  icon: Assets.imagesBulb,
-                  iconSize: 18,
-                  title: 'Insight',
-                  weight: FontWeight.bold,
-                  texSize: 14,
+                Row(
+                  spacing: 5,
+                  children: [
+                    Expanded(
+                      child: CustomeContainer(
+                        color: getfillcolor(context),
+                        widget: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            MyText(
+                              paddingTop: 4,
+                              text: 'Log new work experience',
+                              size: 14,
+                              fontFamily: AppFonts.gilroySemiBold,
+                              paddingBottom: 5,
+                            ),
+                            MyText(
+                              paddingTop: 4,
+                              text: '1h',
+                              size: 16,
+                              fontFamily: AppFonts.gilroyBold,
+                              paddingBottom: 5,
+                            ),
+                            MyText(
+                              text: '17h this week',
+                              size: 11,
+                              fontFamily: AppFonts.gilroyMedium,
+                            )
+                          ],
+                        ),
+                      ),
+                    ),
+                    Expanded(
+                      child: CustomeContainer(
+                        color: getfillcolor(context),
+                        widget: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            MyText(
+                              paddingTop: 4,
+                              text: 'Quiz Progress\n',
+                              size: 14,
+                              fontFamily: AppFonts.gilroySemiBold,
+                              paddingBottom: 5,
+                            ),
+                            MyText(
+                              paddingTop: 4,
+                              text: '2',
+                              size: 16,
+                              fontFamily: AppFonts.gilroyBold,
+                              paddingBottom: 5,
+                            ),
+                            MyText(
+                              text: '2 day streak',
+                              size: 11,
+                              fontFamily: AppFonts.gilroyMedium,
+                            )
+                          ],
+                        ),
+                      ),
+                    )
+                  ],
                 ),
                 MyText(
-                  paddingTop: 4,
-                  text:
-                      "You're making excellent progress, Your consistent study streak of 2 days shows real dedication. Keep focusing on your quantity surveying competencies - you're 75% complete with your APC journey",
-                  size: 11,
-                )
+                  text: 'Recent Progress',
+                  size: 14,
+                  fontFamily: AppFonts.gilroySemiBold,
+                  paddingTop: 15,
+                  paddingBottom: 12,
+                ),
+                checkbox_row(
+                  title: 'Completed Module 3 Assessment',
+                  textColor: getTertiary(context),
+                ),
+                SizedBox(
+                  height: 10,
+                ),
+                checkbox_row(
+                  title: 'Updated Case Study Section 2',
+                  textColor: getTertiary(context),
+                ),
+                SizedBox(
+                  height: 10,
+                ),
+                checkbox_row(
+                  title: 'Logged 3 diary entries this week',
+                  textColor: getTertiary(context),
+                ),
+                SizedBox(
+                  height: 10,
+                ),
+                checkbox_row(
+                  title: 'Next: Complete Technical Competency Review',
+                  textColor: getTertiary(context),
+                ),
+                MyText(
+                  paddingTop: 15,
+                  text: 'Today’s Recommendations',
+                  size: 14,
+                  fontFamily: AppFonts.gilroySemiBold,
+                  paddingBottom: 12,
+                ),
+                MyBullet(
+                    color: getTertiary(context),
+                    point:
+                        'Focus on Ethics and Professional Standards this week - it’s your strongest area'),
+                MyBullet(
+                  point: 'Schedule 30 mins for diary reflection today',
+                  color: getTertiary(context),
+                ),
+                MyBullet(
+                  point:
+                      "Review Contract Administration materials before tomorrow's quiz",
+                  color: getTertiary(context),
+                ),
+                CustomeContainer(
+                  mtop: 20,
+                  radius: 8,
+                  hpad: 14,
+                  vpad: 12,
+                  borderColor: getSecondaryColor(context),
+                  color: getfillcolor(context),
+                  widget: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      row_widget(
+                        icon: Assets.imagesBrain,
+                        iconSize: 18,
+                        title: 'Progress Insight',
+                        fontFamily: AppFonts.gilroySemiBold,
+                        iconColor: isDarkMode ? kwhite : null,
+                        texSize: 14,
+                      ),
+                      MyText(
+                        paddingTop: 4,
+                        text:
+                            "Your learning consistency is improving. Keep up the daily progress to maintain momentum and achieve your certification goals.",
+                        size: 11,
+                        color: getTertiary(context),
+                        lineHeight: 1.4,
+                      )
+                    ],
+                  ),
+                ),
               ],
             ),
           )

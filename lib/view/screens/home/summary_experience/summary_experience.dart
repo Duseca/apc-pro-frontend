@@ -5,6 +5,7 @@ import 'package:apc_pro/view/screens/apc_ai/apc_AI.dart';
 import 'package:apc_pro/view/screens/home/entries/entries_detail.dart';
 import 'package:apc_pro/view/screens/home/summary_experience/continue_writing.dart';
 import 'package:apc_pro/view/widgets/appbar.dart';
+import 'package:apc_pro/view/widgets/button_container.dart';
 import 'package:apc_pro/view/widgets/custome_comtainer.dart';
 import 'package:apc_pro/view/widgets/expanded_row.dart';
 import 'package:apc_pro/view/widgets/home_widgets/apc_diary_widgets.dart';
@@ -18,14 +19,14 @@ class SummaryExperience extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final List status = [
-      'Ethics, Rules of Conduct and Professionalism',
+      'Ethics/Rules/Professionalism',
       'Client Care',
       'Communication and Negotiation'
     ];
     final List Tstatus = [
-      'Building Maintenance and Refurbishment',
+      'Building Maintenance/Refurbishment',
       'Building Surveys and Inspections',
-      'Construction Technology and Environmental Services'
+      'Construction Technology/Environmental Services'
     ];
     return Scaffold(
         appBar: simpleAppBar(
@@ -62,87 +63,91 @@ class SummaryExperience extends StatelessWidget {
                       height: 20,
                     ),
                     newEntry_container(
-                      borderColor: kblueBorder2,
-                      icon: Assets.imagesDocument2,
+                      borderColor: getSecondaryColor(context),
+                      // icon: Assets.imagesDocument2,
                       title: 'Continue Writing',
                       desc: '15 competencies to go',
+                      suffixIcon: Assets.imagesArrowRight,
+                      hasPrefix: false,
+                      iconColor: getSecondaryColor(context),
                       ontap: () {
                         Get.to(() => ContinueWriting());
                       },
                     ),
                     newEntry_container(
-                      borderColor: kblueBorder2,
-                      icon: Assets.imagesDocument2,
+                      borderColor: getSecondaryColor(context),
+                      suffixIcon: Assets.imagesMagic2,
                       title: 'AI Assistance',
                       desc: 'Get writing help and suggestions',
+                      hasPrefix: false,
+                      iconColor: getSecondaryColor(context),
                       ontap: () {
                         Get.bottomSheet(ApcAi(), isScrollControlled: true);
                       },
                     ),
+                    _compencies_container(
+                      status: status,
+                      hpad: 16,
+                    ),
+                    SizedBox(
+                      height: 16,
+                    ),
+                    _compencies_container(
+                      status: Tstatus,
+                      heading: 'Technical Competencies',
+                      hpad: 16,
+                    ),
+                    SizedBox(
+                      height: 16,
+                    ),
                     CustomeContainer(
-                      vpad: 17,
-                      hpad: 17,
-                      color: kblackfill,
-                      radius: 10,
+                      radius: 8,
+                      hpad: 16,
+                      vpad: 0,
+                      color: getfillcolor(context),
                       widget: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          icon_button_row(
-                            title: 'Competency Status',
-                            buttonText: '0 of 15 complete',
-                            hasIcon: false,
-                            pbot: 12,
-                          ),
-                          _compencies_container(status: status),
-                          SizedBox(
-                            height: 12,
-                          ),
                           _compencies_container(
-                            status: Tstatus,
-                            heading: 'Technical Competencies',
+                              status: status,
+                              heading: 'Recent Activity',
+                              hasMore: false,
+                              borderColor: ktransparent,
+                              hpad: 0),
+                          CustomeContainer(
+                            color: getfifth(context),
+                            radius: 10,
+                            hpad: 17,
+                            vpad: 17,
+                            widget: Column(
+                              //crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                MyText(
+                                  text: 'Completion Estimate',
+                                  size: 14,
+                                  paddingBottom: 12,
+                                  color: getTertiary(context),
+                                  fontFamily: AppFonts.gilroySemiBold,
+                                ),
+                                TwoTextedColumn(
+                                  text1: 'About 8 working days',
+                                  text2:
+                                      'Based on remaining competencies and average writing time',
+                                  size1: 16,
+                                  size2: 12,
+                                  fontFamily2: AppFonts.gilroyRegular,
+                                  fontFamily: AppFonts.gilroyBold,
+                                  mBottom: 0,
+                                  color2: getTertiary(context),
+                                  align: TextAlign.center,
+                                  alignment: ColumnAlignment.center,
+                                ),
+                              ],
+                            ),
+                            mbott: 17,
                           )
                         ],
                       ),
-                      mbott: 22,
                     ),
-                    _compencies_container(
-                      status: status,
-                      heading: 'Recent Activity',
-                      hasMore: false,
-                      borderColor: ktransparent,
-                      hpad: 17,
-                    ),
-                    SizedBox(
-                      height: 22,
-                    ),
-                    CustomeContainer(
-                      borderColor: kblueBorder2,
-                      color: kblackfill,
-                      radius: 10,
-                      hpad: 17,
-                      vpad: 17,
-                      widget: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          MyText(
-                            text: 'Completion Estimate',
-                            size: 14,
-                            paddingBottom: 12,
-                            fontFamily: AppFonts.gilroySemiBold,
-                          ),
-                          TwoTextedColumn(
-                            text1: 'About 8 working days',
-                            text2:
-                                'Based on remaining competencies and average writing time',
-                            size1: 12,
-                            size2: 12,
-                            fontFamily2: AppFonts.gilroyRegular,
-                            fontFamily: AppFonts.gilroyBold,
-                            mBottom: 0,
-                          ),
-                        ],
-                      ),
-                    )
                   ]),
             ),
           ],
@@ -172,19 +177,19 @@ class _compencies_container extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CustomeContainer(
-      radius: 10,
-      hpad: hpad ?? 7,
+      radius: 8,
+      hpad: hpad ?? 12,
       vpad: vpad ?? 17,
-      color: kblackfill,
-      borderColor: borderColor ?? kblueBorder2,
+      color: getfillcolor(context),
+      borderColor: borderColor ?? ktransparent,
       widget: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           MyText(
             text: heading ?? 'Mandatory Competencies',
-            size: 14,
+            size: 16,
             paddingBottom: 12,
-            fontFamily: AppFonts.gilroySemiBold,
+            fontFamily: AppFonts.gilroyBold,
           ),
           ListView.builder(
             padding: EdgeInsets.all(0),
@@ -205,26 +210,32 @@ class _compencies_container extends StatelessWidget {
                         fontFamily2: AppFonts.gilroyMedium,
                         fontFamily: AppFonts.gilroyBold,
                         mBottom: 0,
+                        color2: getTertiary(context),
+                        maxLines: 2,
                       )),
                       SizedBox(
-                        width: 10,
+                        width: 12,
                       ),
                       Image.asset(
-                        Assets.imagesEdit,
-                        width: 18,
+                        Assets.imagesEdit2,
+                        width: 16,
+                        color: getSecondaryColor(context),
                       )
                     ],
                   ));
             },
           ),
           if (hasMore == true)
-            Center(
-              child: MyText(
-                text: 'View More',
-                size: 12,
-                textAlign: TextAlign.center,
-                fontFamily: AppFonts.gilroySemiBold,
-              ),
+            Row(
+              children: [
+                buttonContainer(
+                  radius: 8,
+                  vPadding: 6,
+                  text: 'View More',
+                  borderColor: getSecondaryColor(context),
+                  bgColor: ktransparent,
+                )
+              ],
             )
         ],
       ),
@@ -245,7 +256,7 @@ class twoTexted_container extends StatelessWidget {
     return CustomeContainer(
       hpad: 4,
       radius: 10,
-      color: kblackfill,
+      color: getfillcolor(context),
       widget: TwoTextedColumn(
         text1: text1 ?? '0%',
         text2: text2 ?? 'Overall Progress',

@@ -69,10 +69,11 @@ AppBar simpleAppBar(
           // ),),
           MyText(
               text: title ?? '',
-              size: size ?? 22,
-              weight: weight ?? FontWeight.bold,
-              color: contentColor ?? kwhite,
+              size: size ?? 19,
+              weight: weight ?? FontWeight.w600,
+              color: contentColor ?? getSecondaryColor(context),
               textAlign: TextAlign.center,
+              fontFamily: AppFonts.gilroySemiBold,
             ),
       actions: actions ?? []);
 }

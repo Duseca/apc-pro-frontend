@@ -15,7 +15,7 @@ class CustomDropDown extends StatefulWidget {
       {this.label,
       required this.hint,
       required this.items,
-      required this.selectedValue,
+      required this.value,
       required this.onChanged,
       this.mBottom,
       this.hasIcon,
@@ -38,7 +38,7 @@ class CustomDropDown extends StatefulWidget {
       this.borderColor2});
 
   final List<dynamic> items;
-  final String selectedValue;
+  final String value;
   final ValueChanged<dynamic> onChanged;
   final String hint;
   final String? label;
@@ -60,7 +60,7 @@ class _CustomDropDownState extends State<CustomDropDown> {
   @override
   void initState() {
     super.initState();
-    _selected = widget.selectedValue;
+    _selected = widget.value;
   }
 
   @override
@@ -75,8 +75,8 @@ class _CustomDropDownState extends State<CustomDropDown> {
                 child: MyText(
                   text: widget.label ?? '',
                   size: widget.labelSize ?? 14,
-                  color: kwhite,
-                  fontFamily: AppFonts.gilroyBold,
+                  color: getSecondaryColor(context),
+                  fontFamily: AppFonts.gilroySemiBold,
                   paddingBottom: widget.hasSwitch == true ? 0 : 8,
                 ),
               ),
@@ -93,7 +93,7 @@ class _CustomDropDownState extends State<CustomDropDown> {
                     child: MyText(
                       text: item,
                       size: 12,
-                      color: kwhite,
+                      color: getSecondaryColor(context)
                     ),
                   ),
                 )
@@ -119,27 +119,31 @@ class _CustomDropDownState extends State<CustomDropDown> {
                 vertical: widget.vpad ?? 9,
               ),
               decoration: BoxDecoration(
-                color: widget.bgColor ?? kbackground,
+                color: widget.bgColor ?? getfillcolor(context),
                 border: Border.all(
                   width: 1,
                   color: _selected == widget.hint
-                      ? widget.bordercolor ?? kblueBorder
-                      : widget.bordercolor ?? kblueBorder,
+                      ? widget.bordercolor ?? ktransparent
+                      : widget.bordercolor ?? ktransparent,
                 ),
                 borderRadius: widget.borderRadius ??
                     BorderRadius.circular(widget.radius ?? 8),
               ),
               child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+               // mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  MyText(
-                    paddingLeft: 1,
-                    text: _selected == widget.hint ? widget.hint : _selected!,
-                    size: widget.hintsize ?? 11,
-                    weight: widget.hintWeigth ?? FontWeight.w500,
-                    color: _selected == widget.hint
-                        ? widget.hintColor ?? kwhite
-                        : kwhite,
+                  Expanded(
+                    child: MyText(
+                      paddingLeft: 1,
+                      maxLines: 1,
+                      textOverflow: TextOverflow.ellipsis,
+                      text: _selected == widget.hint ? widget.hint : _selected!,
+                      size: widget.hintsize ?? 11,
+                      weight: widget.hintWeigth ?? FontWeight.w500,
+                      color: _selected == widget.hint
+                          ? widget.hintColor ?? getSecondaryColor(context)
+                          : getSecondaryColor(context),
+                    ),
                   ),
                   Padding(
                     padding: EdgeInsets.only(bottom: widget.iconPad ?? 2),
@@ -149,7 +153,7 @@ class _CustomDropDownState extends State<CustomDropDown> {
                       child: Icon(
                         Icons.keyboard_arrow_down_rounded,
                         size: widget.iconSize ?? 26,
-                        color: widget.iconColor ?? kwhite,
+                        color: widget.iconColor ?? getSecondaryColor(context),
                       ),
                     ),
                   ),
@@ -163,8 +167,8 @@ class _CustomDropDownState extends State<CustomDropDown> {
               offset: const Offset(0, -5),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(8),
-                color: kbackground,
-                border: Border.all(color: ksecondary.withOpacity(0.5)),
+                color: getfillcolor(context),
+                border: Border.all(color: getSecondaryColor(context).withOpacity(0.5))
               ),
             ),
           ),
@@ -239,7 +243,7 @@ class CustomDropdown2 extends StatelessWidget {
                   ),
                 ),
                 value: value,
-                dropdownColor: kblackfill,
+                dropdownColor: getfillcolor(context),
                 borderRadius: BorderRadius.circular(8),
                 items: items
                     .map(
@@ -303,7 +307,7 @@ class SimpleDropDown extends StatefulWidget {
     this.isOptional = false,
     this.padding = const EdgeInsets.symmetric(horizontal: 7, vertical: 16),
 
-    // 🔹 Added params similar to SimpleDropDown
+    // 🔹 Added params similar toCustomDropDown
     this.textColor,
     this.textSize = 12,
     this.iconColor,
@@ -397,7 +401,7 @@ class _SimpleDropDownState extends State<SimpleDropDown> {
                 padding: EdgeInsets.symmetric(horizontal: 4),
                 decoration: BoxDecoration(
                   color: _shouldFloatLabel
-                      ? widget.backgroundColor ?? kblackfill
+                      ? widget.backgroundColor ?? getfillcolor(context)
                       : Colors.transparent,
                 ),
                 child: Text(

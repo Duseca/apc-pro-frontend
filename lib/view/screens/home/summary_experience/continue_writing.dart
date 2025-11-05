@@ -5,6 +5,7 @@ import 'package:apc_pro/view/widgets/appbar.dart';
 import 'package:apc_pro/view/widgets/button_container.dart';
 import 'package:apc_pro/view/widgets/custom_row.dart';
 import 'package:apc_pro/view/widgets/custome_comtainer.dart';
+import 'package:apc_pro/view/widgets/expanded_row.dart';
 import 'package:apc_pro/view/widgets/my_text_widget.dart';
 import 'package:apc_pro/view/widgets/progress_indicator.dart';
 import 'package:apc_pro/view/widgets/tabs_view.dart';
@@ -89,114 +90,121 @@ class ContinueWritingContainer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    
+ final isDarkMode = Theme.of(context).brightness == Brightness.dark;
     return CustomeContainer(
       mbott: 19,
       radius: 10,
       hpad: 17,
       vpad: 17,
-      color: kblackfill,
-      borderColor: kblueBorder3,
+      color: getfillcolor(context),
       widget: Obx(
         () => Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             InkWell(
               onTap: () => _expanded.toggle(),
-              child: Row(
-                children: [
-                  Expanded(
-                    child: MyText(
-                      text: heading ??
-                          'Ethics, Roles of Conduct and Professionalism',
-                      size: 14,
-                      fontFamily: AppFonts.gilroyBold,
-                    ),
-                  ),
-                  Icon(
-                    _expanded.value
-                        ? Icons.keyboard_arrow_up_rounded
-                        : Icons.keyboard_arrow_down_rounded,
-                    color: ksecondary,
-                    size: 22,
-                  ),
-                ],
+              child: MyText(
+                text: heading ?? 'Ethics, Roles of Conduct and Professionalism',
+                size: 14,
+                fontFamily: AppFonts.gilroyBold,
               ),
             ),
             const SizedBox(height: 20),
-            MyText(
-              text: 'Progress: 0%   Words: 0',
-              size: 12,
+            ExpandedRow(
+              text1: 'Progress: 0%',
+              text2: 'Words: 0',
+              color1: getTertiary(context),
+              color2: getTertiary(context),
+              fontFamily2: AppFonts.gilroyMedium,
               fontFamily: AppFonts.gilroyMedium,
-              paddingBottom: 8,
             ),
-            linearProgressIndicatorr(),
-            if (_expanded.value) ...[
-              const SizedBox(height: 13),
-              Row(
-                children: [
-                  buttonContainer(
-                    borderColor: kblueBorder2,
-                    radius: 50,
-                    text: 'Level 1',
-                    bgColor: kblackfill,
-                    textsize: 11,
-                    vPadding: 2,
-                    hPadding: 15,
-                  ),
-                ],
-              ),
-              MyText(
-                paddingTop: 13,
-                text: '0 Words',
-                size: 12,
-                fontFamily: AppFonts.gilroyMedium,
-                paddingBottom: 13,
-              ),
-              MyText(
-                text:
-                    'Demonstrate Knowledge and understanding of principles.........',
-                size: 12,
-                fontFamily: AppFonts.gilroyMedium,
-                paddingBottom: 8,
-              ),
-              Row(
-                children: [
-                  buttonContainer(
-                    borderColor: kblueBorder2,
-                    radius: 50,
-                    text: 'Level 2',
-                    bgColor: kblackfill,
-                    textsize: 11,
-                    vPadding: 2,
-                    hPadding: 15,
-                  ),
-                ],
-              ),
-              MyText(
-                paddingTop: 13,
-                text: '0 Words',
-                size: 12,
-                fontFamily: AppFonts.gilroyMedium,
-                paddingBottom: 13,
-              ),
-              MyText(
-                text: 'Show practical application of knowledge....',
-                size: 12,
-                fontFamily: AppFonts.gilroyMedium,
-                paddingBottom: 8,
-              ),
-              const Divider(color: kblueBorder3),
-              const SizedBox(height: 13),
+            SizedBox(
+              height: 10,
+            ),
+            linearProgressIndicatorr(
+              height: 6,
+              value: 0.0,
+              bgColor: getfifth(context),
+            ),
+          if(_expanded.value==true)...{
+            SizedBox(
+              height: 12,
+            ),
+           
+             
+              _level_container(),
+                 SizedBox(
+              height: 12,
+            ),
+              _level_container(),
+            
+             
+             SizedBox(height: 12),
               row_widget(
                 icon: Assets.imagesBulb,
+                iconColor: getSecondaryColor(context),
                 title: 'AI Help',
                 iconSize: 18,
-                textColor: const Color(0xff5796FF),
+                textColor: getSecondaryColor(context),
                 fontFamily: AppFonts.gilroyMedium,
               ),
+          }
             ],
-          ],
+        
         ),
+      ),
+    );
+  }
+}
+
+class _level_container extends StatelessWidget {
+  const _level_container({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return CustomeContainer(
+      radius: 8,
+      vpad: 12,
+      hpad: 12,
+      color: getfifth(context),
+      widget: Row(
+        children: [
+      
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                MyText(
+                  
+                  text: 'Level 1',
+                  size: 12,
+                  fontFamily: AppFonts.gilroyMedium,
+                  paddingBottom: 3,
+                  
+                ),
+                  MyText(
+            text:
+                'Demonstrate Knowledge and understanding of principles.........',
+            size: 12,
+         color: getTertiary(context),
+           
+          ),
+              ],
+            ),
+          ),
+        
+       SizedBox(width: 12,),
+                MyText(
+                  color: getTertiary(context),
+                  text: '0 Words',
+                  size: 12,
+                  fontFamily: AppFonts.gilroyMedium,
+                
+                ),
+        ],
       ),
     );
   }

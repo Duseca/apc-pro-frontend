@@ -8,6 +8,7 @@ import 'package:apc_pro/view/widgets/appbar.dart';
 import 'package:apc_pro/view/widgets/custom_dropdown.dart';
 import 'package:apc_pro/view/widgets/custom_row.dart';
 import 'package:apc_pro/view/widgets/custome_comtainer.dart';
+import 'package:apc_pro/view/widgets/expanded_row.dart';
 import 'package:apc_pro/view/widgets/my_text_field.dart';
 import 'package:apc_pro/view/widgets/my_text_widget.dart';
 import 'package:apc_pro/view/widgets/progress_indicator.dart';
@@ -43,52 +44,69 @@ class ProjectInformation extends StatelessWidget {
                 children: [
                   CustomeContainer(
                     radius: 10,
-                    color: kblackfill,
+                    color: getfillcolor(context),
                     vpad: 17,
                     hpad: 17,
                     widget: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        MyText(
-                          text: 'Completion',
-                          size: 14,
-                          fontFamily: AppFonts.gilroyBold,
-                          paddingBottom: 14,
-                        ),
                         Row(
                           children: [
+                            Image.asset(
+                              Assets.imagesDocument,
+                              color: getSecondaryColor(context),
+                              width: 16,
+                            ),
                             Expanded(
                               child: MyText(
-                                text: '25%',
-                                size: 12,
-                                fontFamily: AppFonts.gilroyRegular,
+                                text: 'Project Information',
+                                size: 14,
+                                fontFamily: AppFonts.gilroyBold,
+                                paddingLeft: 5,
                               ),
                             ),
-                            Row(
-                              spacing: 8,
-                              children: [
-                                SizedBox(
-                                  width: 60,
-                                  child: linearProgressIndicatorr(
-                                    value: 0,
-                                  ),
-                                ),
-                                row_widget(
-                                    icon: Assets.imagesDanger,
-                                    title: '4 errors',
-                                    iconSize: 15,
-                                    texSize: 12,
-                                    fontFamily: AppFonts.gilroyMedium,
-                                    textColor: Color(0xff4285F4)),
-                                row_widget(
-                                    icon: Assets.imagesDanger,
-                                    title: '1 warning',
-                                    iconSize: 15,
-                                    fontFamily: AppFonts.gilroyMedium,
-                                    texSize: 12,
-                                    textColor: Color(0xff4285F4)),
-                              ],
-                            )
+                          ],
+                        ),
+                        SizedBox(
+                          height: 20,
+                        ),
+                        ExpandedRow(
+                          text1: 'Section Complete',
+                          text2: '1/4',
+                          size1: 14,
+                          size2: 14,
+                          color2: getTertiary(context),
+                        ),
+                        SizedBox(height: 8,),
+                        linearProgressIndicatorr(
+                          height: 6,
+                          bgColor: getfifth(context),
+                        ),
+                        MyText(
+                          paddingTop: 8,
+                          text: '25% Complete',
+                          size: 12,
+                          fontFamily: AppFonts.gilroyRegular,
+                          color: getTertiary(context),
+                          paddingBottom: 15,
+                        ),
+                        Row(
+                          spacing: 8,
+                          children: [
+                            row_widget(
+                                icon: Assets.imagesError,
+                                title: '4 errors',
+                                iconSize: 12,
+                                texSize: 14,
+                                fontFamily: AppFonts.gilroyMedium,
+                                textColor: getTertiary(context)),
+                            row_widget(
+                                icon: Assets.imagesWarning,
+                                title: '1 warning',
+                                iconSize: 12,
+                                fontFamily: AppFonts.gilroyMedium,
+                                texSize: 14,
+                                textColor: getTertiary(context)),
                           ],
                         ),
                         SizedBox(
@@ -100,6 +118,7 @@ class ProjectInformation extends StatelessWidget {
                   ),
                   Obx(
                     () => TabsWidget(
+                      bgColor: getfillcolor(context),
                       items: tabs,
                       currentindex: currentIndex.value,
                       ontap: (p0) {
@@ -141,106 +160,81 @@ class BasicInfo extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        MyTextField2(
-          label: 'Project Title *',
-          hint: 'e.g., Commercial Office...... ',
-          marginBottom: 20,
-        ),
-        Row(
-          spacing: 15,
-          children: [
-            Expanded(
-              child: MyTextField2(
-                label: 'Start date *',
-                hint: 'mm/dd/yyyy',
-                suffixIcon: Image.asset(
-                  Assets.imagesCalendar,
-                  width: 20,
-                ),
-                marginBottom: 20,
-              ),
+    return CustomeContainer(
+      radius: 8,
+      color: getfillcolor(context),
+      widget: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          MyTextField2(
+            label: 'Project Title *',
+            hint: 'e.g., Commercial Office...... ',
+            marginBottom: 20,
+            filledColor: getfifth(context),
+          ),
+          MyTextField2(
+            label: 'Start date *',
+            hint: 'mm/dd/yyyy',
+            suffixIcon: Image.asset(
+              Assets.imagesCalendar,
+              width: 20,
+              color: getSecondaryColor(context),
             ),
-            Expanded(
-              child: MyTextField2(
-                label: 'End date *',
-                hint: 'mm/dd/yyyy',
-                suffixIcon: Image.asset(
-                  Assets.imagesCalendar,
-                  width: 20,
-                ),
-                marginBottom: 20,
-              ),
+            marginBottom: 20,
+            filledColor: getfifth(context),
+          ),
+          MyTextField2(
+            label: 'End date *',
+            hint: 'mm/dd/yyyy',
+            suffixIcon: Image.asset(
+              Assets.imagesCalendar,
+              width: 20,
+              color: getSecondaryColor(context),
             ),
-          ],
-        ),
-        MyTextField2(
-          label: 'Project Sector',
-          hint: 'Other....',
-          marginBottom: 20,
-        ),
-        MyTextField2(
-          label: 'Project Location',
-          hint: 'Other....',
-          marginBottom: 20,
-        ),
-        MyText(
-          text: 'Project Value (Optional)',
-          size: 14,
-          fontFamily: AppFonts.gilroyRegular,
-          paddingLeft: 8,
-          paddingBottom: 11,
-        ),
-        Row(
-          spacing: 8,
-          children: [
-            Expanded(
-                child: CustomeContainer(
-              mbott: 15,
-              vpad: 11,
-              hpad: 12,
-              radius: 7,
-              borderColor: kblueBorder,
-              widget: Row(
-                children: [
-                  Expanded(
-                      child: MyText(
-                    text: 'Value',
-                    size: 12,
-                    fontFamily: AppFonts.gilroyRegular,
-                  )),
-                  Column(
-                    children: [
-                      Image.asset(
-                        Assets.imagesArrowup,
-                        width: 12,
-                      ),
-                      Image.asset(
-                        Assets.imagesArrowdown,
-                        width: 12,
-                      )
-                    ],
-                  )
-                ],
-              ),
-            )),
-            Expanded(
-                child: CustomDropDown(
-                    hint: '£ GBP',
-                    items: ['£ GBP', '£ GBP 2'],
-                    selectedValue: '£ GBP',
-                    onChanged: (w) {})),
-            Expanded(
-                child: CustomDropDown(
-                    hint: 'Construction',
-                    items: ['Construction', 'Construction 2'],
-                    selectedValue: 'Construction',
-                    onChanged: (c) {}))
-          ],
-        ),
-      ],
+            marginBottom: 20,
+            filledColor: getfifth(context),
+          ),
+          MyTextField2(
+            label: 'Project Sector',
+            hint: 'Other....',
+            marginBottom: 20,
+            filledColor: getfifth(context),
+          ),
+          MyTextField2(
+            label: 'Project Location',
+            hint: 'Other....',
+            marginBottom: 20,
+            filledColor: getfifth(context),
+          ),
+          MyText(
+            text: 'Project Value',
+            size: 14,
+            fontFamily: AppFonts.gilroySemiBold,
+            paddingBottom: 11,
+          ),
+          MyTextField2(
+            hint: 'Enter project value',
+            label: 'Value',
+            filledColor: getfifth(context),
+          ),
+          CustomDropDown(
+              bordercolor: getSecondaryColor(context),
+              label: 'Currency',
+              hint: '£ GBP',
+              items: ['£ GBP', '£ GBP 2'],
+              value: '£ GBP',
+              bgColor: getfifth(context),
+              onChanged: (w) {}),
+          CustomDropDown(
+              bordercolor: getSecondaryColor(context),
+              label: 'Type',
+              hint: 'Construction',
+              items: ['Construction', 'Construction 2'],
+              value: 'Construction',
+              bgColor: getfifth(context),
+              onChanged: (c) {}),
+        ],
+      ),
     );
   }
 }

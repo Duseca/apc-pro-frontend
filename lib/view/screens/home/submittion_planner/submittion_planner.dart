@@ -11,10 +11,12 @@ import 'package:apc_pro/view/widgets/button_container.dart';
 import 'package:apc_pro/view/widgets/custom_row.dart';
 import 'package:apc_pro/view/widgets/custome_comtainer.dart';
 import 'package:apc_pro/view/widgets/expanded_row.dart';
+import 'package:apc_pro/view/widgets/home_widgets.dart';
 import 'package:apc_pro/view/widgets/home_widgets/apc_diary_widgets.dart';
 import 'package:apc_pro/view/widgets/my_button.dart';
 import 'package:apc_pro/view/widgets/my_text_widget.dart';
 import 'package:apc_pro/view/widgets/progress_indicator.dart';
+import 'package:apc_pro/view/widgets/submittion_planner_widget.dart';
 import 'package:apc_pro/view/widgets/tags_widget.dart';
 import 'package:bounce/bounce.dart';
 import 'package:flutter/material.dart';
@@ -27,22 +29,22 @@ class SubmittionPlanner extends StatelessWidget {
   Widget build(BuildContext context) {
     final List<Map<String, dynamic>> progressList = [
       {
-        "title": "Diary",
-        "percentage": 47,
+        "title": "Diary Progress: 45%",
+        "percentage": 'Progress: 45%',
         "milestones": "1/2 milestones",
       },
       {
-        "title": "Summary of Experience",
+        "title": "Summary of Experience 28%",
         "percentage": 28,
         "milestones": "0/1 milestones",
       },
       {
-        "title": "Case Study",
+        "title": "Case Study 24%",
         "percentage": 24,
         "milestones": "0/1 milestones",
       },
       {
-        "title": "CPD",
+        "title": "CPD 30%",
         "percentage": 30,
         "milestones": "0/1 milestones",
       },
@@ -72,25 +74,19 @@ class SubmittionPlanner extends StatelessWidget {
     final List<Map<String, dynamic>> newEntryOptions = [
       {
         "title": "View Calendar",
-        "desc": "See all milestones and deadlines in calendar view",
         "icon": Assets.imagesCalendar,
-        "iconColor": ksecondary,
         "ontap": () => Get.to(() => ViewSubmittionCalender()),
       },
       {
         "title": "Add Task",
-        "desc": "Create new tasks and personal deadlines",
         "icon": Assets.imagesAdd,
-        "iconColor": ksecondary,
         "ontap": () {
           Get.to(() => ViewSubmittionCalender());
         },
       },
       {
         "title": "AI Planning",
-        "desc": "Get personalized submission plan recommendations",
-        "icon": Assets.imagesMagicpen,
-        "iconColor": ksecondary,
+        "icon": Assets.imagesMagic2,
         "ontap": () {},
       },
     ];
@@ -98,31 +94,31 @@ class SubmittionPlanner extends StatelessWidget {
       {
         "title": "Section Complete",
         "priority": "High",
-        "percentage": 47,
+        "percentage": 'Progress: 45%',
         "due": "Due in 7 months",
       },
       {
         "title": "Finalize Summary of Experience",
         "priority": "High",
-        "percentage": 47,
+        "percentage": 'Progress: 45%',
         "due": "Due in 8 months",
       },
       {
         "title": "Complete Case Study",
         "priority": "High",
-        "percentage": 47,
+        "percentage": 'Progress: 45%',
         "due": "Due in 8 months",
       },
       {
         "title": "Complete CPD Requirements",
         "priority": "Medium",
-        "percentage": 47,
+        "percentage": 'Progress: 45%',
         "due": "Due in 9 months",
       },
       {
         "title": "Complete Mock Interviews",
         "priority": "High",
-        "percentage": 47,
+        "percentage": 'Progress: 45%',
         "due": "Due in 9 months",
       },
     ];
@@ -130,7 +126,11 @@ class SubmittionPlanner extends StatelessWidget {
     final savedQuizzes = [
       {
         'title': 'Log weekly diary entries',
-        'time': 'Diary management  |  120 min  | Due in 7 days'
+        'time': 'Research Portfolio • High Priority'
+      },
+      {
+        'title': 'Draft conclusions chapter',
+        'time': 'Final Thesis • Medium Priority'
       },
     ];
     return Scaffold(
@@ -143,6 +143,7 @@ class SubmittionPlanner extends StatelessWidget {
                 child: Image.asset(
                   Assets.imagesBulb2,
                   width: 25,
+                  color: getSecondaryColor(context),
                 ),
               ),
               SizedBox(
@@ -161,8 +162,7 @@ class SubmittionPlanner extends StatelessWidget {
                 children: [
                   CustomeContainer(
                       radius: 10,
-                      borderColor: kblueBorder3,
-                      color: kblackfill,
+                      color: getfillcolor(context),
                       vpad: 11,
                       hpad: 12,
                       mbott: 20,
@@ -192,177 +192,181 @@ class SubmittionPlanner extends StatelessWidget {
                                 return Column(
                                   crossAxisAlignment: CrossAxisAlignment.center,
                                   children: [
-                                    TwoTextedColumn(
-                                      text1: item["title"],
-                                      text2: "${item["percentage"]}%",
-                                      size1: 12,
-                                      size2: 12,
-                                      fontFamily2: AppFonts.gilroyBold,
-                                      fontFamily: AppFonts.gilroyMedium,
-                                      align: TextAlign.center,
-                                      maxLines: 1,
-                                      alignment: ColumnAlignment.center,
+                                    MyText(
+                                      text: item["title"],
+                                      fontFamily: AppFonts.gilroySemiBold,
+                                      textAlign: TextAlign.center,
+                                      size: 11.5,
                                     ),
                                     SizedBox(
                                       height: 8,
                                     ),
                                     linearProgressIndicatorr(
-                                      value: (item["percentage"] as int) / 100,
+                                      value: 0.47,
+                                      height: 6,
                                     ),
                                     MyText(
                                       text: item["milestones"],
                                       size: 11,
                                       fontFamily: AppFonts.gilroyMedium,
-                                      paddingTop: 6,
+                                      paddingTop: 8,
+                                      color: getTertiary(context),
                                     ),
                                   ],
                                 );
                               },
                             )
                           ])),
-                  CustomeContainer(
-                      radius: 10,
-                      borderColor: kblueBorder2,
-                      color: kblackfill,
-                      vpad: 11,
-                      hpad: 12,
-                      mbott: 20,
-                      widget: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            MyText(
-                              text: 'Quick Actions',
-                              size: 14,
-                              fontFamily: AppFonts.gilroyBold,
-                              paddingBottom: 20,
-                            ),
-                            ListView.builder(
-                              padding: EdgeInsets.zero,
-                              shrinkWrap: true,
-                              physics: NeverScrollableScrollPhysics(),
-                              itemCount: newEntryOptions.length,
-                              itemBuilder: (context, index) {
-                                final item = newEntryOptions[index];
-                                return newEntry_container(
-                                  title: item["title"],
-                                  desc: item["desc"],
-                                  borderColor: Color(0xff4285F4),
-                                  icon: item["icon"],
-                                  iconColor: item["iconColor"],
-                                  ontap: item["ontap"],
-                                );
-                              },
-                            ),
-                          ])),
-                  CustomeContainer(
-                      radius: 10,
-                      borderColor: kblueBorder2,
-                      color: kblackfill,
-                      vpad: 11,
-                      hpad: 12,
-                      mbott: 20,
-                      widget: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            MyText(
-                              text: 'Upcoming Milestones',
-                              size: 16,
-                              fontFamily: AppFonts.gilroyBold,
-                              paddingBottom: 10,
-                            ),
-                            ListView.builder(
-                              padding: EdgeInsets.zero,
-                              shrinkWrap: true,
-                              physics: const NeverScrollableScrollPhysics(),
-                              itemCount: milestones.length,
-                              itemBuilder: (context, index) {
-                                final item = milestones[index];
-                                return Padding(
-                                  padding: const EdgeInsets.only(bottom: 16),
-                                  child: Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      recnet_activity_widget(
-                                        buttonText: item["priority"],
-                                        text1: item["title"],
-                                        text3: "${item["percentage"]}%",
-                                        hastext2: false,
-                                        size1: 11.5,
-                                        fontFamily1: AppFonts.gilroyBold,
-                                      ),
-                                      SizedBox(height: 8),
-                                      MyText(
-                                        text: item["due"],
-                                        size: 12,
-                                        fontFamily: AppFonts.gilroyMedium,
-                                        paddingBottom: 8,
-                                      ),
-                                      linearProgressIndicatorr(
-                                        value:
-                                            (item["percentage"] as int) / 100,
-                                      ),
-                                    ],
-                                  ),
-                                );
-                              },
-                            ),
-                          ])),
-                  CustomeContainer(
-                    radius: 10,
-                    borderColor: kblueBorder3,
-                    color: kblackfill,
-                    vpad: 17,
-                    hpad: 13,
-                    mbott: 20,
-                    widget: Column(
+                  Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Row(
-                          children: [
-                            Expanded(
-                              child: row_widget(
-                                title: 'Active Tasks',
-                                fontFamily: AppFonts.gilroyBold,
-                                texSize: 12,
-                                icon: Assets.imagesMock,
-                                iconSize: 15,
-                              ),
-                            ),
-                            buttonContainer(
-                              radius: 4,
-                              vPadding: 3,
-                              hPadding: 8,
-                              text: 'Add Task',
-                              borderColor: kblueBorder2,
-                              bgColor: kblackfill,
-                              icon: Icons.add_rounded,
-                              iconColor: ksecondary,
-                              textsize: 11,
-                            )
-                          ],
+                        MyText(
+                          text: 'Quick Actions',
+                          size: 16,
+                          fontFamily: AppFonts.gilroyBold,
+                          paddingBottom: 20,
                         ),
-                        SizedBox(height: 8),
-                        ListView.builder(
+                        GridView.builder(
+                          itemCount: newEntryOptions.length,
                           shrinkWrap: true,
-                          physics: NeverScrollableScrollPhysics(),
-                          itemCount: savedQuizzes.length,
+                          physics: const NeverScrollableScrollPhysics(),
+                          gridDelegate:
+                              const SliverGridDelegateWithFixedCrossAxisCount(
+                            crossAxisCount: 3,
+                            crossAxisSpacing: 12,
+                            mainAxisSpacing: 12,
+                            mainAxisExtent: 95,
+                          ),
                           itemBuilder: (context, index) {
-                            final quiz = savedQuizzes[index];
-                            return test_competency_widget(
-                              text1: quiz['title'],
-                              text2: quiz['time'],
-                              hasButton: false,
+                            final item = newEntryOptions[index];
+                            return home_opts_container(
+                              text: item["title"],
+                              icon: item["icon"],
+                              iconColor: getSecondaryColor(context),
+                              ontap:newEntryOptions[index]["ontap"],
                             );
                           },
                         ),
-                      ],
-                    ),
+                      ]),
+                  MyText(
+                    text: 'Upcoming Milestones',
+                    size: 16,
+                    fontFamily: AppFonts.gilroyBold,
+                    paddingBottom: 15,
+                    paddingTop: 20,
+                  ),
+                  ListView.builder(
+                    padding: EdgeInsets.zero,
+                    shrinkWrap: true,
+                    physics: const NeverScrollableScrollPhysics(),
+                    itemCount: milestones.length,
+                    itemBuilder: (context, index) {
+                      final item = milestones[index];
+                      return Padding(
+                        padding: const EdgeInsets.only(bottom: 16),
+                        child: CustomeContainer(
+                          color: getfillcolor(context),
+                          radius: 8,
+                          vpad: 17,
+                          hpad: 17,
+                          widget: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              recnet_activity_widget(
+                                buttonText: item["priority"],
+                                text1: item["title"],
+                                statusBgColor: kred2.withOpacity(0.2),
+                                statusTextColor: kred2,
+                                statusVpad: 4,
+                                size1: 11.5,
+                                fontFamily1: AppFonts.gilroyBold,
+                              ),
+                              MyText(
+                                paddingTop: 1,
+                                text: item["due"],
+                                size: 12,
+                                color: getTertiary(context),
+                                paddingBottom: 8,
+                                fontFamily: AppFonts.gilroyMedium,
+                              ),
+                              Row(
+                                children: [
+                                  Expanded(
+                                    child: MyText(
+                                      text: item['percentage'],
+                                      size: 12,
+                                      fontFamily: AppFonts.gilroyMedium,
+                                      paddingBottom: 8,
+                                    ),
+                                  ),
+                                  row_widget(
+                                    title: 'Dec 28',
+                                    icon: Assets.imagesCalendar,
+                                    iconSize: 15,
+                                    texSize: 11,
+                                    iconColor: getTertiary(context),
+                                    textColor: getTertiary(context),
+                                  )
+                                ],
+                              ),
+                              linearProgressIndicatorr(
+                                value: 0.47,
+                                height: 6,
+                              ),
+                            ],
+                          ),
+                        ),
+                      );
+                    },
+                  ),
+                  Row(
+                    children: [
+                      Expanded(
+                          child: MyText(
+                        text: 'Active Tasks',
+                        size: 14,
+                        fontFamily: AppFonts.gilroyBold,
+                      )),
+                      buttonContainer(
+                        radius: 8,
+                        vPadding: 6,
+                        hPadding: 10,
+                        text: 'Add Task',
+                        bgColor: getsplashcolor(context),
+                        borderColor: getSecondaryColor(context),
+                        icon: Icons.add_rounded,
+                        iconColor: getSecondaryColor(context),
+                        textsize: 11,
+                      )
+                    ],
+                  ),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      SizedBox(height: 8),
+                      ListView.builder(
+                        shrinkWrap: true,
+                        physics: NeverScrollableScrollPhysics(),
+                        itemCount: savedQuizzes.length,
+                        itemBuilder: (context, index) {
+                          final quiz = savedQuizzes[index];
+                          return active_task_container(
+                            text1: quiz['title']!,
+                            text2: quiz['time']!,
+                          );
+                        },
+                      ),
+                    ],
+                  ),
+                  MyText(
+                    text: 'AI Recommendations',
+                    fontFamily: AppFonts.gilroyBold,
+                    size: 16,
                   ),
                   CustomeContainer(
+                      mtop: 16,
                       radius: 10,
-                      borderColor: kblueBorder2,
-                      color: kblackfill,
+                      color: getfillcolor(context),
                       vpad: 11,
                       hpad: 12,
                       mbott: 20,
@@ -370,11 +374,19 @@ class SubmittionPlanner extends StatelessWidget {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             row_widget(
-                              title: 'AI Recommendations',
-                              icon: Assets.imagesMagicpen,
-                              iconSize: 16,
+                              title: 'Personalized CPD Plans',
+                              icon: Assets.imagesMagic2,
+                              iconSize: 20,
                               fontFamily: AppFonts.gilroyBold,
+                              iconColor: getSecondaryColor(context),
                               rpad: 10,
+                              texSize: 14,
+                            ),
+                            MyText(
+                              text: 'Based on your progress & career goals',
+                              color: getTertiary(context),
+                              paddingLeft: 25,
+                              paddingTop: 2,
                             ),
                             SizedBox(
                               height: 10,
@@ -388,38 +400,48 @@ class SubmittionPlanner extends StatelessWidget {
                                 final item = aiRecommendations[index];
                                 return Padding(
                                   padding: const EdgeInsets.only(bottom: 14),
-                                  child: Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      TwoTextedColumn(
-                                        text1: item["title"],
-                                        text2: item["desc"],
-                                        size1: 11,
-                                        size2: 11,
-                                        fontFamily: AppFonts.gilroyBold,
-                                        fontFamily2: AppFonts.gilroyMedium,
-                                        mBottom: 5,
-                                      ),
-                                      SizedBox(
-                                        height: 10,
-                                      ),
-                                      Wrap(
-                                        spacing: 8,
-                                        runSpacing: 6,
-                                        children: (item["tags"] as List<String>)
-                                            .map((tag) => TagsWidget(tag))
-                                            .toList(),
-                                      ),
-                                    ],
+                                  child: CustomeContainer(
+                                    vpad: 12,
+                                    hpad: 12,
+                                    radius: 8,
+                                    color: getfifth(context),
+                                    widget: Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        TwoTextedColumn(
+                                          text1: item["title"],
+                                          text2: item["desc"],
+                                          size1: 11,
+                                          size2: 11,
+                                          fontFamily: AppFonts.gilroyBold,
+                                          fontFamily2: AppFonts.gilroyMedium,
+                                          mBottom: 5,
+                                          color2: getTertiary(context),
+                                        ),
+                                        SizedBox(
+                                          height: 10,
+                                        ),
+                                        Wrap(
+                                          spacing: 8,
+                                          runSpacing: 6,
+                                          children:
+                                              (item["tags"] as List<String>)
+                                                  .map((tag) => TagsWidget(tag))
+                                                  .toList(),
+                                        ),
+                                      ],
+                                    ),
                                   ),
                                 );
                               },
                             ),
                             MyButton(
                               buttonText: 'Get Personalized AI Plans',
-                              mTop: 20,
                               mBottom: 15,
+                              outlineColor: getSecondaryColor(context),
+                              backgroundColor: ktransparent,
+                              fontColor: getSecondaryColor(context),
                               onTap: () {
                                 Get.to(() => AiPlanningAssistant());
                               },

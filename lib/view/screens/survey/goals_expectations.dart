@@ -1,11 +1,15 @@
 import 'package:apc_pro/consts/app_colors.dart';
+import 'package:apc_pro/consts/app_fonts.dart';
 import 'package:apc_pro/controllers/survey_controller.dart';
 import 'package:apc_pro/generated/assets.dart';
 import 'package:apc_pro/view/widgets/custom_check_box.dart';
+import 'package:apc_pro/view/widgets/custome_comtainer.dart';
 import 'package:apc_pro/view/widgets/diff_texts_txt.dart';
+import 'package:apc_pro/view/widgets/expanded_row.dart';
 import 'package:apc_pro/view/widgets/my_button.dart';
 import 'package:apc_pro/view/widgets/my_text_field.dart';
 import 'package:apc_pro/view/widgets/my_text_widget.dart';
+import 'package:bounce/bounce.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -14,63 +18,60 @@ class GoalsExpectations extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isDarkMode = Theme.of(context).brightness == Brightness.dark;
     final controller = Get.find<SurveyController>();
     List<Map<String, dynamic>> goals = [
       {
         'text1': 'Pass APC on First Attempt ',
-        'text2': '— Focused preparation to meet all RICS requirements.',
+        'text2': 'Focused preparation to meet all RICS requirements.',
       },
       {
         'text1': 'Improve Technical Knowledge ',
-        'text2': '— Deepen understanding of technical competencies.',
+        'text2': 'Deepen understanding of technical competencies.',
       },
       {
         'text1': 'Structured Study Plan ',
-        'text2': '— Clear, manageable roadmap for your APC journey.',
+        'text2': 'Clear, manageable roadmap for your APC journey.',
       },
       {
         'text1': 'Time Management ',
-        'text2':
-            '— Tools and techniques to study effectively within deadlines.',
+        'text2': 'Tools and techniques to study effectively within deadlines.',
       },
       {
         'text1': 'Interview Preparation ',
-        'text2': '— Practice and guidance to excel in your final interview.',
+        'text2': 'Practice and guidance to excel in your final interview.',
       },
       {
         'text1': 'Competency Development ',
-        'text2': '— Targeted resources to strengthen key competencies.',
+        'text2': 'Targeted resources to strengthen key competencies.',
       }
     ];
     List<Map<String, dynamic>> support = [
       {
         'text1': 'Study Planning ',
-        'text2': '— Guidance on structuring your study time and topics.',
+        'text2': 'Guidance on structuring your study time and topics.',
       },
       {
         'text1': 'Technical Guidance ',
-        'text2': '— Expert help with technical subjects.',
+        'text2': 'Expert help with technical subjects.',
       },
       {
         'text1': 'Interview Coaching ',
-        'text2': '— Practice sessions, QGA, and feedback.',
+        'text2': 'Practice sessions, QGA, and feedback.',
       },
       {
         'text1': 'Time Management ',
-        'text2': '— Reminders and progress tracking to stay on track.',
+        'text2': 'Reminders and progress tracking to stay on track.',
       },
       {
         'text1': 'Motivation & Accountability ',
-        'text2': '— Strategies to balance work, study and life.',
+        'text2': 'Strategies to balance work, study and life.',
       },
       {
         'text1': 'Peer Support ',
-        'text2': '— Connect with other candidates for shared learning.',
+        'text2': 'Connect with other candidates for shared learning.',
       },
-      {
-        'text1': 'Export Feedback ',
-        'text2': '— Reviews of submissions and competency responses.',
-      }
+  
     ];
 
     return Column(
@@ -78,15 +79,14 @@ class GoalsExpectations extends StatelessWidget {
       children: [
         DiffTextsTxt(
           align: TextAlign.start,
-          text1: 'Primary Goals ',
-          text2: '(Select all that apply) ',
-          text3: '*',
-          size: 16,
+          text1: 'Primary Goals (Select all that apply) * ',
+text2: '',
+          size: 14,
           weight1: FontWeight.bold,
-          color1: kwhite,
-          color2: kwhite,
+          color1: getSecondaryColor(context),
+          color2: getSecondaryColor(context),
           weight2: FontWeight.normal,
-          size2: 16,
+          size2: 14,
         ),
         MyText(
           text: 'What are your main objectives with APC Pro',
@@ -102,16 +102,36 @@ class GoalsExpectations extends StatelessWidget {
           itemBuilder: (context, index) {
             return Padding(
               padding: const EdgeInsets.only(bottom: 16),
-              child: diffTextcheckboxRow(
-                text1: goals[index]['text1'],
-                text2: goals[index]['text2'],
+              child: CustomeContainer(
+                radius: 10,
+                color: getfillcolor(context),
+                vpad: 11,
+                hpad: 11,
+                widget: Row(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    CustomCheckBox(isActive: false, onTap: () {},size: 16,),
+                    SizedBox(
+                      width: 10,
+                    ),
+                    Expanded(
+                      child: TwoTextedColumn(
+                        text1: goals[index]['text1'],
+                        text2: goals[index]['text2'],
+                        fontFamily: AppFonts.gilroyBold,
+                        color2: getTertiary(context),
+                        fontFamily2: AppFonts.gilroyMedium,
+                        mBottom: 0,
+                        size2: 12,
+                      ),
+                    ),
+                  ],
+                ),
               ),
             );
           },
         ),
-        SizedBox(
-          height: 30,
-        ),
+     
         MyTextField2(
           label: 'Final Assessment Date',
           hint: 'mm/dd/yyyy',
@@ -119,16 +139,16 @@ class GoalsExpectations extends StatelessWidget {
             Assets.imagesCalendar,
             width: 18,
           ),
-          marginBottom: 30,
+          marginBottom: 20,
         ),
         DiffTextsTxt(
           align: TextAlign.start,
-          text1: 'Support Needs ',
-          text2: '(Select all that apply)',
-          size: 16,
+          text1: 'Support Needs (Select all that apply)',
+          text2: '',
+          size: 14,
           weight1: FontWeight.bold,
-          color1: kwhite,
-          color2: kwhite,
+          color1: getSecondaryColor(context),
+          color2: getSecondaryColor(context),
           weight2: FontWeight.normal,
           size2: 16,
         ),
@@ -146,9 +166,31 @@ class GoalsExpectations extends StatelessWidget {
           itemBuilder: (context, index) {
             return Padding(
               padding: const EdgeInsets.only(bottom: 16),
-              child: diffTextcheckboxRow(
-                text1: support[index]['text1'],
-                text2: support[index]['text2'],
+              child: CustomeContainer(
+                radius: 10,
+                color: getfillcolor(context),
+                vpad: 11,
+                hpad: 11,
+                widget: Row(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    CustomCheckBox(isActive: false, onTap: () {},size: 16,),
+                    SizedBox(
+                      width: 10,
+                    ),
+                    Expanded(
+                      child: TwoTextedColumn(
+                        text1: support[index]['text1'],
+                        text2: support[index]['text2'],
+                        fontFamily: AppFonts.gilroyBold,
+                        color2: getTertiary(context),
+                        fontFamily2: AppFonts.gilroyMedium,
+                        mBottom: 0,
+                        size2: 12,
+                      ),
+                    ),
+                  ],
+                ),
               ),
             );
           },
@@ -156,24 +198,27 @@ class GoalsExpectations extends StatelessWidget {
         SizedBox(
           height: 15,
         ),
-        Row(
-          spacing: 25,
+    Row(
           children: [
-            Expanded(
-              child: MyButton(
-                mTop: 30,
-                backgroundColor: klighblue,
-                fontColor: ksecondary,
-                buttonText: 'Back',
+            Bounce(
                 onTap: () {
                   controller.previousStep();
                 },
-              ),
+                child: Image.asset(
+                  isDarkMode
+                      ? Assets.imagesBackbutton
+                      : Assets.imagesBackbutton2,
+                  width: 48,
+                  height: 45,
+                )),
+            SizedBox(
+              width: 12,
             ),
             Expanded(
               child: MyButton(
-                mTop: 30,
+                backgroundColor: getSecondaryColor(context).withOpacity(0.1),
                 buttonText: 'Continue',
+                fontColor: getTertiary(context),
                 onTap: () {
                   controller.nextStep();
                 },
@@ -208,18 +253,18 @@ class diffTextcheckboxRow extends StatelessWidget {
           size: 14,
           radius: 2,
           circleIconsize: 13,
-          borderColor: kwhite,
-          bordercolor2: kwhite,
+          borderColor: getSecondaryColor(context),
+          bordercolor2: getSecondaryColor(context),
         ),
         SizedBox(width: 7),
         Expanded(
           child: DiffTextsTxt(
             align: TextAlign.start,
-            text1: text1 ?? 'Pass APC on First Attempt — ',
+            text1: text1 ?? 'Pass APC on First Attempt ',
             text2:
                 text2 ?? 'Focused preparation to meet all RICS requirements.',
             color1: klighblue,
-            color2: kwhite,
+            color2: getSecondaryColor(context),
             size2: 12,
             size: 12,
             weight2: FontWeight.normal,

@@ -16,77 +16,84 @@ class CreateNewEvent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return dialogBoxBody(
-        borderColor: kblueBorder3,
+      bgColor: getfillcolor(context),
         child: Column(
-          mainAxisSize: MainAxisSize.min,
-          crossAxisAlignment: CrossAxisAlignment.start,
+      mainAxisSize: MainAxisSize.min,
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Row(
           children: [
-            Row(
-              children: [
-                Expanded(
-                    child: MyText(
-                  text: 'Create New Event',
-                  size: 18,
-                  fontFamily: AppFonts.gilroyBold,
-                )),
-                Image.asset(
-                  Assets.imagesCross,
-                  width: 15,
-                  color: kwhite,
-                )
-              ],
-            ),
-            SizedBox(
-              height: 20,
-            ),
-            MyTextField2(
-              label: 'Event Title',
-              hint: 'Write event title',
-              marginBottom: 25,
-            ),
-            Row(
-              spacing: 20,
-              children: [
-                Expanded(
-                  child: MyTextField2(
-                    label: 'Date',
-                    hint: 'Select Date',
-                    marginBottom: 25,
-                    suffixIcon: Image.asset(
-                      Assets.imagesCalendar,
-                      color: klighblue,
-                      width: 16,
-                    ),
-                  ),
-                ),
-                Expanded(
-                  child: MyTextField2(
-                    label: 'Time',
-                    hint: 'Select Time',
-                    marginBottom: 25,
-                    suffixIcon: Image.asset(
-                      Assets.imagesCalendar,
-                      color: klighblue,
-                      width: 16,
-                    ),
-                  ),
-                ),
-              ],
-            ),
-            MyTextField2(
-              label: 'Description',
-              hint: 'Write about the event',
-              maxLines: 4,
-              marginBottom: 25,
-            ),
-            MyButton(
-              buttonText: 'Create',
-              mTop: 20,
-              onTap: () {
-                Get.back();
-              },
+            Expanded(
+                child: MyText(
+              text: 'Create New Event',
+              size: 18,
+              fontFamily: AppFonts.gilroyBold,
+            )),
+            Image.asset(
+              Assets.imagesCross,
+              width: 15,
+              color: getSecondaryColor(context),
             )
           ],
-        ));
+        ),
+        SizedBox(
+          height: 20,
+        ),
+        MyTextField2(
+          label: 'Event Title',
+          hint: 'Write event title',
+          filledColor: getfifth(context),
+          bordercolor: ktransparent,
+        ),
+        Row(
+          spacing: 20,
+          children: [
+            Expanded(
+              child: MyTextField2(
+                label: 'Date',
+                hint: 'Select Date',
+                suffixIcon: Image.asset(
+                  Assets.imagesCalendar,
+                  color: getSecondaryColor(context),
+                  width: 16,
+                ),
+                filledColor: getfifth(context),
+                bordercolor: ktransparent,
+              ),
+            ),
+            Expanded(
+              child: MyTextField2(
+                label: 'Time',
+                hint: 'Select Time',
+                suffixIcon: Image.asset(
+                  Assets.imagesCalendar,
+                  color: getSecondaryColor(context),
+                  width: 16,
+                ),
+                filledColor: getfifth(context),
+                bordercolor: ktransparent,
+              ),
+            ),
+          ],
+        ),
+        MyTextField2(
+          label: 'Description',
+          hint: 'Write about the event',
+          maxLines: 4,
+          filledColor: getfifth(context),
+          bordercolor: ktransparent,
+        ),
+        MyButton(
+          buttonText: 'Create',
+          outlineColor: getSecondaryColor(context),
+          fontColor: getSecondaryColor(context),
+          backgroundColor: ktransparent,
+          mTop: 20,
+          onTap: () {
+            Get.back();
+          },
+        )
+      ],
+    ));
   }
 }

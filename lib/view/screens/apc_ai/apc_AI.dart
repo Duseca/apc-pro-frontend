@@ -138,7 +138,7 @@ class Ai_widget extends StatelessWidget {
         radius: 8,
         vpad: 8,
         hpad: 9,
-        color: kblackfill,
+        color: getfillcolor(context),
         borderColor: Color(0xff4285F4),
         widget: row_widget(
           title: title ?? 'Study Plan',

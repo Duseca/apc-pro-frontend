@@ -3,6 +3,7 @@ import 'package:apc_pro/generated/assets.dart';
 import 'package:apc_pro/view/screens/community/community_mesg.dart';
 import 'package:apc_pro/view/widgets/appbar.dart';
 import 'package:apc_pro/view/widgets/custom_dropdown.dart';
+import 'package:apc_pro/view/widgets/custome_comtainer.dart';
 import 'package:flutter/material.dart';
 
 import '../../widgets/my_text_field.dart';
@@ -12,6 +13,7 @@ class Notificationss extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isDarkMode = Theme.of(context).brightness == Brightness.dark;
     return Scaffold(
         appBar: simpleAppBar(
             context: context, title: 'Notifications', centerTitle: true),
@@ -32,13 +34,14 @@ class Notificationss extends StatelessWidget {
                         flex: 3,
                         child: MyTextField2(
                           hint: 'Search Here',
-                          hintColor: klighblue,
-                          bordercolor: ksecondary,
+                          hintColor: getSecondaryColor(context),
+                          bordercolor:getSecondaryColor(context),
                           prefixIcon: Image.asset(
                             Assets.imagesSearch,
-                            color: klighblue,
+                            color: getSecondaryColor(context),
                             width: 17,
                           ),
+                          filledColor: getfillcolor(context),
                         ),
                       ),
                       Expanded(
@@ -46,8 +49,8 @@ class Notificationss extends StatelessWidget {
                         child: CustomDropDown(
                           vpad: 14,
                           hint: 'All Categories',
-                          hintColor: klighblue,
-                          bordercolor: ksecondary,
+                          hintColor: getSecondaryColor(context),
+                          bordercolor:getSecondaryColor(context),
                           items: [
                             'All Categories',
                             'System',
@@ -56,7 +59,7 @@ class Notificationss extends StatelessWidget {
                             'Account',
                             'Operational'
                           ],
-                          selectedValue: 'All Categories',
+                          value: 'All Categories',
                           onChanged: (value) {},
                           iconSize: 15,
                         ),
@@ -69,15 +72,23 @@ class Notificationss extends StatelessWidget {
                     physics: const NeverScrollableScrollPhysics(),
                     itemCount: 5,
                     itemBuilder: (context, index) {
-                      return Padding(
-                        padding: const EdgeInsets.only(bottom: 20),
-                        child: mesg_tile(
+                      return CustomeContainer(
+                        radius: 8,
+                        color: getfillcolor(context),
+                        mbott: 15,
+                        vpad: 10,
+                        hpad: 12,
+                        widget: mesg_tile(
                           title: 'Task Reminder',
                           desc:
                               'Don’t forget! Your weekly diary entry is due today. Log now to stay on track.',
-                          icon: Assets.imagesNotifi,
+                          icon: isDarkMode
+                              ? Assets.imagesDnot
+                              : Assets.imagesLnot,
                           hasTime: false,
+                          hasIcon: true,
                           borderColor: ktransparent,
+                          imgSize: 24,
                         ),
                       );
                     },

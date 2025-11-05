@@ -52,34 +52,30 @@ class CpdTracker extends StatelessWidget {
         "title": "Professional Ethics Refresher",
         "desc":
             "Based on RICS requirements, consider a 2-hour ethics refresher course to maintain ethical standards compliance.",
-        "tags": ["Formal CPD", "2 Hours", "High Priority"],
       },
       {
         "title": "Technical Reading: Sustainability Standards",
         "desc":
             "Emerging sustainability requirements in quantity surveying practice. Relevant to your competency gaps.",
-        "tags": ["Informal CPD", "3.5 Hours", "Medium Priority"],
       },
     ];
     final List<Map<String, dynamic>> newEntryOptions = [
       {
         "title": "Log CPD Activity",
         "desc": "Record completed or planned learning activities",
-        "icon": Assets.imagesAdd,
-        "iconColor": ksecondary,
+        "icon": Assets.imagesAddc,
         "ontap": () => Get.to(() => AddCpdActivity()),
       },
       {
         "title": "AI Recommendations",
         "desc": "Get personalized CPD activity suggestions",
-        "icon": Assets.imagesMagicpen,
+        "icon": Assets.imagesAi2,
         "ontap": () {},
       },
       {
         "title": "AI Guidance",
         "desc": "Export CPD record for RICS submission",
-        "icon": Assets.imagesReport,
-        "iconColor": ksecondary,
+        "icon": Assets.imagesDocument2,
         "ontap": () {},
       },
     ];
@@ -94,6 +90,7 @@ class CpdTracker extends StatelessWidget {
                 child: Image.asset(
                   Assets.imagesBulb2,
                   width: 25,
+                  color: getSecondaryColor(context),
                 ),
               ),
               SizedBox(
@@ -111,9 +108,8 @@ class CpdTracker extends StatelessWidget {
                 physics: const BouncingScrollPhysics(),
                 children: [
                   CustomeContainer(
-                      radius: 10,
-                      borderColor: kblueBorder2,
-                      color: kblackfill,
+                      radius: 8,
+                      color: getfillcolor(context),
                       vpad: 11,
                       hpad: 12,
                       mbott: 20,
@@ -132,13 +128,15 @@ class CpdTracker extends StatelessWidget {
                               text2: '22.1h / target hours',
                               size1: 14,
                               size2: 14,
-                              fontFamily2: AppFonts.gilroyBold,
-                              fontFamily: AppFonts.gilroyBold,
+                              fontFamily2: AppFonts.gilroySemiBold,
+                              fontFamily: AppFonts.gilroySemiBold,
                             ),
                             SizedBox(
                               height: 14,
                             ),
-                            linearProgressIndicatorr(),
+                            linearProgressIndicatorr(
+                              height: 6,
+                            ),
                             SizedBox(
                               height: 14,
                             ),
@@ -147,13 +145,15 @@ class CpdTracker extends StatelessWidget {
                               text2: '22.1h / target hours',
                               size1: 14,
                               size2: 14,
-                              fontFamily2: AppFonts.gilroyBold,
-                              fontFamily: AppFonts.gilroyBold,
+                              fontFamily2: AppFonts.gilroySemiBold,
+                              fontFamily: AppFonts.gilroySemiBold,
                             ),
                             SizedBox(
                               height: 14,
                             ),
-                            linearProgressIndicatorr(),
+                            linearProgressIndicatorr(
+                              height: 6,
+                            ),
                             SizedBox(
                               height: 14,
                             ),
@@ -162,89 +162,95 @@ class CpdTracker extends StatelessWidget {
                               text2: '22.1h / target hours',
                               size1: 14,
                               size2: 14,
-                              fontFamily2: AppFonts.gilroyBold,
-                              fontFamily: AppFonts.gilroyBold,
+                              fontFamily2: AppFonts.gilroySemiBold,
+                              fontFamily: AppFonts.gilroySemiBold,
                             ),
                             SizedBox(
                               height: 14,
                             ),
-                            linearProgressIndicatorr(),
+                            linearProgressIndicatorr(
+                              height: 6,
+                            ),
                           ])),
+                  MyText(
+                    text: 'Quick Actions',
+                    size: 14,
+                    fontFamily: AppFonts.gilroyBold,
+                    paddingBottom: 10,
+                  ),
+                  ListView.builder(
+                    padding: EdgeInsets.zero,
+                    shrinkWrap: true,
+                    physics: NeverScrollableScrollPhysics(),
+                    itemCount: newEntryOptions.length,
+                    itemBuilder: (context, index) {
+                      final item = newEntryOptions[index];
+                      return newEntry_container(
+                        bgColor: getfillcolor(context),
+                        title: item["title"],
+                        desc: item["desc"],
+                        icon: item["icon"],
+                        iconColor: getSecondaryColor(context),
+                        iconSize: 18,
+                        ontap: item["ontap"],
+                      );
+                    },
+                  ),
+                  MyText(
+                    text: 'Recent Activities',
+                    size: 14,
+                    fontFamily: AppFonts.gilroyBold,
+                    paddingBottom: 10,
+                  ),
                   CustomeContainer(
-                      radius: 10,
-                      borderColor: kblueBorder2,
-                      color: kblackfill,
+                      radius: 8,
+                      color: getfillcolor(context),
                       vpad: 11,
                       hpad: 12,
                       mbott: 20,
                       widget: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            ListView.builder(
-                              padding: EdgeInsets.zero,
-                              shrinkWrap: true,
-                              physics: NeverScrollableScrollPhysics(),
-                              itemCount: newEntryOptions.length,
-                              itemBuilder: (context, index) {
-                                final item = newEntryOptions[index];
-                                return newEntry_container(
-                                  title: item["title"],
-                                  desc: item["desc"],
-                                  icon: item["icon"],
-                                  iconColor: item["iconColor"],
-                                  ontap: item["ontap"],
-                                );
-                              },
+                            recnet_activity_widget(
+                              text2: 'RICS 15 Mar 2025  | 8 hrs',
                             ),
-                          ])),
-                  CustomeContainer(
-                      radius: 10,
-                      borderColor: kblueBorder2,
-                      color: kblackfill,
-                      vpad: 11,
-                      hpad: 12,
-                      mbott: 20,
-                      widget: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            row_widget(
-                              title: 'Recent Activities',
-                              icon: Assets.imagesQuiz,
-                              iconSize: 16,
-                              fontFamily: AppFonts.gilroyBold,
-                              rpad: 10,
-                            ),
-                            SizedBox(
-                              height: 10,
-                            ),
-                            recnet_activity_widget(),
-                            SizedBox(
-                              height: 10,
+                            Padding(
+                              padding: const EdgeInsets.symmetric(vertical: 5),
+                              child: Divider(
+                                color: getfifth(context),
+                              ),
                             ),
                             recnet_activity_widget(
-                              hastext2: false,
+                              text2: 'RICS 15 Mar 2025  | 8 hrs',
                               text1: 'Technical Article Reading',
-                            )
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.symmetric(vertical: 5),
+                              child: Divider(
+                                color: getfifth(context),
+                              ),
+                            ),
                           ])),
+                  MyText(
+                    text: 'This  Year Summary',
+                    size: 14,
+                    fontFamily: AppFonts.gilroyBold,
+                    paddingBottom: 10,
+                  ),
                   CustomeContainer(
-                      radius: 10,
-                      borderColor: kblueBorder2,
-                      color: kblackfill,
+                      radius: 8,
+                      color: getfillcolor(context),
                       vpad: 11,
                       hpad: 12,
                       mbott: 20,
                       widget: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            row_widget(
-                              title: 'This Year Summary',
-                              fontFamily: AppFonts.gilroyBold,
-                              icon: Assets.imagesQuiz,
-                              iconSize: 16,
-                              rpad: 10,
-                            ),
-                            SizedBox(
-                              height: 10,
+                            MyText(
+                              text: 'Progress Completed',
+                              size: 14,
+                              fontFamily: AppFonts.gilroySemiBold,
+                              paddingBottom: 10,
                             ),
                             ListView.builder(
                               padding: EdgeInsets.all(0),
@@ -266,59 +272,75 @@ class CpdTracker extends StatelessWidget {
                                 );
                               },
                             ),
-                          ])),
-                  CustomeContainer(
-                      radius: 10,
-                      borderColor: kblueBorder2,
-                      color: kblackfill,
-                      vpad: 11,
-                      hpad: 12,
-                      mbott: 20,
-                      widget: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            row_widget(
-                              title: 'Upcoming Planned Activities',
-                              icon: Assets.imagesMagicpen,
-                              iconSize: 16,
-                              fontFamily: AppFonts.gilroyBold,
-                              rpad: 10,
+                            Padding(
+                              padding: EdgeInsets.symmetric(vertical: 5),
+                              child: Divider(
+                                color: getfifth(context),
+                              ),
+                            ),
+                            ExpandedRow(
+                              text1: 'Total Instructions',
+                              text2: '168',
+                              size1: 11,
+                              size2: 14,
+                              fontFamily: AppFonts.gilroyMedium,
+                              fontFamily2: AppFonts.gilroyBold,
                             ),
                             SizedBox(
-                              height: 10,
+                              height: 14,
                             ),
-                            recnet_activity_widget(
-                              text1: 'Annual surveying conference',
-                              text2:
-                                  '20 Oct 2025 | 16h | National surveying institute',
-                            ),
-                            SizedBox(
-                              height: 10,
-                            ),
-                            recnet_activity_widget(
-                              text1: 'Technical Article Reading',
-                            ),
-                            SizedBox(
-                              height: 15,
-                            ),
-                            Row(
-                              children: [
-                                buttonContainer(
-                                  radius: 50,
-                                  bgColor: klighblue,
-                                  borderColor: ksecondary,
-                                  txtColor: kblueBorder2,
-                                  text: 'Booking Required',
-                                  vPadding: 3,
-                                  textsize: 11,
-                                )
-                              ],
+                            ExpandedRow(
+                              text1: 'Compliance Rate',
+                              text2: '84%',
+                              size1: 11,
+                              size2: 14,
+                              fontFamily: AppFonts.gilroyMedium,
+                              fontFamily2: AppFonts.gilroyBold,
                             )
                           ])),
+                  MyText(
+                    text: 'Upcoming Planned Activities',
+                    size: 14,
+                    fontFamily: AppFonts.gilroyBold,
+                    paddingBottom: 10,
+                  ),
                   CustomeContainer(
                       radius: 10,
-                      borderColor: kblueBorder2,
-                      color: kblackfill,
+                      color: getfillcolor(context),
+                      vpad: 11,
+                      hpad: 12,
+                      mbott: 20,
+                      widget: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            ListView.separated(
+                              separatorBuilder: (context, index) => Divider(
+                                color: getfifth(context),
+                              ),
+                              padding: EdgeInsets.all(0),
+                              shrinkWrap: true,
+                              physics: const NeverScrollableScrollPhysics(),
+                              itemCount: 2,
+                              itemBuilder: (context, index) {
+                                return Padding(
+                                    padding: const EdgeInsets.only(bottom: 15),
+                                    child: recnet_activity_widget(
+                                      text1: 'Annual surveying conference | 8h',
+                                      text2:
+                                          '20 Oct 2025 | 16h | National surveying institute',
+                                    ));
+                              },
+                            ),
+                          ])),
+                  MyText(
+                    text: 'AI Recommendations',
+                    size: 14,
+                    fontFamily: AppFonts.gilroyBold,
+                    paddingBottom: 10,
+                  ),
+                  CustomeContainer(
+                      radius: 10,
+                      color: getfillcolor(context),
                       vpad: 11,
                       hpad: 12,
                       mbott: 20,
@@ -326,11 +348,16 @@ class CpdTracker extends StatelessWidget {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             row_widget(
-                              title: 'AI Recommendations',
-                              icon: Assets.imagesMagicpen,
+                              title: 'Personalized CPD Plans',
+                              icon: Assets.imagesMagic2,
                               iconSize: 16,
                               fontFamily: AppFonts.gilroyBold,
                               rpad: 10,
+                            ),
+                            MyText(
+                              text: 'Based on your progress & career goals',
+                              size: 12,
+                              paddingLeft: 20,
                             ),
                             SizedBox(
                               height: 10,
@@ -344,30 +371,30 @@ class CpdTracker extends StatelessWidget {
                                 final item = aiRecommendations[index];
                                 return Padding(
                                   padding: const EdgeInsets.only(bottom: 14),
-                                  child: Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      TwoTextedColumn(
-                                        text1: item["title"],
-                                        text2: item["desc"],
-                                        size1: 11,
-                                        size2: 11,
-                                        fontFamily: AppFonts.gilroyBold,
-                                        fontFamily2: AppFonts.gilroyMedium,
-                                        mBottom: 5,
-                                      ),
-                                      SizedBox(
-                                        height: 10,
-                                      ),
-                                      Wrap(
-                                        spacing: 8,
-                                        runSpacing: 6,
-                                        children: (item["tags"] as List<String>)
-                                            .map((tag) => TagsWidget(tag))
-                                            .toList(),
-                                      ),
-                                    ],
+                                  child: CustomeContainer(
+                                    color: getfifth(context),
+                                    vpad: 12,
+                                    hpad: 12,
+                                    radius: 8,
+                                    widget: Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        TwoTextedColumn(
+                                          text1: item["title"],
+                                          text2: '4 hours • Medium Priority',
+                                          size1: 12,
+                                          size2: 11,
+                                          fontFamily: AppFonts.gilroyBold,
+                                          fontFamily2: AppFonts.gilroyMedium,
+                                          mBottom: 3,
+                                        ),
+                                        MyText(
+                                            size: 11,
+                                            paddingTop: 3,
+                                            text: item['desc'])
+                                      ],
+                                    ),
                                   ),
                                 );
                               },
@@ -376,6 +403,10 @@ class CpdTracker extends StatelessWidget {
                               buttonText: 'Get Personalized AI Plans',
                               mTop: 20,
                               mBottom: 15,
+                              outlineColor: getSecondaryColor(context),
+                              fontColor: getSecondaryColor(context),
+                              backgroundColor: ktransparent,
+                              fontFamily: AppFonts.gilroySemiBold,
                             )
                           ])),
                 ],
@@ -391,7 +422,8 @@ class recnet_activity_widget extends StatelessWidget {
   final bool? hastext2;
   final String? buttonText, text3;
   final String? fontFamily1;
-  final double? size1;
+  final double? size1,statusVpad;
+  final Color? statusBgColor,statusTextColor;
   const recnet_activity_widget({
     super.key,
     this.text1,
@@ -400,7 +432,7 @@ class recnet_activity_widget extends StatelessWidget {
     this.buttonText,
     this.text3,
     this.fontFamily1,
-    this.size1,
+    this.size1, this.statusBgColor, this.statusTextColor, this.statusVpad,
   });
 
   @override
@@ -409,42 +441,33 @@ class recnet_activity_widget extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Row(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                MyText(
-                  text: text1 ?? 'RICS Professional Ethics Course',
-                  size: size1 ?? 11,
-                  fontFamily: fontFamily1 ?? AppFonts.gilroyMedium,
-                  maxLines: null,
-                  paddingRight: 6,
-                ),
-                buttonContainer(
-                  text: buttonText ?? 'Formal',
-                  textsize: 11,
-                  vPadding: 2,
-                  hPadding: 10,
-                  bgColor: kblackfill,
-                  borderColor: ksecondary,
-                  radius: 4,
-                ),
-              ],
+            Expanded(
+              child: MyText(
+                text: text1 ?? 'RICS Professional Ethics Course',
+                size: size1 ?? 12,
+                fontFamily: fontFamily1 ?? AppFonts.gilroyMedium,
+                maxLines: null,
+                paddingRight: 6,
+              ),
             ),
-            MyText(
-              text: text3 ?? '8h',
-              size: 14,
-              fontFamily: AppFonts.gilroyBold,
+            buttonContainer(
+              text: buttonText ?? 'Formal',
+              textsize: 11,
+              vPadding:statusVpad?? 2,
+              hPadding: 10,
+              txtColor: statusTextColor,
+              bgColor:statusBgColor?? getfifth(context),
+              radius: 4,
             ),
           ],
         ),
         if (hastext2 == true)
           MyText(
             text: text2 ?? 'RICS 15 Mar 2025',
-            size: 11,
+            size: 12,
             fontFamily: AppFonts.gilroyMedium,
+            color: getTertiary(context),
           ),
       ],
     );

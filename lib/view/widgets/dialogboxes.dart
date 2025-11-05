@@ -38,6 +38,7 @@ class SuccessDialog {
     Color? b2Color,
     Color? b1text,
     Color? b2text,
+    Color? iconColor,
     bool? hasTextButton = false,
   }) {
     Get.dialog(
@@ -62,14 +63,25 @@ class SuccessDialog {
             ),
             title: Column(
               children: [
-                if (image != null)
+                if (image != null)...{
+                  if(isSvg==true)
                   CommonImageView(
                     imagePath: isSvg == false ? image : null,
                     svgPath: isSvg == true ? image : null,
                     width: imgSize ?? 100,
                     height: imgSize ?? 100,
                     fit: BoxFit.contain,
+
                   ),
+
+                  if(isSvg==false)
+                  Image.asset(image,      width: imgSize ?? 100,
+                    height: imgSize ?? 100,
+                    fit: BoxFit.contain,
+                    color: iconColor,
+                    )
+                },
+
                 const SizedBox(height: 5),
               ],
             ),
@@ -132,8 +144,9 @@ class SuccessDialog {
                                 onTap: ontap ?? Get.back,
                                 buttonText: button2text ?? 'Back to Login',
                                 fontSize: 14,
-                                backgroundColor: button2color ?? klighblue,
-                                fontColor: b2text ?? ksecondary,
+                                backgroundColor: button2color ?? ktransparent,
+                                fontColor: b2text ?? getSecondaryColor(context),
+                                outlineColor: getSecondaryColor(context),
                                 height: 45,
                               ),
                             ],
@@ -145,9 +158,9 @@ class SuccessDialog {
                                   onTap: ontap ?? Get.back,
                                   buttonText: ButtonText ?? 'Back to Login',
                                   fontSize: 14,
-                                  backgroundColor: b1Color ?? klighblue,
-                                  fontColor: b1text ?? ksecondary,
-                                  outlineColor: b1text ?? ktransparent,
+                                  backgroundColor: b1Color ?? ktransparent,
+                                  fontColor: b1text ?? getSecondaryColor(context),
+                                  outlineColor: b1text ?? getSecondaryColor(context),
                                   height: 45,
                                 ),
                               ),
@@ -169,15 +182,15 @@ class SuccessDialog {
         ),
       ),
       barrierDismissible: false,
-      barrierColor: kblackfill.withOpacity(0.8),
+      barrierColor: getfillcolor(context).withOpacity(0.8),
     );
   }
 }
 
 class dialogBoxBody extends StatelessWidget {
   final Widget? child;
-  final double? lpad, rpad, bpad, tpad;
-  final Color? barrier, borderColor;
+  final double? lpad, rpad, bpad, tpad,innerVpad,innerHpad;
+  final Color? barrier, borderColor,bgColor;
   final Alignment? alignment;
 
   const dialogBoxBody({
@@ -189,7 +202,7 @@ class dialogBoxBody extends StatelessWidget {
     this.tpad,
     this.alignment,
     this.barrier,
-    this.borderColor,
+    this.borderColor, this.innerVpad, this.innerHpad, this.bgColor,
   });
 
   @override
@@ -204,13 +217,13 @@ class dialogBoxBody extends StatelessWidget {
           children: [
             BackdropFilter(
               filter: ImageFilter.blur(
-                sigmaX: 5,
-                sigmaY: 5,
+                sigmaX: 2,
+                sigmaY: 2,
               ),
               child: Container(
                 width: double.infinity,
                 height: double.infinity,
-                color: (barrier ?? kblack).withOpacity(0.2),
+                color: (barrier ?? getSecondaryColor(context)).withOpacity(0.05),
               ),
             ),
 
@@ -226,13 +239,13 @@ class dialogBoxBody extends StatelessWidget {
                   right: rpad ?? 20,
                 ),
                 decoration: BoxDecoration(
-                  border: Border.all(color: borderColor ?? kblueBorder2),
+                  border: Border.all(color: borderColor ?? getSecondaryColor(context)),
                   borderRadius: BorderRadius.circular(10),
-                  color: kbackground,
+                  color:bgColor?? getsplashcolor(context)
                 ),
-                padding: const EdgeInsets.symmetric(
-                  vertical: 20,
-                  horizontal: 17,
+                padding: EdgeInsets.symmetric(
+                  vertical:innerVpad?? 20,
+                  horizontal:innerHpad?? 17,
                 ),
                 child: child,
               ),

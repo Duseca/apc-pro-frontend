@@ -29,19 +29,20 @@ class study_tools_widget extends StatelessWidget {
             children: [
               Image.asset(
                icon?? Assets.imagesBookmark,
-                width: 16,
+                width: 18,
+                color: getSecondaryColor(context),
               ),
               SizedBox(width: 10,),
               Expanded(
                   child: TwoTextedColumn(
                 text1:title?? 'Bookmarked Question',
                 text2:desc?? '1 question saved for review',
-                size1: 11,
-                size2: 11,
+                size1: 12,
+                size2: 12,
                 fontFamily: AppFonts.gilroyBold,
                 fontFamily2: AppFonts.gilroyMedium,
               )),
-              Image.asset(Assets.imagesArrowRight,width: 17,)
+              Image.asset(Assets.imagesArrowRight,width: 17,color: getSecondaryColor(context),)
             ],
           ),
         ),
@@ -65,31 +66,40 @@ class test_competency_widget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        ExpandedRow(
-          text1: text1 ?? 'Business Planning',
-          text2: percent ?? '60%',
-          size1: 11,
-          size2: 14,
-          fontFamily2: AppFonts.gilroyBold,
-          fontFamily: AppFonts.gilroyMedium,
-        ),
         Row(
           children: [
             Expanded(
-              child: MyText(
-                text: text2 ?? '49 questions answered',
-                size: 11,
-                fontFamily: AppFonts.gilroyMedium,
+              child: TwoTextedColumn(
+                text1: text1 ?? 'Business Planning',
+                text2: text2 ?? '49 questions answered',
+                size1: 12,
+                size2: 12,
+                fontFamily2: AppFonts.gilroyMedium,
+                weight1: FontWeight.w600,
+                weight2: FontWeight.w500,
+                mBottom: 0,
+                fontFamily: AppFonts.gilroySemiBold
               ),
             ),
+             MyText(
+                text: percent ?? '60%',
+                size: 14,
+                fontFamily: AppFonts.gilroySemiBold,
+              ),
+          ],
+        ),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.end,
+          children: [
+        
             if(hasButton==true)
             buttonContainer(
               radius: 4,
               vPadding: 3,
               hPadding: 8,
               text: 'Cancel',
-              borderColor: kblueBorder2,
-              bgColor: kblackfill,
+             borderColor: getSecondaryColor(context),
+              bgColor: getfillcolor(context),
               textsize: 11,
             ),
                 if(hasButton==false&& text3!=null)
@@ -119,14 +129,23 @@ class performance_overview extends StatelessWidget {
       mainAxisSize: MainAxisSize.min,
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        CircleAvatar(
-          radius: 32,
-          backgroundColor: ksecondary,
+        Container(
+          height: 57,
+          width: 57,
+          decoration: BoxDecoration(
+            shape: BoxShape.circle,
+            border: Border.all(color: getSecondaryColor(context)),
+            color: getfifth(context)
+          ),
+          
+
+         
           child: Center(
             child: icon != null
                 ? Image.asset(
                     icon ?? Assets.imagesMessg,
                     width: 24,
+                    color: getSecondaryColor(context),
                   )
                 : MyText(
                     text: text1 ?? '82%',

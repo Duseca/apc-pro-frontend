@@ -54,13 +54,13 @@ class CustomCheckBox extends StatelessWidget {
             ? Icon(
                   circleIcon,
                   size: 16,
-                  color: kwhite,
+                  color: getSecondaryColor(context),
                 ) ??
                 SizedBox()
             : Icon(
                 iscircle == true ? circleIcon ?? Icons.circle : Icons.check,
                 size: circleIconsize ?? 16,
-                color: isActive == true ? iconColor ?? kwhite : kwhite,
+                color: isActive == true ? iconColor ?? getsplashcolor(context) : getSecondaryColor(context),
               ),
       ),
     );

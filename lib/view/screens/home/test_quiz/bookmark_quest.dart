@@ -44,42 +44,43 @@ class BookmarkQuest extends StatelessWidget {
                     prefixIcon: Image.asset(
                       Assets.imagesSearch,
                       width: 18,
+                      
+                      color: getSecondaryColor(context),
                     ),
-                    bordercolor: ksecondary,
-                    hintColor: kwhite,
+                  hintColor: getSecondaryColor(context),
                   ),
                   Row(
                     spacing: 6,
                     children: [
                       Expanded(
                           child: CustomDropDown(
-                              bordercolor: ksecondary,
+                              bordercolor: getSecondaryColor(context),
                               hint: 'All Reason',
                               hintsize: 10,
                               iconSize: 12,
                               hpad: 5,
                               items: ['All Reason', 'All Reason 2'],
-                              selectedValue: 'All Reason',
+                              value: 'All Reason',
                               onChanged: (w) {})),
                       Expanded(
                           child: CustomDropDown(
                               hintsize: 10,
                               iconSize: 12,
                               hpad: 5,
-                              bordercolor: ksecondary,
+                              bordercolor: getSecondaryColor(context),
                               hint: 'All Tags',
                               items: ['All Tags', 'All Tags 2'],
-                              selectedValue: 'All Tags',
+                              value: 'All Tags',
                               onChanged: (w) {})),
                       Expanded(
                           child: CustomDropDown(
                               hintsize: 10,
                               iconSize: 12,
                               hpad: 2,
-                              bordercolor: ksecondary,
+                              bordercolor: getSecondaryColor(context),
                               hint: 'Date Added',
                               items: ['Date Added', 'Date Added 2'],
-                              selectedValue: 'Date Added',
+                              value: 'Date Added',
                               onChanged: (w) {}))
                     ],
                   ),
@@ -90,7 +91,7 @@ class BookmarkQuest extends StatelessWidget {
                         customWidget: CustomCheckBox(
                           isActive: false,
                           onTap: () {},
-                          size: 18,
+                          size: 16,
                         ),
                         title: 'Select All',
                       ),
@@ -102,9 +103,9 @@ class BookmarkQuest extends StatelessWidget {
                     ],
                   ),
                   CustomeContainer(
-                      radius: 10,
-                      borderColor: kblueBorder2,
-                      color: kblackfill,
+                      radius: 8,
+                     borderColor: getSecondaryColor(context),
+                      color: getfillcolor(context),
                       vpad: 17,
                       hpad: 13,
                       mbott: 20,
@@ -132,7 +133,7 @@ class BookmarkQuest extends StatelessWidget {
                                   'Need to review RICS guidance on this topic',
                               label: 'Notes',
                               maxLines: 5,
-                              bordercolor: kblueBorder2,
+                             
                             ),
                             Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -144,11 +145,12 @@ class BookmarkQuest extends StatelessWidget {
                                     Get.dialog(EditDialog());
                                   },
                                   fontFamily: AppFonts.gilroyMedium,
-                                  bgColor: klighblue,
-                                  borderColor: kblueBorder2,
-                                  imagePath: Assets.imagesEdit,
-                                  iconColor: ksecondary,
-                                  txtColor: ksecondary,
+                                  bgColor: getfifth(context),
+                                 borderColor: getSecondaryColor(context),
+                                 imageSize: 12,
+                                  imagePath: Assets.imagesEdit2,
+                                  iconColor: getSecondaryColor(context),
+                                  txtColor: getSecondaryColor(context),
                                   vPadding: 3,
                                   hPadding: 10,
                                 ),
@@ -156,7 +158,7 @@ class BookmarkQuest extends StatelessWidget {
                                     child: Image.asset(
                                   Assets.imagesTrash,
                                   width: 20,
-                                  color: klighblue,
+                                  color: getSecondaryColor(context),
                                 ))
                               ],
                             )
@@ -196,6 +198,7 @@ class EditDialog extends StatelessWidget {
                   child: Image.asset(
                     Assets.imagesCross,
                     width: 18,
+                    color: getSecondaryColor(context),
                   ))
             ],
           ),
@@ -206,7 +209,7 @@ class EditDialog extends StatelessWidget {
             hint: 'Need to review RICS guidance on this topic',
             label: 'Notes',
             maxLines: 5,
-            bordercolor: kblueBorder2,
+           
             marginBottom: 23,
           ),
           Row(
@@ -214,10 +217,12 @@ class EditDialog extends StatelessWidget {
             children: [
               Expanded(
                   child: MyButton(
-                backgroundColor: klighblue,
-                fontColor: ksecondary,
+                backgroundColor: getfillcolor(context),
+                fontColor: getSecondaryColor(context),
+                outlineColor: getSecondaryColor(context),
                 buttonText: 'Cancel',
                 height: 48,
+                fontSize: 12,
                 onTap: () {
                   Get.back();
                 },
@@ -226,6 +231,7 @@ class EditDialog extends StatelessWidget {
                   child: MyButton(
                 buttonText: 'Save Changes',
                 height: 48,
+                fontSize: 12,
               ))
             ],
           )

@@ -1,6 +1,7 @@
 import 'package:apc_pro/consts/app_colors.dart';
 import 'package:apc_pro/consts/app_fonts.dart';
 import 'package:apc_pro/generated/assets.dart';
+import 'package:apc_pro/view/screens/Navbar/bottom_navbar.dart';
 import 'package:apc_pro/view/screens/auth/signUp/signUp.dart';
 import 'package:apc_pro/view/widgets/appbar.dart';
 import 'package:apc_pro/view/widgets/common_image_view_widget.dart';
@@ -78,7 +79,7 @@ class _LoginState extends State<Login> {
                 ),
                 MyButton(
                   onTap: () {
-                    //Get.to(() => BottomNavBar());
+                    Get.to(() => BottomNavBar());
                   },
                   buttonText: 'Sign In',
                   mBottom: 25,

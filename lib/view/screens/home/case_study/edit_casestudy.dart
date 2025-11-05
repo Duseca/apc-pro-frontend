@@ -34,8 +34,7 @@ class EditCasestudy extends StatelessWidget {
                       radius: 10,
                       vpad: 17,
                       hpad: 17,
-                      color: kblackfill,
-                      borderColor: kblueBorder3,
+                      color: getfillcolor(context),
                       widget: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
@@ -50,8 +49,9 @@ class EditCasestudy extends StatelessWidget {
                                 Bounce(
                                     child: Image.asset(
                                   Assets.imagesCross,
-                                  width: 18,
-                                  height: 18,
+                                  width: 16,
+                                  height: 16,
+                                  color: getSecondaryColor(context),
                                 ))
                               ],
                             ),
@@ -76,6 +76,7 @@ class EditCasestudy extends StatelessWidget {
                             ),
                             linearProgressIndicatorr(
                               value: 0.0,
+                              height: 8,
                             ),
                             MyText(
                               paddingTop: 8,
@@ -87,16 +88,14 @@ class EditCasestudy extends StatelessWidget {
                             ),
                             CustomeContainer(
                               radius: 8,
-                              borderColor: kblueBorder2,
+                              borderColor: getSecondaryColor(context),
                               vpad: 11,
                               hpad: 14,
                               widget: Row(
                                 children: [
-                                  Image.asset(
-                                    Assets.imagesNewbook,
-                                    width: 16,
-                                    color: kwhite,
-                                  ),
+                                  Image.asset(Assets.imagesBook2,
+                                      width: 16,
+                                      color: getSecondaryColor(context)),
                                   Expanded(
                                       child: MyText(
                                     text: 'RICS Guidance for Introduction',
@@ -110,7 +109,7 @@ class EditCasestudy extends StatelessWidget {
                             ),
                             CustomeContainer(
                               radius: 8,
-                              borderColor: kblueBorder2,
+                              borderColor: getSecondaryColor(context),
                               vpad: 11,
                               hpad: 14,
                               widget: Column(
@@ -161,6 +160,7 @@ class EditCasestudy extends StatelessWidget {
                                 )),
                                 row_widget(
                                   icon: Assets.imagesBulb,
+                                  iconColor: getSecondaryColor(context),
                                   iconSize: 17,
                                   title: 'AI Help',
                                   fontFamily: AppFonts.gilroyBold,
@@ -172,7 +172,8 @@ class EditCasestudy extends StatelessWidget {
                             ),
                             MyTextField2(
                               maxLines: 6,
-                              bordercolor: kblueBorder2,
+                              hintSize: 12,
+                              hintColor: getSecondaryColor(context),
                               hint:
                                   'Write your introduction here. Focus on specific examples, your role, and the outcomes achieved. Use the guidance above to structure your content effectively.',
                             ),
@@ -188,7 +189,7 @@ class EditCasestudy extends StatelessWidget {
                               height: 8,
                             ),
                             Divider(
-                              color: kblueBorder2,
+                              color: getTertiary(context),
                             ),
                             SizedBox(
                               height: 8,
@@ -203,10 +204,10 @@ class EditCasestudy extends StatelessWidget {
                                   fontFamily: AppFonts.gilroyMedium,
                                 )),
                                 buttonContainer(
-                                  borderColor: ksecondary,
+                                  borderColor: getSecondaryColor(context),
                                   radius: 4,
                                   text: 'Cancel',
-                                  bgColor: kblackfill,
+                                  bgColor: getfillcolor(context),
                                   vPadding: 5,
                                   hPadding: 12,
                                   textsize: 10,

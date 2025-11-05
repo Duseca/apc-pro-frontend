@@ -1,13 +1,10 @@
-import 'dart:developer';
-import 'dart:io';
 
-import 'package:apc_pro/view/screens/apc_ai/apc_AI.dart';
+import 'dart:io';
 import 'package:apc_pro/view/screens/community/community.dart';
 import 'package:apc_pro/view/screens/home/home.dart';
-import 'package:apc_pro/view/screens/notifications/notifications.dart';
+import 'package:apc_pro/view/screens/jobs/job.dart';
 import 'package:apc_pro/view/screens/profile/profile.dart';
 import 'package:apc_pro/view/widgets/my_text_widget.dart';
-import 'package:bounce/bounce.dart';
 import 'package:flutter/material.dart';
 import 'package:apc_pro/consts/app_colors.dart';
 import 'package:apc_pro/consts/app_fonts.dart';
@@ -36,32 +33,24 @@ class _BottomNavBarState extends State<BottomNavBar> {
   void updateItems() {
     items = [
       {
-        'image': currentIndex == 0
-            ? Assets.imagesHomefilled
-            : Assets.imagesHomeunfilled,
+        'image':  Assets.imagesHomeunfilled,
         'label': 'Home'.tr,
       },
       {
-        'image': currentIndex == 1
-            ? Assets.imagesCommunityfilled
-            : Assets.imagesCommunityunfilled,
+        'image':  Assets.imagesCommunityunfilled,
         'label': 'Community'.tr,
       },
       {
         // Placeholder for FAB notch
-        'image': '',
+        'image': Assets.imagesLogo1,
         'label': '',
       },
       {
-        'image': currentIndex == 3
-            ? Assets.imagesNotificationfilled
-            : Assets.imagesNotificationunfilled,
-        'label': 'Notification'.tr,
+        'image': Assets.imagesNotificationunfilled,
+        'label': 'Jobs'.tr,
       },
       {
-        'image': currentIndex == 4
-            ? Assets.imagesProfilefilled
-            : Assets.imagesProfileunfilled,
+        'image':  Assets.imagesProfileunfilled,
         'label': 'Profile'.tr,
       },
     ];
@@ -69,56 +58,58 @@ class _BottomNavBarState extends State<BottomNavBar> {
 
   @override
   Widget build(BuildContext context) {
+     final isDarkMode = Theme.of(context).brightness == Brightness.dark;
+
     final List<Widget> screens = [
       Home(),
       Community(),
       Home(),
-      Notificationss(),
+     Job(),
       Profile()
     ];
 
     return Scaffold(
+  
       body: screens[currentIndex],
-      bottomNavigationBar: BottomAppBar(
-        shape: const CircularNotchedRectangle(),
-        notchMargin: 0,
-        color: kbackground,
-        child: SizedBox(
-          height: Platform.isIOS ? 90 : 70,
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: [
-              buildNavItem(0),
-              buildNavItem(1),
-              const SizedBox(width: 30),
-              buildNavItem(3),
-              buildNavItem(4),
-            ],
+      bottomNavigationBar: Container(
+        margin: EdgeInsets.symmetric(vertical: 20,horizontal: 20),
+        decoration: BoxDecoration(
+color: getfillcolor(context),
+          borderRadius: BorderRadius.circular(40),
+          
+        ),
+        child: ClipRRect(
+          borderRadius: BorderRadius.circular(40),
+          child: BottomAppBar(
+            
+            // shape: const CircularNotchedRectangle(),
+            // notchMargin: 0,
+            color: getfillcolor(context),
+            child: SizedBox(
+              height: Platform.isIOS ? 90 : 70,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  buildNavItem(0),
+                  buildNavItem(1),
+                  buildNavItem(2)
+,                  buildNavItem(3),
+                  buildNavItem(4),
+                ],
+              ),
+            ),
           ),
         ),
       ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-      floatingActionButton: Bounce(
-        onTap: () {
-          Get.bottomSheet(ApcAi(),
-              isScrollControlled: true,
-              barrierColor: kblackfill.withOpacity(0.5));
-          //  Get.offAll(()=>BottomNavBar(index: 0,));
-        },
-        child: Padding(
-          padding: const EdgeInsets.only(top: 30),
-          child: Image.asset(
-            Assets.imagesApcAI,
-            width: 77,
-            height: 77,
-          ),
-        ),
-      ),
+
     );
   }
 
   Widget buildNavItem(int index) {
-    bool isSelected = currentIndex == index;
+  bool isSelected = currentIndex == index;
+
+  // ✅ Special case for center icon (index 2)
+  if (index == 2) {
     return InkWell(
       onTap: () {
         setState(() {
@@ -126,25 +117,53 @@ class _BottomNavBarState extends State<BottomNavBar> {
           updateItems();
         });
       },
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          if (items[index]['image'] != '')
-            Image.asset(
-              items[index]['image'],
-              width: 23.7,
-              height: 25,
-            ),
-          if (items[index]['label'] != '')
-            MyText(
-              text: items[index]['label'],
-              fontFamily: AppFonts.gilroyMedium,
-              size: 12,
-              weight: isSelected ? FontWeight.w500 : FontWeight.w500,
-              color: isSelected ? ksecondary : kwhite,
-            ),
-        ],
+      child: Padding(
+        padding: const EdgeInsets.only(bottom: 8),
+        child: Image.asset(
+          Assets.imagesLogo1, // your center icon
+          width: 50,
+          height: 50,
+        ),
       ),
     );
   }
+
+  // ✅ Normal navigation items
+  return InkWell(
+    onTap: () {
+      setState(() {
+        currentIndex = index;
+        updateItems();
+      });
+    },
+    child: SizedBox(
+      width: 50,
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Image.asset(
+            items[index]['image'],
+            width: 20,
+            height: 20,
+            color: isSelected
+                ? getSecondaryColor(context)
+                : getTertiary(context),
+          ),
+          const SizedBox(height: 3),
+          MyText(
+            text: items[index]['label'],
+            fontFamily: AppFonts.gilroyMedium,
+            size: 11,
+            weight: FontWeight.w500,
+            textAlign: TextAlign.center,
+            color: isSelected
+                ? getSecondaryColor(context)
+                : getTertiary(context)
+          ),
+        ],
+      ),
+    ),
+  );
+}
+
 }

@@ -1,9 +1,12 @@
 import 'package:apc_pro/consts/app_colors.dart';
+import 'package:apc_pro/consts/app_fonts.dart';
 import 'package:apc_pro/controllers/survey_controller.dart';
 import 'package:apc_pro/generated/assets.dart';
+import 'package:apc_pro/view/widgets/custom_check_box.dart';
 import 'package:apc_pro/view/widgets/custome_comtainer.dart';
 import 'package:apc_pro/view/widgets/expanded_row.dart';
 import 'package:apc_pro/view/widgets/my_button.dart';
+import 'package:apc_pro/view/widgets/my_text_widget.dart';
 import 'package:apc_pro/view/widgets/toolTip.dart';
 import 'package:bounce/bounce.dart';
 import 'package:flutter/material.dart';
@@ -14,6 +17,7 @@ class CareerStage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isDarkMode = Theme.of(context).brightness == Brightness.dark;
     final controller = Get.find<SurveyController>();
 
     List<Map<String, dynamic>> career = [
@@ -26,7 +30,8 @@ class CareerStage extends StatelessWidget {
       },
       {
         'title': 'Final Assessment Candidate',
-        'description': 'Submission window; Case study & Interview prep',
+        'description':
+            'Completed structured training and submitted your final summary of experience. Preparing for your final assessment interview.',
         'onTap': () {
           // Navigate to Final Assessment Candidate screen
         }
@@ -39,7 +44,7 @@ class CareerStage extends StatelessWidget {
         }
       },
       {
-        'title': 'RICS Counsellor',
+        'title': 'APC Counsellor',
         'description': 'Submission window; Case study & Interview prep',
         'onTap': () {
           // Navigate to RICS Counsellor screen
@@ -68,23 +73,23 @@ class CareerStage extends StatelessWidget {
           height: 25,
         ),
         Row(
-          spacing: 25,
           children: [
-            Expanded(
-              child: MyButton(
-                mTop: 30,
-                backgroundColor: klighblue,
-                fontColor: ksecondary,
-                buttonText: 'Back',
-                onTap: () {
+            Bounce(   onTap: () {
                   controller.previousStep();
                 },
-              ),
+                child: Image.asset(
+              isDarkMode ? Assets.imagesBackbutton : Assets.imagesBackbutton2,
+              width: 48,
+              height: 45,
+            )),
+            SizedBox(
+              width: 12,
             ),
             Expanded(
               child: MyButton(
-                mTop: 30,
+                backgroundColor: getSecondaryColor(context).withOpacity(0.1),
                 buttonText: 'Continue',
+                fontColor: getTertiary(context),
                 onTap: () {
                   controller.nextStep();
                 },
@@ -97,9 +102,10 @@ class CareerStage extends StatelessWidget {
   }
 }
 
-class CareerStageContainer extends StatelessWidget {
+class CareerStageContainer extends StatefulWidget {
   final String? title, desc;
   final VoidCallback? ontap;
+
   const CareerStageContainer({
     super.key,
     this.title,
@@ -108,31 +114,62 @@ class CareerStageContainer extends StatelessWidget {
   });
 
   @override
+  State<CareerStageContainer> createState() => _CareerStageContainerState();
+}
+
+class _CareerStageContainerState extends State<CareerStageContainer> {
+  bool isExpanded = false;
+
+  @override
   Widget build(BuildContext context) {
-    return CustomeContainer(
-      borderColor: kblueBorder,
-    
-      radius: 8,
-      widget: Row(
-        children: [
-          Expanded(
-              child: TwoTextedColumn(
-            text1: title ?? 'APC Candidate?',
-            text2: desc ?? 'Working towards APC qualification',
-            size1: 16,
-            size2: 12,
-            weight1: FontWeight.bold,
-          )),
-          SizedBox(
-            width: 8,
-          ),
-          // Image.asset(
-          //   Assets.imagesQuestionmark,
-          //   width: 18,
-          //   height: 18,
-          // ),
-          TooltipIcon()
-        ],
+    return GestureDetector(
+      onTap: () {
+        setState(() {
+          isExpanded = !isExpanded;
+        });
+        if (widget.ontap != null) widget.ontap!();
+      },
+      child: CustomeContainer(
+        color: getfillcolor(context),
+        radius: 8,
+        widget: Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            CustomCheckBox(
+              isActive: true,
+              onTap: () {
+                // setState(() {
+                //   isExpanded = !isExpanded;
+                // });
+              },
+              iscircle: true,
+              iconColor: getSecondaryColor(context),
+            ),
+            const SizedBox(width: 12),
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  MyText(
+                    text: widget.title ?? 'APC Candidate?',
+                    fontFamily: AppFonts.gilroySemiBold,
+                    size: 14,
+                    paddingBottom: 5,
+                  ),
+                  if (isExpanded)
+                    MyText(
+                      text: widget.desc ?? 'Working towards APC qualification',
+                      size: 13,
+                      color: Colors.grey,
+                      paddingTop: 3,
+                    ),
+                ],
+              ),
+            ),
+            const SizedBox(width: 8),
+           Image.asset(Assets.imagesGoldbulb,width: 24,height: 24,)
+          ],
+        ),
       ),
     );
   }

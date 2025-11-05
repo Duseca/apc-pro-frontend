@@ -1,17 +1,25 @@
 import 'package:apc_pro/consts/app_colors.dart';
 import 'package:apc_pro/consts/app_fonts.dart';
 import 'package:apc_pro/generated/assets.dart';
-import 'package:apc_pro/view/screens/home/submittion_planner/ai_planning_assistant.dart';
+import 'package:apc_pro/main.dart';
 import 'package:apc_pro/view/screens/profile/contact_support.dart';
 import 'package:apc_pro/view/screens/profile/edit_profile.dart';
 import 'package:apc_pro/view/screens/profile/faqs.dart';
-import 'package:apc_pro/view/screens/profile/subscription.dart';
+import 'package:apc_pro/view/screens/profile/language.dart';
+import 'package:apc_pro/view/screens/profile/notification_pref.dart';
+import 'package:apc_pro/view/screens/profile/saved_items.dart';
+import 'package:apc_pro/view/screens/profile/subscription/subscription.dart';
 import 'package:apc_pro/view/screens/profile/terms_services.dart';
+import 'package:apc_pro/view/screens/profile/theme_pref.dart';
 import 'package:apc_pro/view/widgets/appbar.dart';
+import 'package:apc_pro/view/widgets/common_image_view_widget.dart';
 import 'package:apc_pro/view/widgets/custom_row.dart';
+import 'package:apc_pro/view/widgets/custome_comtainer.dart';
 import 'package:apc_pro/view/widgets/dialogboxes.dart';
+import 'package:apc_pro/view/widgets/expanded_row.dart';
 import 'package:apc_pro/view/widgets/my_text_widget.dart';
 import 'package:apc_pro/view/widgets/profile_widgets/profile_widgets.dart';
+import 'package:apc_pro/view/widgets/progress_indicator.dart';
 import 'package:bounce/bounce.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -27,83 +35,95 @@ class Profile extends StatelessWidget {
     final List<Map<String, dynamic>> drawerItems = [
       {
         'title': 'Select Theme',
-        'icon': Assets.imagesMoon,
+        //'icon': Assets.imagesMoon,
         'onTap': () {
-          // Handle theme selection
+          Get.to(() => ThemePref());
         }
       },
       {
         'title': 'Language',
-        'icon': Assets.imagesGlobe,
+        //'icon': Assets.imagesGlobe,
         'onTap': () {
-          // Handle language selection
+         Get.to(() => Language());
         }
       },
       {
         'title': 'Edit Profile',
-        'icon': Assets.imagesEdit2,
+        // 'icon': Assets.imagesEdit2,
         'onTap': () {
           Get.to(() => EditProfile());
         }
       },
       {
         'title': 'Saved Items',
-        'icon': Assets.imagesSaved,
+        // 'icon': Assets.imagesSaved,
         'onTap': () {
-          // Handle saved items
+          Get.to(() => SavedItems());
         }
       },
       {
         'title': 'Subscription and Billings',
-        'icon': Assets.imagesCards,
+        //'icon': Assets.imagesCards,
         'onTap': () {
           Get.to(() => Subscription());
         }
       },
       {
         'title': 'Notification Preferences',
-        'icon': Assets.imagesNotification,
-        'onTap': () {}
+        //'icon': Assets.imagesNotification,
+        'onTap': () {
+            Get.to(() => NotificationPref());
+        }
       },
       {
         'title': 'Contact Support',
-        'icon': Assets.imagesComment,
+        //'icon': Assets.imagesComment,
         'onTap': () {
           Get.to(() => ContactSupport());
         }
       },
       {
         'title': 'FAQ’s & Help Center',
-        'icon': Assets.imagesMes3,
+        // 'icon': Assets.imagesMes3,
         'onTap': () {
           Get.to(() => Faqs());
         }
       },
       {
         'title': 'Submit Feedback',
-        'icon': Assets.imagesStar,
+        //'icon': Assets.imagesStar,
         'onTap': () {
           Get.to(() => Reviews());
         }
       },
       {
         'title': 'Terms Of Service',
-        'icon': Assets.imagesDocument,
+        //'icon': Assets.imagesDocument,
         'onTap': () {
           Get.to(() => TermsConditions());
         }
       },
       {
         'title': 'Privacy Policy',
-        'icon': Assets.imagesPrivacy,
+        // 'icon': Assets.imagesPrivacy,
         'onTap': () {
           Get.to(() => PrivacyPolicy());
         }
       },
-      {'title': 'Export Data', 'icon': Assets.imagesExport2, 'onTap': () {}},
+      {
+        'title': 'Export Data',
+        //'icon': Assets.imagesExport2,
+        'onTap': () {}
+      },
+      {
+        'title': 'Delete Account',
+        // 'icon': Assets.imagesExport2,
+        'onTap': () {},
+        'color':kred,
+      },
       {
         'title': 'Logout',
-        'icon': Assets.imagesLogout,
+        //'icon': Assets.imagesLogout,
         'onTap': () {
           SuccessDialog.showSuccessDialog('Logout', context,
               message: 'Are you sure you want to logout?',
@@ -118,7 +138,13 @@ class Profile extends StatelessWidget {
         }
       },
     ];
-
+    final accPersonal = drawerItems.sublist(0, 2); // 1,2
+    final profileMgmt = drawerItems.sublist(2, 4); // next 2
+    final billing = drawerItems.sublist(4, 5); // 1
+    final pref = drawerItems.sublist(5, 6); // 1
+    final support = drawerItems.sublist(6, 9); // 3
+    final privacy = drawerItems.sublist(9, 11); // 2
+    final security = drawerItems.sublist(11);
     return Scaffold(
         appBar: simpleAppBar(
             context: context,
@@ -135,128 +161,243 @@ class Profile extends StatelessWidget {
                     const EdgeInsets.symmetric(vertical: 15, horizontal: 20),
                 physics: const BouncingScrollPhysics(),
                 children: [
-                  AddProfileImg(),
-                  Center(
-                    child: MyText(
-                      paddingTop: 12,
-                      text: 'Robert Fox',
-                      size: 18,
-                      fontFamily: AppFonts.gilroyMedium,
-                    ),
-                  ),
                   Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      profile_iinfo_widget(
-                        icon: Assets.imagesPathwat,
-                      ),
-                      profile_iinfo_widget(
-                        icon: Assets.imagesPathwat,
-                        title: 'Career Stage',
-                        desc: 'APC Candidate',
-                      ),
-                    ],
-                  ),
-                  SizedBox(
-                    height: 15,
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      profile_iinfo_widget(
-                        title: 'Region',
-                        icon: Assets.imagesGlobe,
-                        desc: 'North America',
-                      ),
-                      profile_iinfo_widget(
-                        icon: Assets.imagesClock,
-                        title: 'Member Since',
-                        desc: '08/25/2025',
-                      ),
-                    ],
-                  ),
-                  SizedBox(
-                    height: 14,
-                  ),
-                  Center(
-                    child: row_widget(
-                      title: 'Progress Summary',
-                      icon: Assets.imagesAward,
-                      iconColor: kwhite,
-                      iconSize: 20,
-                      texSize: 18,
-                      fontFamily: AppFonts.gilroyBold,
-                    ),
-                  ),
-                  Row(
-                    spacing: 10,
-                    children: [
-                      Expanded(
-                        child: recommendations(
-                          bgColor: Color(0xff2AA4F4),
-                          text1: '75%',
-                          text2: 'Overall Progress',
-                        ),
+                      CommonImageView(
+                        url: dummyImage,
+                        radius: 100,
+                        width: 64,
+                        height: 64,
                       ),
                       Expanded(
-                        child: recommendations(
-                          bgColor: ksecondary,
-                          text2: 'Badge',
-                          text1: '1',
+                        child: MyText(
+                          paddingLeft: 10,
+                          text: 'Robert Fox',
+                          size: 20,
+                          fontFamily: AppFonts.gilroyBold,
                         ),
                       ),
                     ],
                   ),
-                  SizedBox(
-                    height: 40,
+                  CustomeContainer(
+                    mtop: 20,
+                    mbott: 20,
+                    radius: 8,
+                    color: getfillcolor(context),
+                    vpad: 16,
+                    hpad: 16,
+                    widget: Column(
+                      spacing: 12,
+                      children: [
+                        ExpandedRow(
+                          text1: 'Pathway',
+                          text2: 'Project Management',
+                          size1: 14,
+                          size2: 14,
+                        ),
+                        ExpandedRow(
+                          text1: 'Career Stage',
+                          text2: 'APC Candidate',
+                          size1: 14,
+                          size2: 14,
+                        ),
+                        ExpandedRow(
+                          text1: 'Region',
+                          text2: 'North America',
+                          size1: 14,
+                          size2: 14,
+                        ),
+                        ExpandedRow(
+                          text1: 'Member Since',
+                          text2: '08/25/2025',
+                          size1: 14,
+                          size2: 14,
+                        ),
+                      ],
+                    ),
                   ),
-                  ListView.builder(
-                    padding: EdgeInsets.all(0),
-                    shrinkWrap: true,
-                    physics: const NeverScrollableScrollPhysics(),
-                    itemCount: drawerItems.length,
-                    itemBuilder: (context, index) {
-                      final item = drawerItems[index];
-
-                      final widgetTile = index == 5
-                          ? buildDrawerItem(
-                              item['title'],
-                              item['icon'],
-                              hasSwitch: true,
-                              hasShadow: true,
-                            )
-                          : Bounce(
-                              onTap: item['onTap'],
-                              duration: Duration(milliseconds: 10),
-                              child: buildDrawerItem(
-                                item['title'],
-                                item['icon'],
-                                hasIcon:
-                                    index == 0 || index == 1 ? true : false,
-                                hasShadow: true,
-                              ),
-                            );
-
-                      return Column(
-                        children: [
-                          widgetTile,
-                          if ([1, 4, 5, 8, 10, 11].contains(index))
-                            Padding(
-                              padding: const EdgeInsets.only(bottom: 22),
-                              child: Divider(
-                                color: Color(0xff0D336C),
-                                // thickness: 0.7,
-                                // height: 16,
-                              ),
+                  row_widget(
+                    title: 'Progress Summary',
+                    icon: Assets.imagesAward,
+                    iconColor: getSecondaryColor(context),
+                    iconSize: 20,
+                    texSize: 18,
+                    fontFamily: AppFonts.gilroyBold,
+                  ),
+                  CustomeContainer(
+                    mtop: 20,
+                    mbott: 20,
+                    radius: 8,
+                    color: getfillcolor(context),
+                    vpad: 16,
+                    hpad: 16,
+                    widget: Column(
+                      spacing: 12,
+                      children: [
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            TwoTextedColumn(
+                              text1: '75%',
+                              text2: 'Overall Progress',
+                              size1: 24,
+                              size2: 14,
+                              align: TextAlign.center,
+                              fontFamily:AppFonts.gilroyBold,
+                              fontFamily2: AppFonts.gilroyMedium,
+                              alignment: ColumnAlignment.center,
                             ),
-                        ],
-                      );
-                    },
+                            TwoTextedColumn(
+                              text1: '1',
+                              text2: 'Badge',
+                              size1: 24,
+                              size2: 14,
+                              align: TextAlign.center,
+                              fontFamily: AppFonts.gilroyBold,
+                                 fontFamily2: AppFonts.gilroyMedium,
+                              alignment: ColumnAlignment.center,
+                            ),
+                          ],
+                        ),
+                        linearProgressIndicatorr(
+                          height: 6,
+                        )
+                      ],
+                    ),
+                  ),
+                  MyText(
+                    text: 'Account & Personalization',
+                    size: 16,
+                    fontFamily: AppFonts.gilroyBold,
+                    paddingBottom: 12,
+                  ),
+                  profile_container(
+                    count: accPersonal.length,
+                    items: accPersonal,
+                  ),
+                  MyText(
+                    text: 'Profile Management',
+                    size: 16,
+                    fontFamily: AppFonts.gilroyBold,
+                    paddingBottom: 12,
+                  ),
+                  profile_container(
+                    count: profileMgmt.length,
+                    items: profileMgmt,
+                  ),
+                  MyText(
+                    text: 'Account & Billing',
+                    size: 16,
+                    fontFamily: AppFonts.gilroyBold,
+                    paddingBottom: 12,
+                  ),
+                  profile_container(
+                    count: billing.length,
+                    items: billing,
+                  ),
+                  MyText(
+                    text: 'Preferences & Settings',
+                    size: 16,
+                    fontFamily: AppFonts.gilroyBold,
+                    paddingBottom: 12,
+                  ),
+                  profile_container(
+                    count: pref.length,
+                    items: pref,
+                  ),
+                  MyText(
+                    text: 'Support & Help',
+                    size: 16,
+                    fontFamily: AppFonts.gilroyBold,
+                    paddingBottom: 12,
+                  ),
+                  profile_container(
+                    count: support.length,
+                    items: support,
+                  ),
+                  MyText(
+                    text: 'Legal & Privacy',
+                    size: 16,
+                    fontFamily: AppFonts.gilroyBold,
+                    paddingBottom: 12,
+                  ),
+                  profile_container(
+                    count: privacy.length,
+                    items: privacy,
+                  ),
+                  MyText(
+                    text: 'Data & Security',
+                    size: 16,
+                    fontFamily: AppFonts.gilroyBold,
+                    paddingBottom: 12,
+                  ),
+                  profile_container(
+                    count: security.length,
+                    items: security,
+                    textColor: security.length == 1
+                        ? kred
+                        : getSecondaryColor(context),
                   ),
                 ],
               ),
             ),
           ],
         ));
+  }
+}
+
+class profile_container extends StatelessWidget {
+  final int count;
+  final Color? textColor;
+  final List<Map<String, dynamic>> items;
+  const profile_container({
+    super.key,
+    required this.count,
+    required this.items,
+    this.textColor,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return CustomeContainer(
+      mbott: 22,
+      color: getfillcolor(context),
+      vpad: 16,
+      hpad: 16,
+      radius: 8,
+      widget: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          ListView.separated(
+            separatorBuilder: (context, index) {
+              return Padding(
+                padding: const EdgeInsets.only(bottom: 8, top: 8),
+                child: Divider(
+                  color: getfifth(context),
+                ),
+              );
+            },
+            padding: EdgeInsets.all(0),
+            shrinkWrap: true,
+            physics: const NeverScrollableScrollPhysics(),
+            itemCount:
+                count, // drawerItems.length >= 2 ? 2 : drawerItems.length,
+            itemBuilder: (context, index) {
+              final item = items[index]; //drawerItems[index];
+              return Bounce(
+                onTap: item['onTap'],
+                duration: Duration(milliseconds: 10),
+                child: buildDrawerItem(
+                    item['title'],
+                    // item['icon'],
+                    context,
+                    hasIcon: true,
+                    contentColor:item['color']),
+              );
+            },
+          ),
+        ],
+      ),
+    );
   }
 }

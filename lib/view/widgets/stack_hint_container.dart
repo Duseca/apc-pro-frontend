@@ -1,72 +1,50 @@
 import 'package:apc_pro/consts/app_colors.dart';
+import 'package:apc_pro/consts/app_fonts.dart';
 import 'package:apc_pro/generated/assets.dart';
 import 'package:apc_pro/view/widgets/button_container.dart';
 import 'package:apc_pro/view/widgets/custome_comtainer.dart';
 import 'package:apc_pro/view/widgets/my_text_widget.dart';
+import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
 
-class StackHintContainer extends StatelessWidget {
-  final String?hint;
-final Widget? widget;
-  const StackHintContainer({super.key, this.hint, this.widget});
+class AttachmentContainer extends StatelessWidget {
+  final String? hint;
+  final Widget? widget;
+  const AttachmentContainer({super.key, this.hint, this.widget});
 
   @override
   Widget build(BuildContext context) {
-    return   Stack(
-                 clipBehavior: Clip.none,
-                    children: [
-                 
-                      CustomeContainer(
-                        mbott: 20,
-                        radius: 8,
-                        borderColor: kblueBorder,
-                        widget:widget?? Column(
-                          children: [
-                            SizedBox(
-                              height: 8,
-                            ),
-                            Row(
-                              spacing: 10,
-                              children: [
-                                buttonContainer(
-                                  imagePath: Assets.imagesMinus,
-                                  radius: 6,
-                                  vPadding: 5,
-                                  hPadding: 16,
-                                  bgColor: kbackground,
-                                  borderColor: kblueBorder,
-                                ),
-                                Expanded(
-                                  child: CustomeContainer(
-                                    vpad: 5,
-                                    borderColor: kblueBorder,
-                                    radius: 6,
-                                    widget: Center(child: MyText(text: '1')),
-                                  ),
-                                ),
-                                buttonContainer(
-                                  imagePath: Assets.imagesAdd,
-                                  radius: 6,
-                                  vPadding: 5,
-                                  hPadding: 16,
-                                  bgColor: kbackground,
-                                  borderColor: kblueBorder,
-                                )
-                              ],
-                            ),
-                          ],
-                        ),
-                      ),
-                           Positioned(
-                        left: 13.5,
-                        top: -9,
-                        child: MyText(
-                          bgColor: kbackground,
-                          text:hint?? 'Days Committed *',
-                          size: 14,
-                        ),
-                      ),
-                    ],
-                  );
+    return DottedBorder(
+      radius: Radius.circular(8),
+      borderType: BorderType.RRect,
+      color: getSecondaryColor(context),
+      dashPattern: [4,4],
+      padding: EdgeInsets.symmetric(vertical: 15,horizontal: 12),
+      child: Column(
+        children: [
+        Center(child: Image.asset(Assets.imagesAttachment,width: 40,)),
+                 Center(
+              child: MyText(
+                paddingTop: 10,
+            text:
+                'Add files',
+            size: 14,
+            color: getTertiary(context),
+            textAlign: TextAlign.center,
+            paddingBottom: 4,
+            fontFamily: AppFonts.gilroyMedium,
+          )),
+          Center(
+              child: MyText(
+            text:
+                'Upload supporting documents, images, or other relevant files',
+            size: 12,
+            color: getTertiary(context),
+            textAlign: TextAlign.center,
+          )),
+      
+        ],
+      ),
+    );
   }
 }

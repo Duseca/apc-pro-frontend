@@ -55,11 +55,13 @@ class QuizPractice extends StatelessWidget {
               SizedBox(
                 height: 9,
               ),
-              linearProgressIndicatorr(),
+              linearProgressIndicatorr(
+                height: 10,
+              ),
               CustomeContainer(
                 radius: 10,
-                borderColor: kblueBorder2,
-                color: kblackfill,
+               borderColor: getSecondaryColor(context),
+                color: getfillcolor(context),
                 vpad: 17,
                 hpad: 13,
                 mbott: 20,
@@ -93,33 +95,39 @@ class QuizPractice extends StatelessWidget {
                           message:
                               'Your progress has been saved. You can resume anytime',
                           image: Assets.imagesPause2,
+                          
                           hasSecbutton: true,
                           ButtonText: 'Resume Quiz ',
                           button2text: 'Exit Quiz',
-                          bgColor: kbackground,
+                          bgColor: getfillcolor(context),
                           twoButtonsInColumn: true,
+                          iconColor: getSecondaryColor(context),
                           imgSize: 64);
                     },
                     text: 'Pause',
-                    txtColor: Color(0xff03709F),
-                    borderColor: Color(0xff03709F),
+                    imagePath: Assets.imagesPause,
+                    imageSize: 12,
+                    iconColor: getSecondaryColor(context),
+                    txtColor: getSecondaryColor(context),
+                    borderColor: getSecondaryColor(context),
                     radius: 4,
                     vPadding: 3,
                     hPadding: 8,
-                    bgColor: kbackground,
+                    bgColor: ktransparent,
                   ),
                   Spacer(),
                   MyText(
                     text: 'Skip',
                     size: 14,
                     fontFamily: AppFonts.gilroyMedium,
+                    decoration: TextDecoration.underline,
                   )
                 ],
               ),
               CustomeContainer(
                 radius: 10,
-                borderColor: kblueBorder2,
-                color: kblackfill,
+               borderColor: getSecondaryColor(context),
+                color: getfillcolor(context),
                 vpad: 17,
                 hpad: 13,
                 mbott: 20,
@@ -127,15 +135,9 @@ class QuizPractice extends StatelessWidget {
                 widget: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Wrap(
-                      spacing: 8,
-                      runSpacing: 6,
-                      children: quizTags.map((tag) {
-                        return TagsWidget(tag);
-                      }).toList(),
-                    ),
+             
                     MyText(
-                      paddingTop: 10,
+                      
                       text:
                           'Critically assess the long-term impacts of Ethics, Rules of Conduct and Professionalism strategies',
                       size: 16,
@@ -151,12 +153,12 @@ class QuizPractice extends StatelessWidget {
                         return Padding(
                             padding: const EdgeInsets.only(bottom: 0),
                             child: CustomeContainer(
-                                radius: 10,
-                                borderColor: kblueBorder2,
-                                color: kblackfill,
+                                radius: 8,
+                               borderColor: getSecondaryColor(context),
+                                color: getfillcolor(context),
                                 vpad: 17,
                                 hpad: 14,
-                                mbott: 23,
+                                mbott: 18,
                                 widget: Column(
                                     crossAxisAlignment:
                                         CrossAxisAlignment.start,
@@ -167,8 +169,8 @@ class QuizPractice extends StatelessWidget {
                                             isActive: true,
                                             onTap: () {},
                                             iscircle: true,
-                                            iconColor: kblueBorder2,
-                                            borderColor: kblueBorder2,
+                                            iconColor: getSecondaryColor(context),
+                                           
                                             selectedColor: kbackground,
                                             unSelectedColor: kbackground,
                                             size: 13,
@@ -178,33 +180,49 @@ class QuizPractice extends StatelessWidget {
                                             child: MyText(
                                               text: checkPoints[index],
                                               size: 11,
-                                              fontFamily: AppFonts.gilroyMedium,
+                                              fontFamily: AppFonts.gilroySemiBold,
                                               paddingLeft: 8,
                                             ),
                                           )
                                         ],
-                                      )
+                                      ),
+
                                     ])));
                       },
+                    ),
+                           Wrap(
+                      spacing: 8,
+                      runSpacing: 6,
+                      children: quizTags.map((tag) {
+                        return TagsWidget(tag);
+                      }).toList(),
                     ),
                   ],
                 ),
               ),
               Row(
-                spacing: 20,
+                spacing: 45,
                 children: [
                   Expanded(
                       child: MyButton(
-                    backgroundColor: klighblue,
-                    fontColor: ksecondary,
+                    backgroundColor: ktransparent,
+                    fontColor: getSecondaryColor(context),
+                    outlineColor: getSecondaryColor(context),
                     buttonText: 'Back',
+                    radius: 8,
+                    height: 52,
                     onTap: () {
                       Get.back();
                     },
                   )),
                   Expanded(
                       child: MyButton(
+                          backgroundColor: getfillcolor(context),
+                    fontColor: getSecondaryColor(context),
+                    outlineColor: getSecondaryColor(context),
                     buttonText: 'Next',
+                    height: 52,
+                    radius: 8,
                   ))
                 ],
               )
@@ -234,7 +252,7 @@ class _NumberGridState extends State<NumberGrid> {
         crossAxisCount: 5,
         crossAxisSpacing: 10,
         mainAxisSpacing: 10,
-        mainAxisExtent: 55,
+        mainAxisExtent: 52,
       ),
       itemBuilder: (context, index) {
         return Obx(() {
@@ -244,11 +262,11 @@ class _NumberGridState extends State<NumberGrid> {
             onTap: () => selectedIndex.value = index,
             child: CustomeContainer(
               radius: 6,
-              borderColor: kblueBorder4,
-              color: isSelected ? ksecondary : Color(0xff477DCC),
+              borderColor: getSecondaryColor(context),
+              color: isSelected ? getSecondaryColor(context) : getfifth(context),
               vpad: 10,
               hpad: 10,
-              widget: Center(child: MyText(text: number.toString())),
+              widget: Center(child: MyText(text: number.toString(),color: isSelected?getsplashcolor(context):getSecondaryColor(context),size: 13,)),
             ),
           );
         });

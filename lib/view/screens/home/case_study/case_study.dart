@@ -56,13 +56,13 @@ class CaseStudy extends StatelessWidget {
                     radius: 10,
                     vpad: 17,
                     hpad: 17,
-                    color: kblackfill,
-                    borderColor: kblueBorder3,
+                    color: getfillcolor(context),
                     widget: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         row_widget(
                           icon: Assets.imagesBook,
+                          iconColor: getSecondaryColor(context),
                           iconSize: 19,
                           title: 'Project Information',
                           texSize: 14,
@@ -76,6 +76,7 @@ class CaseStudy extends StatelessWidget {
                             Assets.imagesBook,
                             width: 40,
                             height: 40,
+                            color: getSecondaryColor(context),
                           ),
                         ),
                         SizedBox(
@@ -85,11 +86,12 @@ class CaseStudy extends StatelessWidget {
                           text1: 'Project Information Required',
                           text2:
                               'Add details about your project to begin your case study',
-                          size1: 20,
-                          size2: 18,
+                          size1: 18,
+                          size2: 14,
                           fontFamily2: AppFonts.gilroyMedium,
                           fontFamily: AppFonts.gilroyBold,
                           align: TextAlign.center,
+                          color2: getTertiary(context),
                           alignment: ColumnAlignment.center,
                         ),
                         MyButton(
@@ -98,9 +100,12 @@ class CaseStudy extends StatelessWidget {
                           },
                           mTop: 30,
                           mhoriz: 20,
+                          outlineColor: getSecondaryColor(context),
+                          backgroundColor: ktransparent,
                           buttonText: '+ Add Project Details',
                           mBottom: 20,
-                          fontFamily: AppFonts.gilroyBold,
+                          fontColor: getSecondaryColor(context),
+                          fontFamily: AppFonts.gilroySemiBold,
                         )
                       ],
                     ),
@@ -110,8 +115,7 @@ class CaseStudy extends StatelessWidget {
                     radius: 10,
                     vpad: 17,
                     hpad: 17,
-                    color: kblackfill,
-                    borderColor: kblueBorder3,
+                    color: getfillcolor(context),
                     widget: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
@@ -131,13 +135,21 @@ class CaseStudy extends StatelessWidget {
                             count: '0/3000',
                           )
                         ]),
-                    mbott: 20,
+                    mbott: 16,
+                  ),
+                  newEntry_container(
+                    icon: Assets.imagesDocument,
+                    title: 'Export Case Study',
+                    desc: 'Export case study in DOCX or PDF formats',
+                    iconSize: 20,
+                    mbott: 16,
+                    iconColor: getSecondaryColor(context),
                   ),
                   CustomeContainer(
                     radius: 10,
                     vpad: 17,
                     hpad: 17,
-                    color: kblackfill,
+                    color: getfillcolor(context),
                     widget: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
@@ -147,19 +159,23 @@ class CaseStudy extends StatelessWidget {
                             fontFamily: AppFonts.gilroyBold,
                             paddingBottom: 10,
                           ),
-                          ListView.builder(
+                          ListView.separated(
+                            separatorBuilder:   (context, index) {
+                              final item = caseStudySections[index];
+                              return Padding(
+                                padding: const EdgeInsets.symmetric(vertical: 3),
+                                child: Divider(color: getsplashcolor(context),),
+                              );
+                            },
                             padding: EdgeInsets.all(0),
                             shrinkWrap: true,
                             physics: const NeverScrollableScrollPhysics(),
                             itemCount: caseStudySections.length,
                             itemBuilder: (context, index) {
                               final item = caseStudySections[index];
-                              return Padding(
-                                padding: const EdgeInsets.only(bottom: 25),
-                                child: _caseStudy_section_widget(
-                                  text1: item["text1"]!,
-                                  text2: item["text2"]!,
-                                ),
+                              return _caseStudy_section_widget(
+                                text1: item["text1"]!,
+                                text2: item["text2"]!,
                               );
                             },
                           ),
@@ -169,24 +185,32 @@ class CaseStudy extends StatelessWidget {
                   newEntry_container(
                     title: 'Competency Table',
                     desc: '0 Competencies demonstrated',
-                    icon: Assets.imagesAchievement,
+                    icon: Assets.imagesBadge2,
+                       iconSize: 20,
+                    mbott: 16,
+                    iconColor: getSecondaryColor(context),
                   ),
                   newEntry_container(
                     title: 'Appendices',
                     desc: '0 attachments uploaded',
-                    icon: Assets.imagesNewbook,
+                    icon: Assets.imagesAttachment2,
+                       iconSize: 20,
+                    mbott: 16,
+                     iconColor: getSecondaryColor(context),
                   ),
                   newEntry_container(
                     title: 'AI Assistance',
                     desc: 'Get writing help and suggestions',
-                    icon: Assets.imagesMagicpen,
+                    icon: Assets.imagesMagic2,
+                       iconSize: 20,
+                    mbott: 16,
+                     iconColor: getSecondaryColor(context),
                   ),
                   CustomeContainer(
                       mbott: 20,
                       hpad: 15,
-                      color: kblackfill,
+                      color: getfillcolor(context),
                       radius: 8,
-                      borderColor: kblueBorder3,
                       widget: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
@@ -194,27 +218,24 @@ class CaseStudy extends StatelessWidget {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Image.asset(
-                                  Assets.imagesMagicpen,
-                                  width: 24,
-                                  height: 24,
+                                  Assets.imagesInfo,
+                                  width: 20,
+                                  height: 20,
+                                  color: getSecondaryColor(context),
                                 ),
                                 SizedBox(
-                                  width: 18,
+                                  width: 10,
                                 ),
-                                Expanded(
-                                  child: TwoTextedColumn(
-                                    text1:
-                                        'Getting Started with your case study',
-                                    text2:
-                                        'Choose a project completed within the last 24 months that demonstrates your technical competencies\n\nAim for approximately 3,000 words total across all sections\n\nFocus on demonstrating Level 3 (reasoned advice) competencies where possible\n\nUse the AI assistant to help structure your content and ensure RICS compliance',
-                                    size1: 14,
-                                    size2: 11,
-                                    fontFamily: AppFonts.gilroyBold,
-                                    fontFamily2: AppFonts.gilroyMedium,
-                                  ),
-                                ),
+                                Expanded(child: MyText(text: 'Getting Started with your case study',fontFamily: AppFonts.gilroyBold,size: 14,)),
+                            
                               ],
                             ),
+
+                            MyText(text: 'Your case study must be completed within the last 24 months that demonstrates your Technical competencies.\n\nAim for approximately 3,000 words total across all sections.\n\nFocus on demonstrating Level 3 (reasoned advice) competencies where possible.\n\nUse the AI assistant to help structure your content and ensure RICS compliance.',
+                          color: getTertiary(context),
+                          paddingTop: 5,
+                          size: 14,
+                            )
                           ]))
                 ],
               ),
@@ -239,29 +260,34 @@ class _caseStudy_section_widget extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        MyText(
-          text: text1 ?? 'Introductions',
-          size: 14,
-          fontFamily: AppFonts.gilroyBold,
-          paddingBottom: 10,
-        ),
         Row(
           children: [
             Expanded(
-              child: Row(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   MyText(
+                    text: text1 ?? 'Introductions',
+                    size: 14,
+                    fontFamily: AppFonts.gilroyBold,
+                    paddingBottom: 8,
+                  ),
+              
+                  SizedBox(
+                    width: 140,
+                    child: linearProgressIndicatorr(
+                      value: 0,
+                      bgColor: getfifth(context),
+                      height: 7,
+                    ),
+                  ),
+                      MyText(
                     text: text2 ?? '0/500 words   Limit 600 words',
                     size: 12,
                     fontFamily: AppFonts.gilroyMedium,
                     paddingRight: 12,
-                  ),
-                  SizedBox(
-                    width: 50,
-                    child: linearProgressIndicatorr(
-                      value: 0,
-                      bgColor: Color(0xff54CAFA).withOpacity(0.1),
-                    ),
+                    paddingTop: 5,
+                    color: getTertiary(context),
                   ),
                 ],
               ),
@@ -274,7 +300,7 @@ class _caseStudy_section_widget extends StatelessWidget {
                 child: Image.asset(
                   Assets.imagesEdit,
                   width: 18,
-                  color: Color(0xff54CAFA),
+                  color: getSecondaryColor(context),
                 ))
           ],
         ),
@@ -308,7 +334,11 @@ class _progress_view extends StatelessWidget {
         SizedBox(
           height: 14,
         ),
-        linearProgressIndicatorr(),
+        linearProgressIndicatorr(
+          bgColor: getfifth(context),
+          value: 0.1,
+          height: 7,
+        ),
         SizedBox(
           height: 8,
         ),

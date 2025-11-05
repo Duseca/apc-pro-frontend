@@ -43,7 +43,7 @@ class DiffTextsTxt extends StatelessWidget {
             TextSpan(
               text: text1 ?? 'Already have an Account? ',
               style: TextStyle(
-                  color: color1 ?? kgrey,
+                  color: color1 ?? getTertiary(context),
                   fontSize: size ?? 14,
                   fontWeight: weight1 ?? FontWeight.w400,
                   fontFamily: fontFamily ?? AppFonts.gilroyRegular,
@@ -53,12 +53,12 @@ class DiffTextsTxt extends StatelessWidget {
               text: text2 ?? 'Login',
               recognizer: TapGestureRecognizer()..onTap = ontap,
               style: TextStyle(
-                  // shadows: [Shadow(color: ksecondary, offset: Offset(0, -2))],
-                  color: color2 ?? ksecondary,
+                  // shadows: [Shadow(color: getSecondaryColor(context), offset: Offset(0, -2))],
+                  color: color2 ?? getSecondaryColor(context),
                   //decoration: TextDecoration.underline,
                   fontSize: size2 ?? 14,
                   fontWeight: weight2 ?? FontWeight.w600,
-                  //decorationColor: ksecondary,
+                  //decorationColor: getSecondaryColor(context),
                   decorationThickness: 1,
                   decorationStyle: TextDecorationStyle.solid,
                   fontFamily: fontFamily2 ?? AppFonts.gilroyMedium,

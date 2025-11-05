@@ -10,6 +10,7 @@ class TagsWidget extends StatelessWidget {
   final VoidCallback? ontap;
   final bool? isSelected;
   final double? vpad, hpad;
+  final double? radius;
  TagsWidget(this.tag,
       {Key? key,
       this.bgColor,
@@ -18,7 +19,7 @@ class TagsWidget extends StatelessWidget {
       this.isSelected,
       this.vpad,
       this.hpad,
-      this.defaultbgColor, this.borderColor})
+      this.defaultbgColor, this.borderColor, this.radius})
       : super(key: key);
 
   bool _isSelected = false;
@@ -30,18 +31,18 @@ class TagsWidget extends StatelessWidget {
         child: Padding(
           padding: const EdgeInsets.only(right: 4),
           child: Container(
-          padding: EdgeInsets.symmetric(horizontal: 10,vertical: 2),
+          padding: EdgeInsets.symmetric(horizontal:hpad?? 10,vertical:vpad?? 4),
           decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(4),
-              color: ktransparent,
-              border: Border.all(color:borderColor?? ksecondary)
+            borderRadius: BorderRadius.circular(radius??4),
+              color:bgColor?? ktransparent,
+              border: Border.all(color:borderColor?? getSecondaryColor(context))
           ),
        
            child: MyText(
              text: tag,
              size: 11,
              fontFamily: AppFonts.gilroyMedium,
-             color: textColor??kwhite
+             color: textColor??getSecondaryColor(context)
            ),
           ),
         ));

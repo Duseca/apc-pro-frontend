@@ -10,14 +10,15 @@ import 'package:apc_pro/view/screens/home/submittion_planner/submittion_planner.
 import 'package:apc_pro/view/screens/home/summary_experience/summary_experience.dart';
 import 'package:apc_pro/view/screens/home/test_quiz/test_quiz.dart';
 import 'package:apc_pro/view/screens/survey/competency.dart';
-import 'package:apc_pro/view/screens/survey/cpd_studyPref.dart';
 import 'package:apc_pro/view/widgets/appbar.dart';
 import 'package:apc_pro/view/widgets/button_container.dart';
 import 'package:apc_pro/view/widgets/common_image_view_widget.dart';
+import 'package:apc_pro/view/widgets/custom_row.dart';
 import 'package:apc_pro/view/widgets/custome_comtainer.dart';
 import 'package:apc_pro/view/widgets/expanded_row.dart';
 import 'package:apc_pro/view/widgets/home_widgets.dart';
 import 'package:apc_pro/view/widgets/my_text_widget.dart';
+import 'package:bounce/bounce.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -25,6 +26,7 @@ class Home extends StatelessWidget {
   const Home({super.key});
   @override
   Widget build(BuildContext context) {
+    final isDarkMode = Theme.of(context).brightness == Brightness.dark;
     final List<Map<String, dynamic>> homeOptions = [
       {
         "icon": Assets.imagesDiary,
@@ -71,7 +73,29 @@ class Home extends StatelessWidget {
     ];
 
     return Scaffold(
-        appBar: simpleAppBar(context: context, haveBackButton: false),
+        appBar: simpleAppBar(
+            toolbarHeight: 62,
+            context: context,
+            haveBackButton: false,
+            title2: Image.asset(
+              Assets.imagesLogo3,
+              width: 65,
+              height: 19,
+              color: isDarkMode ? null : kblack,
+            ),
+            hasNonTextedTitle: true,
+            centerTitle: true,
+            actions: [
+              Bounce(
+                  child: Image.asset(
+                Assets.imagesBellIcon,
+                width: 22,
+                color: isDarkMode ? null : kblack,
+              )),
+              SizedBox(
+                width: 14,
+              )
+            ]),
         body: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
@@ -84,149 +108,141 @@ class Home extends StatelessWidget {
                 children: [
                   Row(
                     children: [
-                      Container(
-                        decoration: BoxDecoration(
-                            boxShadow: [
-                              BoxShadow(
-                                color: ksecondary,
-                                blurRadius: 12,
-                                spreadRadius: 2,
-                                offset: Offset(0, 0),
-                              ),
-                            ],
-                            shape: BoxShape.circle,
-                            border: Border.all(color: kblueBorder2, width: 2)),
-                        child: CommonImageView(
-                          url: dummyImage,
-                          radius: 100,
-                          width: 50,
-                          height: 50,
-                        ),
+                      CommonImageView(
+                        url: dummyImage,
+                        radius: 100,
+                        width: 50,
+                        height: 50,
                       ),
                       Expanded(
-                          child: MyText(
-                        paddingLeft: 8,
-                        text: 'Good Morning John',
-                        size: 15,
-                        weight: FontWeight.bold,
+                          child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          MyText(
+                            paddingLeft: 8,
+                            text: 'Good Morning John',
+                            size: 15,
+                            weight: FontWeight.bold,
+                            paddingBottom: 2,
+                          ),
+                          MyText(
+                            text:
+                                'APC Candidate\nQuantity Surveying and Construction',
+                            color: getTertiary(context),
+                            paddingLeft: 8,
+                            lineHeight: 1.5,
+                          )
+                        ],
                       )),
-                      SizedBox(
-                        width: 10,
+                    ],
+                  ),
+                  SizedBox(
+                    height: 15,
+                  ),
+                  Row(
+                    children: [
+                      Image.asset(
+                        Assets.imagesLogo1,
+                        width: 44,
+                        height: 44,
                       ),
-                      buttonContainer(
-                        onTap: () {
-                          Get.dialog(DailyUpdateDialog());
-                        },
-                        radius: 8,
-                        borderColor: ksecondary,
-                        bgColor: kbluefilled2,
-                        txtColor: ksecondary,
-                        text: 'Generate Daily Update',
-                        weight: FontWeight.bold,
-                        textsize: 11,
+                      SizedBox(
+                        width: 20,
+                      ),
+                      Expanded(
+                        child: buttonContainer(
+                          onTap: () {
+                            Get.dialog(DailyUpdateDialog());
+                          },
+                          radius: 8,
+                          bgColor: getfillcolor(context),
+                          txtColor: getSecondaryColor(context),
+                          text: 'Generate Daily Update',
+                          fontFamily: AppFonts.gilroyMedium,
+                          textsize: 12,
+                        ),
                       )
                     ],
                   ),
-                  //
+                  SizedBox(
+                    height: 20,
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      circular_indicator_stack(),
+                      circular_indicator_stack(
+                        title: 'CPD',
+                      ),
+                      circular_indicator_stack(
+                        title: 'Case Study',
+                      ),
+                    ],
+                  ),
+                  SizedBox(
+                    height: 20,
+                  ),
                   CustomeContainer(
-                    mtop: 27,
-                    //height: 500,
-                    hpad: 18,
-                    radius: 10,
-                    color: kblackfill,
+                    radius: 8,
+                    color: getfillcolor(context),
+                    vpad: 15,
+                    hpad: 14,
                     widget: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        SizedBox(
-                          height: 30,
-                        ),
                         Row(
+                          crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Expanded(
-                              flex: 3,
-                              child: Padding(
-                                padding: const EdgeInsets.only(left: 0),
-                                child: Row(
-                                  children: [
-                                    Stack(
-                                      alignment: Alignment.center,
-                                      children: [
-                                        SizedBox(
-                                          width: 120,
-                                          height: 120,
-                                          child: CircularProgressIndicator(
-                                            strokeWidth: 15,
-                                            backgroundColor:
-                                                kblueBorder2.withOpacity(0.49),
-                                            strokeCap: StrokeCap.round,
-                                            value: 0.3,
-                                            valueColor:
-                                                AlwaysStoppedAnimation<Color>(
-                                                    kblueBorder2),
-                                          ),
-                                        ),
-                                        Column(
-                                          mainAxisSize: MainAxisSize.min,
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.center,
-                                          children: [
-                                            MyText(
-                                              text: 'Overall Progress',
-                                              size: 12,
-                                              weight: FontWeight.w400,
-                                              paddingBottom: 5,
-                                            ),
-                                            MyText(
-                                              text: '10%',
-                                              size: 18,
-                                              weight: FontWeight.bold,
-                                            ),
-                                          ],
-                                        ),
-                                      ],
-                                    ),
-                                    SizedBox(
-                                      width: 18,
-                                    ),
-                                    Expanded(
-                                      flex: 2,
-                                      child: Column(
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                        children: [
-                                          MyText(
-                                            text: 'Today’s Actions',
-                                            size: 18,
-                                            weight: FontWeight.w800,
-                                            paddingBottom: 5,
-                                          ),
-                                          checkbox_row(
-                                            title:
-                                                'Complete Today’s Diary Entry',
-                                          ),
-                                          SizedBox(
-                                            height: 2,
-                                          ),
-                                          checkbox_row(
-                                            title: 'Review Competency Program',
-                                          ),
-                                          SizedBox(
-                                            height: 2,
-                                          ),
-                                          checkbox_row(
-                                            title: 'Upgrade Summary Draft',
-                                          ),
-                                        ],
-                                      ),
-                                    )
-                                  ],
-                                ),
+                              child: TwoTextedColumn(
+                                text1: "Complete Today's Diary Entry",
+                                text2:
+                                    "Don’t forget to fill in your diary before the day ends.",
+                                size1: 14,
+                                size2: 12,
+                                color2: getTertiary(context),
+                                fontFamily: AppFonts.gilroyBold,
+                                fontFamily2: AppFonts.gilroyRegular,
+                                mBottom: 1,
+                              ),
+                            ),
+                            CustomeContainer(
+                              vpad: 3,
+                              hpad: 3,
+                              radius: 5,
+                              color: getsplashcolor(context),
+                              widget: Column(
+                                children: [
+                                  Icon(
+                                    Icons.check_rounded,
+                                    color: getSecondaryColor(context),
+                                    size: 12,
+                                  ),
+                                  MyText(
+                                    text: '3',
+                                    color: getSecondaryColor(context),
+                                    paddingTop: 2,
+                                  )
+                                ],
                               ),
                             )
                           ],
                         ),
+                        SizedBox(
+                          height: 3,
+                        ),
+                        row_widget(
+                          title: 'View Now',
+                          iconData: Icons.keyboard_arrow_right_rounded,
+                          isIconRight: true,
+                          decor: TextDecoration.underline,
+                          onTap: () {},
+                        )
                       ],
                     ),
-                    mbott: 20,
+                  ),
+                  SizedBox(
+                    height: 20,
                   ),
                   GridView.builder(
                     itemCount: homeOptions.length,
@@ -248,7 +264,6 @@ class Home extends StatelessWidget {
                       );
                     },
                   ),
-
                   MyText(
                     text: 'Upcoming Deadlines',
                     size: 18,
@@ -260,79 +275,59 @@ class Home extends StatelessWidget {
                     padding: EdgeInsets.all(0),
                     shrinkWrap: true,
                     physics: const NeverScrollableScrollPhysics(),
-                    itemCount: 3,
+                    itemCount: 2,
                     itemBuilder: (context, index) {
                       return Padding(
-                        padding: const EdgeInsets.only(bottom: 15),
+                        padding: const EdgeInsets.only(bottom: 12),
                         child: home_deadline_widget(),
                       );
                     },
                   ),
-
                   MyText(
-                    text: 'Upcoming Deadlines',
+                    text: 'Recent Achievements',
                     size: 18,
                     weight: FontWeight.bold,
                     paddingBottom: 14,
-                    paddingTop: 20,
+                    paddingTop: 4,
                   ),
                   ListView.builder(
                     padding: EdgeInsets.all(0),
                     shrinkWrap: true,
                     physics: const NeverScrollableScrollPhysics(),
-                    itemCount: 1,
+                    itemCount: 2,
                     itemBuilder: (context, index) {
                       return Padding(
                         padding: const EdgeInsets.only(bottom: 15),
                         child: CustomeContainer(
                             radius: 8,
                             hpad: 14,
-                            borderColor: kblueBorder3,
-                            color: kblackfill,
+                            vpad: 15,
+                            color: getfillcolor(context),
                             widget: Row(children: [
                               Image.asset(
-                                Assets.imagesAchievement,
-                                width: 38,
-                                height: 38,
+                                index == 0
+                                    ? Assets.imagesDailystreak
+                                    : Assets.imagesCasetudy,
+                                width: 40,
+                                height: 40,
                               ),
                               SizedBox(
                                 width: 15,
                               ),
                               Expanded(
-                                child: Column(
-                                  children: [
-                                    ExpandedRow(
-                                      text1: 'First Steps',
-                                      text2: 'Milestone',
-                                      size1: 14,
-                                      size2: 12,
-                                      color2: kdarkSecondary,
-                                      weight1: FontWeight.bold,
-                                      weight2: FontWeight.w500,
-                                    ),
-                                    SizedBox(
-                                      height: 6,
-                                    ),
-                                    Row(
-                                      children: [
-                                        Expanded(
-                                          child: MyText(
-                                            text:
-                                                'Completed profile setup Earned Today',
-                                            size: 11,
-                                            color: kwhite,
-                                            fontFamily: AppFonts.gilroyMedium,
-                                          ),
-                                        ),
-                                        MyText(
-                                          text: 'Due: 14/04/24',
-                                          size: 11,
-                                          color: kwhite,
-                                          weight: FontWeight.bold,
-                                        ),
-                                      ],
-                                    ),
-                                  ],
+                                child: TwoTextedColumn(
+                                  text1: index == 0
+                                      ? 'Diary Streak: 7 Days'
+                                      : 'Case Study Complete',
+                                  text2: index == 0
+                                      ? 'Keep up the great work!'
+                                      : 'Commercial project analysis',
+                                  size1: 14,
+                                  size2: 12,
+                                  color2: getTertiary(context),
+                                  fontFamily: AppFonts.gilroyBold,
+                                  fontFamily2: AppFonts.gilroyRegular,
+                                  mBottom: 1,
                                 ),
                               ),
                             ])),
