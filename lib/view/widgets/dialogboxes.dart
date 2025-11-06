@@ -63,25 +63,24 @@ class SuccessDialog {
             ),
             title: Column(
               children: [
-                if (image != null)...{
-                  if(isSvg==true)
-                  CommonImageView(
-                    imagePath: isSvg == false ? image : null,
-                    svgPath: isSvg == true ? image : null,
-                    width: imgSize ?? 100,
-                    height: imgSize ?? 100,
-                    fit: BoxFit.contain,
-
-                  ),
-
-                  if(isSvg==false)
-                  Image.asset(image,      width: imgSize ?? 100,
-                    height: imgSize ?? 100,
-                    fit: BoxFit.contain,
-                    color: iconColor,
+                if (image != null) ...{
+                  if (isSvg == true)
+                    CommonImageView(
+                      imagePath: isSvg == false ? image : null,
+                      svgPath: isSvg == true ? image : null,
+                      width: imgSize ?? 100,
+                      height: imgSize ?? 100,
+                      fit: BoxFit.contain,
+                    ),
+                  if (isSvg == false)
+                    Image.asset(
+                      image,
+                      width: imgSize ?? 100,
+                      height: imgSize ?? 100,
+                      fit: BoxFit.contain,
+                      color: iconColor,
                     )
                 },
-
                 const SizedBox(height: 5),
               ],
             ),
@@ -103,21 +102,17 @@ class SuccessDialog {
                     MyText(
                       text: message,
                       color: getTertiary(context),
-                      size: descSize ?? 12,
+                      size: descSize ?? 14,
                       weight: FontWeight.w400,
                       paddingBottom: 20,
                       textAlign: TextAlign.center,
                     ),
-
-                  // ✅ Single button
                   if (hasbutton == true && hasSecbutton == false)
                     MyButton(
                       height: 45,
                       onTap: ontap ?? Get.back,
                       buttonText: ButtonText ?? 'Retry',
                     ),
-
-                  // ✅ Optional text button
                   if (hasTextButton == true)
                     MyText(
                       paddingTop: 10,
@@ -128,7 +123,6 @@ class SuccessDialog {
                       onTap: () {},
                       textAlign: TextAlign.center,
                     ),
-
                   if (hasbutton == true && hasSecbutton == true)
                     twoButtonsInColumn
                         ? Column(
@@ -159,8 +153,10 @@ class SuccessDialog {
                                   buttonText: ButtonText ?? 'Back to Login',
                                   fontSize: 14,
                                   backgroundColor: b1Color ?? ktransparent,
-                                  fontColor: b1text ?? getSecondaryColor(context),
-                                  outlineColor: b1text ?? getSecondaryColor(context),
+                                  fontColor:
+                                      b1text ?? getSecondaryColor(context),
+                                  outlineColor:
+                                      b1text ?? getSecondaryColor(context),
                                   height: 45,
                                 ),
                               ),
@@ -189,8 +185,8 @@ class SuccessDialog {
 
 class dialogBoxBody extends StatelessWidget {
   final Widget? child;
-  final double? lpad, rpad, bpad, tpad,innerVpad,innerHpad;
-  final Color? barrier, borderColor,bgColor;
+  final double? lpad, rpad, bpad, tpad, innerVpad, innerHpad;
+  final Color? barrier, borderColor, bgColor;
   final Alignment? alignment;
 
   const dialogBoxBody({
@@ -202,7 +198,10 @@ class dialogBoxBody extends StatelessWidget {
     this.tpad,
     this.alignment,
     this.barrier,
-    this.borderColor, this.innerVpad, this.innerHpad, this.bgColor,
+    this.borderColor,
+    this.innerVpad,
+    this.innerHpad,
+    this.bgColor,
   });
 
   @override
@@ -223,7 +222,8 @@ class dialogBoxBody extends StatelessWidget {
               child: Container(
                 width: double.infinity,
                 height: double.infinity,
-                color: (barrier ?? getSecondaryColor(context)).withOpacity(0.05),
+                color:
+                    (barrier ?? getSecondaryColor(context)).withOpacity(0.05),
               ),
             ),
 
@@ -239,13 +239,13 @@ class dialogBoxBody extends StatelessWidget {
                   right: rpad ?? 20,
                 ),
                 decoration: BoxDecoration(
-                  border: Border.all(color: borderColor ?? getSecondaryColor(context)),
-                  borderRadius: BorderRadius.circular(10),
-                  color:bgColor?? getsplashcolor(context)
-                ),
+                    border: Border.all(
+                        color: borderColor ?? getSecondaryColor(context)),
+                    borderRadius: BorderRadius.circular(10),
+                    color: bgColor ?? getsplashcolor(context)),
                 padding: EdgeInsets.symmetric(
-                  vertical:innerVpad?? 20,
-                  horizontal:innerHpad?? 17,
+                  vertical: innerVpad ?? 20,
+                  horizontal: innerHpad ?? 17,
                 ),
                 child: child,
               ),

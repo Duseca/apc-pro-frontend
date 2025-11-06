@@ -2,13 +2,15 @@ import 'package:apc_pro/consts/app_colors.dart';
 import 'package:apc_pro/consts/app_fonts.dart';
 import 'package:apc_pro/generated/assets.dart';
 import 'package:apc_pro/main.dart';
-import 'package:apc_pro/view/screens/profile/contact_support.dart';
+import 'package:apc_pro/view/screens/profile/subscription/subscription_info.dart';
+import 'package:apc_pro/view/screens/profile/support/contact_support.dart';
 import 'package:apc_pro/view/screens/profile/edit_profile.dart';
-import 'package:apc_pro/view/screens/profile/faqs.dart';
+import 'package:apc_pro/view/screens/profile/support/faqs.dart';
 import 'package:apc_pro/view/screens/profile/language.dart';
 import 'package:apc_pro/view/screens/profile/notification_pref.dart';
 import 'package:apc_pro/view/screens/profile/saved_items.dart';
 import 'package:apc_pro/view/screens/profile/subscription/subscription.dart';
+import 'package:apc_pro/view/screens/profile/support/help_support.dart';
 import 'package:apc_pro/view/screens/profile/terms_services.dart';
 import 'package:apc_pro/view/screens/profile/theme_pref.dart';
 import 'package:apc_pro/view/widgets/appbar.dart';
@@ -44,7 +46,7 @@ class Profile extends StatelessWidget {
         'title': 'Language',
         //'icon': Assets.imagesGlobe,
         'onTap': () {
-         Get.to(() => Language());
+          Get.to(() => Language());
         }
       },
       {
@@ -65,14 +67,14 @@ class Profile extends StatelessWidget {
         'title': 'Subscription and Billings',
         //'icon': Assets.imagesCards,
         'onTap': () {
-          Get.to(() => Subscription());
+          Get.to(() => SubscriptionInfo());
         }
       },
       {
         'title': 'Notification Preferences',
         //'icon': Assets.imagesNotification,
         'onTap': () {
-            Get.to(() => NotificationPref());
+          Get.to(() => NotificationPref());
         }
       },
       {
@@ -86,7 +88,7 @@ class Profile extends StatelessWidget {
         'title': 'FAQ’s & Help Center',
         // 'icon': Assets.imagesMes3,
         'onTap': () {
-          Get.to(() => Faqs());
+          Get.to(() => HelpSupport());
         }
       },
       {
@@ -118,8 +120,19 @@ class Profile extends StatelessWidget {
       {
         'title': 'Delete Account',
         // 'icon': Assets.imagesExport2,
-        'onTap': () {},
-        'color':kred,
+        'onTap': () {
+          SuccessDialog.showSuccessDialog('Delete Account', context,
+              message: 'Are you sure you want to delete your account?',
+              ButtonText: 'Cancel',
+              button2text: 'Delete',
+              hasSecbutton: true,
+              borderColor: ktransparent,
+              bgColor: getsplashcolor(context),
+              b1Color: ktransparent,
+              b1text: getSecondaryColor(context),
+              hasbutton: true);
+        },
+        'color': kred,
       },
       {
         'title': 'Logout',
@@ -131,9 +144,9 @@ class Profile extends StatelessWidget {
               button2text: 'Logout',
               hasSecbutton: true,
               borderColor: ktransparent,
-              bgColor: kblack,
+              bgColor: getsplashcolor(context),
               b1Color: ktransparent,
-              b1text: ksecondary,
+              b1text: getSecondaryColor(context),
               hasbutton: true);
         }
       },
@@ -243,7 +256,7 @@ class Profile extends StatelessWidget {
                               size1: 24,
                               size2: 14,
                               align: TextAlign.center,
-                              fontFamily:AppFonts.gilroyBold,
+                              fontFamily: AppFonts.gilroyBold,
                               fontFamily2: AppFonts.gilroyMedium,
                               alignment: ColumnAlignment.center,
                             ),
@@ -254,7 +267,7 @@ class Profile extends StatelessWidget {
                               size2: 14,
                               align: TextAlign.center,
                               fontFamily: AppFonts.gilroyBold,
-                                 fontFamily2: AppFonts.gilroyMedium,
+                              fontFamily2: AppFonts.gilroyMedium,
                               alignment: ColumnAlignment.center,
                             ),
                           ],
@@ -392,7 +405,7 @@ class profile_container extends StatelessWidget {
                     // item['icon'],
                     context,
                     hasIcon: true,
-                    contentColor:item['color']),
+                    contentColor: item['color']),
               );
             },
           ),

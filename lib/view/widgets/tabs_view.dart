@@ -4,7 +4,6 @@ import 'package:apc_pro/consts/app_fonts.dart';
 import 'package:apc_pro/view/widgets/my_text_widget.dart';
 import 'package:get/get.dart';
 
-
 class TabsWidget extends StatefulWidget {
   const TabsWidget({
     super.key,
@@ -94,15 +93,17 @@ class _TabsWidgetState extends State<TabsWidget> {
                                   height: widget.iconSize,
                                   color: widget.currentindex == index
                                       ? getsplashcolor(context)
-                                      : getsplashcolor(context).withOpacity(0.6),
-                                      
+                                      : getsplashcolor(context)
+                                          .withOpacity(0.6),
                                 )
                               : MyText(
                                   text: widget.items[index],
                                   textAlign: TextAlign.center,
                                   size: widget.textSize ?? 11,
                                   fontFamily: AppFonts.gilroySemiBold,
-                                  color:widget.currentindex == index? getsplashcolor(context):getSecondaryColor(context),
+                                  color: widget.currentindex == index
+                                      ? getsplashcolor(context)
+                                      : getSecondaryColor(context),
                                 ),
                         ),
                       ),
@@ -113,8 +114,7 @@ class _TabsWidgetState extends State<TabsWidget> {
             ),
           )
         : Padding(
-            padding:
-                const EdgeInsets.symmetric(horizontal: 0.0, vertical: 10),
+            padding: const EdgeInsets.symmetric(horizontal: 0.0, vertical: 10),
             child: Container(
               height: widget.height ?? 52,
               margin: const EdgeInsets.only(bottom: 4),
@@ -135,9 +135,10 @@ class _TabsWidgetState extends State<TabsWidget> {
                               onTap: () => _onTap(index),
                               child: AnimatedContainer(
                                 padding: EdgeInsets.all(0),
-                                margin: EdgeInsets.symmetric(vertical:widget.margin ?? 5,horizontal: 2),
-                                duration:
-                                    const Duration(milliseconds: 300),
+                                margin: EdgeInsets.symmetric(
+                                    vertical: widget.margin ?? 5,
+                                    horizontal: 2),
+                                duration: const Duration(milliseconds: 300),
                                 decoration: BoxDecoration(
                                   color: widget.currentindex == index
                                       ? getSecondaryColor(context)
@@ -150,8 +151,7 @@ class _TabsWidgetState extends State<TabsWidget> {
                                           widget.iconItems![index],
                                           width: widget.iconSize,
                                           height: widget.iconSize,
-                                          color: widget.currentindex ==
-                                                  index
+                                          color: widget.currentindex == index
                                               ? getsplashcolor(context)
                                               : getTertiary(context),
                                         )
@@ -159,9 +159,10 @@ class _TabsWidgetState extends State<TabsWidget> {
                                           text: widget.items[index],
                                           textAlign: TextAlign.center,
                                           size: widget.textSize ?? 11.5,
-                                          fontFamily:
-                                              AppFonts.gilroySemiBold,
-                                          color:widget.currentindex==index? getsplashcolor(context):getSecondaryColor(context),
+                                          fontFamily: AppFonts.gilroySemiBold,
+                                          color: widget.currentindex == index
+                                              ? getsplashcolor(context)
+                                              : getSecondaryColor(context),
                                         ),
                                 ),
                               ),
@@ -212,7 +213,7 @@ class MyTabbar extends StatelessWidget {
         tabAlignment: hasborder == true ? TabAlignment.start : null,
         automaticIndicatorColorAdjustment: false,
         dividerColor: dividerColor ?? ktransparent,
-        dividerHeight: 4,
+        // dividerHeight: 2,
         labelStyle: TextStyle(
           fontSize: 14,
           fontWeight: labelWeight ?? FontWeight.w400,
@@ -223,7 +224,7 @@ class MyTabbar extends StatelessWidget {
           fontSize: 14,
           fontWeight: labelWeight ?? FontWeight.w400,
           fontFamily: AppFonts.gilroyBold,
-          color: label2 ?? kgrey,
+          color: label2 ?? getTertiary(context),
         ),
         //isScrollable: true,
         // tabAlignment: TabAlignment.start,
@@ -239,7 +240,7 @@ class MyTabbar extends StatelessWidget {
         splashBorderRadius: BorderRadius.circular(10),
 
         //labelPadding: EdgeInsets.all(),
-        indicatorColor: ksecondary,
+        indicatorColor: getSecondaryColor(context),
         indicatorSize: indicator ?? TabBarIndicatorSize.label,
         //      labelPadding: EdgeInsets.symmetric(horizontal: 3),
         tabs: List.generate(

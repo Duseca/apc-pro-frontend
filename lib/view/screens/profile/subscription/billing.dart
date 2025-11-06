@@ -1,6 +1,7 @@
 import 'package:apc_pro/consts/app_colors.dart';
 import 'package:apc_pro/consts/app_fonts.dart';
 import 'package:apc_pro/generated/assets.dart';
+import 'package:apc_pro/view/screens/profile/subscription/subscription_info.dart';
 import 'package:apc_pro/view/widgets/appbar.dart';
 import 'package:apc_pro/view/widgets/bullet_points.dart';
 import 'package:apc_pro/view/widgets/custom_check_box.dart';
@@ -243,34 +244,7 @@ class Billing extends StatelessWidget {
                               size: 16,
                               paddingBottom: 16,
                             ),
-                            Row(
-                              children: [
-                                Expanded(
-                                    child: TwoTextedColumn(
-                                  text1: 'Data Export - Oct 15, 2025',
-                                  text2: 'JSON • 2.3 MB • Expires in 18 hours',
-                                  size1: 14,
-                                  size2: 12,
-                                  fontFamily: AppFonts.gilroyBold,
-                                  fontFamily2: AppFonts.gilroyMedium,
-                                  color2: getTertiary(context),
-                                )),
-                                SizedBox(
-                                  width: 15,
-                                ),
-                                Image.asset(
-                                  Assets.imagesDownload,
-                                  width: 16,
-                                  color: getSecondaryColor(context),
-                                ),
-                                SizedBox(
-                                  width: 15,
-                                ),
-                                Image.asset(Assets.imagesTrash,
-                                    width: 16,
-                                    color: getSecondaryColor(context)),
-                              ],
-                            )
+                            previous_exports_widget()
                           ]))
                 ],
               ),

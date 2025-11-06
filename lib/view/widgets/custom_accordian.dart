@@ -6,10 +6,10 @@ import 'package:apc_pro/view/widgets/my_text_widget.dart';
 class CustomAccordion extends StatefulWidget {
   final String? title, desc;
   const CustomAccordion({
-    Key? key,
+    super.key,
     this.title,
     this.desc,
-  }) : super(key: key);
+  });
 
   @override
   State<CustomAccordion> createState() => _CustomAccordionState();
@@ -34,24 +34,25 @@ class _CustomAccordionState extends State<CustomAccordion> {
         ),
         child: ExpansionTile(
           title: MyText(
-            text: widget.title ?? "How do I book a service?",
-            size: 16,
-            weight: FontWeight.w400,
-            color: kwhite,
-          ),
+              text: widget.title ?? "How do I book a service?",
+              size: 16,
+              weight: FontWeight.w400,
+              color: getSecondaryColor(context)),
           backgroundColor: ktransparent,
           trailing: _isOpen
               ? Image.asset(
                   Assets.imagesRoundedplus,
                   width: 20,
+                  color: getSecondaryColor(context),
                 )
               : Image.asset(
                   Assets.imagesRoundedminus,
                   width: 20,
+                  color: getSecondaryColor(context),
                 ),
           // Icon(
           //   _isOpen ? Icons.remove : Icons.add,
-          //   color: kwhite,
+          //   color: getSecondaryColor(context)
           // ),
           childrenPadding: EdgeInsets.all(0),
           children: <Widget>[
@@ -68,7 +69,8 @@ class _CustomAccordionState extends State<CustomAccordion> {
                             'FieldNote supports various audio file formats including MP3, WAV, and M4A, ensuring versatility for users.',
                         size: 12,
                         weight: FontWeight.w400,
-                        color: kgrey),
+                        paddingBottom: 10,
+                        color: getTertiary(context)),
                   )
                 ],
               ),

@@ -330,6 +330,10 @@ class Assets {
   /// assets/images/download.png
   static const String imagesDownload = "assets/images/download.png";
 
+  /// Assets for imagesDownload3
+  /// assets/images/download3.png
+  static const String imagesDownload3 = "assets/images/download3.png";
+
   /// Assets for imagesDsend
   /// assets/images/dsend.png
   static const String imagesDsend = "assets/images/dsend.png";
@@ -397,6 +401,10 @@ class Assets {
   /// Assets for imagesGoogle
   /// assets/images/google.png
   static const String imagesGoogle = "assets/images/google.png";
+
+  /// Assets for imagesHeadset
+  /// assets/images/Headset.png
+  static const String imagesHeadset = "assets/images/Headset.png";
 
   /// Assets for imagesHeart
   /// assets/images/heart.png

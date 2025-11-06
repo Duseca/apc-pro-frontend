@@ -81,15 +81,18 @@ Widget buildDrawerItem(String title, BuildContext context,
 }
 
 class notification_pref_row extends StatelessWidget {
-  final String? title, desc;
-  final bool? value, hasSwitch,isDefault;
+  final String? title, desc, defaultText;
+  final bool? value, hasSwitch, isDefault;
   final String? fontFamily;
   const notification_pref_row({
     super.key,
     this.title,
     this.desc,
     this.value,
-    this.hasSwitch = true, this.isDefault=false, this.fontFamily,
+    this.hasSwitch = true,
+    this.isDefault = false,
+    this.fontFamily,
+    this.defaultText,
   });
 
   @override
@@ -104,7 +107,7 @@ class notification_pref_row extends StatelessWidget {
                 MyText(
                   text: title ?? 'Push Notifications',
                   size: 16,
-                  fontFamily:fontFamily?? AppFonts.gilroyBold,
+                  fontFamily: fontFamily ?? AppFonts.gilroyBold,
                 ),
                 MyText(
                   text: desc ?? 'System notifications enabled',
@@ -128,19 +131,19 @@ class notification_pref_row extends StatelessWidget {
             initialValue: value ?? true,
             onChanged: (bool value) {},
           ),
-        if (hasSwitch == false)...{
-       if(isDefault==true)
-          MyText(
-            text: 'Default',
-            color: getTertiary(context),
-            paddingRight: 8,
-          ),
-        Image.asset(
-          Assets.imagesArrowright2,
-          width: 12,
-          height: 12,
-          color: getSecondaryColor(context).withOpacity(0.3),
-        )
+        if (hasSwitch == false) ...{
+          if (isDefault == true)
+            MyText(
+              text: defaultText ?? 'Default',
+              color: getTertiary(context),
+              paddingRight: 8,
+            ),
+          Image.asset(
+            Assets.imagesArrowright2,
+            width: 12,
+            height: 12,
+            color: getSecondaryColor(context).withOpacity(0.3),
+          )
         }
       ],
     );
