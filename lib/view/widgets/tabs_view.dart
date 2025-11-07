@@ -15,11 +15,17 @@ class TabsWidget extends StatefulWidget {
     this.textSize,
     this.bgColor,
     this.margin,
+    this.radius,
 
     /// 🔹 New fields for icon-only tabs
     this.useIcons = false,
     this.iconItems,
     this.iconSize = 22,
+    this.borderColor1,
+    this.borderColor2,
+    this.selectedColor,
+    this.selectedTextColor,
+    this.unselectedTextColor,
   });
 
   final int currentindex;
@@ -27,8 +33,13 @@ class TabsWidget extends StatefulWidget {
   final List<String> items;
   final bool? isexpanded;
   final double? height, margin;
-  final Color? bgColor;
-  final double? textSize;
+  final Color? bgColor,
+      borderColor1,
+      borderColor2,
+      selectedColor,
+      selectedTextColor,
+      unselectedTextColor;
+  final double? textSize, radius;
 
   /// 🔹 New for icons
   final bool useIcons;
@@ -59,7 +70,7 @@ class _TabsWidgetState extends State<TabsWidget> {
             height: widget.height ?? 46,
             margin: const EdgeInsets.only(bottom: 4),
             decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(6),
+              borderRadius: BorderRadius.circular(widget.radius ?? 6),
               color: widget.bgColor ?? ktransparent,
               border: Border.all(color: ktransparent),
             ),
@@ -83,7 +94,8 @@ class _TabsWidgetState extends State<TabsWidget> {
                           color: widget.currentindex == index
                               ? getSecondaryColor(context)
                               : ktransparent,
-                          borderRadius: BorderRadius.circular(6),
+                          borderRadius:
+                              BorderRadius.circular(widget.radius ?? 6),
                         ),
                         child: Center(
                           child: widget.useIcons
@@ -102,8 +114,8 @@ class _TabsWidgetState extends State<TabsWidget> {
                                   size: widget.textSize ?? 11,
                                   fontFamily: AppFonts.gilroySemiBold,
                                   color: widget.currentindex == index
-                                      ? getsplashcolor(context)
-                                      : getSecondaryColor(context),
+                                      ?widget.selectedTextColor?? getsplashcolor(context)
+                                      :widget.unselectedTextColor?? getSecondaryColor(context),
                                 ),
                         ),
                       ),
@@ -119,7 +131,7 @@ class _TabsWidgetState extends State<TabsWidget> {
               height: widget.height ?? 52,
               margin: const EdgeInsets.only(bottom: 4),
               decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(6),
+                borderRadius: BorderRadius.circular(widget.radius ?? 6),
                 color: widget.bgColor ?? ktransparent,
                 border: Border.all(color: ktransparent),
               ),
@@ -141,9 +153,16 @@ class _TabsWidgetState extends State<TabsWidget> {
                                 duration: const Duration(milliseconds: 300),
                                 decoration: BoxDecoration(
                                   color: widget.currentindex == index
-                                      ? getSecondaryColor(context)
+                                      ? widget.selectedColor ??
+                                          getSecondaryColor(context)
                                       : ktransparent,
-                                  borderRadius: BorderRadius.circular(6),
+                                  border: Border.all(
+                                      color: widget.currentindex == index
+                                          ? widget.borderColor1 ?? ktransparent
+                                          : widget.borderColor2 ??
+                                              ktransparent),
+                                  borderRadius:
+                                      BorderRadius.circular(widget.radius ?? 6),
                                 ),
                                 child: Center(
                                   child: widget.useIcons
@@ -160,9 +179,9 @@ class _TabsWidgetState extends State<TabsWidget> {
                                           textAlign: TextAlign.center,
                                           size: widget.textSize ?? 11.5,
                                           fontFamily: AppFonts.gilroySemiBold,
-                                          color: widget.currentindex == index
-                                              ? getsplashcolor(context)
-                                              : getSecondaryColor(context),
+                                      color: widget.currentindex == index
+                                      ?widget.selectedTextColor?? getsplashcolor(context)
+                                      :widget.unselectedTextColor?? getSecondaryColor(context),
                                         ),
                                 ),
                               ),

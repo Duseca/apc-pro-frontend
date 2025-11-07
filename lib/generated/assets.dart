@@ -34,6 +34,14 @@ class Assets {
   /// assets/images/achievement.png
   static const String imagesAchievement = "assets/images/achievement.png";
 
+  /// Assets for imagesActivityd
+  /// assets/images/activityd.png
+  static const String imagesActivityd = "assets/images/activityd.png";
+
+  /// Assets for imagesActivityl
+  /// assets/images/activityl.png
+  static const String imagesActivityl = "assets/images/activityl.png";
+
   /// Assets for imagesAdd
   /// assets/images/add.png
   static const String imagesAdd = "assets/images/add.png";
@@ -41,6 +49,22 @@ class Assets {
   /// Assets for imagesAddc
   /// assets/images/addc.png
   static const String imagesAddc = "assets/images/addc.png";
+
+  /// Assets for imagesAddgroup
+  /// assets/images/addgroup.png
+  static const String imagesAddgroup = "assets/images/addgroup.png";
+
+  /// Assets for imagesAddgroup2d
+  /// assets/images/addgroup2d.png
+  static const String imagesAddgroup2d = "assets/images/addgroup2d.png";
+
+  /// Assets for imagesAddgroup2l
+  /// assets/images/addgroup2l.png
+  static const String imagesAddgroup2l = "assets/images/addgroup2l.png";
+
+  /// Assets for imagesAddgroupl
+  /// assets/images/addgroupl.png
+  static const String imagesAddgroupl = "assets/images/addgroupl.png";
 
   /// Assets for imagesAi
   /// assets/images/Ai.png
@@ -250,6 +274,14 @@ class Assets {
   /// assets/images/copy.png
   static const String imagesCopy = "assets/images/copy.png";
 
+  /// Assets for imagesCopyd
+  /// assets/images/copyd.png
+  static const String imagesCopyd = "assets/images/copyd.png";
+
+  /// Assets for imagesCopyl
+  /// assets/images/copyl.png
+  static const String imagesCopyl = "assets/images/copyl.png";
+
   /// Assets for imagesCpdtracker
   /// assets/images/cpdtracker.png
   static const String imagesCpdtracker = "assets/images/cpdtracker.png";
@@ -418,6 +450,10 @@ class Assets {
   /// assets/images/homeunfilled.png
   static const String imagesHomeunfilled = "assets/images/homeunfilled.png";
 
+  /// Assets for imagesHouse
+  /// assets/images/house.png
+  static const String imagesHouse = "assets/images/house.png";
+
   /// Assets for imagesImages
   /// assets/images/images.png
   static const String imagesImages = "assets/images/images.png";
@@ -437,6 +473,14 @@ class Assets {
   /// Assets for imagesLike
   /// assets/images/like.png
   static const String imagesLike = "assets/images/like.png";
+
+  /// Assets for imagesLived
+  /// assets/images/lived.png
+  static const String imagesLived = "assets/images/lived.png";
+
+  /// Assets for imagesLivel
+  /// assets/images/livel.png
+  static const String imagesLivel = "assets/images/livel.png";
 
   /// Assets for imagesLmesgbell
   /// assets/images/lmesgbell.png
@@ -626,6 +670,10 @@ class Assets {
   /// assets/images/report.png
   static const String imagesReport = "assets/images/report.png";
 
+  /// Assets for imagesRics
+  /// assets/images/rics.png
+  static const String imagesRics = "assets/images/rics.png";
+
   /// Assets for imagesRoundedminus
   /// assets/images/roundedminus.png
   static const String imagesRoundedminus = "assets/images/roundedminus.png";
@@ -654,6 +702,22 @@ class Assets {
   /// assets/images/send.png
   static const String imagesSend = "assets/images/send.png";
 
+  /// Assets for imagesSettingd
+  /// assets/images/settingd.png
+  static const String imagesSettingd = "assets/images/settingd.png";
+
+  /// Assets for imagesSettingl
+  /// assets/images/settingl.png
+  static const String imagesSettingl = "assets/images/settingl.png";
+
+  /// Assets for imagesShared
+  /// assets/images/shared.png
+  static const String imagesShared = "assets/images/shared.png";
+
+  /// Assets for imagesSharel
+  /// assets/images/sharel.png
+  static const String imagesSharel = "assets/images/sharel.png";
+
   /// Assets for imagesStar
   /// assets/images/star.png
   static const String imagesStar = "assets/images/star.png";
@@ -677,6 +741,14 @@ class Assets {
   /// Assets for imagesTarget
   /// assets/images/Target.png
   static const String imagesTarget = "assets/images/Target.png";
+
+  /// Assets for imagesTeamd
+  /// assets/images/teamd.png
+  static const String imagesTeamd = "assets/images/teamd.png";
+
+  /// Assets for imagesTeaml
+  /// assets/images/teaml.png
+  static const String imagesTeaml = "assets/images/teaml.png";
 
   /// Assets for imagesTest
   /// assets/images/test.png

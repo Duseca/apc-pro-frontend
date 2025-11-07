@@ -145,7 +145,7 @@ class SubscriptionInfo extends StatelessWidget {
                             ),
                             Padding(
                               padding:
-                                  EdgeInsetsGeometry.symmetric(vertical: 8),
+                                  EdgeInsets.symmetric(vertical: 8),
                               child: Divider(
                                 color: getfifth(context),
                               ),
@@ -185,7 +185,7 @@ class SubscriptionInfo extends StatelessWidget {
                             ),
                             Padding(
                               padding:
-                                  EdgeInsetsGeometry.symmetric(vertical: 8),
+                                  EdgeInsets.symmetric(vertical: 8),
                               child: Divider(
                                 color: getfifth(context),
                               ),
@@ -197,7 +197,7 @@ class SubscriptionInfo extends StatelessWidget {
                             ),
                             Padding(
                               padding:
-                                  EdgeInsetsGeometry.symmetric(vertical: 8),
+                                 EdgeInsets.symmetric(vertical: 8),
                               child: Divider(
                                 color: getfifth(context),
                               ),
@@ -309,10 +309,13 @@ class SubscriptionInfo extends StatelessWidget {
 class expanded_icon_row extends StatelessWidget {
   final String? text;
   final String? icon;
+  final double? textSize,iconSize;
+  final Color? textcolor,iconColor;
+  final String? fontFamily;
   const expanded_icon_row({
     super.key,
     this.text,
-    this.icon,
+    this.icon, this.textSize, this.iconSize, this.textcolor, this.iconColor, this.fontFamily,
   });
 
   @override
@@ -321,14 +324,15 @@ class expanded_icon_row extends StatelessWidget {
       Expanded(
         child: MyText(
           text: text ?? 'Request Data Export',
-          size: 14,
-          fontFamily: AppFonts.gilroySemiBold,
+          size:textSize?? 14,
+          fontFamily:fontFamily?? AppFonts.gilroySemiBold,
+          color: textcolor,
         ),
       ),
       Image.asset(
         icon ?? Assets.imagesForward,
-        width: 16,
-        color: getSecondaryColor(context),
+        width:iconSize?? 16,
+        color:iconColor?? getSecondaryColor(context),
       )
     ]);
   }

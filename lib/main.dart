@@ -2,6 +2,7 @@ import 'package:apc_pro/config/theme/light_theme.dart';
 import 'package:apc_pro/config/theme/theme_config.dart';
 import 'package:apc_pro/core/bindings.dart';
 import 'package:apc_pro/view/screens/Navbar/bottom_navbar.dart';
+import 'package:apc_pro/view/screens/groups/groups.dart';
 import 'package:apc_pro/view/screens/news/news.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -36,7 +37,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     final themeProvider = Provider.of<ThemeProvider>(context);
     return GetMaterialApp(
-      home: News(),
+      home: Groups(),
       theme: lightTheme,
       darkTheme: darkTheme,
       themeMode: themeProvider.themeMode,

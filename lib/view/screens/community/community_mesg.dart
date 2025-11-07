@@ -109,7 +109,7 @@ class mesg_tile extends StatelessWidget {
   final VoidCallback? ontap;
   final bool? hasTime,hasIcon,isStart;
   final Color? borderColor;
-  final double? imgSize;
+  final double? imgSize,radius;
   const mesg_tile({
     super.key,
     this.title,
@@ -118,7 +118,7 @@ class mesg_tile extends StatelessWidget {
     this.icon,
     this.ontap,
     this.hasTime = true,
-    this.borderColor, this.hasIcon=false, this.imgSize, this.isStart,
+    this.borderColor, this.hasIcon=false, this.imgSize, this.isStart, this.radius,
   });
 
   @override
@@ -142,7 +142,7 @@ class mesg_tile extends StatelessWidget {
                   imagePath: hasIcon==true?icon:null,
                   width:imgSize?? 50,
                   height:imgSize?? 50,
-                  radius: 100,
+                  radius:radius?? 100,
                   // fit: BoxFit.contain,
                 ),
               ),
