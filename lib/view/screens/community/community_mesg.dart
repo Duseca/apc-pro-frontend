@@ -4,6 +4,7 @@ import 'package:apc_pro/generated/assets.dart';
 import 'package:apc_pro/main.dart';
 import 'package:apc_pro/view/screens/community/community_chat.dart';
 import 'package:apc_pro/view/screens/notifications/notifications.dart';
+import 'package:apc_pro/view/widgets/button_container.dart';
 import 'package:apc_pro/view/widgets/common_image_view_widget.dart';
 import 'package:apc_pro/view/widgets/expanded_row.dart';
 import 'package:apc_pro/view/widgets/my_text_widget.dart';
@@ -71,13 +72,15 @@ class CommunityMesg extends StatelessWidget {
                   width: 36,
                 )),
                 Bounce(
-                  onTap: () {
-                    Get.to(()=>Notificationss());
-                  },
+                    onTap: () {
+                      Get.to(() => Notificationss());
+                    },
                     child: Image.asset(
-                  isDarkMode ? Assets.imagesDmesgbell : Assets.imagesLmesgbell,
-                  width: 36,
-                )),
+                      isDarkMode
+                          ? Assets.imagesDmesgbell
+                          : Assets.imagesLmesgbell,
+                      width: 36,
+                    )),
                 Bounce(
                     child: Image.asset(
                   isDarkMode ? Assets.imagesDtrash : Assets.imagesLtrash,
@@ -87,7 +90,7 @@ class CommunityMesg extends StatelessWidget {
             )
           ],
         ),
-               ListView.builder(
+        ListView.builder(
           padding: EdgeInsets.all(0),
           shrinkWrap: true,
           physics: const NeverScrollableScrollPhysics(),
@@ -107,9 +110,9 @@ class CommunityMesg extends StatelessWidget {
 class mesg_tile extends StatelessWidget {
   final String? title, desc, time, icon;
   final VoidCallback? ontap;
-  final bool? hasTime,hasIcon,isStart;
+  final bool? hasSuffix, hasIcon, isStart, hasStatus;
   final Color? borderColor;
-  final double? imgSize,radius;
+  final double? imgSize, radius;
   const mesg_tile({
     super.key,
     this.title,
@@ -117,32 +120,42 @@ class mesg_tile extends StatelessWidget {
     this.time,
     this.icon,
     this.ontap,
-    this.hasTime = true,
-    this.borderColor, this.hasIcon=false, this.imgSize, this.isStart, this.radius,
+    this.hasSuffix = false,
+    this.borderColor,
+    this.hasIcon = false,
+    this.imgSize,
+    this.isStart,
+    this.radius,
+    this.hasStatus,
   });
 
   @override
   Widget build(BuildContext context) {
     return Bounce(
-        onTap: ontap??(){
-          Get.to(()=>CommunityChat());
-        },
+        onTap: ontap ??
+            () {
+              Get.to(() => CommunityChat());
+            },
         child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
           Row(
-            crossAxisAlignment:isStart==true?CrossAxisAlignment.center: CrossAxisAlignment.start,
+            crossAxisAlignment: isStart == true
+                ? CrossAxisAlignment.center
+                : CrossAxisAlignment.start,
             children: [
               Container(
                 decoration: BoxDecoration(
-                  shape: BoxShape.circle,
-                  border: Border.all(color:hasIcon==true?ktransparent: getSecondaryColor(context))
-                ),
+                    shape: BoxShape.circle,
+                    border: Border.all(
+                        color: hasIcon == true
+                            ? ktransparent
+                            : borderColor ?? getSecondaryColor(context))),
                 padding: EdgeInsets.all(2),
                 child: CommonImageView(
-                  url:hasIcon==true?null: icon ?? dummyImage,
-                  imagePath: hasIcon==true?icon:null,
-                  width:imgSize?? 50,
-                  height:imgSize?? 50,
-                  radius:radius?? 100,
+                  url: hasIcon == true ? null : icon ?? dummyImage,
+                  imagePath: hasIcon == true ? icon : null,
+                  width: imgSize ?? 50,
+                  height: imgSize ?? 50,
+                  radius: radius ?? 100,
                   // fit: BoxFit.contain,
                 ),
               ),
@@ -160,18 +173,26 @@ class mesg_tile extends StatelessWidget {
                   color2: getTertiary(context),
                 ),
               ),
-              // if (hasTime == true) ...{
-              //   SizedBox(
-              //     width: 5,
-              //   ),
-              //   row_widget(
-              //     title: time ?? '2 mins ago',
-              //     icon: Assets.imagesClock,
-              //     iconSize: 16,
-              //     iconColor: klighblue,
-              //     texSize: 11,
-              //   )
-              // }
+              if (hasStatus == true) ...{
+                SizedBox(
+                  width: 5,
+                ),
+                buttonContainer(
+                  text: 'Completed',
+                  bgColor: getfifth(context),
+                  radius: 50,
+                  vPadding: 3,
+                  txtColor: getSecondaryColor(context),
+                  textsize: 11,
+                ),
+              },
+              if (hasSuffix == true) ...{
+                SizedBox(
+                  width: 10,
+                ),
+                Icon(Icons.more_vert_rounded,
+                    size: 18, color: getSecondaryColor(context)),
+              }
             ],
           )
         ]));

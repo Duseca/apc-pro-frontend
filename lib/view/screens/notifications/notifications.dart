@@ -35,7 +35,7 @@ class Notificationss extends StatelessWidget {
                         child: MyTextField2(
                           hint: 'Search Here',
                           hintColor: getSecondaryColor(context),
-                          bordercolor:getSecondaryColor(context),
+                          bordercolor: getSecondaryColor(context),
                           prefixIcon: Image.asset(
                             Assets.imagesSearch,
                             color: getSecondaryColor(context),
@@ -50,7 +50,7 @@ class Notificationss extends StatelessWidget {
                           vpad: 14,
                           hint: 'All Categories',
                           hintColor: getSecondaryColor(context),
-                          bordercolor:getSecondaryColor(context),
+                          bordercolor: getSecondaryColor(context),
                           items: [
                             'All Categories',
                             'System',
@@ -85,7 +85,7 @@ class Notificationss extends StatelessWidget {
                           icon: isDarkMode
                               ? Assets.imagesDnot
                               : Assets.imagesLnot,
-                          hasTime: false,
+                          // hasTime: false,
                           hasIcon: true,
                           borderColor: ktransparent,
                           imgSize: 24,

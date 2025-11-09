@@ -1,6 +1,7 @@
 import 'package:apc_pro/consts/app_colors.dart';
 import 'package:apc_pro/consts/app_fonts.dart';
 import 'package:apc_pro/generated/assets.dart';
+import 'package:apc_pro/view/screens/groups/refer_friend.dart';
 import 'package:apc_pro/view/widgets/appbar.dart';
 import 'package:apc_pro/view/widgets/custome_comtainer.dart';
 import 'package:apc_pro/view/widgets/expanded_row.dart';
@@ -8,6 +9,7 @@ import 'package:apc_pro/view/widgets/groups_widget/group_widget.dart';
 import 'package:apc_pro/view/widgets/my_button.dart';
 import 'package:apc_pro/view/widgets/my_text_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class Groups extends StatelessWidget {
   const Groups({super.key});
@@ -40,6 +42,9 @@ class Groups extends StatelessWidget {
                       children: [
                         MyButton(
                           buttonText: 'Invite Your Friends to Survyr',
+                          onTap: () => {
+                            Get.to(() => ReferFriend()),
+                          },
                         )
                       ],
                     ),
@@ -64,7 +69,6 @@ class Groups extends StatelessWidget {
                   ),
                   no_group_container(),
                   CustomeContainer(
-                  
                     radius: 12,
                     color: getfillcolor(context),
                     widget: Column(
@@ -81,14 +85,15 @@ class Groups extends StatelessWidget {
                                 ? Assets.imagesShared
                                 : Assets.imagesSharel),
                         group_features_row(
-                          text1: 'Live group insights',
-                          text2: 'View combined quiz results, leaderboards and CPD plans',
+                            text1: 'Live group insights',
+                            text2:
+                                'View combined quiz results, leaderboards and CPD plans',
                             icon: isDarkMode
                                 ? Assets.imagesLived
                                 : Assets.imagesLivel),
                         group_features_row(
-                          text1: 'Team Communication',
-                          text2: 'Talk through results and CPD plans',
+                            text1: 'Team Communication',
+                            text2: 'Talk through results and CPD plans',
                             icon: isDarkMode
                                 ? Assets.imagesTeamd
                                 : Assets.imagesTeaml),

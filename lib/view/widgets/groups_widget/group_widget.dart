@@ -68,7 +68,7 @@ class create_group_widget extends StatelessWidget {
                       mTop: 16,
                       buttonText: buttonText ?? 'Create Group',
                       onTap: () {
-                        Get.to(()=>RicsProfessional());
+                        Get.to(() => RicsProfessional());
                       },
                     )
                   ],
@@ -86,17 +86,21 @@ class create_group_widget extends StatelessWidget {
 
 class no_group_container extends StatelessWidget {
   final String? text1, text2;
+  final Color? bgcolor;
+  final double? radius;
   const no_group_container({
     super.key,
     this.text1,
     this.text2,
+    this.bgcolor,
+    this.radius,
   });
 
   @override
   Widget build(BuildContext context) {
     return CustomeContainer(
-      radius: 12,
-      color: getfillcolor(context),
+      radius: radius ?? 12,
+      color: bgcolor ?? getfillcolor(context),
       vpad: 16,
       hpad: 16,
       widget: Column(

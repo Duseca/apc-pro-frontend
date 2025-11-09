@@ -151,7 +151,7 @@ class RicsProfessional extends StatelessWidget {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             MyText(
-                              text: 'Group Statistics',
+                              text: 'Group Settings',
                               size: 20,
                               fontFamily: AppFonts.gilroyBold,
                               paddingBottom: 12,
@@ -280,7 +280,6 @@ class RicsProfessional extends StatelessWidget {
                                     child: CustomeContainer(
                                       radius: 8,
                                       color: getsplashcolor(context),
-                                      mbott: 15,
                                       vpad: 10,
                                       hpad: 12,
                                       widget: mesg_tile(
@@ -297,7 +296,7 @@ class RicsProfessional extends StatelessWidget {
                                             : index == 1
                                                 ? Assets.imagesSettingl
                                                 : Assets.imagesAddgroup2l,
-                                        hasTime: false,
+                                        //hasTime: false,
                                         hasIcon: true,
                                         borderColor: ktransparent,
                                         imgSize: 32,
