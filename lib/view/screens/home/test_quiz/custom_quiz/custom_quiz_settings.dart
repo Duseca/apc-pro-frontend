@@ -1,7 +1,6 @@
 import 'package:apc_pro/consts/app_colors.dart';
 import 'package:apc_pro/consts/app_fonts.dart';
 import 'package:apc_pro/generated/assets.dart';
-import 'package:apc_pro/view/widgets/bullet_points.dart';
 import 'package:apc_pro/view/widgets/custom_dropdown.dart';
 import 'package:apc_pro/view/widgets/custome_comtainer.dart';
 import 'package:apc_pro/view/widgets/my_button.dart';

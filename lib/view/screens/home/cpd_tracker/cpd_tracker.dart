@@ -1,6 +1,7 @@
 import 'package:apc_pro/consts/app_colors.dart';
 import 'package:apc_pro/consts/app_fonts.dart';
 import 'package:apc_pro/generated/assets.dart';
+import 'package:apc_pro/view/screens/export/export_data.dart';
 import 'package:apc_pro/view/screens/home/cpd_tracker/add_cpd_activity/add_cpd_activity.dart';
 import 'package:apc_pro/view/widgets/appbar.dart';
 import 'package:apc_pro/view/widgets/button_container.dart';
@@ -11,7 +12,6 @@ import 'package:apc_pro/view/widgets/home_widgets/apc_diary_widgets.dart';
 import 'package:apc_pro/view/widgets/my_button.dart';
 import 'package:apc_pro/view/widgets/my_text_widget.dart';
 import 'package:apc_pro/view/widgets/progress_indicator.dart';
-import 'package:apc_pro/view/widgets/tags_widget.dart';
 import 'package:bounce/bounce.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -73,10 +73,12 @@ class CpdTracker extends StatelessWidget {
         "ontap": () {},
       },
       {
-        "title": "AI Guidance",
+        "title": "Export CPD Record",
         "desc": "Export CPD record for RICS submission",
         "icon": Assets.imagesDocument2,
-        "ontap": () {},
+        "ontap": () {
+          Get.to(() => ExportData());
+        },
       },
     ];
 
@@ -422,8 +424,8 @@ class recnet_activity_widget extends StatelessWidget {
   final bool? hastext2;
   final String? buttonText, text3;
   final String? fontFamily1;
-  final double? size1,statusVpad;
-  final Color? statusBgColor,statusTextColor;
+  final double? size1, statusVpad;
+  final Color? statusBgColor, statusTextColor;
   const recnet_activity_widget({
     super.key,
     this.text1,
@@ -432,7 +434,10 @@ class recnet_activity_widget extends StatelessWidget {
     this.buttonText,
     this.text3,
     this.fontFamily1,
-    this.size1, this.statusBgColor, this.statusTextColor, this.statusVpad,
+    this.size1,
+    this.statusBgColor,
+    this.statusTextColor,
+    this.statusVpad,
   });
 
   @override
@@ -454,10 +459,10 @@ class recnet_activity_widget extends StatelessWidget {
             buttonContainer(
               text: buttonText ?? 'Formal',
               textsize: 11,
-              vPadding:statusVpad?? 2,
+              vPadding: statusVpad ?? 2,
               hPadding: 10,
               txtColor: statusTextColor,
-              bgColor:statusBgColor?? getfifth(context),
+              bgColor: statusBgColor ?? getfifth(context),
               radius: 4,
             ),
           ],

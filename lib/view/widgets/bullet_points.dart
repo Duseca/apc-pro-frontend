@@ -1,4 +1,5 @@
 
+import 'package:apc_pro/generated/assets.dart';
 import 'package:flutter/material.dart';
 import 'package:apc_pro/consts/app_colors.dart';
 import 'package:apc_pro/view/widgets/diff_texts_txt.dart';
@@ -7,11 +8,12 @@ import 'package:apc_pro/view/widgets/my_text_widget.dart';
 // ignore: must_be_immutable
 class MyBullet extends StatelessWidget {
   MyBullet(
-      {super.key, required this.point, this.color, this.weight, this.size, this.bulletIcon,this.iconSize});
+      {super.key, required this.point, this.color, this.weight, this.size, this.bulletIcon,this.iconSize, this.fontFamily});
   String point;
   Color? color;
   FontWeight? weight;
   double? size,iconSize;
+  final String? fontFamily;
   final String? bulletIcon;
   @override
   Widget build(BuildContext context) {
@@ -20,11 +22,15 @@ class MyBullet extends StatelessWidget {
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          //  if(bulletIcon!=null)...{
-          // Image.asset(bulletIcon??Assets.imagesCheck2,width:iconSize?? 20,),
-          // SizedBox(width: 8,)
-          // },
-          // if(bulletIcon==null)
+           if(bulletIcon!=null)...{
+            Padding(padding: EdgeInsets.only(
+              top: 3
+            ),child: 
+          Image.asset(bulletIcon??Assets.imagesError,width:iconSize?? 10,height:iconSize??10,color: getSecondaryColor(context),),
+            ),
+          SizedBox(width: 8,)
+          },
+          if(bulletIcon==null)
           MyText(
             text: '•',
             size: 14,
@@ -32,6 +38,7 @@ class MyBullet extends StatelessWidget {
             paddingBottom: 6,
             paddingRight: 8,
             color: getSecondaryColor(context),
+            fontFamily: fontFamily,
           ),
           Expanded(
             child: MyText(
@@ -42,6 +49,7 @@ class MyBullet extends StatelessWidget {
               maxLines: 4,
               weight: weight ?? FontWeight.w400,
               paddingRight: 10,
+              fontFamily: fontFamily,
             ),
           ),
         ],

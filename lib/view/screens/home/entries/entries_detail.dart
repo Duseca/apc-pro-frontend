@@ -6,7 +6,6 @@ import 'package:apc_pro/view/widgets/bullet_points.dart';
 import 'package:apc_pro/view/widgets/button_container.dart';
 import 'package:apc_pro/view/widgets/custom_row.dart';
 import 'package:apc_pro/view/widgets/custome_comtainer.dart';
-import 'package:apc_pro/view/widgets/diff_texts_txt.dart';
 import 'package:apc_pro/view/widgets/expanded_row.dart';
 import 'package:apc_pro/view/widgets/home_widgets/apc_diary_widgets.dart';
 import 'package:apc_pro/view/widgets/my_text_widget.dart';

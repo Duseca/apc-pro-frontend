@@ -5,10 +5,10 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class QuestionSilder extends StatefulWidget {
-  final String? label; // Label for the range (e.g., "$" or "km")
+  final String? label; 
   final double? min;
   final double? max;
-  final String? unit; // "\$" or "km"
+  final String? unit;
 final String? i1,i2,i3;
   const QuestionSilder({
     super.key,
@@ -95,7 +95,7 @@ class _QuestionSilderState extends State<QuestionSilder> {
 class _CustomThumbShape extends RoundSliderThumbShape {
   final BuildContext contextt;
 
-  _CustomThumbShape({super.enabledThumbRadius, super.disabledThumbRadius, super.elevation, super.pressedElevation, required this.contextt});
+  _CustomThumbShape({ required this.contextt});
   @override
   void paint(
     PaintingContext context,
@@ -120,7 +120,7 @@ class _CustomThumbShape extends RoundSliderThumbShape {
       ..style = PaintingStyle.fill;
 
     final Paint border = Paint()
-      ..color = getTertiary(contextt)// border color
+      ..color = getTertiary(contextt)
       ..strokeWidth = 1
       ..style = PaintingStyle.stroke;
 

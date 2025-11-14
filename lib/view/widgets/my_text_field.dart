@@ -307,11 +307,12 @@ class MyTextField2 extends StatefulWidget {
       this.labelWeight,
       this.isCollapsed,
       this.hintSize,
+      this.lablefontFamily,
       
       this.align})
       : super(key: key);
 
-  String? label, hint, suffixtext;
+  String? label, hint, suffixtext,lablefontFamily;
   TextEditingController? controller;
   ValueChanged<String>? onChanged;
   bool? isObSecure,
@@ -381,7 +382,7 @@ class _MyTextField2State extends State<MyTextField2> {
               size: 14,
               paddingBottom: 8,
             //  weight: widget.labelWeight ?? FontWeight.bold,
-              fontFamily: AppFonts.gilroySemiBold,
+              fontFamily:widget.lablefontFamily?? AppFonts.gilroySemiBold,
               color: widget.labelColor ?? getSecondaryColor(context),
             ),
           ValueListenableBuilder(

@@ -108,7 +108,7 @@ class CommunityMesg extends StatelessWidget {
 }
 
 class mesg_tile extends StatelessWidget {
-  final String? title, desc, time, icon;
+  final String? title, desc, time, icon,statusText;
   final VoidCallback? ontap;
   final bool? hasSuffix, hasIcon, isStart, hasStatus;
   final Color? borderColor;
@@ -126,7 +126,7 @@ class mesg_tile extends StatelessWidget {
     this.imgSize,
     this.isStart,
     this.radius,
-    this.hasStatus,
+    this.hasStatus, this.statusText,
   });
 
   @override
@@ -178,7 +178,7 @@ class mesg_tile extends StatelessWidget {
                   width: 5,
                 ),
                 buttonContainer(
-                  text: 'Completed',
+                  text:statusText?? 'Completed',
                   bgColor: getfifth(context),
                   radius: 50,
                   vPadding: 3,

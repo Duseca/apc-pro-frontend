@@ -145,7 +145,7 @@ class MyButton extends StatelessWidget {
                           right: cornerIcon == true
                               ? 10.0
                               : 8.0), // ✅ Adjust for corners
-                      child: Icon(icon, color: fontColor, size: iconSize),
+                      child: Icon(icon, color: imgColor, size: iconSize),
                     ),
                   if (image != null && iconPosition == IconPosition.right)
                     Padding(

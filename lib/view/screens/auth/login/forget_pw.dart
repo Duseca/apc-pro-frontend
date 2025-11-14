@@ -4,13 +4,11 @@ import 'package:apc_pro/generated/assets.dart';
 import 'package:apc_pro/view/screens/auth/login/login.dart';
 import 'package:apc_pro/view/screens/auth/login/reset_pw.dart';
 import 'package:apc_pro/view/widgets/appbar.dart';
-import 'package:apc_pro/view/widgets/common_image_view_widget.dart';
 import 'package:apc_pro/view/widgets/dialogboxes.dart';
 import 'package:apc_pro/view/widgets/diff_texts_txt.dart';
 import 'package:apc_pro/view/widgets/expanded_row.dart';
 import 'package:apc_pro/view/widgets/my_button.dart';
 import 'package:apc_pro/view/widgets/my_text_field.dart';
-import 'package:apc_pro/view/widgets/my_text_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 

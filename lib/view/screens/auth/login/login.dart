@@ -2,19 +2,17 @@ import 'package:apc_pro/consts/app_colors.dart';
 import 'package:apc_pro/consts/app_fonts.dart';
 import 'package:apc_pro/generated/assets.dart';
 import 'package:apc_pro/view/screens/Navbar/bottom_navbar.dart';
-import 'package:apc_pro/view/screens/auth/signUp/signUp.dart';
+import 'package:apc_pro/view/screens/auth/signUp/SignUp_socials.dart';
 import 'package:apc_pro/view/widgets/appbar.dart';
 import 'package:apc_pro/view/widgets/common_image_view_widget.dart';
 import 'package:apc_pro/view/widgets/diff_texts_txt.dart';
 import 'package:apc_pro/view/widgets/expanded_row.dart';
 import 'package:apc_pro/view/widgets/my_button.dart';
 import 'package:apc_pro/view/widgets/my_text_field.dart';
-
 import 'package:apc_pro/view/widgets/my_text_widget.dart';
 import 'package:bounce/bounce.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
 import 'forget_pw.dart';
 
 class Login extends StatefulWidget {
@@ -140,7 +138,7 @@ class _LoginState extends State<Login> {
             fontFamily2: AppFonts.gilroySemiBold,
             fontFamily: AppFonts.gilroySemiBold,
             ontap: () {
-              Get.to(() => Signup());
+              Get.to(() => SignupSocials());
             },
           ),
           SizedBox(
@@ -153,12 +151,12 @@ class _LoginState extends State<Login> {
 }
 
 class LoginOptions extends StatelessWidget {
-  final String icon;
+  final String? icon;
   final VoidCallback ontap;
   final String? text;
   const LoginOptions({
     super.key,
-    required this.icon,
+   this.icon,
     required this.ontap,
     this.text,
   });
@@ -180,6 +178,7 @@ class LoginOptions extends StatelessWidget {
           mainAxisSize: MainAxisSize.min, // avoids extra space
           crossAxisAlignment: CrossAxisAlignment.center, // centers vertically
           children: [
+            if(icon!=null)
             CommonImageView(
               imagePath: icon,
               width: 21,

@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:apc_pro/consts/app_colors.dart';
 import 'package:apc_pro/consts/app_fonts.dart';
 import 'package:apc_pro/view/widgets/my_text_widget.dart';
-import 'package:get/get.dart';
 
 class TabsWidget extends StatefulWidget {
   const TabsWidget({
@@ -16,8 +15,6 @@ class TabsWidget extends StatefulWidget {
     this.bgColor,
     this.margin,
     this.radius,
-
-    /// 🔹 New fields for icon-only tabs
     this.useIcons = false,
     this.iconItems,
     this.iconSize = 22,
@@ -86,14 +83,19 @@ class _TabsWidgetState extends State<TabsWidget> {
                       onTap: () => _onTap(index),
                       child: AnimatedContainer(
                         padding: const EdgeInsets.symmetric(
-                            horizontal: 6, vertical: 6),
+                            horizontal: 6, vertical: 5),
                         margin: EdgeInsets.symmetric(
-                            horizontal: widget.margin ?? 6, vertical: 4),
+                            horizontal: widget.margin ?? 5, vertical: 6),
                         duration: const Duration(milliseconds: 300),
                         decoration: BoxDecoration(
                           color: widget.currentindex == index
-                              ? getSecondaryColor(context)
+                              ? widget.selectedColor ??
+                                  getSecondaryColor(context)
                               : ktransparent,
+                          border: Border.all(
+                              color: widget.currentindex == index
+                                  ? widget.borderColor1 ?? ktransparent
+                                  : widget.borderColor2 ?? ktransparent),
                           borderRadius:
                               BorderRadius.circular(widget.radius ?? 6),
                         ),
@@ -112,10 +114,14 @@ class _TabsWidgetState extends State<TabsWidget> {
                                   text: widget.items[index],
                                   textAlign: TextAlign.center,
                                   size: widget.textSize ?? 11,
+                                  paddingLeft: 3,
+                                  paddingRight: 3,
                                   fontFamily: AppFonts.gilroySemiBold,
                                   color: widget.currentindex == index
-                                      ?widget.selectedTextColor?? getsplashcolor(context)
-                                      :widget.unselectedTextColor?? getSecondaryColor(context),
+                                      ? widget.selectedTextColor ??
+                                          getsplashcolor(context)
+                                      : widget.unselectedTextColor ??
+                                          getSecondaryColor(context),
                                 ),
                         ),
                       ),
@@ -179,9 +185,11 @@ class _TabsWidgetState extends State<TabsWidget> {
                                           textAlign: TextAlign.center,
                                           size: widget.textSize ?? 11.5,
                                           fontFamily: AppFonts.gilroySemiBold,
-                                      color: widget.currentindex == index
-                                      ?widget.selectedTextColor?? getsplashcolor(context)
-                                      :widget.unselectedTextColor?? getSecondaryColor(context),
+                                          color: widget.currentindex == index
+                                              ? widget.selectedTextColor ??
+                                                  getsplashcolor(context)
+                                              : widget.unselectedTextColor ??
+                                                  getSecondaryColor(context),
                                         ),
                                 ),
                               ),
@@ -232,12 +240,13 @@ class MyTabbar extends StatelessWidget {
         tabAlignment: hasborder == true ? TabAlignment.start : null,
         automaticIndicatorColorAdjustment: false,
         dividerColor: dividerColor ?? ktransparent,
+        dividerHeight: 0.5,
         // dividerHeight: 2,
         labelStyle: TextStyle(
           fontSize: 14,
           fontWeight: labelWeight ?? FontWeight.w400,
           fontFamily: AppFonts.gilroyBold,
-          color: sLabel ?? kheading,
+          color: sLabel ?? getSecondaryColor(context),
         ),
         unselectedLabelStyle: TextStyle(
           fontSize: 14,
@@ -254,7 +263,7 @@ class MyTabbar extends StatelessWidget {
         labelPadding:
             EdgeInsets.symmetric(horizontal: hasborder == true ? 10 : 0),
         controller: controller,
-        indicatorWeight: 4,
+        indicatorWeight: 2,
 
         splashBorderRadius: BorderRadius.circular(10),
 

@@ -2,7 +2,6 @@ import 'package:apc_pro/consts/app_colors.dart';
 import 'package:apc_pro/consts/app_fonts.dart';
 import 'package:apc_pro/controllers/survey_controller.dart';
 import 'package:apc_pro/generated/assets.dart';
-import 'package:apc_pro/view/screens/survey/career_stage.dart';
 import 'package:apc_pro/view/screens/survey/competency.dart';
 import 'package:apc_pro/view/widgets/custom_check_box.dart';
 import 'package:apc_pro/view/widgets/custom_dropdown.dart';

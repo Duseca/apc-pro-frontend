@@ -1,13 +1,11 @@
 import 'package:apc_pro/consts/app_colors.dart';
 import 'package:apc_pro/consts/app_fonts.dart';
 import 'package:apc_pro/generated/assets.dart';
-import 'package:apc_pro/view/screens/home/submittion_planner/log_diary_dialog.dart';
 import 'package:apc_pro/view/widgets/custom_dropdown.dart';
 import 'package:apc_pro/view/widgets/dialogboxes.dart';
 import 'package:apc_pro/view/widgets/my_button.dart';
 import 'package:apc_pro/view/widgets/my_text_field.dart';
 import 'package:apc_pro/view/widgets/my_text_widget.dart';
-import 'package:apc_pro/view/widgets/range_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 

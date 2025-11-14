@@ -4,7 +4,6 @@ import 'package:apc_pro/generated/assets.dart';
 import 'package:apc_pro/view/screens/profile/subscription/subscription_info.dart';
 import 'package:apc_pro/view/widgets/appbar.dart';
 import 'package:apc_pro/view/widgets/button_container.dart';
-import 'package:apc_pro/view/widgets/custom_row.dart';
 import 'package:apc_pro/view/widgets/custome_comtainer.dart';
 import 'package:apc_pro/view/widgets/expanded_row.dart';
 import 'package:apc_pro/view/widgets/my_text_widget.dart';
@@ -13,7 +12,6 @@ import 'package:apc_pro/view/widgets/progress_indicator.dart';
 import 'package:apc_pro/view/widgets/tabs_view.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_rx/src/rx_types/rx_types.dart';
 
 class CompetencyCoverage extends StatelessWidget {
   const CompetencyCoverage({super.key});

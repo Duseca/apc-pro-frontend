@@ -1,7 +1,7 @@
 import 'package:apc_pro/consts/app_colors.dart';
 import 'package:apc_pro/consts/app_fonts.dart';
 import 'package:apc_pro/generated/assets.dart';
-import 'package:apc_pro/view/screens/groups/rics_professional.dart';
+import 'package:apc_pro/view/screens/profile/groups/rics_professionals/rics_professional.dart';
 import 'package:apc_pro/view/widgets/custome_comtainer.dart';
 import 'package:apc_pro/view/widgets/expanded_row.dart';
 import 'package:apc_pro/view/widgets/my_button.dart';
@@ -13,13 +13,14 @@ import 'package:get/get.dart';
 class create_group_widget extends StatelessWidget {
   final String? text1, text2, icon, buttonText;
   final bool? hasCode;
+  final VoidCallback? ontap;
   const create_group_widget({
     super.key,
     this.text1,
     this.text2,
     this.icon,
     this.hasCode = false,
-    this.buttonText,
+    this.buttonText, this.ontap,
   });
 
   @override
@@ -67,7 +68,7 @@ class create_group_widget extends StatelessWidget {
                     MyButton(
                       mTop: 16,
                       buttonText: buttonText ?? 'Create Group',
-                      onTap: () {
+                      onTap: ontap??() {
                         Get.to(() => RicsProfessional());
                       },
                     )

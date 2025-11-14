@@ -6,11 +6,12 @@ import 'package:apc_pro/view/widgets/my_text_widget.dart';
 
 class TagsWidget extends StatelessWidget {
   final String tag;
+  final String?fontFamily;
   final Color? bgColor, defaultbgColor, textColor,borderColor;
   final VoidCallback? ontap;
   final bool? isSelected;
   final double? vpad, hpad;
-  final double? radius;
+  final double? radius,textSize;
  TagsWidget(this.tag,
       {Key? key,
       this.bgColor,
@@ -19,10 +20,10 @@ class TagsWidget extends StatelessWidget {
       this.isSelected,
       this.vpad,
       this.hpad,
-      this.defaultbgColor, this.borderColor, this.radius})
+      this.defaultbgColor, this.borderColor, this.radius, this.textSize, this.fontFamily})
       : super(key: key);
 
-  bool _isSelected = false;
+  // bool _isSelected = false;
 
   @override
   Widget build(BuildContext context) {
@@ -40,8 +41,8 @@ class TagsWidget extends StatelessWidget {
        
            child: MyText(
              text: tag,
-             size: 11,
-             fontFamily: AppFonts.gilroyMedium,
+             size:textSize?? 11,
+             fontFamily:fontFamily?? AppFonts.gilroyMedium,
              color: textColor??getSecondaryColor(context)
            ),
           ),

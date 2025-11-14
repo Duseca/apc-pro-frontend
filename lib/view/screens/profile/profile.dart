@@ -2,14 +2,11 @@ import 'package:apc_pro/consts/app_colors.dart';
 import 'package:apc_pro/consts/app_fonts.dart';
 import 'package:apc_pro/generated/assets.dart';
 import 'package:apc_pro/main.dart';
+import 'package:apc_pro/view/screens/profile/groups/groups.dart';
 import 'package:apc_pro/view/screens/profile/subscription/subscription_info.dart';
-import 'package:apc_pro/view/screens/profile/support/contact_support.dart';
 import 'package:apc_pro/view/screens/profile/edit_profile.dart';
-import 'package:apc_pro/view/screens/profile/support/faqs.dart';
 import 'package:apc_pro/view/screens/profile/language.dart';
 import 'package:apc_pro/view/screens/profile/notification_pref.dart';
-import 'package:apc_pro/view/screens/profile/saved_items.dart';
-import 'package:apc_pro/view/screens/profile/subscription/subscription.dart';
 import 'package:apc_pro/view/screens/profile/support/help_support.dart';
 import 'package:apc_pro/view/screens/profile/terms_services.dart';
 import 'package:apc_pro/view/screens/profile/theme_pref.dart';
@@ -25,7 +22,6 @@ import 'package:apc_pro/view/widgets/progress_indicator.dart';
 import 'package:bounce/bounce.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
 import 'privacy_policy.dart';
 import 'reviews.dart';
 
@@ -35,6 +31,20 @@ class Profile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final List<Map<String, dynamic>> drawerItems = [
+      {
+        'title': 'Explore Groups',
+        //'icon': Assets.imagesMoon,
+        'onTap': () {
+          Get.to(() => Groups());
+        }
+      },
+      {
+        'title': 'Invite Friends to Servyr',
+        //'icon': Assets.imagesGlobe,
+        'onTap': () {
+          Get.to(() => Language());
+        }
+      },
       {
         'title': 'Select Theme',
         //'icon': Assets.imagesMoon,
@@ -56,13 +66,13 @@ class Profile extends StatelessWidget {
           Get.to(() => EditProfile());
         }
       },
-      {
-        'title': 'Saved Items',
-        // 'icon': Assets.imagesSaved,
-        'onTap': () {
-          Get.to(() => SavedItems());
-        }
-      },
+      // {
+      //   'title': 'Saved Items',
+      //   // 'icon': Assets.imagesSaved,
+      //   'onTap': () {
+      //    // Get.to(() => SavedItems());
+      //   }
+      // },
       {
         'title': 'Subscription and Billings',
         //'icon': Assets.imagesCards,
@@ -81,7 +91,7 @@ class Profile extends StatelessWidget {
         'title': 'Contact Support',
         //'icon': Assets.imagesComment,
         'onTap': () {
-          Get.to(() => ContactSupport());
+         // Get.to(() => ContactSupport());
         }
       },
       {
@@ -151,13 +161,15 @@ class Profile extends StatelessWidget {
         }
       },
     ];
-    final accPersonal = drawerItems.sublist(0, 2); // 1,2
-    final profileMgmt = drawerItems.sublist(2, 4); // next 2
-    final billing = drawerItems.sublist(4, 5); // 1
-    final pref = drawerItems.sublist(5, 6); // 1
-    final support = drawerItems.sublist(6, 9); // 3
-    final privacy = drawerItems.sublist(9, 11); // 2
-    final security = drawerItems.sublist(11);
+    final groups = drawerItems.sublist(0, 2);
+    final accountPersonalization = drawerItems.sublist(2, 4);
+    final profileManagement = drawerItems.sublist(4, 5);
+    final accountBilling = drawerItems.sublist(5, 6);
+    final preferencesSettings = drawerItems.sublist(6, 7);
+    final supportHelp = drawerItems.sublist(7, 10);
+    final legalPrivacy = drawerItems.sublist(10, 12);
+    final dataSecurity = drawerItems.sublist(12);
+
     return Scaffold(
         appBar: simpleAppBar(
             context: context,
@@ -279,77 +291,65 @@ class Profile extends StatelessWidget {
                     ),
                   ),
                   MyText(
-                    text: 'Account & Personalization',
-                    size: 16,
-                    fontFamily: AppFonts.gilroyBold,
-                    paddingBottom: 12,
-                  ),
-                  profile_container(
-                    count: accPersonal.length,
-                    items: accPersonal,
-                  ),
+                      text: 'Groups',
+                      size: 16,
+                      fontFamily: AppFonts.gilroyBold,
+                      paddingBottom: 12),
+                  profile_container(count: groups.length, items: groups),
                   MyText(
-                    text: 'Profile Management',
-                    size: 16,
-                    fontFamily: AppFonts.gilroyBold,
-                    paddingBottom: 12,
-                  ),
+                      text: 'Account & Personalization',
+                      size: 16,
+                      fontFamily: AppFonts.gilroyBold,
+                      paddingBottom: 12),
                   profile_container(
-                    count: profileMgmt.length,
-                    items: profileMgmt,
-                  ),
+                      count: accountPersonalization.length,
+                      items: accountPersonalization),
                   MyText(
-                    text: 'Account & Billing',
-                    size: 16,
-                    fontFamily: AppFonts.gilroyBold,
-                    paddingBottom: 12,
-                  ),
+                      text: 'Profile Management',
+                      size: 16,
+                      fontFamily: AppFonts.gilroyBold,
+                      paddingBottom: 12),
                   profile_container(
-                    count: billing.length,
-                    items: billing,
-                  ),
+                      count: profileManagement.length,
+                      items: profileManagement),
                   MyText(
-                    text: 'Preferences & Settings',
-                    size: 16,
-                    fontFamily: AppFonts.gilroyBold,
-                    paddingBottom: 12,
-                  ),
+                      text: 'Account & Billing',
+                      size: 16,
+                      fontFamily: AppFonts.gilroyBold,
+                      paddingBottom: 12),
                   profile_container(
-                    count: pref.length,
-                    items: pref,
-                  ),
+                      count: accountBilling.length, items: accountBilling),
                   MyText(
-                    text: 'Support & Help',
-                    size: 16,
-                    fontFamily: AppFonts.gilroyBold,
-                    paddingBottom: 12,
-                  ),
+                      text: 'Preferences & Settings',
+                      size: 16,
+                      fontFamily: AppFonts.gilroyBold,
+                      paddingBottom: 12),
                   profile_container(
-                    count: support.length,
-                    items: support,
-                  ),
+                      count: preferencesSettings.length,
+                      items: preferencesSettings),
                   MyText(
-                    text: 'Legal & Privacy',
-                    size: 16,
-                    fontFamily: AppFonts.gilroyBold,
-                    paddingBottom: 12,
-                  ),
+                      text: 'Support & Help',
+                      size: 16,
+                      fontFamily: AppFonts.gilroyBold,
+                      paddingBottom: 12),
                   profile_container(
-                    count: privacy.length,
-                    items: privacy,
-                  ),
+                      count: supportHelp.length, items: supportHelp),
                   MyText(
-                    text: 'Data & Security',
-                    size: 16,
-                    fontFamily: AppFonts.gilroyBold,
-                    paddingBottom: 12,
-                  ),
+                      text: 'Legal & Privacy',
+                      size: 16,
+                      fontFamily: AppFonts.gilroyBold,
+                      paddingBottom: 12),
                   profile_container(
-                    count: security.length,
-                    items: security,
-                    textColor: security.length == 1
-                        ? kred
-                        : getSecondaryColor(context),
+                      count: legalPrivacy.length, items: legalPrivacy),
+                  MyText(
+                      text: 'Data & Security',
+                      size: 16,
+                      fontFamily: AppFonts.gilroyBold,
+                      paddingBottom: 12),
+                  profile_container(
+                    count: dataSecurity.length,
+                    items: dataSecurity,
+                    textColor: kred,
                   ),
                 ],
               ),

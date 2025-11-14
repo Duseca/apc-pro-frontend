@@ -2,6 +2,7 @@ import 'package:apc_pro/consts/app_colors.dart';
 import 'package:apc_pro/consts/app_fonts.dart';
 import 'package:apc_pro/generated/assets.dart';
 import 'package:apc_pro/view/screens/community/community_mesg.dart';
+import 'package:apc_pro/view/screens/profile/groups/public_profile.dart';
 import 'package:apc_pro/view/screens/profile/notification_pref.dart';
 import 'package:apc_pro/view/widgets/appbar.dart';
 import 'package:apc_pro/view/widgets/button_container.dart';
@@ -13,6 +14,7 @@ import 'package:apc_pro/view/widgets/my_text_field.dart';
 import 'package:apc_pro/view/widgets/my_text_widget.dart';
 import 'package:apc_pro/view/widgets/profile_widgets/profile_widgets.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class ManageGroup extends StatelessWidget {
   const ManageGroup({super.key});
@@ -249,6 +251,9 @@ class ManageGroup extends StatelessWidget {
                         itemCount: 3,
                         itemBuilder: (context, index) {
                           return mesg_tile(
+                            ontap: () {
+                              Get.to(()=>PublicProfile());
+                            },
                             isStart: true,
                             hasSuffix: index == 0 ? false : true,
                             hasStatus: index == 0 ? true : false,
@@ -329,11 +334,11 @@ class ManageGroup extends StatelessWidget {
                                       ? 'Hide group but keep all data'
                                       : 'Permanently delete group and all data',
                                   icon: isDarkMode
-                                      ? index == 0
+                                      ? index == 1
                                           ? Assets.imagesArchived
-                                          : Assets.imagesArchivel
-                                      : index == 1
-                                          ? Assets.imagesDeleteD
+                                          : Assets.imagesDeleteD
+                                      : index == 0
+                                          ? Assets.imagesArchivel
                                           : Assets.imagesDeleteL,
                                   //hasTime: false,
                                   hasIcon: true,

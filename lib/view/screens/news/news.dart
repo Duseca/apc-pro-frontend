@@ -1,7 +1,7 @@
 import 'package:apc_pro/consts/app_colors.dart';
 import 'package:apc_pro/consts/app_fonts.dart';
 import 'package:apc_pro/generated/assets.dart';
-import 'package:apc_pro/view/screens/news/book_marked.dart';
+import 'package:apc_pro/view/screens/news/book_marked_news.dart';
 import 'package:apc_pro/view/widgets/appbar.dart';
 import 'package:apc_pro/view/widgets/button_container.dart';
 import 'package:apc_pro/view/widgets/common_image_view_widget.dart';
@@ -54,7 +54,7 @@ class News extends StatelessWidget {
                     radius: 6,
                     bgColor: ktransparent,
                     onTap: () {
-                      Get.to(() => BookMarked());
+                      Get.to(() => BookMarkedNews());
                     },
                   )
                 ],
@@ -111,27 +111,7 @@ class News extends StatelessWidget {
                 itemBuilder: (context, index) {
                   return Padding(
                     padding: const EdgeInsets.only(bottom: 15),
-                    child: CustomeContainer(
-                        radius: 12,
-                        color: getfillcolor(context),
-                        hpad: 16,
-                        vpad: 0,
-                        widget: Column(children: [
-                          Row(
-                            children: [
-                              CommonImageView(
-                                imagePath: Assets.imagesHouse,
-                                radius: 10,
-                                width: 80,
-                                height: 80,
-                              ),
-                              Expanded(
-                                  child: news_info_column(
-                                size1: 14,
-                              ))
-                            ],
-                          )
-                        ])),
+                    child: news_feed_card(),
                   );
                 },
               ),
@@ -147,5 +127,36 @@ class News extends StatelessWidget {
         ],
       ),
     );
+  }
+}
+
+class news_feed_card extends StatelessWidget {
+  const news_feed_card({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return CustomeContainer(
+        radius: 12,
+        color: getfillcolor(context),
+        hpad: 16,
+        vpad: 0,
+        widget: Column(children: [
+          Row(
+            children: [
+              CommonImageView(
+                imagePath: Assets.imagesHouse,
+                radius: 10,
+                width: 80,
+                height: 80,
+              ),
+              Expanded(
+                  child: news_info_column(
+                size1: 14,
+              ))
+            ],
+          )
+        ]));
   }
 }

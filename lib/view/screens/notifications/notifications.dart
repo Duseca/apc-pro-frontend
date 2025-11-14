@@ -89,6 +89,9 @@ class Notificationss extends StatelessWidget {
                           hasIcon: true,
                           borderColor: ktransparent,
                           imgSize: 24,
+                          ontap: () {
+                            
+                          },
                         ),
                       );
                     },

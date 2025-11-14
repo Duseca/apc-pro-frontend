@@ -1,5 +1,4 @@
-import 'package:apc_pro/consts/app_colors.dart';
-import 'package:apc_pro/view/widgets/appbar.dart';
+
 import 'package:apc_pro/view/widgets/custom_accordian.dart';
 import 'package:flutter/material.dart';
 

@@ -1,18 +1,15 @@
 import 'package:apc_pro/consts/app_colors.dart';
 import 'package:apc_pro/consts/app_fonts.dart';
 import 'package:apc_pro/generated/assets.dart';
-import 'package:apc_pro/view/screens/home/cpd_tracker/add_cpd_activity/add_cpd_activity.dart';
 import 'package:apc_pro/view/screens/home/cpd_tracker/cpd_tracker.dart';
 import 'package:apc_pro/view/screens/home/submittion_planner/ai_planning_assistant.dart';
 import 'package:apc_pro/view/screens/home/submittion_planner/view_submittion_calender.dart';
-import 'package:apc_pro/view/screens/home/test_quiz/test_quiz_widget.dart';
 import 'package:apc_pro/view/widgets/appbar.dart';
 import 'package:apc_pro/view/widgets/button_container.dart';
 import 'package:apc_pro/view/widgets/custom_row.dart';
 import 'package:apc_pro/view/widgets/custome_comtainer.dart';
 import 'package:apc_pro/view/widgets/expanded_row.dart';
 import 'package:apc_pro/view/widgets/home_widgets.dart';
-import 'package:apc_pro/view/widgets/home_widgets/apc_diary_widgets.dart';
 import 'package:apc_pro/view/widgets/my_button.dart';
 import 'package:apc_pro/view/widgets/my_text_widget.dart';
 import 'package:apc_pro/view/widgets/progress_indicator.dart';
@@ -248,6 +245,7 @@ class SubmittionPlanner extends StatelessWidget {
                           },
                         ),
                       ]),
+                      
                   MyText(
                     text: 'Upcoming Milestones',
                     size: 16,

@@ -5,8 +5,6 @@ import 'package:apc_pro/view/widgets/expanded_row.dart';
 import 'package:apc_pro/view/widgets/my_text_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:smooth_page_indicator/smooth_page_indicator.dart';
-
 import '../../../controllers/survey_controller.dart';
 
 class SurveyMain extends StatefulWidget {

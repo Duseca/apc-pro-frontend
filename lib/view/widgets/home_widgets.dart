@@ -157,11 +157,15 @@ class circular_indicator_stack extends StatelessWidget {
             ),
           ],
         ),
-        MyText(
-          text: title ?? 'Diary',
-          size: 14,
-          fontFamily: AppFonts.gilroyMedium,
-          paddingTop: 10,
+        SizedBox(
+          width: 80,
+          child: MyText(
+            text: title ?? 'Diary',
+            size: 12,
+            fontFamily: AppFonts.gilroyMedium,
+            paddingTop: 10,
+            textAlign: TextAlign.center,
+          ),
         ),
       ],
     );

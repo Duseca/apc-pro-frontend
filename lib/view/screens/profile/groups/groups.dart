@@ -1,7 +1,7 @@
 import 'package:apc_pro/consts/app_colors.dart';
 import 'package:apc_pro/consts/app_fonts.dart';
 import 'package:apc_pro/generated/assets.dart';
-import 'package:apc_pro/view/screens/groups/refer_friend.dart';
+import 'package:apc_pro/view/screens/profile/groups/refer_friend.dart';
 import 'package:apc_pro/view/widgets/appbar.dart';
 import 'package:apc_pro/view/widgets/custome_comtainer.dart';
 import 'package:apc_pro/view/widgets/expanded_row.dart';
@@ -54,6 +54,9 @@ class Groups extends StatelessWidget {
                   create_group_widget(
                     hasCode: true,
                     buttonText: 'Join Group',
+                    ontap: () {
+                       Get.to(() => ReferFriend());
+                    },
                   ),
                   TwoTextedColumn(
                     text1: 'My Groups',

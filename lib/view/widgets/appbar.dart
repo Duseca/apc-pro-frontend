@@ -3,11 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:apc_pro/consts/app_colors.dart';
 import 'package:apc_pro/consts/app_fonts.dart';
 import 'package:apc_pro/generated/assets.dart';
-import 'package:apc_pro/main.dart';
-import 'package:apc_pro/view/widgets/common_image_view_widget.dart';
-import 'package:apc_pro/view/widgets/custome_comtainer.dart';
-import 'package:get/get.dart';
-
 import 'my_text_widget.dart';
 
 AppBar simpleAppBar(

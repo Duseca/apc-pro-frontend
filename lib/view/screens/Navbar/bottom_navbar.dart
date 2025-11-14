@@ -1,6 +1,6 @@
 
 import 'dart:io';
-import 'package:apc_pro/view/screens/community/community.dart';
+import 'package:apc_pro/view/screens/cpd_events/cpd_events.dart';
 import 'package:apc_pro/view/screens/home/home.dart';
 import 'package:apc_pro/view/screens/jobs/job.dart';
 import 'package:apc_pro/view/screens/profile/profile.dart';
@@ -37,8 +37,8 @@ class _BottomNavBarState extends State<BottomNavBar> {
         'label': 'Home'.tr,
       },
       {
-        'image':  Assets.imagesCommunityunfilled,
-        'label': 'Community'.tr,
+        'image':  Assets.imagesDocument,
+        'label': 'CPD'.tr,
       },
       {
         // Placeholder for FAB notch
@@ -62,7 +62,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
 
     final List<Widget> screens = [
       Home(),
-      Community(),
+      CpdEvents(),
       Home(),
      Job(),
       Profile()

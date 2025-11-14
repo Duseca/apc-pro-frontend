@@ -50,6 +50,10 @@ class Assets {
   /// assets/images/addc.png
   static const String imagesAddc = "assets/images/addc.png";
 
+  /// Assets for imagesAddcalender
+  /// assets/images/addcalender.png
+  static const String imagesAddcalender = "assets/images/addcalender.png";
+
   /// Assets for imagesAddgroup
   /// assets/images/addgroup.png
   static const String imagesAddgroup = "assets/images/addgroup.png";
@@ -158,6 +162,10 @@ class Assets {
   /// assets/images/badge2.png
   static const String imagesBadge2 = "assets/images/badge2.png";
 
+  /// Assets for imagesBank
+  /// assets/images/bank.png
+  static const String imagesBank = "assets/images/bank.png";
+
   /// Assets for imagesBellIcon
   /// assets/images/bellIcon.png
   static const String imagesBellIcon = "assets/images/bellIcon.png";
@@ -222,6 +230,10 @@ class Assets {
   /// assets/images/calender2.png
   static const String imagesCalender2 = "assets/images/calender2.png";
 
+  /// Assets for imagesCalender3
+  /// assets/images/calender3.png
+  static const String imagesCalender3 = "assets/images/calender3.png";
+
   /// Assets for imagesCamera
   /// assets/images/camera.png
   static const String imagesCamera = "assets/images/camera.png";
@@ -253,6 +265,10 @@ class Assets {
   /// Assets for imagesClock
   /// assets/images/clock.png
   static const String imagesClock = "assets/images/clock.png";
+
+  /// Assets for imagesCloud
+  /// assets/images/cloud.png
+  static const String imagesCloud = "assets/images/cloud.png";
 
   /// Assets for imagesCode
   /// assets/images/code.png
@@ -298,6 +314,10 @@ class Assets {
   /// assets/images/cquestion.png
   static const String imagesCquestion = "assets/images/cquestion.png";
 
+  /// Assets for imagesCreditcard
+  /// assets/images/creditcard.png
+  static const String imagesCreditcard = "assets/images/creditcard.png";
+
   /// Assets for imagesCross
   /// assets/images/cross.png
   static const String imagesCross = "assets/images/cross.png";
@@ -313,6 +333,10 @@ class Assets {
   /// Assets for imagesDapple
   /// assets/images/Dapple.png
   static const String imagesDapple = "assets/images/Dapple.png";
+
+  /// Assets for imagesDashboard
+  /// assets/images/dashboard.png
+  static const String imagesDashboard = "assets/images/dashboard.png";
 
   /// Assets for imagesDcamera
   /// assets/images/dcamera.png
@@ -402,6 +426,14 @@ class Assets {
   /// assets/images/edit2.png
   static const String imagesEdit2 = "assets/images/edit2.png";
 
+  /// Assets for imagesEmail
+  /// assets/images/email.png
+  static const String imagesEmail = "assets/images/email.png";
+
+  /// Assets for imagesEmail2
+  /// assets/images/email2.png
+  static const String imagesEmail2 = "assets/images/email2.png";
+
   /// Assets for imagesEmaild
   /// assets/images/emaild.png
   static const String imagesEmaild = "assets/images/emaild.png";
@@ -422,6 +454,14 @@ class Assets {
   /// assets/images/export2.png
   static const String imagesExport2 = "assets/images/export2.png";
 
+  /// Assets for imagesExport3
+  /// assets/images/export3.png
+  static const String imagesExport3 = "assets/images/export3.png";
+
+  /// Assets for imagesExport3l
+  /// assets/images/export3l.png
+  static const String imagesExport3l = "assets/images/export3l.png";
+
   /// Assets for imagesEye
   /// assets/images/eye.png
   static const String imagesEye = "assets/images/eye.png";
@@ -438,6 +478,10 @@ class Assets {
   /// assets/images/facebookl.png
   static const String imagesFacebookl = "assets/images/facebookl.png";
 
+  /// Assets for imagesFile
+  /// assets/images/file.png
+  static const String imagesFile = "assets/images/file.png";
+
   /// Assets for imagesFilter
   /// assets/images/filter.png
   static const String imagesFilter = "assets/images/filter.png";
@@ -445,6 +489,10 @@ class Assets {
   /// Assets for imagesFolder
   /// assets/images/folder.png
   static const String imagesFolder = "assets/images/folder.png";
+
+  /// Assets for imagesFolder2
+  /// assets/images/folder2.png
+  static const String imagesFolder2 = "assets/images/folder2.png";
 
   /// Assets for imagesForward
   /// assets/images/forward.png
@@ -494,6 +542,14 @@ class Assets {
   /// assets/images/info.png
   static const String imagesInfo = "assets/images/info.png";
 
+  /// Assets for imagesJob
+  /// assets/images/job.png
+  static const String imagesJob = "assets/images/job.png";
+
+  /// Assets for imagesJobd
+  /// assets/images/jobd.png
+  static const String imagesJobd = "assets/images/jobd.png";
+
   /// Assets for imagesLcamera
   /// assets/images/lcamera.png
   static const String imagesLcamera = "assets/images/lcamera.png";
@@ -533,6 +589,10 @@ class Assets {
   /// Assets for imagesLocation
   /// assets/images/location.png
   static const String imagesLocation = "assets/images/location.png";
+
+  /// Assets for imagesLocation2
+  /// assets/images/location2.png
+  static const String imagesLocation2 = "assets/images/location2.png";
 
   /// Assets for imagesLogo
   /// assets/images/logo.png
@@ -574,6 +634,10 @@ class Assets {
   /// assets/images/master.png
   static const String imagesMaster = "assets/images/master.png";
 
+  /// Assets for imagesMenu
+  /// assets/images/menu.png
+  static const String imagesMenu = "assets/images/menu.png";
+
   /// Assets for imagesMes3
   /// assets/images/mes3.png
   static const String imagesMes3 = "assets/images/mes3.png";
@@ -609,6 +673,10 @@ class Assets {
   /// Assets for imagesMoon
   /// assets/images/moon.png
   static const String imagesMoon = "assets/images/moon.png";
+
+  /// Assets for imagesMore
+  /// assets/images/more.png
+  static const String imagesMore = "assets/images/more.png";
 
   /// Assets for imagesMored
   /// assets/images/mored.png
@@ -674,6 +742,14 @@ class Assets {
   /// assets/images/onel.png
   static const String imagesOnel = "assets/images/onel.png";
 
+  /// Assets for imagesOnline
+  /// assets/images/online.png
+  static const String imagesOnline = "assets/images/online.png";
+
+  /// Assets for imagesOnline2
+  /// assets/images/online2.png
+  static const String imagesOnline2 = "assets/images/online2.png";
+
   /// Assets for imagesOtpverify
   /// assets/images/otpverify.svg
   static const String imagesOtpverify = "assets/images/otpverify.svg";
@@ -689,6 +765,14 @@ class Assets {
   /// Assets for imagesPause2
   /// assets/images/pause2.png
   static const String imagesPause2 = "assets/images/pause2.png";
+
+  /// Assets for imagesPaypal
+  /// assets/images/paypal.png
+  static const String imagesPaypal = "assets/images/paypal.png";
+
+  /// Assets for imagesPound
+  /// assets/images/pound.png
+  static const String imagesPound = "assets/images/pound.png";
 
   /// Assets for imagesPrivacy
   /// assets/images/privacy.png
@@ -718,6 +802,10 @@ class Assets {
   /// assets/images/quiz.png
   static const String imagesQuiz = "assets/images/quiz.png";
 
+  /// Assets for imagesRate
+  /// assets/images/rate.png
+  static const String imagesRate = "assets/images/rate.png";
+
   /// Assets for imagesReflection
   /// assets/images/reflection.png
   static const String imagesReflection = "assets/images/reflection.png";
@@ -746,6 +834,14 @@ class Assets {
   /// assets/images/saved.png
   static const String imagesSaved = "assets/images/saved.png";
 
+  /// Assets for imagesScheduled
+  /// assets/images/scheduled.png
+  static const String imagesScheduled = "assets/images/scheduled.png";
+
+  /// Assets for imagesSchedulel
+  /// assets/images/schedulel.png
+  static const String imagesSchedulel = "assets/images/schedulel.png";
+
   /// Assets for imagesSearch
   /// assets/images/search.png
   static const String imagesSearch = "assets/images/search.png";
@@ -753,6 +849,10 @@ class Assets {
   /// Assets for imagesSecurity
   /// assets/images/security.png
   static const String imagesSecurity = "assets/images/security.png";
+
+  /// Assets for imagesSecurity2
+  /// assets/images/security2.png
+  static const String imagesSecurity2 = "assets/images/security2.png";
 
   /// Assets for imagesSend
   /// assets/images/send.png
@@ -765,6 +865,18 @@ class Assets {
   /// Assets for imagesSettingl
   /// assets/images/settingl.png
   static const String imagesSettingl = "assets/images/settingl.png";
+
+  /// Assets for imagesShare
+  /// assets/images/share.png
+  static const String imagesShare = "assets/images/share.png";
+
+  /// Assets for imagesShare2
+  /// assets/images/share2.png
+  static const String imagesShare2 = "assets/images/share2.png";
+
+  /// Assets for imagesShare3
+  /// assets/images/share3.png
+  static const String imagesShare3 = "assets/images/share3.png";
 
   /// Assets for imagesShared
   /// assets/images/shared.png
@@ -790,6 +902,14 @@ class Assets {
   /// assets/images/submission.png
   static const String imagesSubmission = "assets/images/submission.png";
 
+  /// Assets for imagesSuccessd
+  /// assets/images/successd.png
+  static const String imagesSuccessd = "assets/images/successd.png";
+
+  /// Assets for imagesSuccessl
+  /// assets/images/successl.png
+  static const String imagesSuccessl = "assets/images/successl.png";
+
   /// Assets for imagesSummary
   /// assets/images/summary.png
   static const String imagesSummary = "assets/images/summary.png";
@@ -809,6 +929,14 @@ class Assets {
   /// Assets for imagesTest
   /// assets/images/test.png
   static const String imagesTest = "assets/images/test.png";
+
+  /// Assets for imagesTestscored
+  /// assets/images/testscored.png
+  static const String imagesTestscored = "assets/images/testscored.png";
+
+  /// Assets for imagesTestscorel
+  /// assets/images/testscorel.png
+  static const String imagesTestscorel = "assets/images/testscorel.png";
 
   /// Assets for imagesThree
   /// assets/images/three.png
@@ -846,6 +974,14 @@ class Assets {
   /// assets/images/twol.png
   static const String imagesTwol = "assets/images/twol.png";
 
+  /// Assets for imagesUniquequesd
+  /// assets/images/uniquequesd.png
+  static const String imagesUniquequesd = "assets/images/uniquequesd.png";
+
+  /// Assets for imagesUniquequesl
+  /// assets/images/uniquequesl.png
+  static const String imagesUniquequesl = "assets/images/uniquequesl.png";
+
   /// Assets for imagesUpload
   /// assets/images/upload.png
   static const String imagesUpload = "assets/images/upload.png";
@@ -854,9 +990,25 @@ class Assets {
   /// assets/images/userTag.png
   static const String imagesUserTag = "assets/images/userTag.png";
 
+  /// Assets for imagesUserd
+  /// assets/images/userd.png
+  static const String imagesUserd = "assets/images/userd.png";
+
+  /// Assets for imagesUserl
+  /// assets/images/userl.png
+  static const String imagesUserl = "assets/images/userl.png";
+
   /// Assets for imagesUsers
   /// assets/images/users.png
   static const String imagesUsers = "assets/images/users.png";
+
+  /// Assets for imagesUxpausedd
+  /// assets/images/uxpausedd.png
+  static const String imagesUxpausedd = "assets/images/uxpausedd.png";
+
+  /// Assets for imagesUxpausedl
+  /// assets/images/uxpausedl.png
+  static const String imagesUxpausedl = "assets/images/uxpausedl.png";
 
   /// Assets for imagesVerifymail
   /// assets/images/verifymail.png

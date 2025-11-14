@@ -84,6 +84,7 @@ class notification_pref_row extends StatelessWidget {
   final String? title, desc, defaultText;
   final bool? value, hasSwitch, isDefault;
   final String? fontFamily;
+  final double? size1,size2;
   const notification_pref_row({
     super.key,
     this.title,
@@ -92,7 +93,7 @@ class notification_pref_row extends StatelessWidget {
     this.hasSwitch = true,
     this.isDefault = false,
     this.fontFamily,
-    this.defaultText,
+    this.defaultText, this.size1, this.size2,
   });
 
   @override
@@ -106,12 +107,12 @@ class notification_pref_row extends StatelessWidget {
               children: [
                 MyText(
                   text: title ?? 'Push Notifications',
-                  size: 16,
+                  size:size1?? 16,
                   fontFamily: fontFamily ?? AppFonts.gilroyBold,
                 ),
                 MyText(
                   text: desc ?? 'System notifications enabled',
-                  size: 14,
+                  size:size2?? 14,
                   fontFamily: AppFonts.gilroyRegular,
                   color: getTertiary(context),
                 )

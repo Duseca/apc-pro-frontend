@@ -2,7 +2,6 @@ import 'package:apc_pro/consts/app_colors.dart';
 import 'package:apc_pro/consts/app_fonts.dart';
 import 'package:apc_pro/generated/assets.dart';
 import 'package:apc_pro/view/screens/apc_ai/apc_AI.dart';
-import 'package:apc_pro/view/screens/home/entries/entries_detail.dart';
 import 'package:apc_pro/view/screens/home/summary_experience/continue_writing.dart';
 import 'package:apc_pro/view/widgets/appbar.dart';
 import 'package:apc_pro/view/widgets/button_container.dart';
@@ -23,7 +22,7 @@ class SummaryExperience extends StatelessWidget {
       'Client Care',
       'Communication and Negotiation'
     ];
-    final List Tstatus = [
+    final List tStatus = [
       'Building Maintenance/Refurbishment',
       'Building Surveys and Inspections',
       'Construction Technology/Environmental Services'
@@ -93,7 +92,7 @@ class SummaryExperience extends StatelessWidget {
                       height: 16,
                     ),
                     _compencies_container(
-                      status: Tstatus,
+                      status: tStatus,
                       heading: 'Technical Competencies',
                       hpad: 16,
                     ),

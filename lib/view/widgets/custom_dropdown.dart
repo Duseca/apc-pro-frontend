@@ -1,12 +1,9 @@
 import 'package:apc_pro/consts/app_fonts.dart';
-import 'package:apc_pro/generated/assets.dart';
 import 'package:apc_pro/view/widgets/toolTip.dart';
 import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_animate/flutter_animate.dart';
 import 'package:apc_pro/consts/app_colors.dart';
 import 'package:apc_pro/view/widgets/switch_button.dart';
-
 import 'my_text_widget.dart';
 
 // ignore: must_be_immutable
@@ -138,10 +135,11 @@ class _CustomDropDownState extends State<CustomDropDown> {
                       maxLines: 1,
                       textOverflow: TextOverflow.ellipsis,
                       text: _selected == widget.hint ? widget.hint : _selected!,
-                      size: widget.hintsize ?? 11,
+                      size: widget.hintsize ?? 14,
                       weight: widget.hintWeigth ?? FontWeight.w500,
+                      fontFamily: AppFonts.gilroyMedium,
                       color: _selected == widget.hint
-                          ? widget.hintColor ?? getSecondaryColor(context)
+                          ? widget.hintColor ?? getTertiary(context)
                           : getSecondaryColor(context),
                     ),
                   ),

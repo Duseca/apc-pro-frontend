@@ -1,7 +1,5 @@
-import 'package:apc_pro/view/widgets/custom_check_box.dart';
 import 'package:flutter/material.dart';
 import 'package:apc_pro/consts/app_colors.dart';
-
 import 'my_text_widget.dart';
 
 class ExpandedRow extends StatelessWidget {

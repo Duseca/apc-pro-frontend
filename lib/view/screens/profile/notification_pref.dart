@@ -4,7 +4,6 @@ import 'package:apc_pro/view/widgets/appbar.dart';
 import 'package:apc_pro/view/widgets/custome_comtainer.dart';
 import 'package:apc_pro/view/widgets/my_text_widget.dart';
 import 'package:apc_pro/view/widgets/profile_widgets/profile_widgets.dart';
-import 'package:apc_pro/view/widgets/switch_button.dart';
 import 'package:flutter/material.dart';
 
 class SettingItem {

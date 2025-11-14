@@ -1,11 +1,10 @@
-import 'package:apc_pro/consts/app_colors.dart';
 import 'package:apc_pro/view/screens/profile/support/contact_support.dart';
 import 'package:apc_pro/view/screens/profile/support/faqs.dart';
 import 'package:apc_pro/view/screens/profile/support/report_issue.dart';
 import 'package:apc_pro/view/widgets/appbar.dart';
 import 'package:apc_pro/view/widgets/tabs_view.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
+import 'package:get/get_connect/http/src/utils/utils.dart';
 
 class HelpSupport extends StatefulWidget {
   const HelpSupport({super.key});
@@ -52,7 +51,7 @@ class _HelpSupportState extends State<HelpSupport>
             MyTabbar(
               items: tabs,
               controller: tabController,
-              hasborder: false,
+              hasborder: T,
             ),
             SizedBox(
               height: 20,

@@ -8,14 +8,14 @@ import 'package:apc_pro/view/widgets/my_button.dart';
 import 'package:apc_pro/view/widgets/my_text_widget.dart';
 import 'package:flutter/material.dart';
     List selectComp = [
-      'Ethics Rules of Conduct ',
-      'Client Care ',
+      'Ethics Rules of Conduct',
+      'Client Care',
       'Communication and Negotiation',
       'Health and Safety',
-      'Accounting Principles ',
-      'Conflict Avoidance ',
+      'Accounting Principles',
+      'Conflict Avoidance',
       'Business Planning',
-      'Data Management','Sustainability ','Teamworking '
+      'Data Management','Sustainability','Teamworking'
     ];
     List techCore = [
       'Project Management',

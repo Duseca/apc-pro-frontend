@@ -2,7 +2,7 @@ import 'package:apc_pro/consts/app_colors.dart';
 import 'package:apc_pro/consts/app_fonts.dart';
 import 'package:apc_pro/generated/assets.dart';
 import 'package:apc_pro/view/screens/community/community_mesg.dart';
-import 'package:apc_pro/view/screens/groups/manage_group.dart';
+import 'package:apc_pro/view/screens/profile/groups/manage_group.dart';
 import 'package:apc_pro/view/widgets/appbar.dart';
 import 'package:apc_pro/view/widgets/button_container.dart';
 import 'package:apc_pro/view/widgets/custome_comtainer.dart';

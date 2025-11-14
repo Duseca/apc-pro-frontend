@@ -2,8 +2,6 @@ import 'package:apc_pro/consts/app_colors.dart';
 import 'package:apc_pro/consts/app_fonts.dart';
 import 'package:apc_pro/controllers/survey_controller.dart';
 import 'package:apc_pro/generated/assets.dart';
-import 'package:apc_pro/view/widgets/bullet_points.dart';
-import 'package:apc_pro/view/widgets/button_container.dart';
 import 'package:apc_pro/view/widgets/custom_check_box.dart';
 import 'package:apc_pro/view/widgets/my_button.dart';
 import 'package:apc_pro/view/widgets/my_text_widget.dart';
@@ -185,7 +183,7 @@ class Competency extends StatelessWidget {
 }
 
 class checkbox_row extends StatelessWidget {
-  final String? title;
+  final String? title,text2,fontFamily;
   final bool? isActive, hasSecText;
   final Color? cBorder, cbg,textColor;
   final double? radius;
@@ -198,7 +196,7 @@ class checkbox_row extends StatelessWidget {
     this.cBorder,
     this.cbg,
     this.radius,
-    this.tSize, this.textColor,
+    this.tSize, this.textColor, this.text2, this.fontFamily,
   });
 
   @override
@@ -211,9 +209,9 @@ class checkbox_row extends StatelessWidget {
           isActive: isActive ?? false,
           onTap: () {},
           radius: radius ?? 2.5,
-          // selectedColor: cbg ?? kbackground,
-          // bordercolor2: cBorder ?? kborder,
-          // borderColor: cBorder ?? kborder,
+          selectedColor: cbg ,
+          bordercolor2: cBorder ,
+          borderColor: cBorder,
           size: 15,
           circleIconsize: 12,
         ),
@@ -224,11 +222,11 @@ class checkbox_row extends StatelessWidget {
             paddingLeft: 6,
             paddingRight: hasSecText == true ? 10 : 0,
             size: tSize,
-            color: textColor,
+            color: textColor,fontFamily: fontFamily,
           ),
         ),
         if (hasSecText == true)
-        MyText(text: '(22 Questions)',size: 12,color: getTertiary(context),)
+        MyText(text:text2?? '(22 Questions)',size: 12,color: getTertiary(context),)
       ],
     );
   }

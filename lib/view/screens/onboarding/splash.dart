@@ -1,4 +1,3 @@
-import 'package:apc_pro/consts/app_colors.dart';
 import 'package:apc_pro/generated/assets.dart';
 import 'package:apc_pro/view/screens/onboarding/onboarding.dart';
 import 'package:flutter/material.dart';
