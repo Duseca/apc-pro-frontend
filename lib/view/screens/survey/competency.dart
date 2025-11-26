@@ -60,6 +60,7 @@ class Competency extends StatelessWidget {
           size: 12,
           weight: FontWeight.w400,
           paddingBottom: 10,
+          color: getTertiary(context),
         ),
         ListView.builder(
           padding: EdgeInsets.all(0),
@@ -103,6 +104,7 @@ class Competency extends StatelessWidget {
           size: 12,
           weight: FontWeight.w400,
           paddingBottom: 10,
+            color: getTertiary(context),
         ),
         ListView.builder(
           padding: EdgeInsets.all(0),
@@ -130,6 +132,7 @@ class Competency extends StatelessWidget {
           size: 12,
           weight: FontWeight.w400,
           paddingBottom: 10,
+            color: getTertiary(context),
         ),
         ListView.builder(
           padding: EdgeInsets.all(0),

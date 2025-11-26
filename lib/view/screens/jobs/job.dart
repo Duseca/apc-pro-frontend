@@ -1,6 +1,7 @@
 import 'package:apc_pro/consts/app_colors.dart';
 import 'package:apc_pro/consts/app_fonts.dart';
 import 'package:apc_pro/generated/assets.dart';
+import 'package:apc_pro/view/screens/job_posting/job_posting_dashboard.dart';
 import 'package:apc_pro/view/screens/jobs/saved_jobs.dart';
 import 'package:apc_pro/view/widgets/appbar.dart';
 import 'package:apc_pro/view/widgets/custom_dropdown.dart';
@@ -171,6 +172,22 @@ class Job extends StatelessWidget {
               ),
             ),
           ],
-        ));
+        ),
+        
+        floatingActionButton: Bounce(
+          onTap: () {
+            Get.to(()=>JobPostingDashboard());
+          },
+          child: Container(
+            padding: EdgeInsets.all(10),
+            decoration: BoxDecoration(
+              shape: BoxShape.circle,
+              color: getSecondaryColor(context)
+              
+            ),
+            child: Image.asset(Assets.imagesAdd,width: 30,color: getsplashcolor(context),),
+          ),
+        ),
+        );
   }
 }

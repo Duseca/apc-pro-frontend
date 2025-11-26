@@ -275,7 +275,7 @@ SizedBox(
             Expanded(
               child: MyButton(
                 backgroundColor: getSecondaryColor(context).withOpacity(0.1),
-                buttonText: 'Continue',
+                buttonText: 'Complete Profile',
                 fontColor: getTertiary(context),
                 onTap: () {
                  Get.to(BottomNavBar());

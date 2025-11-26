@@ -75,6 +75,7 @@ class TrainingExperience extends StatelessWidget {
                   "3-5 years",
                   'Select'
                 ],
+                bordercolor: getSecondaryColor(context),
                 value: 'Select',
                 onChanged: (val) {},
               ),
@@ -87,6 +88,7 @@ class TrainingExperience extends StatelessWidget {
                 items: ["Full Time", "Part Time", "Mixed", 'Select'],
                 value: 'Select',
                 onChanged: (val) {},
+                bordercolor: getSecondaryColor(context),
               ),
             ),
           ],

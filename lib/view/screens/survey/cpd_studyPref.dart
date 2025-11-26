@@ -5,6 +5,7 @@ import 'package:apc_pro/generated/assets.dart';
 import 'package:apc_pro/view/screens/survey/competency.dart';
 import 'package:apc_pro/view/screens/survey/training_experience.dart';
 import 'package:apc_pro/view/widgets/custome_comtainer.dart';
+import 'package:apc_pro/view/widgets/expanded_row.dart';
 import 'package:apc_pro/view/widgets/my_button.dart';
 import 'package:apc_pro/view/widgets/my_text_field.dart';
 import 'package:apc_pro/view/widgets/my_text_widget.dart';
@@ -31,12 +32,21 @@ class CpdStudypref extends StatelessWidget {
       'Audio Learning',
       'Reading',
       'Hands-on Practice',
- 
     ];
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
+        TwoTextedColumn(
+          text1: 'CPD Time Commitment',
+          text2:
+              'Tell us about your current CPD requirements and available study time',
+          color2: getTertiary(context),
+          size1: 12,
+          size2: 12,
+          fontFamily: AppFonts.gilroySemiBold,
+        ),
+        SizedBox(height: 15,),
         MyTextField2(
           label: 'Current CPD Hours Completed',
           hint: 'e.g. 35 hours ',
@@ -49,7 +59,7 @@ class CpdStudypref extends StatelessWidget {
           paddingTop: 5,
           text: 'Preferred Study Schedule',
           size: 14,
-         fontFamily: AppFonts.gilroyBold,
+          fontFamily: AppFonts.gilroyBold,
           paddingBottom: 5,
         ),
         training_container(
@@ -68,7 +78,7 @@ class CpdStudypref extends StatelessWidget {
           paddingTop: 5,
           text: 'Study Preferences',
           size: 14,
-         fontFamily: AppFonts.gilroyBold,
+          fontFamily: AppFonts.gilroyBold,
           paddingBottom: 3,
         ),
         MyText(
@@ -76,7 +86,6 @@ class CpdStudypref extends StatelessWidget {
           fontFamily: AppFonts.gilroyMedium,
           size: 12,
           color: getTertiary(context),
-       
           paddingBottom: 10,
         ),
         MyText(
@@ -85,8 +94,7 @@ class CpdStudypref extends StatelessWidget {
           fontFamily: AppFonts.gilroyBold,
           paddingBottom: 14,
         ),
-
-   GridView.builder(
+        GridView.builder(
           itemCount: learning.length,
           shrinkWrap: true,
           physics: NeverScrollableScrollPhysics(),
@@ -97,10 +105,10 @@ class CpdStudypref extends StatelessWidget {
               mainAxisExtent: 42),
           itemBuilder: (context, index) {
             return CustomeContainer(
-               color: getfillcolor(context),
-                  vpad: 10,
-                  hpad: 10,
-                  radius: 8,
+              color: getfillcolor(context),
+              vpad: 10,
+              hpad: 10,
+              radius: 8,
               widget: checkbox_row(
                 title: learning[index],
                 tSize: 11,
@@ -108,8 +116,7 @@ class CpdStudypref extends StatelessWidget {
             );
           },
         ),
-    
-            MyText(
+        MyText(
           text: 'Preferred Content Formats (Select all that apply)',
           size: 12,
           fontFamily: AppFonts.gilroyBold,
@@ -123,7 +130,7 @@ class CpdStudypref extends StatelessWidget {
           itemCount: cpd.length,
           itemBuilder: (context, index) {
             return Padding(
-              padding: const EdgeInsets.only(bottom:4),
+              padding: const EdgeInsets.only(bottom: 4),
               child: CustomeContainer(
                   color: getfillcolor(context),
                   vpad: 10,
@@ -133,17 +140,13 @@ class CpdStudypref extends StatelessWidget {
             );
           },
         ),
-          MyText(
-            paddingTop: 15,
+        MyText(
+          paddingTop: 15,
           text: 'Study Pace Preference',
           size: 12,
           fontFamily: AppFonts.gilroyBold,
           paddingBottom: 15,
         ),
-
-
-    
-      
         training_container(
           title: 'Self-paced',
           desc: 'Learn at your own speed and schedule',
@@ -156,15 +159,16 @@ class CpdStudypref extends StatelessWidget {
           title: 'Intensive',
           desc: 'Fast-track learning with concentrated sessions',
         ),
-                MyText(
+        MyText(
           paddingTop: 5,
           text: 'Support Needs',
           size: 14,
-         fontFamily: AppFonts.gilroyBold,
+          fontFamily: AppFonts.gilroyBold,
           paddingBottom: 5,
         ),
         MyText(
-          text: 'Tell us about your preferred learning support and collaboration style',
+          text:
+              'Tell us about your preferred learning support and collaboration style',
           fontFamily: AppFonts.gilroyMedium,
           size: 12,
           paddingTop: 5,
@@ -176,10 +180,6 @@ class CpdStudypref extends StatelessWidget {
           fontFamily: AppFonts.gilroyMedium,
           paddingBottom: 14,
         ),
-
-
-    
-    
         training_container(
           title: 'Group Learning',
           desc: 'Enjoy collaborative learning and group discussions',
@@ -192,12 +192,10 @@ class CpdStudypref extends StatelessWidget {
           title: 'Individual Learning',
           desc: 'Prefer to learn independently without collaboration',
         ),
-           
-  
-         SizedBox(
+        SizedBox(
           height: 30,
         ),
-                Row(
+        Row(
           children: [
             Bounce(
                 onTap: () {

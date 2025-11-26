@@ -20,6 +20,9 @@ class ManageJobs extends StatelessWidget {
     final isDarkMode = Theme.of(context).brightness == Brightness.dark;
     return Scaffold(
         appBar: simpleAppBar(
+            onBackIconTap: () {
+              Get.back(closeOverlays: true);
+            },
             context: context,
             title: 'Manage Job',
             centerTitle: true,
@@ -244,7 +247,9 @@ class ManageJobs extends StatelessWidget {
                             paddingBottom: 16,
                             fontFamily: AppFonts.gilroySemiBold,
                           ),
-                        WeeklyChart(),
+                          RepaintBoundary(
+                            child: WeeklyChart(),
+                          )
                         ]),
                     mbott: 16,
                   ),

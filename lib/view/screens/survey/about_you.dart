@@ -20,22 +20,24 @@ class AboutYou extends StatelessWidget {
       children: [
         MyTextField2(
           label: 'First Name',
-          hint: 'e.g., john',
+          hint: 'Enter your first name',
           //isoptional: false,
           marginBottom: 27,
         ),
         MyTextField2(
           label: 'Last Name',
-          hint: 'e.g., doe',
+          hint: 'Enter your last name',
           //isoptional: false,
           marginBottom: 27,
         ),
         MyTextField2(
           label: 'Email Address',
           marginBottom: 27,
+          hint: 'Enter your email address',
         ),
         MyTextField2(
           label: 'Phone Number',
+          hint: 'Enter your phone number',
         ),
         SizedBox(
           height: 25,

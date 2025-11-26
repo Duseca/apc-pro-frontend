@@ -109,6 +109,7 @@ class _SurveyMainState extends State<SurveyMain> {
                         size2: 12,
                         size1: 20,
                         weight1: FontWeight.bold,
+                        color2: getTertiary(context),
                       ),
                       const SizedBox(height: 20),
                       bodyWidget,

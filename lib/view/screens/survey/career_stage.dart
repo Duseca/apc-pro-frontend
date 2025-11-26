@@ -42,7 +42,14 @@ class CareerStage extends StatelessWidget {
         }
       },
       {
-        'title': 'APC Counsellor',
+        'title': 'RICS Qualified',
+'description':'Preparing for preliminary review stage. Working on submission requirements and documentation.',
+     'onTap': () {
+          // Navigate to Preliminary Review screen
+        }
+      },
+      {
+        'title': 'Publisher',
         'description': 'Submission window; Case study & Interview prep',
         'onTap': () {
           // Navigate to RICS Counsellor screen

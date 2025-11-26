@@ -240,7 +240,8 @@ class JobPreview extends StatelessWidget {
                     iconSize: 15,
                     radius: 8,
                     onTap: () {
-                       Get.to(()=>ManageJobs());
+                       Get.to(() => ManageJobs(), transition: Transition.noTransition);
+
                     },
                   ))
                 ],
