@@ -5,6 +5,7 @@ import 'package:apc_pro/generated/assets.dart';
 import 'package:apc_pro/view/widgets/custom_check_box.dart';
 import 'package:apc_pro/view/widgets/my_button.dart';
 import 'package:apc_pro/view/widgets/my_text_widget.dart';
+import 'package:apc_pro/view/widgets/toolTip.dart';
 import 'package:bounce/bounce.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -90,21 +91,16 @@ class Competency extends StatelessWidget {
             SizedBox(
               width: 30,
             ),
-            Image.asset(
-              Assets.imagesQuestionmark,
-              width: 18,
-              height: 18,
-              color: isDarkMode ? kwhite : kblack,
-            )
+            TooltipIcon(),
           ],
         ),
         MyText(
           paddingTop: 5,
-          text: 'These competencies are required for all candidates:',
+          text: 'Select 3 core competencies for your pathway:',
           size: 12,
           weight: FontWeight.w400,
           paddingBottom: 10,
-            color: getTertiary(context),
+          color: getTertiary(context),
         ),
         ListView.builder(
           padding: EdgeInsets.all(0),
@@ -132,7 +128,7 @@ class Competency extends StatelessWidget {
           size: 12,
           weight: FontWeight.w400,
           paddingBottom: 10,
-            color: getTertiary(context),
+          color: getTertiary(context),
         ),
         ListView.builder(
           padding: EdgeInsets.all(0),
@@ -186,9 +182,9 @@ class Competency extends StatelessWidget {
 }
 
 class checkbox_row extends StatelessWidget {
-  final String? title,text2,fontFamily;
+  final String? title, text2, fontFamily;
   final bool? isActive, hasSecText;
-  final Color? cBorder, cbg,textColor;
+  final Color? cBorder, cbg, textColor;
   final double? radius;
   final double? tSize;
   const checkbox_row({
@@ -199,7 +195,10 @@ class checkbox_row extends StatelessWidget {
     this.cBorder,
     this.cbg,
     this.radius,
-    this.tSize, this.textColor, this.text2, this.fontFamily,
+    this.tSize,
+    this.textColor,
+    this.text2,
+    this.fontFamily,
   });
 
   @override
@@ -212,10 +211,11 @@ class checkbox_row extends StatelessWidget {
           isActive: isActive ?? false,
           onTap: () {},
           radius: radius ?? 2.5,
-          selectedColor: cbg ,
-          bordercolor2: cBorder ,
+          selectedColor: cbg,
+          bordercolor2: cBorder,
           borderColor: cBorder,
           size: 15,
+          iconColor: getsplashcolor(context),
           circleIconsize: 12,
         ),
         Flexible(
@@ -225,11 +225,16 @@ class checkbox_row extends StatelessWidget {
             paddingLeft: 6,
             paddingRight: hasSecText == true ? 10 : 0,
             size: tSize,
-            color: textColor,fontFamily: fontFamily,
+            color: textColor,
+            fontFamily: fontFamily,
           ),
         ),
         if (hasSecText == true)
-        MyText(text:text2?? '(22 Questions)',size: 12,color: getTertiary(context),)
+          MyText(
+            text: text2 ?? '(22 Questions)',
+            size: 12,
+            color: getTertiary(context),
+          )
       ],
     );
   }

@@ -21,7 +21,6 @@ class apc_competency_widget extends StatelessWidget {
         radius: 10,
         hpad: 15,
         color: getfillcolor(context),
-     
         widget: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
           ExpandedRow(
             text1: 'Competency Progress',
@@ -78,23 +77,26 @@ class apc_competency_widget extends StatelessWidget {
 }
 
 class newEntry_container extends StatelessWidget {
-  final String? title, desc, icon;
+  final String? title, desc, icon, text3;
   final VoidCallback? ontap;
-  final Color? borderColor, iconColor,bgColor;
+  final Color? borderColor, iconColor, bgColor;
   final String? suffixIcon;
   final bool? hasPrefix;
-  final double? mbott,iconSize;
+  final double? mbott, iconSize;
   const newEntry_container({
     super.key,
     this.title,
     this.desc,
     this.icon,
+    this.text3,
     this.ontap,
     this.borderColor,
     this.suffixIcon,
     this.hasPrefix = true,
     this.mbott,
-    this.iconColor, this.bgColor, this.iconSize,
+    this.iconColor,
+    this.bgColor,
+    this.iconSize,
   });
 
   @override
@@ -104,7 +106,7 @@ class newEntry_container extends StatelessWidget {
       child: CustomeContainer(
           mbott: mbott ?? 12,
           hpad: 15,
-          color:bgColor?? getfillcolor(context),
+          color: bgColor ?? getfillcolor(context),
           radius: 8,
           borderColor: borderColor,
           widget:
@@ -114,8 +116,8 @@ class newEntry_container extends StatelessWidget {
                 if (hasPrefix == true) ...{
                   Image.asset(
                     icon ?? Assets.imagesNewentry,
-                    width:iconSize?? 40,
-                    height:iconSize?? 40,
+                    width: iconSize ?? 40,
+                    height: iconSize ?? 40,
                     color: iconColor,
                   ),
                   SizedBox(
@@ -123,17 +125,30 @@ class newEntry_container extends StatelessWidget {
                   ),
                 },
                 Expanded(
-                  child: TwoTextedColumn(
-                    text1: title ?? 'New Entry',
-                    text2: desc ?? 'Log new work experience',
-                    size1: 14,
-                    size2: 11,
-                    fontFamily: AppFonts.gilroyBold,
-                    fontFamily2: AppFonts.gilroyMedium,
-                    color2: getTertiary(context),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      TwoTextedColumn(
+                        text1: title ?? 'New Entry',
+                        text2: desc ?? 'Log new work experience',
+                        size1: 14,
+                        size2: 11,
+                        fontFamily: AppFonts.gilroyBold,
+                        fontFamily2: AppFonts.gilroyMedium,
+                        color2: getTertiary(context),
+                      ),
+                      if (text3 != null)
+                        MyText(
+                          text: text3!,
+                          size: 11,
+                          fontFamily: AppFonts.gilroyMedium,
+                          paddingTop: 6,
+                          color: getSecondaryColor(context),
+                        )
+                    ],
                   ),
                 ),
-                if (suffixIcon != null || hasPrefix==false)
+                if (suffixIcon != null || hasPrefix == false)
                   Image.asset(
                     suffixIcon ?? Assets.imagesExport,
                     width: 20,
@@ -159,7 +174,6 @@ class apc_competencyLevel_widget extends StatelessWidget {
         radius: 10,
         hpad: 14,
         color: getfillcolor(context),
-     
         widget: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
           ExpandedRow(
             text1: 'Competency Level Distribution',
@@ -210,7 +224,6 @@ class lvl_row extends StatelessWidget {
           Row(
             children: [
               buttonContainer(
-                
                 radius: 50,
                 text: lvl ?? 'M1',
                 bgColor: getsplashcolor(context),
@@ -237,18 +250,20 @@ class lvl_row extends StatelessWidget {
               ),
             ],
           ),
-           Row(
-             children: [
-              SizedBox(width: 40,),
-               Expanded(
-                 child: linearProgressIndicatorr(
-                    height: 8,
-                    value: value,
-                    bgColor: getsplashcolor(context),
-                  ),
-               ),
-             ],
-           ),
+          Row(
+            children: [
+              SizedBox(
+                width: 40,
+              ),
+              Expanded(
+                child: linearProgressIndicatorr(
+                  height: 8,
+                  value: value,
+                  bgColor: getsplashcolor(context),
+                ),
+              ),
+            ],
+          ),
         ],
       ),
     );
@@ -288,6 +303,7 @@ class recent_activity_row extends StatelessWidget {
             fontFamily: AppFonts.gilroyBold,
             fontFamily2: AppFonts.gilroyMedium,
             color2: getTertiary(context),
+            maxLines: 4,
           ),
         ),
         SizedBox(
@@ -296,7 +312,6 @@ class recent_activity_row extends StatelessWidget {
         Column(
           children: [
             buttonContainer(
-             
               radius: 50,
               text: lvl ?? 'M2',
               bgColor: getsplashcolor(context),

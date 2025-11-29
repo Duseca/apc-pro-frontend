@@ -20,7 +20,8 @@ class create_group_widget extends StatelessWidget {
     this.text2,
     this.icon,
     this.hasCode = false,
-    this.buttonText, this.ontap,
+    this.buttonText,
+    this.ontap,
   });
 
   @override
@@ -36,7 +37,7 @@ class create_group_widget extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Image.asset(
-                isDarkMode ? Assets.imagesAddgroup : Assets.imagesAddgroupl,
+                icon ?? Assets.imagesAddgroup,
                 width: 48,
                 height: 48,
               ),
@@ -68,9 +69,10 @@ class create_group_widget extends StatelessWidget {
                     MyButton(
                       mTop: 16,
                       buttonText: buttonText ?? 'Create Group',
-                      onTap: ontap??() {
-                        Get.to(() => RicsProfessional());
-                      },
+                      onTap: ontap ??
+                          () {
+                            Get.to(() => RicsProfessional());
+                          },
                     )
                   ],
                 ),

@@ -69,7 +69,7 @@ class AddNewSubmissionItems extends StatelessWidget {
                     iconColor: getSecondaryColor(context),
                     bgColor: getfifth(context),
                   ),
-                        MyText(
+                  MyText(
                     text: 'Priority',
                     size: 14,
                     fontFamily: AppFonts.gilroySemiBold,
@@ -121,6 +121,21 @@ class AddNewSubmissionItems extends StatelessWidget {
                     ),
                     filledColor: getfifth(context),
                     bordercolor: ktransparent,
+                  ),
+                  CustomDropDown(
+                    hint: 'In Progress',
+                    items: [
+                      'Process 1',
+                      'Process 2',
+                      'Process 3',
+                      'In Progress'
+                    ],
+                    value: 'In Progress',
+                    onChanged: (i) {},
+                    label: 'Status',
+                    //hasInfo: false,
+                    iconColor: getSecondaryColor(context),
+                    bgColor: getfifth(context),
                   ),
                   MyText(
                     text: 'Estimated Time',
@@ -175,37 +190,38 @@ class AddNewSubmissionItems extends StatelessWidget {
                     i1: '0%',
                     i3: '100%',
                   ),
-                  SizedBox(height: 20,),
-               Row(
-            spacing: 20,
-            children: [
-                  Expanded(
-                  child: MyButton(
-                buttonText: 'Save',
-                height: 48,
-                fontSize: 12,
-                fontColor: getSecondaryColor(context),
-                backgroundColor: getfifth(context),
-                onTap: () {
-                  Get.back();
-                  Get.dialog(LogDiaryDialog());
-                },
-              )),
-              Expanded(
-                  child: MyButton(
-                backgroundColor: getfillcolor(context),
-                fontColor: getSecondaryColor(context),
-                outlineColor: getSecondaryColor(context),
-                buttonText: 'Cancel',
-                height: 48,
-                fontSize: 12,
-                onTap: () {
-                  Get.back();
-                },
-              )),
-          
-            ],
-          )
+                  SizedBox(
+                    height: 20,
+                  ),
+                  Row(
+                    spacing: 20,
+                    children: [
+                      Expanded(
+                          child: MyButton(
+                        buttonText: 'Save',
+                        height: 48,
+                        fontSize: 12,
+                        fontColor: getSecondaryColor(context),
+                        backgroundColor: getfifth(context),
+                        onTap: () {
+                          Get.back();
+                          Get.dialog(LogDiaryDialog());
+                        },
+                      )),
+                      Expanded(
+                          child: MyButton(
+                        backgroundColor: getfillcolor(context),
+                        fontColor: getSecondaryColor(context),
+                        outlineColor: getSecondaryColor(context),
+                        buttonText: 'Cancel',
+                        height: 48,
+                        fontSize: 12,
+                        onTap: () {
+                          Get.back();
+                        },
+                      )),
+                    ],
+                  )
                 ],
               ),
             ),

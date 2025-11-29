@@ -82,6 +82,7 @@ class DiffTextsTxt extends StatelessWidget {
                 style: TextStyle(
                     color: color4 ?? kwhite,
                     fontSize: size2 ?? 14,
+                    fontWeight: weight2 ?? FontWeight.w600,
                     fontFamily: fontFamily2 ?? AppFonts.gilroyMedium,
                     letterSpacing: letterSpacing ?? 0.5),
               ),

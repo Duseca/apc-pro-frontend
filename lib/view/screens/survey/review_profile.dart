@@ -60,18 +60,17 @@ class ReviewProfile extends StatelessWidget {
                   color1: getSecondaryColor(context),
                   color2: getSecondaryColor(context),
                 ),
-                SizedBox(height: 16,)
-,                linearProgressIndicatorr(
-                  
-
+                SizedBox(
+                  height: 16,
                 ),
-SizedBox(
-  height: 16,
-),
+                linearProgressIndicatorr(),
+                SizedBox(
+                  height: 16,
+                ),
                 row_widget(
                   icon: Assets.imagesProfilecheck,
                   iconSize: 16,
-                  iconColor: isDarkMode?kwhite:null,
+                  iconColor: isDarkMode ? kwhite : null,
                   title: 'Strong profile - Ready to complete',
                   textColor: getTertiary(context),
                 )
@@ -276,9 +275,12 @@ SizedBox(
               child: MyButton(
                 backgroundColor: getSecondaryColor(context).withOpacity(0.1),
                 buttonText: 'Complete Profile',
-                fontColor: getTertiary(context),
+                fontColor: getSecondaryColor(context),
+                fontFamily: AppFonts.gilroyMedium,
+                outlineColor: getSecondaryColor(context),
+                fontSize: 14,
                 onTap: () {
-                 Get.to(BottomNavBar());
+                  Get.to(BottomNavBar());
                 },
               ),
             ),
@@ -324,6 +326,7 @@ SizedBox(
               size1: 14,
               size2: 13,
               lineHeight: 1.4,
+              maxLines: 10,
             ),
           ),
         ],

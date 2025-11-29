@@ -3,6 +3,8 @@ import 'package:apc_pro/consts/app_fonts.dart';
 import 'package:apc_pro/generated/assets.dart';
 import 'package:apc_pro/view/screens/export/export_data.dart';
 import 'package:apc_pro/view/screens/home/cpd_tracker/add_cpd_activity/add_cpd_activity.dart';
+import 'package:apc_pro/view/screens/home/cpd_tracker/all_activities.dart';
+import 'package:apc_pro/view/screens/home/submittion_planner/ai_planning_assistant.dart';
 import 'package:apc_pro/view/widgets/appbar.dart';
 import 'package:apc_pro/view/widgets/button_container.dart';
 import 'package:apc_pro/view/widgets/custom_row.dart';
@@ -203,6 +205,9 @@ class CpdTracker extends StatelessWidget {
                     size: 14,
                     fontFamily: AppFonts.gilroyBold,
                     paddingBottom: 10,
+                    onTap: () {
+                      Get.to(() => AllActivities());
+                    },
                   ),
                   CustomeContainer(
                       radius: 8,
@@ -390,6 +395,7 @@ class CpdTracker extends StatelessWidget {
                                           fontFamily: AppFonts.gilroyBold,
                                           fontFamily2: AppFonts.gilroyMedium,
                                           mBottom: 3,
+                                          maxLines: 5,
                                         ),
                                         MyText(
                                             size: 11,
@@ -409,6 +415,7 @@ class CpdTracker extends StatelessWidget {
                               fontColor: getSecondaryColor(context),
                               backgroundColor: ktransparent,
                               fontFamily: AppFonts.gilroySemiBold,
+                              onTap: () => Get.to(() => AiPlanningAssistant()),
                             )
                           ])),
                 ],

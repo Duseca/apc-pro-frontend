@@ -2,6 +2,7 @@ import 'package:apc_pro/consts/app_colors.dart';
 import 'package:apc_pro/consts/app_fonts.dart';
 import 'package:apc_pro/generated/assets.dart';
 import 'package:apc_pro/view/widgets/appbar.dart';
+import 'package:apc_pro/view/widgets/custom_accordian.dart';
 import 'package:apc_pro/view/widgets/custom_dropdown.dart';
 import 'package:apc_pro/view/widgets/custom_row.dart';
 import 'package:apc_pro/view/widgets/my_button.dart';
@@ -176,15 +177,7 @@ class NewDiaryDetails extends StatelessWidget {
                     marginBottom: 20,
                     maxLines: 2,
                   ),
-                  MyTextField2(
-                    bordercolor: ktransparent,
-                    filledColor: getfillcolor(context),
-                    label: 'Reflection & Learning',
-                    hint:
-                        'What did you learn from this experience? How did it contribute to your professional development? What would you do differently?',
-                    maxLines: 4,
-                    marginBottom: 20,
-                  ),
+                  CustomAccordion2(),
                   MyText(
                     text: 'Attachment',
                     paddingBottom: 8,

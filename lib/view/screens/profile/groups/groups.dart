@@ -50,12 +50,20 @@ class Groups extends StatelessWidget {
                     ),
                     mbott: 16,
                   ),
-                  create_group_widget(),
+                  create_group_widget(
+                    icon: isDarkMode
+                        ? Assets.imagesAddgroup
+                        : Assets.imagesAddgroupl,
+                  ),
                   create_group_widget(
                     hasCode: true,
+                    icon: isDarkMode
+                        ? Assets.imagesAddgroup2d
+                        : Assets.imagesAddgroup2l,
+                    text1: 'Join Existing Group',
                     buttonText: 'Join Group',
                     ontap: () {
-                       Get.to(() => ReferFriend());
+                      Get.to(() => ReferFriend());
                     },
                   ),
                   TwoTextedColumn(

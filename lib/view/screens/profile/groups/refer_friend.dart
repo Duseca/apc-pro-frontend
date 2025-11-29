@@ -24,7 +24,7 @@ class ReferFriend extends StatelessWidget {
     final isDarkMode = Theme.of(context).brightness == Brightness.dark;
     final List<Map<String, dynamic>> homeOptions = [
       {
-        "icon": isDarkMode ? Assets.imagesMesg2 : Assets.imagesMesgl,
+        "icon": isDarkMode ? Assets.imagesMesgd : Assets.imagesMesgl,
         "text": "Messages",
         "onTap": () {
           // Get.to(() => ApcDiary());
@@ -265,6 +265,7 @@ class ReferFriend extends StatelessWidget {
                               itemBuilder: (context, index) {
                                 return mesg_tile(
                                   isStart: true,
+                                  desc: 'Joined 5 days ago',
                                   hasStatus: true,
                                 );
                               },

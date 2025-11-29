@@ -32,7 +32,7 @@ class CpdDetails extends StatelessWidget {
           ),
           MyText(
             text: 'Cost',
-          size: 14,
+            size: 14,
             fontFamily: AppFonts.gilroySemiBold,
             paddingBottom: 10,
           ),
@@ -58,14 +58,15 @@ class CpdDetails extends StatelessWidget {
                     'GBP 2',
                   ],
                   bgColor: getfillcolor(context),
-                  bordercolor: getSecondaryColor(context), onChanged: (value) {},
+                  bordercolor: getSecondaryColor(context),
+                  onChanged: (value) {},
                 ),
               ),
             ],
           ),
           MyText(
             text: 'Status',
-          size: 14,
+            size: 14,
             fontFamily: AppFonts.gilroySemiBold,
             paddingBottom: 10,
           ),
@@ -85,13 +86,11 @@ class CpdDetails extends StatelessWidget {
             children: [
               checkbox_row(
                 title: 'Certificate Received',
-              
                 tSize: 10,
               ),
               SizedBox(width: 15),
               checkbox_row(
                 title: 'Verification Required',
-              
                 tSize: 10,
               ),
             ],
@@ -99,7 +98,7 @@ class CpdDetails extends StatelessWidget {
           MyText(
             paddingTop: 10,
             text: 'Tags',
-          size: 14,
+            size: 14,
             fontFamily: AppFonts.gilroySemiBold,
             paddingBottom: 10,
           ),
@@ -111,7 +110,6 @@ class CpdDetails extends StatelessWidget {
                 child: MyTextField2(
                     hint: 'Add a tag....',
                     marginBottom: 15,
-                    
                     bordercolor: getSecondaryColor(context)),
               ),
               Expanded(
@@ -135,28 +133,26 @@ class CpdDetails extends StatelessWidget {
           ),
           MyText(
             text: 'Privacy & Sharing',
-          size: 14,
+            size: 14,
             fontFamily: AppFonts.gilroyRegular,
             paddingBottom: 15,
           ),
           checkbox_row(
             title: 'Share with employer',
-          
           ),
           SizedBox(
             height: 7,
           ),
           checkbox_row(
             title: 'Make public in community',
-          
           ),
-              SizedBox(
+          SizedBox(
             height: 7,
           ),
-          checkbox_row(
-            title: 'Share on LinkedIn',
-          
-          ),
+          // checkbox_row(
+          //   title: 'Share on LinkedIn',
+
+          // ),
           MyButton(
             buttonText: 'Add',
             mTop: 25,

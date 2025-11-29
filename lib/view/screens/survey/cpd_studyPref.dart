@@ -46,7 +46,9 @@ class CpdStudypref extends StatelessWidget {
           size2: 12,
           fontFamily: AppFonts.gilroySemiBold,
         ),
-        SizedBox(height: 15,),
+        SizedBox(
+          height: 15,
+        ),
         MyTextField2(
           label: 'Current CPD Hours Completed',
           hint: 'e.g. 35 hours ',
@@ -172,12 +174,12 @@ class CpdStudypref extends StatelessWidget {
           fontFamily: AppFonts.gilroyMedium,
           size: 12,
           paddingTop: 5,
-          paddingBottom: 10,
+          paddingBottom: 15,
         ),
         MyText(
           text: 'Peer Collaboration Preferences',
           size: 12,
-          fontFamily: AppFonts.gilroyMedium,
+          fontFamily: AppFonts.gilroyBold,
           paddingBottom: 14,
         ),
         training_container(

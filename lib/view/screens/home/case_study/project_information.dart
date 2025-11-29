@@ -77,7 +77,9 @@ class ProjectInformation extends StatelessWidget {
                           size2: 14,
                           color2: getTertiary(context),
                         ),
-                        SizedBox(height: 8,),
+                        SizedBox(
+                          height: 8,
+                        ),
                         linearProgressIndicatorr(
                           height: 6,
                           bgColor: getfifth(context),
@@ -194,17 +196,23 @@ class BasicInfo extends StatelessWidget {
             marginBottom: 20,
             filledColor: getfifth(context),
           ),
-          MyTextField2(
+          CustomDropDown(
+            hint: 'Select Project Sector',
+            items: ['Select Project Sector', 'Project Sector 1'],
+            value: 'Select Project Sector',
+            onChanged: (value) {},
             label: 'Project Sector',
-            hint: 'Other....',
-            marginBottom: 20,
-            filledColor: getfifth(context),
+            bgColor: getfifth(context),
+            bordercolor: getSecondaryColor(context),
           ),
-          MyTextField2(
-            label: 'Project Location',
-            hint: 'Other....',
-            marginBottom: 20,
-            filledColor: getfifth(context),
+          CustomDropDown(
+            hint: 'Select Project Location',
+            items: ['Select project location', 'Project Sector 1'],
+            value: 'Select project location',
+            onChanged: (value) {},
+            label: 'Project Sector',
+            bgColor: getfifth(context),
+            bordercolor: getSecondaryColor(context),
           ),
           MyText(
             text: 'Project Value',

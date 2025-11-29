@@ -29,9 +29,9 @@ class _OtpVerificationState extends State<OtpVerification> {
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20),
             child: TwoTextedColumn(
-              text1: 'Create Account',
+              text1: 'Verify Your Email',
               text2:
-                  'Enter your email address to create your Vacation Buddy account',
+                  "We've sent a verification code to your email address. Please enter the code below to verify your account.",
               size1: 16,
               size2: 14,
               fontFamily: AppFonts.gilroySemiBold,

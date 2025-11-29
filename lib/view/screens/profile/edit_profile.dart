@@ -129,21 +129,19 @@ class EditProfile extends StatelessWidget {
                     maxLines: 6,
                     marginBottom: 4,
                   ),
-                   MyText(
-                    text: '180/500 characters',
-                    color: getTertiary(context),
-                    size: 11,
-                    
-                    paddingBottom: 20,
-                    textAlign: TextAlign.end
-                  ),
+                  MyText(
+                      text: '180/500 characters',
+                      color: getTertiary(context),
+                      size: 11,
+                      paddingBottom: 20,
+                      textAlign: TextAlign.end),
                   MyText(
                     text: 'Professional Links',
                     size: 16,
                     fontFamily: AppFonts.gilroyBold,
                     paddingBottom: 20,
                   ),
-                   MyTextField2(
+                  MyTextField2(
                     label: 'LinkedIn URL',
                     hint: 'https://linkedin.com/in/yourprofile',
                     bordercolor: getfifth(context),
@@ -155,14 +153,13 @@ class EditProfile extends StatelessWidget {
                     bordercolor: getfifth(context),
                     filledColor: ktransparent,
                   ),
-                      MyTextField2(
+                  MyTextField2(
                     label: 'Website URL',
                     hint: 'https://yourwebsite.com',
                     bordercolor: getfifth(context),
                     filledColor: ktransparent,
                   ),
-              
-                       MyText(
+                  MyText(
                     text: 'Privacy Settings',
                     size: 16,
                     fontFamily: AppFonts.gilroyBold,
@@ -185,18 +182,16 @@ class EditProfile extends StatelessWidget {
                     height: 15,
                   ),
                   notification_pref_row(
-                    title: 'Let other members see your email',
+                    title: 'Show Phone to Members',
                     desc: 'Let other members see your phone number',
                     fontFamily: AppFonts.gilroyRegular,
                   ),
-             
                   MyButton(
                     mTop: 20,
                     buttonText: 'Save Changes',
                     mBottom: 20,
                   ),
                   MyButton(
-                   
                     buttonText: 'Cancel',
                     mBottom: 20,
                     outlineColor: getfifth(context),

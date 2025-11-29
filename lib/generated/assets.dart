@@ -566,6 +566,10 @@ class Assets {
   /// assets/images/link.png
   static const String imagesLink = "assets/images/link.png";
 
+  /// Assets for imagesLinkedin
+  /// assets/images/linkedin.png
+  static const String imagesLinkedin = "assets/images/linkedin.png";
+
   /// Assets for imagesLived
   /// assets/images/lived.png
   static const String imagesLived = "assets/images/lived.png";
@@ -802,6 +806,10 @@ class Assets {
   /// assets/images/quiz.png
   static const String imagesQuiz = "assets/images/quiz.png";
 
+  /// Assets for imagesQuizd
+  /// assets/images/quizd.png
+  static const String imagesQuizd = "assets/images/quizd.png";
+
   /// Assets for imagesRate
   /// assets/images/rate.png
   static const String imagesRate = "assets/images/rate.png";
@@ -882,9 +890,21 @@ class Assets {
   /// assets/images/shared.png
   static const String imagesShared = "assets/images/shared.png";
 
+  /// Assets for imagesSharejobd
+  /// assets/images/sharejobd.png
+  static const String imagesSharejobd = "assets/images/sharejobd.png";
+
+  /// Assets for imagesSharejobl
+  /// assets/images/sharejobl.png
+  static const String imagesSharejobl = "assets/images/sharejobl.png";
+
   /// Assets for imagesSharel
   /// assets/images/sharel.png
   static const String imagesSharel = "assets/images/sharel.png";
+
+  /// Assets for imagesSpeaker
+  /// assets/images/speaker.png
+  static const String imagesSpeaker = "assets/images/speaker.png";
 
   /// Assets for imagesStar
   /// assets/images/star.png

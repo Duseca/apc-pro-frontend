@@ -38,22 +38,22 @@ class TestQuiz extends StatelessWidget {
     final List<Map<String, dynamic>> quickStartItems = [
       {
         'title': 'Quick Practice',
-        'desc':
-            '10 questions  15 mins\nPerfect for daily practice on corecompetencies',
+        'desc': '10 questions  15 mins',
+        'text3': 'Perfect for daily practice on corecompetencies',
         'icon': Assets.imagesTodo,
         'ontap': () => Get.to(() => QuizPractice()),
       },
       {
-        'title': 'Mock Exam',
-        'desc':
-            '50 questions  90 mins\nFull length exam simulation with comprehensive coverage',
+        'title': 'Extended Quiz',
+        'desc': '50 questions  90 mins',
+        'text3': 'Full length exam simulation with comprehensive coverage',
         'icon': Assets.imagesMock,
         'ontap': () => Get.to(() => QuizPractice()),
       },
       {
         'title': 'Adaptive Quiz',
-        'desc':
-            '20 questions  30 mins\nAI-powered quiz focusing on your weak areas',
+        'desc': '20 questions  30 mins',
+        'text3': 'AI-powered quiz focusing on your weak areas',
         'icon': Assets.imagesQuiz,
         'ontap': () => Get.to(() => QuizPractice()),
       },
@@ -177,6 +177,7 @@ class TestQuiz extends StatelessWidget {
                     desc: item['desc']!,
                     icon: item['icon']!,
                     mbott: 25,
+                    text3: item['text3']!,
                   );
                 },
               ),

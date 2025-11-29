@@ -112,15 +112,18 @@ class TrainingExperience extends StatelessWidget {
           paddingTop: 5,
           paddingBottom: 10,
         ),
-        training_container(),
-         training_container(
+        training_container(
+          title: 'Entry Level',
+          desc: 'New to the property and construction industry',
+        ),
+        training_container(
           title: 'Intermediate',
           desc: 'Some experience but looking to advance skills',
-         ),
-          training_container(
-              title: 'Experienced',
+        ),
+        training_container(
+          title: 'Experienced',
           desc: 'Established professional seeking specialization',
-          ),
+        ),
         SizedBox(
           height: 25,
         ),
@@ -154,14 +157,15 @@ class TrainingExperience extends StatelessWidget {
         )
       ],
     );
-
   }
 }
 
 class training_container extends StatelessWidget {
-  final String? title,desc;
+  final String? title, desc;
   const training_container({
-    super.key, this.title, this.desc,
+    super.key,
+    this.title,
+    this.desc,
   });
 
   @override
@@ -191,13 +195,13 @@ class training_container extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 MyText(
-                  text:title?? 'APC Candidate?',
+                  text: title ?? 'APC Candidate?',
                   fontFamily: AppFonts.gilroySemiBold,
                   size: 14,
                   paddingBottom: 3,
                 ),
                 MyText(
-                  text:desc?? 'Working towards APC qualification',
+                  text: desc ?? 'Working towards APC qualification',
                   size: 13,
                   color: Colors.grey,
                   paddingTop: 3,

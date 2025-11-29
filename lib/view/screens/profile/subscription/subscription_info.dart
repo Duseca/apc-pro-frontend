@@ -144,8 +144,7 @@ class SubscriptionInfo extends StatelessWidget {
                               iconColor: getSecondaryColor(context),
                             ),
                             Padding(
-                              padding:
-                                  EdgeInsets.symmetric(vertical: 8),
+                              padding: EdgeInsets.symmetric(vertical: 8),
                               child: Divider(
                                 color: getfifth(context),
                               ),
@@ -184,8 +183,7 @@ class SubscriptionInfo extends StatelessWidget {
                               text2: '\$199.00',
                             ),
                             Padding(
-                              padding:
-                                  EdgeInsets.symmetric(vertical: 8),
+                              padding: EdgeInsets.symmetric(vertical: 8),
                               child: Divider(
                                 color: getfifth(context),
                               ),
@@ -196,8 +194,7 @@ class SubscriptionInfo extends StatelessWidget {
                               text2: '\$199.00',
                             ),
                             Padding(
-                              padding:
-                                 EdgeInsets.symmetric(vertical: 8),
+                              padding: EdgeInsets.symmetric(vertical: 8),
                               child: Divider(
                                 color: getfifth(context),
                               ),
@@ -224,7 +221,7 @@ class SubscriptionInfo extends StatelessWidget {
                     },
                   ),
                   MyButton(
-                    buttonText: 'Plan Management',
+                    buttonText: 'Cancel Subscription',
                     backgroundColor: getfillcolor(context),
                     fontColor: getSecondaryColor(context),
                     mBottom: 16,
@@ -309,13 +306,18 @@ class SubscriptionInfo extends StatelessWidget {
 class expanded_icon_row extends StatelessWidget {
   final String? text;
   final String? icon;
-  final double? textSize,iconSize;
-  final Color? textcolor,iconColor;
+  final double? textSize, iconSize;
+  final Color? textcolor, iconColor;
   final String? fontFamily;
   const expanded_icon_row({
     super.key,
     this.text,
-    this.icon, this.textSize, this.iconSize, this.textcolor, this.iconColor, this.fontFamily,
+    this.icon,
+    this.textSize,
+    this.iconSize,
+    this.textcolor,
+    this.iconColor,
+    this.fontFamily,
   });
 
   @override
@@ -323,16 +325,16 @@ class expanded_icon_row extends StatelessWidget {
     return Row(children: [
       Expanded(
         child: MyText(
-          text: text ?? 'Request Data Export',
-          size:textSize?? 14,
-          fontFamily:fontFamily?? AppFonts.gilroySemiBold,
+          text: text ?? 'Billing Support',
+          size: textSize ?? 14,
+          fontFamily: fontFamily ?? AppFonts.gilroySemiBold,
           color: textcolor,
         ),
       ),
       Image.asset(
         icon ?? Assets.imagesForward,
-        width:iconSize?? 16,
-        color:iconColor?? getSecondaryColor(context),
+        width: iconSize ?? 16,
+        color: iconColor ?? getSecondaryColor(context),
       )
     ]);
   }

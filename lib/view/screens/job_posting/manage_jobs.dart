@@ -275,18 +275,26 @@ class ManageJobs extends StatelessWidget {
                         children: [
                           Image.asset(
                             isDarkMode
-                                ? index == 1
-                                    ? Assets.imagesDeleteD
-                                    : Assets.imagesArchived
-                                : index == 1
-                                    ? Assets.imagesDeleteL
-                                    : Assets.imagesArchivel,
+                                ? (index == 0
+                                    ? Assets.imagesSharejobd
+                                    : (index == 1
+                                        ? Assets.imagesDeleteD
+                                        : Assets.imagesArchived))
+                                : (index == 0
+                                    ? Assets.imagesSharejobl
+                                    : (index == 1
+                                        ? Assets.imagesDeleteL
+                                        : Assets.imagesArchivel)),
                             width: 32,
                             height: 32,
                           ),
                           Expanded(
                               child: MyText(
-                            text: 'Share Job Posting',
+                            text: index == 1
+                                ? 'Archive Job'
+                                : (index == 2
+                                    ? 'Delete Job'
+                                    : 'Share Job Posting'),
                             size: 14,
                             fontFamily: AppFonts.gilroyMedium,
                             paddingLeft: 10,

@@ -1,6 +1,7 @@
 import 'package:apc_pro/consts/app_colors.dart';
 import 'package:apc_pro/consts/app_fonts.dart';
 import 'package:apc_pro/generated/assets.dart';
+import 'package:apc_pro/view/screens/home/test_quiz/custom_quiz/quiz_reviewRes/quiz_result.dart';
 import 'package:apc_pro/view/widgets/appbar.dart';
 import 'package:apc_pro/view/widgets/button_container.dart';
 import 'package:apc_pro/view/widgets/custome_comtainer.dart';
@@ -160,23 +161,71 @@ class QuizReview extends StatelessWidget {
                                 text2:
                                     'Project managers play a crucial role in facilitating communication between stakeholders. They ensure information flows efficiently, clearly, and in a timely manner to all relevant parties. This includes regular updates, managing expectations, and ensuring all stakeholders have access to necessary project information.')
                           ])),
+                  Row(
+                    spacing: 20,
+                    children: [
+                      Expanded(
+                          child: MyButton(
+                        backgroundColor: getfillcolor(context),
+                        fontColor: getSecondaryColor(context),
+                        buttonText: 'Previous Question',
+                        fontSize: 14,
+                        fontFamily: AppFonts.gilroyMedium,
+                      )),
+                      Expanded(
+                          child: MyButton(
+                        buttonText: 'Next Question',
+                        fontSize: 14,
+                        fontFamily: AppFonts.gilroyMedium,
+                      ))
+                    ],
+                  ),
+                  MyText(
+                    text: 'Back to Summary',
+                    size: 14,
+                    textAlign: TextAlign.center,
+                    weight: FontWeight.w600,
+                    paddingBottom: 15,
+                    paddingTop: 15,
+                    onTap: () {
+                      Get.to(() => const QuizResult());
+                    },
+                  ),
+                  CustomeContainer(
+                    radius: 8,
+                    color: getfillcolor(context),
+                    vpad: 16,
+                    hpad: 16,
+                    widget: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Row(
+                          children: List.generate(5, (index) {
+                            final isActive = index < 3;
 
-                          Row(
-                            spacing: 20,
-                            children: [
-                              Expanded(child: MyButton(
-                              backgroundColor: getfillcolor(context),
-                              fontColor: getSecondaryColor(context),
-                              buttonText: 'Previous Question',
-                              )),
-
-                                       Expanded(child: MyButton(
-                              backgroundColor: getfillcolor(context),
-                              fontColor: getSecondaryColor(context),
-                              buttonText: 'Next Question',
-                              ))
-                            ],
-                          )
+                            return Padding(
+                              padding: const EdgeInsets.only(right: 8),
+                              child: CircleAvatar(
+                                radius: 18,
+                                backgroundColor: isActive
+                                    ? getSecondaryColor(context)
+                                    : getfifth(context),
+                                child: MyText(
+                                  text: '${index + 1}',
+                                  size: 14,
+                                  fontFamily: AppFonts.gilroyBold,
+                                  color: isActive
+                                      ? getsplashcolor(context)
+                                      : getTertiary(context),
+                                ),
+                              ),
+                            );
+                          }),
+                        )
+                      ],
+                    ),
+                    mbott: 30,
+                  )
                 ],
               ),
             ),
@@ -199,8 +248,8 @@ class quiz_opt_container extends StatelessWidget {
   Widget build(BuildContext context) {
     return CustomeContainer(
       radius: 8,
-      mbott:12 ,
-      color:getfifth(context), // Change color if selected
+      mbott: 12,
+      color: getfifth(context), // Change color if selected
       borderColor: isSelected
           ? getSecondaryColor(context)
           : ktransparent, // Border color when selected
@@ -220,13 +269,12 @@ class quiz_opt_container extends StatelessWidget {
           ),
           Expanded(
             child: DiffTextsTxt(
-              text1: 'A.  ',
-              text2: opt ?? 'To control all communication channels',
-              fontFamily: AppFonts.gilroyBold,
-              fontFamily2: AppFonts.gilroyRegular,
-              align: TextAlign.start,
-              color1: getSecondaryColor(context) 
-            ),
+                text1: 'A.  ',
+                text2: opt ?? 'To control all communication channels',
+                fontFamily: AppFonts.gilroyBold,
+                fontFamily2: AppFonts.gilroyRegular,
+                align: TextAlign.start,
+                color1: getSecondaryColor(context)),
           )
         ],
       ),

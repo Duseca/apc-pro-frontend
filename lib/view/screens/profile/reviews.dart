@@ -1,5 +1,6 @@
 import 'package:apc_pro/consts/app_fonts.dart';
 import 'package:apc_pro/view/widgets/appbar.dart';
+import 'package:apc_pro/view/widgets/my_button.dart';
 import 'package:apc_pro/view/widgets/my_text_field.dart';
 import 'package:apc_pro/view/widgets/my_text_widget.dart';
 import 'package:apc_pro/view/widgets/star_ratings.dart';
@@ -43,6 +44,10 @@ class Reviews extends StatelessWidget {
                     hint: 'Enter your feedback here',
                     maxLines: 4,
                     // bordercolor: ksecondary,
+                  ),
+                  MyButton(
+                    buttonText: 'Submit Review',
+                    mTop: 30,
                   )
                 ],
               ),

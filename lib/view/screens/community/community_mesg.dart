@@ -108,11 +108,12 @@ class CommunityMesg extends StatelessWidget {
 }
 
 class mesg_tile extends StatelessWidget {
-  final String? title, desc, time, icon,statusText;
+  final String? title, desc, time, icon, statusText;
   final VoidCallback? ontap;
   final bool? hasSuffix, hasIcon, isStart, hasStatus;
-  final Color? borderColor;
+  final Color? borderColor, t1Color, t2Color;
   final double? imgSize, radius;
+  final IconData? suffixicon;
   const mesg_tile({
     super.key,
     this.title,
@@ -126,7 +127,11 @@ class mesg_tile extends StatelessWidget {
     this.imgSize,
     this.isStart,
     this.radius,
-    this.hasStatus, this.statusText,
+    this.hasStatus,
+    this.statusText,
+    this.t1Color,
+    this.t2Color,
+    this.suffixicon,
   });
 
   @override
@@ -170,7 +175,8 @@ class mesg_tile extends StatelessWidget {
                   size2: 11,
                   fontFamily: AppFonts.gilroyBold,
                   fontFamily2: AppFonts.gilroyMedium,
-                  color2: getTertiary(context),
+                  color2: t2Color ?? getTertiary(context),
+                  color1: t1Color,
                 ),
               ),
               if (hasStatus == true) ...{
@@ -178,7 +184,7 @@ class mesg_tile extends StatelessWidget {
                   width: 5,
                 ),
                 buttonContainer(
-                  text:statusText?? 'Completed',
+                  text: statusText ?? 'Completed',
                   bgColor: getfifth(context),
                   radius: 50,
                   vPadding: 3,
@@ -190,8 +196,8 @@ class mesg_tile extends StatelessWidget {
                 SizedBox(
                   width: 10,
                 ),
-                Icon(Icons.more_vert_rounded,
-                    size: 18, color: getSecondaryColor(context)),
+                Icon(suffixicon ?? Icons.more_vert_rounded,
+                    size: 18, color: t2Color ?? getSecondaryColor(context)),
               }
             ],
           )

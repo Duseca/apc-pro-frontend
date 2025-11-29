@@ -132,24 +132,28 @@ class EntriesDetail extends StatelessWidget {
                           height: 12,
                         ),
                         row_widget(
-                            title: 'Monday 15 January 2024',
-                            fontFamily: AppFonts.gilroyMedium,
-                            icon: Assets.imagesCalendar,
-                            iconSize: 18,
-                            lpad: 5,
-                            texSize: 11,
-                            textColor: kwhite),
+                          title: 'Monday 15 January 2024',
+                          fontFamily: AppFonts.gilroyMedium,
+                          icon: Assets.imagesCalendar,
+                          iconSize: 18,
+                          lpad: 5,
+                          texSize: 11,
+                          textColor: getSecondaryColor(context),
+                          iconColor: getSecondaryColor(context),
+                        ),
                         SizedBox(
                           height: 12,
                         ),
                         row_widget(
-                            title: 'Last updated 15/01/2024',
-                            fontFamily: AppFonts.gilroyMedium,
-                            icon: Assets.imagesClock,
-                            iconSize: 18,
-                            lpad: 5,
-                            texSize: 11,
-                            textColor: kwhite),
+                          title: 'Last updated 15/01/2024',
+                          fontFamily: AppFonts.gilroyMedium,
+                          icon: Assets.imagesClock,
+                          iconSize: 18,
+                          lpad: 5,
+                          texSize: 11,
+                          textColor: getSecondaryColor(context),
+                          iconColor: getSecondaryColor(context),
+                        ),
                       ],
                     ),
                   ),
@@ -295,7 +299,7 @@ class EntriesDetail extends StatelessWidget {
                               bgColor: ktransparent,
                               text: ' Get AI Feedback',
                               imagePath: Assets.imagesLight,
-                            iconColor: getSecondaryColor(context),
+                              iconColor: getSecondaryColor(context),
                               imageSize: 17,
                             )
                           ],
@@ -363,7 +367,6 @@ class EntriesDetail extends StatelessWidget {
                           physics: const NeverScrollableScrollPhysics(),
                           itemCount: 2,
                           itemBuilder: (context, index) {
-                           
                             return Padding(
                               padding: const EdgeInsets.only(bottom: 18),
                               child: CustomeContainer(
@@ -376,14 +379,18 @@ class EntriesDetail extends StatelessWidget {
                                   children: [
                                     Expanded(
                                         child: TwoTextedColumn(
-                                      text1:index==1?'CAD Software Proficiency' :'Structural Analysis Techniques',
+                                      text1: index == 1
+                                          ? 'CAD Software Proficiency'
+                                          : 'Structural Analysis Techniques',
                                       text2: 'Competency Level 2 • 3 weeks ago',
                                       size1: 14,
                                       size2: 12,
                                       fontFamily: AppFonts.gilroySemiBold,
                                       color2: getTertiary(context),
                                     )),
-                                    SizedBox(width: 12,),
+                                    SizedBox(
+                                      width: 12,
+                                    ),
                                     MyText(
                                       text: 'View',
                                       size: 14,

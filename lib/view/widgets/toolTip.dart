@@ -44,18 +44,18 @@ class _TooltipIconState extends State<TooltipIcon> {
       popupDirection: TooltipDirection.down,
       content: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisSize: MainAxisSize.min,
         children: [
-          MyText(
-            text: "Preliminary Review",
-            color: getSecondaryColor(context),
-            size: 13,
-            fontFamily: AppFonts.gilroySemiBold,
-            paddingBottom: 10,
-            weight: FontWeight.w700,
+          Image.asset(
+            Assets.imagesQuestionmark,
+            width: 18,
+            height: 18,
+            color: isDarkMode ? kwhite : kblack,
           ),
           MyText(
+            paddingTop: 8,
             text:
-                "Preparing documents and evidence for the\npreliminary review process before\nstarting structured training.",
+                "Technical competencies vary by your\nselected RICS pathway.\nOnly the ones relevant to your path will be shown",
             color: getSecondaryColor(context),
             fontFamily: AppFonts.gilroyRegular,
             weight: FontWeight.w400,
@@ -66,7 +66,7 @@ class _TooltipIconState extends State<TooltipIcon> {
         Assets.imagesQuestionmark,
         width: 18,
         height: 18,
-         color: isDarkMode?kwhite:kblack,
+        color: isDarkMode ? kwhite : kblack,
       ),
     );
   }

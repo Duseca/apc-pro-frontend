@@ -15,10 +15,10 @@ class CustomQuizSettings extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CustomeContainer(
-            radius: 8,
+      radius: 8,
       borderColor: getSecondaryColor(context),
       color: getfillcolor(context),
-     widget: Column(
+      widget: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Row(
@@ -38,9 +38,14 @@ class CustomQuizSettings extends StatelessWidget {
           CustomDropDown(
             label: 'Question Difficulty',
             hint: 'Easy Only',
-            items: ['Easy Only', 'Medium Only', 'Hard Only', 'Mixed Difficulty'],
-      
+            items: [
+              'Easy Only',
+              'Medium Only',
+              'Hard Only',
+              'Mixed Difficulty'
+            ],
             bgColor: getfifth(context),
+            hintColor: getSecondaryColor(context),
             value: 'Easy Only',
             onChanged: (h) {},
           ),
@@ -63,7 +68,6 @@ class CustomQuizSettings extends StatelessWidget {
           ),
           CustomeContainer(
               radius: 10,
-              
               color: getfifth(context),
               vpad: 15,
               hpad: 14,
@@ -74,6 +78,7 @@ class CustomQuizSettings extends StatelessWidget {
                   Image.asset(
                     Assets.imagesClock,
                     width: 20,
+                    color: getSecondaryColor(context),
                   ),
                   Expanded(
                       child: MyText(
@@ -82,19 +87,25 @@ class CustomQuizSettings extends StatelessWidget {
                     size: 11,
                     fontFamily: AppFonts.gilroyMedium,
                     paddingLeft: 6,
+                    color: getSecondaryColor(context),
                   ))
                 ],
               )),
-                  CustomDropDown(
+          CustomDropDown(
             label: 'Show Feedback',
             hint: 'At End of Quiz',
-            items: ['At End of Quiz', 'Medium Only', 'Hard Only', 'Mixed Difficulty'],
-          bgColor: getfifth(context),
+            items: [
+              'At End of Quiz',
+              'Medium Only',
+              'Hard Only',
+              'Mixed Difficulty'
+            ],
+            bgColor: getfifth(context),
             value: 'At End of Quiz',
+            hintColor: getSecondaryColor(context),
             onChanged: (h) {},
           ),
-      
-                MyText(
+          MyText(
             paddingTop: 20,
             text: 'Passing Score',
             size: 12,
@@ -106,7 +117,6 @@ class CustomQuizSettings extends StatelessWidget {
             i2: '50%',
             i3: '100%',
           ),
-      
           MyButton(
             buttonText: 'Continue',
             mTop: 40,

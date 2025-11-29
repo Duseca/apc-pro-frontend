@@ -68,6 +68,11 @@ class Billing extends StatelessWidget {
                     widget: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
+                        MyText(
+                            text: 'Select Data Categories',
+                            fontFamily: AppFonts.gilroyBold,
+                            size: 16,
+                            paddingBottom: 16),
                         ListView.separated(
                           separatorBuilder: (context, index) {
                             return Padding(
@@ -146,7 +151,43 @@ class Billing extends StatelessWidget {
                             paddingBottom: 16,
                           ),
                           notification_pref_row(
-                              title: 'Include attachments and images.')
+                            title: 'Include attachments and images.',
+                            size1: 12,
+                          ),
+                          SizedBox(
+                            height: 16,
+                          ),
+                          Row(
+                            children: [
+                              Expanded(
+                                  child:
+                                      MyText(text: 'Date range: ', size: 14)),
+                              row_widget(
+                                title: 'All time',
+                                texSize: 14,
+                                icon: Assets.imagesArrowright2,
+                                isIconRight: true,
+                                iconSize: 14,
+                              ),
+                            ],
+                          ),
+                          SizedBox(
+                            height: 16,
+                          ),
+                          Row(
+                            children: [
+                              Expanded(
+                                  child:
+                                      MyText(text: 'Date range: ', size: 14)),
+                              row_widget(
+                                title: 'All time',
+                                texSize: 14,
+                                icon: Assets.imagesArrowright2,
+                                isIconRight: true,
+                                iconSize: 14,
+                              ),
+                            ],
+                          )
                         ]),
                     mbott: 16,
                   ),
@@ -159,13 +200,13 @@ class Billing extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           MyText(
-                            text: 'Data Information',
+                            text: 'Language for export',
                             fontFamily: AppFonts.gilroyBold,
                             size: 16,
                             paddingBottom: 16,
                           ),
                           ExpandedRow(
-                              text1: 'Estimated file size:',
+                              text1: 'English',
                               fontFamily2: AppFonts.gilroyMedium,
                               fontFamily: AppFonts.gilroyMedium,
                               text2: '~2.5 MB'),

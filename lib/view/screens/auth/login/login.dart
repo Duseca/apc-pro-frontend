@@ -62,7 +62,7 @@ class _LoginState extends State<Login> {
                 ),
                 MyText(
                   textAlign: TextAlign.end,
-                  text: 'Forget Password?',
+                  text: 'Forgot Password?',
                   color: getSecondaryColor(context),
                   size: 14,
                   fontFamily: AppFonts.gilroySemiBold,
@@ -156,7 +156,7 @@ class LoginOptions extends StatelessWidget {
   final String? text;
   const LoginOptions({
     super.key,
-   this.icon,
+    this.icon,
     required this.ontap,
     this.text,
   });
@@ -178,13 +178,13 @@ class LoginOptions extends StatelessWidget {
           mainAxisSize: MainAxisSize.min, // avoids extra space
           crossAxisAlignment: CrossAxisAlignment.center, // centers vertically
           children: [
-            if(icon!=null)
-            CommonImageView(
-              imagePath: icon,
-              width: 21,
-              height: 21,
-              fit: BoxFit.contain,
-            ),
+            if (icon != null)
+              CommonImageView(
+                imagePath: icon,
+                width: 21,
+                height: 21,
+                fit: BoxFit.contain,
+              ),
             const SizedBox(width: 8),
             MyText(
               text: text ?? 'Continue with Facebook',

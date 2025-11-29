@@ -30,6 +30,10 @@ class GoalsExpectations extends StatelessWidget {
         'text2': 'Deepen understanding of technical competencies.',
       },
       {
+        'text1': 'Build Confidence ',
+        'text2': 'Boost self-assurance for assessments and professional tasks.',
+      },
+      {
         'text1': 'Structured Study Plan ',
         'text2': 'Clear, manageable roadmap for your APC journey.',
       },
@@ -56,10 +60,6 @@ class GoalsExpectations extends StatelessWidget {
         'text2': 'Expert help with technical subjects.',
       },
       {
-        'text1': 'Interview Coaching ',
-        'text2': 'Practice sessions, QGA, and feedback.',
-      },
-      {
         'text1': 'Time Management ',
         'text2': 'Reminders and progress tracking to stay on track.',
       },
@@ -71,7 +71,10 @@ class GoalsExpectations extends StatelessWidget {
         'text1': 'Peer Support ',
         'text2': 'Connect with other candidates for shared learning.',
       },
-  
+      {
+        'text1': 'Progress Tracking',
+        'text2': 'Visual dashboards to monitor your progress.',
+      },
     ];
 
     return Column(
@@ -80,7 +83,7 @@ class GoalsExpectations extends StatelessWidget {
         DiffTextsTxt(
           align: TextAlign.start,
           text1: 'Primary Goals (Select all that apply) * ',
-text2: '',
+          text2: '',
           size: 14,
           weight1: FontWeight.bold,
           color1: getSecondaryColor(context),
@@ -110,7 +113,11 @@ text2: '',
                 widget: Row(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    CustomCheckBox(isActive: false, onTap: () {},size: 16,),
+                    CustomCheckBox(
+                      isActive: false,
+                      onTap: () {},
+                      size: 16,
+                    ),
                     SizedBox(
                       width: 10,
                     ),
@@ -131,7 +138,6 @@ text2: '',
             );
           },
         ),
-     
         MyTextField2(
           label: 'Final Assessment Date',
           hint: 'mm/dd/yyyy',
@@ -174,7 +180,11 @@ text2: '',
                 widget: Row(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    CustomCheckBox(isActive: false, onTap: () {},size: 16,),
+                    CustomCheckBox(
+                      isActive: false,
+                      onTap: () {},
+                      size: 16,
+                    ),
                     SizedBox(
                       width: 10,
                     ),
@@ -198,7 +208,7 @@ text2: '',
         SizedBox(
           height: 15,
         ),
-    Row(
+        Row(
           children: [
             Bounce(
                 onTap: () {

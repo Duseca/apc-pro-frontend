@@ -1,5 +1,6 @@
 import 'package:apc_pro/consts/app_colors.dart';
 import 'package:apc_pro/consts/app_fonts.dart';
+import 'package:apc_pro/view/screens/auth/login/login.dart';
 import 'package:apc_pro/view/screens/auth/signUp/otp_verification.dart';
 import 'package:apc_pro/view/widgets/appbar.dart';
 import 'package:apc_pro/view/widgets/custom_check_box.dart';
@@ -8,6 +9,7 @@ import 'package:apc_pro/view/widgets/expanded_row.dart';
 import 'package:apc_pro/view/widgets/my_button.dart';
 import 'package:apc_pro/view/widgets/my_text_field.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 
 class Signup extends StatefulWidget {
@@ -109,7 +111,9 @@ class _SignupState extends State<Signup> {
             size: 14,
             color2: getSecondaryColor(context),
             color1: getTertiary(context),
-            ontap: () {},
+            ontap: () {
+              Get.to(() => Login());
+            },
             fontFamily2: AppFonts.gilroyMedium,
             fontFamily: AppFonts.gilroyMedium,
           ),

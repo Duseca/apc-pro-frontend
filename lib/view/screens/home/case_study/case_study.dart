@@ -160,11 +160,14 @@ class CaseStudy extends StatelessWidget {
                             paddingBottom: 10,
                           ),
                           ListView.separated(
-                            separatorBuilder:   (context, index) {
+                            separatorBuilder: (context, index) {
                               final item = caseStudySections[index];
                               return Padding(
-                                padding: const EdgeInsets.symmetric(vertical: 3),
-                                child: Divider(color: getsplashcolor(context),),
+                                padding:
+                                    const EdgeInsets.symmetric(vertical: 3),
+                                child: Divider(
+                                  color: getsplashcolor(context),
+                                ),
                               );
                             },
                             padding: EdgeInsets.all(0),
@@ -186,7 +189,7 @@ class CaseStudy extends StatelessWidget {
                     title: 'Competency Table',
                     desc: '0 Competencies demonstrated',
                     icon: Assets.imagesBadge2,
-                       iconSize: 20,
+                    iconSize: 20,
                     mbott: 16,
                     iconColor: getSecondaryColor(context),
                   ),
@@ -194,17 +197,17 @@ class CaseStudy extends StatelessWidget {
                     title: 'Appendices',
                     desc: '0 attachments uploaded',
                     icon: Assets.imagesAttachment2,
-                       iconSize: 20,
+                    iconSize: 20,
                     mbott: 16,
-                     iconColor: getSecondaryColor(context),
+                    iconColor: getSecondaryColor(context),
                   ),
                   newEntry_container(
                     title: 'AI Assistance',
                     desc: 'Get writing help and suggestions',
                     icon: Assets.imagesMagic2,
-                       iconSize: 20,
+                    iconSize: 20,
                     mbott: 16,
-                     iconColor: getSecondaryColor(context),
+                    iconColor: getSecondaryColor(context),
                   ),
                   CustomeContainer(
                       mbott: 20,
@@ -226,15 +229,20 @@ class CaseStudy extends StatelessWidget {
                                 SizedBox(
                                   width: 10,
                                 ),
-                                Expanded(child: MyText(text: 'Getting Started with your case study',fontFamily: AppFonts.gilroyBold,size: 14,)),
-                            
+                                Expanded(
+                                    child: MyText(
+                                  text: 'Getting Started with your case study',
+                                  fontFamily: AppFonts.gilroyBold,
+                                  size: 14,
+                                )),
                               ],
                             ),
-
-                            MyText(text: 'Your case study must be completed within the last 24 months that demonstrates your Technical competencies.\n\nAim for approximately 3,000 words total across all sections.\n\nFocus on demonstrating Level 3 (reasoned advice) competencies where possible.\n\nUse the AI assistant to help structure your content and ensure RICS compliance.',
-                          color: getTertiary(context),
-                          paddingTop: 5,
-                          size: 14,
+                            MyText(
+                              text:
+                                  'Your case study must be completed within the last 24 months that demonstrates your Technical competencies.\n\nAim for approximately 3,000 words total across all sections.\n\nFocus on demonstrating Level 3 (reasoned advice) competencies where possible.\n\nUse the AI assistant to help structure your content and ensure RICS compliance.',
+                              color: getTertiary(context),
+                              paddingTop: 5,
+                              size: 14,
                             )
                           ]))
                 ],
@@ -272,7 +280,6 @@ class _caseStudy_section_widget extends StatelessWidget {
                     fontFamily: AppFonts.gilroyBold,
                     paddingBottom: 8,
                   ),
-              
                   SizedBox(
                     width: 140,
                     child: linearProgressIndicatorr(
@@ -281,7 +288,7 @@ class _caseStudy_section_widget extends StatelessWidget {
                       height: 7,
                     ),
                   ),
-                      MyText(
+                  MyText(
                     text: text2 ?? '0/500 words   Limit 600 words',
                     size: 12,
                     fontFamily: AppFonts.gilroyMedium,

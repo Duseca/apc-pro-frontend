@@ -167,11 +167,30 @@ class SubmittionPlanner extends StatelessWidget {
                       widget: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            MyText(
-                              text: 'Submission Progress Overview',
-                              size: 14,
+                            ExpandedRow(
+                              text1: 'Submission Progress Overview',
+                              text2: '67%',
+                              color1: getSecondaryColor(context),
+                              color2: getSecondaryColor(context),
+                              fontFamily2: AppFonts.gilroyBold,
                               fontFamily: AppFonts.gilroyBold,
-                              paddingBottom: 20,
+                            ),
+                            SizedBox(
+                              height: 10,
+                            ),
+                            linearProgressIndicatorr(
+                              height: 6,
+                              value: 0.67,
+                              bgColor: getfifth(context),
+                            ),
+                            MyText(
+                              text: '8 of 12 milestones completed',
+                              size: 11.5,
+                              color: getTertiary(context),
+                              paddingTop: 5,
+                            ),
+                            SizedBox(
+                              height: 20,
                             ),
                             GridView.builder(
                               padding: EdgeInsets.zero,
@@ -240,12 +259,11 @@ class SubmittionPlanner extends StatelessWidget {
                               text: item["title"],
                               icon: item["icon"],
                               iconColor: getSecondaryColor(context),
-                              ontap:newEntryOptions[index]["ontap"],
+                              ontap: newEntryOptions[index]["ontap"],
                             );
                           },
                         ),
                       ]),
-                      
                   MyText(
                     text: 'Upcoming Milestones',
                     size: 16,

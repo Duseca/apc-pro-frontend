@@ -16,14 +16,16 @@ class SurveyController extends GetxController {
   final stepsData = [
     {
       'title': 'Tell us about you',
-      'Desc': 'Let’s get to know you better to personalise your APC journey',
+      'Desc':
+          "Let's collect some basic information to personalize your experience",
       'progress_ind': 1.0,
       'body': AboutYou()
     },
     {
       'title': 'Career Stage',
-      'Desc': 'Select your current career stage to customize your experience',
-      'progress_ind':2.0,
+      'Desc':
+          'Select your current professional level to customize your learning pathway',
+      'progress_ind': 2.0,
       'body': CareerStage()
     },
     {
@@ -42,7 +44,8 @@ class SurveyController extends GetxController {
     },
     {
       'title': 'Training & Experience',
-      'Desc': "Share your professional background and experience to help us create a personalized learning path that matches your career goals",
+      'Desc':
+          "Share your professional background and experience to help us create a personalized learning path that matches your career goals",
       'progress_ind': 5.0,
       'body': TrainingExperience()
     },
