@@ -15,24 +15,44 @@ class PathwayLocation extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final List<String> pathways = [
+      'Arts & Antiques',
+      'Building Control',
+      'Building Surveying',
+      'Commercial Real Estate',
+      'Corporate Real Estate',
+      'Environmental Surveying',
+      'Facilities Management',
+      'Geomatics',
+      'Infrastructure',
+      'Land & Resources',
+      'Land & Resources – Minerals & Waste',
+      'Management Consultancy',
+      'Management & Consultancy – Project Management',
+      'Marine Surveying',
+      'Personal Property & Machinery',
+      'Planning & Development',
+      'Property Finance & Investment',
+      'Property Management',
+      'Residential Property',
+      'Rural',
+      'Valuation',
+      'Quantity Surveying & Construction (Your default pathway)'
+    ];
     final isDarkMode = Theme.of(context).brightness == Brightness.dark;
     final controller = Get.find<SurveyController>();
+    String selectedPathway = 'Building Surveying';
 
     return Column(
       children: [
         CustomDropDown(
           label: "RICS Pathway",
           hint: "Select your RICS pathway",
-          items: [
-            "Pathway 1",
-            "Pathway 2",
-            "Pathway 3",
-            "Select your RICS pathway"
-          ],
-          //value: 'Select your RICS pathway',
-          onChanged: (val) {},
-          value: 'Select your RICS pathway',
-          // hasInfo: true,
+          items: pathways,
+          onChanged: (val) {
+            selectedPathway = val!;
+          },
+          value: selectedPathway,
           mBottom: 5,
         ),
         MyText(
@@ -70,7 +90,9 @@ class PathwayLocation extends StatelessWidget {
                     Assets.imagesCircle,
                     width: 20,
                   ),
-                  SizedBox(width: 10,),
+                  SizedBox(
+                    width: 10,
+                  ),
                   Expanded(
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -108,17 +130,19 @@ class PathwayLocation extends StatelessWidget {
         SizedBox(
           height: 25,
         ),
-     Row(
+        Row(
           children: [
             Bounce(
-                 onTap: () {
+                onTap: () {
                   controller.previousStep();
                 },
                 child: Image.asset(
-              isDarkMode ? Assets.imagesBackbutton : Assets.imagesBackbutton2,
-              width: 48,
-              height: 45,
-            )),
+                  isDarkMode
+                      ? Assets.imagesBackbutton
+                      : Assets.imagesBackbutton2,
+                  width: 48,
+                  height: 45,
+                )),
             SizedBox(
               width: 12,
             ),
